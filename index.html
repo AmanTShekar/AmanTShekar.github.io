@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aman T S | Full Stack Developer</title>
+  <title>Aman T Shekar | Full Stack Developer</title>
   <link rel="stylesheet" href="style.css">
-  <!-- Google Fonts: Montserrat -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-  <!-- Navbar -->
+
+<!-- Navbar -->
 <nav class="navbar">
   <div class="nav-left"><a href="/" class="logo"><span class="logo-name">AMAN</span></a></div>
   <div class="hamburger" onclick="toggleMenu()">☰</div>
@@ -23,273 +22,206 @@
   </ul>
 </nav>
 
-  <!-- Hero Section -->
-  <header class="hero">
-    <div class="hero-left fade-in">
-      <h1 class="title">Aman T Shekar</h1>
-      <h2 class="subtitle">Python Full Stack Developer</h2>
-      <p>
-        I design and develop modern, scalable web applications using Python (Flask / FastAPI), 
-        React, Node.js and databases. My focus is on writing clean, efficient code and building smooth, user-friendly experiences.
-      </p>
-      <div class="hero-buttons">
-        <a href="aman.pdf" target="_blank" class="btn">📄 Download Resume</a>
-        <a href="#contact" class="btn btn-secondary">📩 Contact Me</a>
+<!-- Hero Section -->
+<header class="hero">
+  <div class="hero-left fade-in">
+    <h1 class="title">Aman T Shekar</h1>
+    <h2 class="subtitle">Python Full Stack Developer</h2>
+<p class="hero-tagline">
+   Code • Build • Launch
+</p>
+    <div class="hero-buttons">
+      <a href="aman.pdf" target="_blank" class="btn">Download Resume</a>
+      <a href="#contact" class="btn btn-secondary">Contact Me</a>
+    </div>
+  </div>
+
+  <div class="hero-right slide-in">
+    <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="blob-frame">
+      <defs>
+        <clipPath id="blob-clip">
+          <path d="M61.9,-33.9C71.7,-18.7,65.4,7.7,52.3,28.5C39.3,49.2,19.7,64.4,2.1,63.2C-15.5,62,-30.9,44.4,-42.8,24.3C-54.7,4.2,-62.9,-18.5,-55.2,-32.5C-47.5,-46.5,-23.7,-51.8,1.1,-52.5C26,-53.1,52,-49.1,61.9,-33.9Z" transform="translate(100 100)" />
+        </clipPath>
+      </defs>
+      <rect x="40" y="0" width="120" height="200" clip-path="url(#blob-clip)" fill="#1a73e8" class="profile-fallback" />
+      <image href="profile.jpg" x="42" y="0" width="130" height="200" 
+             clip-path="url(#blob-clip)" preserveAspectRatio="xMidYMid slice" 
+             class="profile-pic" alt="Aman T S - Full Stack Developer" onerror="this.style.display='none'" />
+    </svg>
+  </div>
+</header>
+
+<!-- Skills Section -->
+<section id="skills" class="services">
+  <h2>Core Skills & Expertise</h2>
+  <p class="subtitle">
+    Building high-performance web applications with frontend, backend, and database expertise.
+  </p>
+
+  <div class="tech-icons">
+    <div class="tech-item fade-up">
+      <i class="fab fa-html5"></i>
+      <p>HTML</p>
+    </div>
+
+    <div class="tech-item fade-up">
+      <i class="fab fa-css3-alt"></i>
+      <p>CSS / Tailwind</p>
+    </div>
+
+    <div class="tech-item fade-up">
+      <i class="fab fa-js"></i>
+      <p>JS / TS</p>
+    </div>
+
+    <div class="tech-item fade-up">
+      <i class="fab fa-python"></i>
+      <p>Python</p>
+    </div>
+
+    <div class="tech-item fade-up">
+      <i class="fab fa-react"></i>
+      <p>React</p>
+    </div>
+
+    <div class="tech-item fade-up">
+      <i class="fab fa-node"></i>
+      <p>Node</p>
+    </div>
+
+    <div class="tech-item fade-up">
+      <i class="fas fa-database"></i>
+      <p>Databases</p>
+    </div>
+
+    <div class="tech-item fade-up">
+      <i class="fab fa-github"></i>
+      <p>GitHub</p>
+    </div>
+
+    <div class="tech-item fade-up">
+      <i class="fab fa-docker"></i>
+      <p>Docker</p>
+    </div>
+
+    <div class="tech-item fade-up">
+      <i class="fas fa-server"></i>
+      <p>APIs</p>
+    </div>
+
+    <div class="tech-item fade-up">
+      <i class="fas fa-mobile-alt"></i>
+      <p>Responsive</p>
+    </div>
+
+    <div class="tech-item fade-up">
+      <i class="fas fa-tools"></i>
+      <p>DevOps</p>
+    </div>
+  </div>
+</section>
+
+
+
+<section id="services" class="services">
+  <h2>What I Build</h2>
+  <p class="subtitle">Crafting innovative solutions across web, mobile, and software to bring your ideas to life.</p>
+
+  <div class="services-grid">
+    <div class="service-card fade-up">
+      <i class="fas fa-code"></i>
+      <h3>Web Development</h3>
+      <p>Building responsive, fast, and modern websites with React, Tailwind, and modern JS frameworks.</p>
+    </div>
+
+    <div class="service-card fade-up">
+      <i class="fas fa-paint-brush"></i>
+      <h3>UI/UX Design</h3>
+      <p>Designing intuitive interfaces with modern aesthetics that enhance user experience.</p>
+    </div>
+
+    <div class="service-card fade-up">
+      <i class="fas fa-database"></i>
+      <h3>Backend & APIs</h3>
+      <p>Creating robust REST & GraphQL APIs, server-side logic, and database management solutions.</p>
+    </div>
+
+    <div class="service-card fade-up">
+      <i class="fas fa-mobile-alt"></i>
+      <h3>Mobile Optimization</h3>
+      <p>Ensuring seamless performance and responsiveness across all devices.</p>
+    </div>
+
+    <div class="service-card fade-up">
+      <i class="fas fa-bolt"></i>
+      <h3>Performance Tuning</h3>
+      <p>Optimizing sites for speed, SEO, and accessibility to deliver the best user experience.</p>
+    </div>
+
+    <div class="service-card fade-up">
+      <i class="fas fa-rocket"></i>
+      <h3>Consulting</h3>
+      <p>Providing technical guidance, code reviews, and strategic planning for web projects.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- Projects Section -->
+<section id="projects" class="projects">
+  <h2>Projects</h2>
+  <p class="subtitle">A curated selection of my work demonstrating skill, creativity, and attention to detail.</p>
+
+  <div class="project-grid">
+    <div class="project-card fade-up">
+      <img src="images/event-website.png" alt="Event Website Thumbnail">
+      <h3>Event Management Platform</h3>
+      <p>Dynamic platform enabling seamless event registrations, real-time updates, and attendee engagement.</p>
+      <div class="project-buttons">
+        <a href="#" target="_blank" class="project-link">Live Demo</a>
+        <a href="https://github.com/AmanTShekar/event-website" target="_blank" class="project-ref">Source Code</a>
       </div>
     </div>
 
-    <div class="hero-right slide-in">
-      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="blob-frame">
-        <defs>
-          <clipPath id="blob-clip">
-            <path d="M61.9,-33.9C71.7,-18.7,65.4,7.7,52.3,28.5C39.3,49.2,19.7,64.4,2.1,63.2C-15.5,62,-30.9,44.4,-42.8,24.3C-54.7,4.2,-62.9,-18.5,-55.2,-32.5C-47.5,-46.5,-23.7,-51.8,1.1,-52.5C26,-53.1,52,-49.1,61.9,-33.9Z" transform="translate(100 100)" />
-          </clipPath>
-        </defs>
-        
-        <!-- Add a fallback rectangle in case image doesn't load -->
-        <rect x="40" y="0" width="120" height="200" clip-path="url(#blob-clip)" fill="#1a73e8" class="profile-fallback" />
-        <image href="profile.jpg" x="40" y="0" width="120" height="200" 
-               clip-path="url(#blob-clip)" preserveAspectRatio="xMidYMid slice" 
-               class="profile-pic" alt="Aman T S - Full Stack Developer" onerror="this.style.display='none'" />
-      </svg>
-    </div>
-  </header>
-
-  <!-- Skills Section -->
-  <section id="skills" class="services">
-    <h2>What I Do</h2>
-    <p class="subtitle">I am a Full Stack Developer who loves building scalable, modern, and user-friendly applications.</p>
-
-    <!-- Tech Stack Icons -->
-    <div class="tech-icons">
-      <div class="tech-item fade-up"><i class="fab fa-html5"></i><p>HTML5</p></div>
-      <div class="tech-item fade-up"><i class="fab fa-css3-alt"></i><p>CSS3</p></div>
-      <div class="tech-item fade-up"><i class="fab fa-js"></i><p>JavaScript</p></div>
-      <div class="tech-item fade-up"><i class="fab fa-python"></i><p>Python</p></div>
-      <div class="tech-item fade-up"><i class="fab fa-react"></i><p>React</p></div>
-      <div class="tech-item fade-up"><i class="fas fa-bolt"></i><p>FastAPI / Flask</p></div>
-      <div class="tech-item fade-up"><i class="fas fa-database"></i><p>Databases</p></div>
-      <div class="tech-item fade-up"><i class="fab fa-github"></i><p>Git & GitHub</p></div>
-      <div class="tech-item fade-up"><i class="fab fa-node"></i><p>Node.js</p></div>
-      <div class="tech-item fade-up"><i class="fab fa-docker"></i><p>Docker</p></div>
-    </div>
-
-    <!-- How I Work -->
-    <div class="how-i-do fade-in">
-      <h3>How I Work</h3>
-      <ul>
-        <li>⚡ Write clean, efficient, and scalable code.</li>
-        <li>🌐 Focus on both frontend design and backend logic.</li>
-        <li>🔒 Implement secure authentication and APIs.</li>
-        <li>🚀 Follow agile practices for fast, iterative development.</li>
-        <li>🤝 Collaborate effectively using Git, GitHub, and CI/CD.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- Services Section -->
-  <section id="services-offered" class="services">
-    <h2>💡 What I Offer</h2>
-    <p class="subtitle">I help businesses and individuals turn ideas into reality through design and code.</p>
-
-    <div class="services-grid">
-      <!-- Service 1 -->
-      <div class="service-card">
-        <i class="fab fa-react"></i>
-        <h3>Web Development</h3>
-        <p>Modern, responsive websites and web apps built with React, Python, Node, and more.</p>
-      </div>
-
-      <!-- Service 2 -->
-      <div class="service-card">
-        <i class="fas fa-mobile-alt"></i>
-        <h3>App Development</h3>
-        <p>Cross-platform apps with smooth UI/UX and solid backend systems.</p>
-      </div>
-
-      <!-- Service 3 -->
-      <div class="service-card">
-        <i class="fas fa-palette"></i>
-        <h3>Design & Media</h3>
-        <p>Creative posters, branding, and UI/UX designs that leave a lasting impression.</p>
-      </div>
-
-      <!-- Service 4 -->
-      <div class="service-card">
-        <i class="fas fa-brain"></i>
-        <h3>AI & Automation</h3>
-        <p>Integrating AI, automation, and smart tools into workflows for better efficiency.</p>
+    <div class="project-card fade-up">
+      <img src="images/ecommerce-platform.png" alt="E-Commerce Platform Thumbnail">
+      <h3>Role-Based E-Commerce</h3>
+      <p>Feature-rich online store with admin panel, dynamic product management, and modern, responsive UI.</p>
+      <div class="project-buttons">
+        <a href="#" target="_blank" class="project-link">Live Demo</a>
+        <a href="https://github.com/AmanTShekar/ecommerce-platform" target="_blank" class="project-ref">Source Code</a>
       </div>
     </div>
-  </section>
 
-  <!-- Projects Section -->
-  <section id="projects" class="projects">
-    <h2>Projects</h2>
-    <p class="subtitle">Some of the work I've done recently.</p>
-
-    <div class="project-grid">
-      <!-- Project 1 -->
-      <div class="project-card fade-up">
-        <h3>Event Website</h3>
-        <p>Made using Html css js and PHP allowed users to register and view events.</p>
-        <div class="project-tech">
-          <i class="fab fa-python" title="Python"></i>
-          <i class="fas fa-bolt" title="YOLOv8"></i>
-          <i class="fas fa-server" title="Flask"></i>
-          <i class="fab fa-react" title="React"></i>
-        </div>
-        <a href="#" target="_blank" class="project-link">🔗 View Project</a>
-      </div>
-
-      <!-- Project 2 -->
-      <div class="project-card fade-up">
-        <h3>E-Commerce Web App</h3>
-        <p>A role-based eCommerce platform with authentication, admin panel, CRUD functionality, and glassmorphism UI.</p>
-        <div class="project-tech">
-          <i class="fab fa-react" title="React"></i>
-          <i class="fab fa-js" title="TypeScript"></i>
-          <i class="fas fa-database" title="JSON Server"></i>
-          <i class="fab fa-css3-alt" title="Tailwind CSS"></i>
-        </div>
-        <a href="#" target="_blank" class="project-link">🔗 View Project</a>
-      </div>
-
-      <!-- Project 3 -->
-      <div class="project-card fade-up">
-        <h3>AI Player Tracking</h3>
-        <p>Computer vision system for real-time player & ball tracking with ID consistency across multi-view cameras.</p>
-        <div class="project-tech">
-          <i class="fab fa-python" title="Python"></i>
-          <i class="fas fa-brain" title="DeepSORT"></i>
-          <i class="fas fa-eye" title="OpenCV"></i>
-        </div>
-        <a href="#" target="_blank" class="project-link">🔗 View Project</a>
-      </div>
-
-      <!-- Project 4 -->
-      <div class="project-card fade-up">
-        <h3>Visual Price Checker</h3>
-        <p>A computer vision-powered tool that identifies products and fetches price details in real time using APIs.</p>
-        <div class="project-tech">
-          <i class="fab fa-python" title="Python"></i>
-          <i class="fas fa-camera" title="Computer Vision"></i>
-          <i class="fas fa-database" title="APIs"></i>
-        </div>
-        <a href="#" target="_blank" class="project-link">🔗 View Project</a>
-      </div>
-
-      <!-- Project 5 -->
-      <div class="project-card fade-up">
-        <h3>SmartHire</h3>
-        <p>An AI-powered hiring platform that automates resume screening, candidate ranking, and interview assistance.</p>
-        <div class="project-tech">
-          <i class="fas fa-brain" title="AI/ML"></i>
-          <i class="fab fa-python" title="Python"></i>
-          <i class="fab fa-node" title="Node.js"></i>
-          <i class="fas fa-database" title="Databases"></i>
-        </div>
-        <a href="#" target="_blank" class="project-link">🔗 View Project</a>
+    <div class="project-card fade-up">
+      <img src="images/ai-player-tracking.png" alt="AI Player Tracking Thumbnail">
+      <h3>AI-Powered Player Tracking</h3>
+      <p>Real-time computer vision system tracking players and game objects across multiple cameras efficiently.</p>
+      <div class="project-buttons">
+        <a href="#" target="_blank" class="project-link">Live Demo</a>
+        <a href="https://github.com/AmanTShekar/ai-player-tracking" target="_blank" class="project-ref">Source Code</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="contact">
-    <h2>🚀 Let's Build Something Together</h2>
-    <p class="subtitle">Reach out to me anytime — I'd love to connect!</p>
+<!-- Contact Section -->
+<section id="contact" class="contact">
+  <h2>Let's Create Something Exceptional</h2>
+  <p class="subtitle">I’m always excited to discuss new projects, collaborations, or ideas. Let’s connect!</p>
 
-    <div class="contact-info">
-      <p><i class="fas fa-envelope"></i> <a href="mailto:aman.tshekar@gmail.com">aman.tshekar@gmail.com</a></p>
-      <p><i class="fas fa-phone"></i> +91 9188685831</p>
-      <p><i class="fab fa-github"></i> <a href="https://github.com/AmanTShekar" target="_blank">Github/Aman</a></p>
-      <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/aman-t-shekar/" target="_blank">Linkedin/Aman</a></p>
-    </div>
-  </section>
+  <div class="contact-info">
+    <p><i class="fas fa-envelope"></i> <a href="mailto:aman.tshekar@gmail.com">aman.tshekar@gmail.com</a></p>
+    <p><i class="fas fa-phone"></i> +91 9188685831</p>
+    <p><i class="fab fa-github"></i> <a href="https://github.com/AmanTShekar" target="_blank">GitHub / Aman</a></p>
+    <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/aman-t-shekar/" target="_blank">LinkedIn / Aman</a></p>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Aman T Shekar | Built using HTML & CSS</p>
-  </footer>
+<footer>
+  <p>© 2025 Aman T Shekar | Built with HTML & CSS</p>
+</footer>
 
-  <!-- JS for menu + animations -->
-  <script>
-    function toggleMenu() {
-      document.getElementById("navLinks").classList.toggle("active");
-    }
-    function closeMenu() {
-      document.getElementById("navLinks").classList.remove("active");
-    }
-
-    // Scroll animations
-    const faders = document.querySelectorAll('.fade-in, .slide-in, .fade-up');
-    const appearOptions = { threshold: 0.2, rootMargin: "0px 0px -50px 0px" };
-    const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('appear');
-        observer.unobserve(entry.target);
-      });
-    }, appearOptions);
-    faders.forEach(fader => { appearOnScroll.observe(fader); });
-
-
-    
-  </script>
-
-  <script>
-    function toggleMenu() {
-      const navLinks = document.getElementById("navLinks");
-      const hamburger = document.querySelector(".hamburger");
-      
-      navLinks.classList.toggle("active");
-      
-      // Update hamburger icon
-      if (navLinks.classList.contains("active")) {
-        hamburger.textContent = "✕";
-      } else {
-        hamburger.textContent = "☰";
-      }
-    }
-    
-    function closeMenu() {
-      const navLinks = document.getElementById("navLinks");
-      const hamburger = document.querySelector(".hamburger");
-      
-      navLinks.classList.remove("active");
-      hamburger.textContent = "☰";
-    }
-
-    // Enhanced smooth scrolling for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        if (targetId === '#') return;
-        
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          // Close menu if on mobile
-          if (window.innerWidth <= 768) {
-            closeMenu();
-          }
-          
-          // Calculate position with offset for fixed header
-          const headerOffset = 80;
-          const elementPosition = targetElement.getBoundingClientRect().top;
-          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-          
-          // Smooth scroll to target
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          });
-        }
-      });
-    });
-</script>
-
+<script src="script.js"></script>
 </body>
-
 </html>
