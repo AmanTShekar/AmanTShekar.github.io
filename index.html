@@ -4,38 +4,57 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aman T Shekar | Full Stack Developer</title>
-  <link rel="stylesheet" href="style.css">
+  
+  <!-- Basic SEO -->
+  <meta name="description" content="Portfolio of Aman T Shekar, Python Full Stack Developer specializing in React, Node, APIs, and scalable web applications.">
+  <meta name="keywords" content="Aman T Shekar, Full Stack Developer, Python Developer, React, Node.js, Web Developer, Portfolio">
+  <meta name="author" content="Aman T Shekar">
+  <link rel="canonical" href="https://amantshekar.github.io/Aman.github.io/">
+
+  <!-- Open Graph (Facebook & LinkedIn) -->
+  <meta property="og:title" content="Aman T Shekar | Full Stack Developer">
+  <meta property="og:description" content="Python Full Stack Developer with expertise in React, Node.js, APIs, and modern web applications.">
+  <meta property="og:image" content="profile.jpg">
+  <meta property="og:url" content="https://amantshekar.github.io/Aman.github.io/">
+  <meta property="og:type" content="website">
+
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- Fonts & CSS -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
 <!-- Navbar -->
-<nav class="navbar">
-  <div class="nav-left"><a href="https://amantshekar.github.io/Aman.github.io/" class="logo"><span class="logo-name">AMAN</span></a></div>
-  <div class="hamburger" onclick="toggleMenu()">☰</div>
+<nav class="navbar" role="navigation">
+  <div class="nav-left"><a href="/" class="logo"><span class="logo-name">AMAN</span></a></div>
+  <div class="hamburger" aria-label="Toggle navigation menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
   <ul class="nav-links" id="navLinks">
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
-    <li><a href="#services-offered">Services</a></li>
+    <li><a href="#services">Services</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
+<main>
 <!-- Hero Section -->
 <header class="hero">
   <div class="hero-left fade-in">
     <h1 class="title">Aman T Shekar</h1>
     <h2 class="subtitle">Python Full Stack Developer</h2>
-<p class="hero-tagline">
-   Code • Build • Launch
-</p>
+    <p class="hero-tagline">Code • Build • Launch</p>
     <div class="hero-buttons">
-      <a href="aman.pdf" target="_blank" class="btn">Download Resume</a>
+      <a href="aman.pdf" target="_blank" class="btn" aria-label="Download Resume PDF">Download Resume</a>
       <a href="#contact" class="btn btn-secondary">Contact Me</a>
     </div>
   </div>
-
   <div class="hero-right slide-in">
     <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="blob-frame">
       <defs>
@@ -44,9 +63,7 @@
         </clipPath>
       </defs>
       <rect x="40" y="0" width="120" height="200" clip-path="url(#blob-clip)" fill="#1a73e8" class="profile-fallback" />
-      <image href="profile.jpg" x="42" y="0" width="130" height="200" 
-             clip-path="url(#blob-clip)" preserveAspectRatio="xMidYMid slice" 
-             class="profile-pic" alt="Aman T S - Full Stack Developer" onerror="this.style.display='none'" />
+      <image href="profile.jpg" x="42" y="0" width="130" height="200" clip-path="url(#blob-clip)" preserveAspectRatio="xMidYMid slice" class="profile-pic" alt="Profile photo of Aman T Shekar, Full Stack Developer" onerror="this.style.display='none'" />
     </svg>
   </div>
 </header>
@@ -54,128 +71,30 @@
 <!-- Skills Section -->
 <section id="skills" class="services">
   <h2>Core Skills & Expertise</h2>
-  <p class="subtitle">
-    Building high-performance web applications with frontend, backend, and database expertise.
-  </p>
-
+  <p class="subtitle">Building high-performance web applications with frontend, backend, and database expertise.</p>
   <div class="tech-icons">
-    <div class="tech-item fade-up">
-      <i class="fab fa-html5"></i>
-      <p>HTML</p>
-    </div>
-
-    <div class="tech-item fade-up">
-      <i class="fab fa-css3-alt"></i>
-      <p>CSS / Tailwind</p>
-    </div>
-
-    <div class="tech-item fade-up">
-      <i class="fab fa-js"></i>
-      <p>JS / TS</p>
-    </div>
-
-    <div class="tech-item fade-up">
-      <i class="fab fa-python"></i>
-      <p>Python</p>
-    </div>
-
-    <div class="tech-item fade-up">
-      <i class="fab fa-react"></i>
-      <p>React</p>
-    </div>
-
-    <div class="tech-item fade-up">
-      <i class="fab fa-node"></i>
-      <p>Node</p>
-    </div>
-
-    <div class="tech-item fade-up">
-      <i class="fas fa-database"></i>
-      <p>Databases</p>
-    </div>
-
-    <div class="tech-item fade-up">
-      <i class="fab fa-github"></i>
-      <p>GitHub</p>
-    </div>
-
-    <div class="tech-item fade-up">
-      <i class="fab fa-docker"></i>
-      <p>Docker</p>
-    </div>
-
-    <div class="tech-item fade-up">
-      <i class="fas fa-server"></i>
-      <p>APIs</p>
-    </div>
-
-    <div class="tech-item fade-up">
-      <i class="fas fa-mobile-alt"></i>
-      <p>Responsive</p>
-    </div>
-
-    <div class="tech-item fade-up">
-      <i class="fas fa-tools"></i>
-      <p>DevOps</p>
-    </div>
+    <div class="tech-item fade-up"><i class="fab fa-html5"></i><p>HTML</p></div>
+    <div class="tech-item fade-up"><i class="fab fa-css3-alt"></i><p>CSS / Tailwind</p></div>
+    <div class="tech-item fade-up"><i class="fab fa-js"></i><p>JS / TS</p></div>
+    <div class="tech-item fade-up"><i class="fab fa-python"></i><p>Python</p></div>
+    <div class="tech-item fade-up"><i class="fab fa-react"></i><p>React</p></div>
+    <div class="tech-item fade-up"><i class="fab fa-node"></i><p>Node</p></div>
+    <div class="tech-item fade-up"><i class="fas fa-database"></i><p>Databases</p></div>
+    <div class="tech-item fade-up"><i class="fab fa-github"></i><p>GitHub</p></div>
+    <div class="tech-item fade-up"><i class="fab fa-docker"></i><p>Docker</p></div>
+    <div class="tech-item fade-up"><i class="fas fa-server"></i><p>APIs</p></div>
+    <div class="tech-item fade-up"><i class="fas fa-mobile-alt"></i><p>Responsive</p></div>
+    <div class="tech-item fade-up"><i class="fas fa-tools"></i><p>DevOps</p></div>
   </div>
 </section>
-
-
-
-<section id="services" class="services">
-  <h2>What I Build</h2>
-  <p class="subtitle">Crafting innovative solutions across web, mobile, and software to bring your ideas to life.</p>
-
-  <div class="services-grid">
-    <div class="service-card fade-up">
-      <i class="fas fa-code"></i>
-      <h3>Web Development</h3>
-      <p>Building responsive, fast, and modern websites with React, Tailwind, and modern JS frameworks.</p>
-    </div>
-
-    <div class="service-card fade-up">
-      <i class="fas fa-paint-brush"></i>
-      <h3>UI/UX Design</h3>
-      <p>Designing intuitive interfaces with modern aesthetics that enhance user experience.</p>
-    </div>
-
-    <div class="service-card fade-up">
-      <i class="fas fa-database"></i>
-      <h3>Backend & APIs</h3>
-      <p>Creating robust REST & GraphQL APIs, server-side logic, and database management solutions.</p>
-    </div>
-
-    <div class="service-card fade-up">
-      <i class="fas fa-mobile-alt"></i>
-      <h3>Mobile Optimization</h3>
-      <p>Ensuring seamless performance and responsiveness across all devices.</p>
-    </div>
-
-    <div class="service-card fade-up">
-      <i class="fas fa-bolt"></i>
-      <h3>Performance Tuning</h3>
-      <p>Optimizing sites for speed, SEO, and accessibility to deliver the best user experience.</p>
-    </div>
-
-    <div class="service-card fade-up">
-      <i class="fas fa-rocket"></i>
-      <h3>Consulting</h3>
-      <p>Providing technical guidance, code reviews, and strategic planning for web projects.</p>
-    </div>
-  </div>
-</section>
-
 
 <!-- Projects Section -->
 <section id="projects" class="projects">
   <h2>Projects</h2>
   <p class="subtitle">A curated selection of my work demonstrating skill, creativity, and attention to detail.</p>
-
   <div class="project-grid">
-    <!-- Visual Price Checker -->
     <div class="project-card fade-up">
-      <img src="p3.png" alt="Visual Price Checker Thumbnail">
+      <img src="p3.png" alt="Screenshot of Visual Price Checker project" loading="lazy">
       <h3>Visual Price Checker</h3>
       <p>Smart tool that identifies products from images and retrieves real-time pricing across multiple platforms.</p>
       <div class="project-buttons">
@@ -183,10 +102,8 @@
         <a href="https://github.com/AmanTShekar/Price-Comparison-Site.git" target="_blank" class="project-ref">Source Code</a>
       </div>
     </div>
-
-    <!-- Personal Learning Platform -->
     <div class="project-card fade-up">
-      <img src="photo2.png" alt="Personal Learning Platform Thumbnail">
+      <img src="photo2.png" alt="Screenshot of Personal Learning Platform project" loading="lazy">
       <h3>Personal Learning Platform</h3>
       <p>Custom e-learning platform for managing courses, tracking progress, and personalized learning journeys.</p>
       <div class="project-buttons">
@@ -194,10 +111,8 @@
         <a href="https://github.com/AmanTShekar/PLP_React_App_1.git" target="_blank" class="project-ref">Source Code</a>
       </div>
     </div>
-
-    <!-- Role-Based E-Commerce -->
     <div class="project-card fade-up">
-      <img src="photo1.png" alt="E-Commerce Platform Thumbnail">
+      <img src="photo1.png" alt="Screenshot of Role-Based E-Commerce project" loading="lazy">
       <h3>Role-Based E-Commerce</h3>
       <p>Feature-rich online store with admin panel, dynamic product management, and modern, responsive UI.</p>
       <div class="project-buttons">
@@ -208,12 +123,26 @@
   </div>
 </section>
 
+<!-- Services Section -->
+<section id="services" class="services">
+  <h2>What I Build</h2>
+  <p class="subtitle">Crafting innovative solutions across web, mobile, and software to bring your ideas to life.</p>
+  <div class="services-grid">
+    <div class="service-card fade-up"><i class="fas fa-code"></i><h3>Web Development</h3><p>Building responsive, fast, and modern websites with React, Tailwind, and modern JS frameworks.</p></div>
+    <div class="service-card fade-up"><i class="fas fa-paint-brush"></i><h3>UI/UX Design</h3><p>Designing intuitive interfaces with modern aesthetics that enhance user experience.</p></div>
+    <div class="service-card fade-up"><i class="fas fa-database"></i><h3>Backend & APIs</h3><p>Creating robust REST & GraphQL APIs, server-side logic, and database management solutions.</p></div>
+    <div class="service-card fade-up"><i class="fas fa-mobile-alt"></i><h3>Mobile Optimization</h3><p>Ensuring seamless performance and responsiveness across all devices.</p></div>
+    <div class="service-card fade-up"><i class="fas fa-bolt"></i><h3>Performance Tuning</h3><p>Optimizing sites for speed, SEO, and accessibility to deliver the best user experience.</p></div>
+    <div class="service-card fade-up"><i class="fas fa-rocket"></i><h3>Consulting</h3><p>Providing technical guidance, code reviews, and strategic planning for web projects.</p></div>
+  </div>
+</section>
+
+
 
 <!-- Contact Section -->
 <section id="contact" class="contact">
   <h2>Let's Create Something Exceptional</h2>
   <p class="subtitle">I’m always excited to discuss new projects, collaborations, or ideas. Let’s connect!</p>
-
   <div class="contact-info">
     <p><i class="fas fa-envelope"></i> <a href="mailto:aman.tshekar@gmail.com">aman.tshekar@gmail.com</a></p>
     <p><i class="fas fa-phone"></i> +91 9188685831</p>
@@ -221,12 +150,29 @@
     <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/aman-t-shekar/" target="_blank">LinkedIn / Aman</a></p>
   </div>
 </section>
+</main>
 
 <footer>
   <p>© 2025 Aman T Shekar | Built with HTML & CSS</p>
 </footer>
 
+<!-- Schema.org JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Aman T Shekar",
+  "jobTitle": "Full Stack Developer",
+  "url": "https://yourdomain.com",
+  "sameAs": [
+    "https://github.com/AmanTShekar",
+    "https://www.linkedin.com/in/aman-t-shekar/"
+  ],
+  "image": "profile.jpg",
+  "email": "mailto:aman.tshekar@gmail.com"
+}
+</script>
+
 <script src="script.js"></script>
 </body>
 </html>
-
