@@ -180,6 +180,52 @@ section {
   width: 100%;
 }
 
+
+/* Base nav link */
+nav ul li a {
+  position: relative;
+  color: #fff; 
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  padding: 5px 0;
+}
+
+/* Hover effect */
+nav ul li a:hover {
+  color: #66fcf1;
+}
+
+/* Active link styling */
+nav ul li a.active-link {
+  color: #66fcf1;
+  font-weight: 600;
+}
+
+/* Animated underline (for hover + active) */
+nav ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #66fcf1, #45a29e);
+  transition: width 0.4s ease;
+}
+
+/* Show underline on hover */
+nav ul li a:hover::after {
+  width: 100%;
+}
+
+/* Keep underline visible for active link */
+nav ul li a.active-link::after {
+  width: 100%;
+}
+
+
+
 /* ====================== Hamburger Animation ====================== */
 .hamburger {
   width: 28px;
@@ -369,6 +415,38 @@ section {
 }
 
 /* ====================== Tech Icons ====================== */
+
+.skills-heading {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: 700;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 18px;
+  background: linear-gradient(90deg, #66fcf1, #45a29e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.skills-heading::after {
+  content: "";
+  display: block;
+  width: 80px; /* underline length */
+  height: 4px;
+  background: linear-gradient(90deg, #4F9DFF, #FF6B6B);
+  margin: 0.6rem auto 0;
+  border-radius: 2px;
+}
+
+#skills .subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #aaa;
+  margin-bottom: 4rem;
+}
+
+
 .tech-icons {
   display: flex;
   flex-wrap: wrap;
@@ -385,205 +463,442 @@ section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: clamp(2rem, 4vw, 3rem);
   cursor: pointer;
-  border-radius: 25px;
-  background: rgba(20, 20, 25, 0.85);
-  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  background: rgba(20, 20, 25, 0.75);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   overflow: hidden;
   transition: all 0.5s ease, transform 0.4s ease;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5) inset;
 }
 
-.tech-item i {
-  z-index: 2;
-  color: #66fcf1;
-  transition: all 0.5s ease;
-  text-shadow: 0 0 8px rgba(0, 0, 0, 0.6);
+/* Animated gradient sheen */
+.tech-item::after {
+  content: "";
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(102, 252, 241, 0.15),
+    transparent,
+    rgba(69, 162, 158, 0.15),
+    transparent,
+    rgba(102, 252, 241, 0.15)
+  );
+  animation: rotateGlow 6s linear infinite;
+  z-index: 1;
+  opacity: 0.6;
 }
 
-/* Text always visible */
-.tech-item p {
-  font-size: clamp(0.8rem, 2vw, 1rem);
-  font-weight: 600;
-  color: #c5c6c7;
-  margin-top: 0.5rem;
-  opacity: 1;
-  transform: translateY(0);
-  transition: color 0.4s ease, text-shadow 0.4s ease, transform 0.4s ease;
-  z-index: 2;
-  text-align: center;
+@keyframes rotateGlow {
+  to { transform: rotate(360deg); }
 }
 
-/* Background radial effect */
+/* Background radial hover effect */
 .tech-item::before {
   content: "";
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: radial-gradient(circle at var(--x, 50%) var(--y, 50%), rgba(102, 252, 241, 0.25), rgba(69, 162, 158, 0));
+  background: radial-gradient(circle at var(--x, 50%) var(--y, 50%),
+    rgba(102, 252, 241, 0.3),
+    rgba(69, 162, 158, 0) 70%);
   transform: scale(0);
   transition: transform 0.4s ease, background-position 0.2s;
-  z-index: 1;
-  border-radius: 25px;
+  z-index: 2;
+  border-radius: 20px;
 }
 
-/* Hover Effects */
 .tech-item:hover::before {
   transform: scale(2.5);
 }
 
+/* Icon Style */
+.tech-item i {
+  z-index: 3;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: #66fcf1;
+  transition: all 0.5s ease;
+  text-shadow: 0 0 10px rgba(102, 252, 241, 0.6);
+}
+
 .tech-item:hover i {
   color: #fff;
-  text-shadow: 0 0 20px rgba(102, 252, 241, 0.9);
+  text-shadow: 0 0 15px rgba(102, 252, 241, 1),
+               0 0 30px rgba(102, 252, 241, 0.8);
+  transform: translateY(-4px) scale(1.1);
+}
+
+/* Label Text */
+.tech-item p {
+  font-size: clamp(0.8rem, 2vw, 1rem);
+  font-weight: 600;
+  color: #c5c6c7;
+  margin-top: 0.6rem;
+  z-index: 3;
+  text-align: center;
+  transition: all 0.4s ease;
 }
 
 .tech-item:hover p {
   color: #fff;
-  text-shadow: 0 0 8px rgba(102, 252, 241, 0.8), 0 0 20px rgba(102, 252, 241, 0.4);
-  transform: scale(1.05);
+  text-shadow: 0 0 10px rgba(102, 252, 241, 0.9);
+  transform: scale(1.08);
+}
+
+/* Hover lift */
+.tech-item:hover {
+  transform: translateY(-12px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(102, 252, 241, 0.2),
+              0 0 30px rgba(102, 252, 241, 0.15) inset;
 }
 
 
-/* ====================== Section Headings ====================== */
-.services h2,
-.projects h2 {
-  font-size: clamp(1.6rem,4vw,2rem);
-  margin-bottom: 1rem;
-  margin-top: 3rem;
+
+/* ====================== Services Section ====================== */
+.services h2 {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: 700;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 18px;
   background: linear-gradient(90deg, #66fcf1, #45a29e);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  font-weight: 700;
-}
-.services .subtitle,
-.projects .subtitle {
-  font-size: clamp(1rem,3vw,1.3rem);
-  margin-bottom: 3rem;
-  color: #aaa;
 }
 
-/* Services Section */
+.services h2::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #4F9DFF, #FF6B6B);
+  margin: 0.6rem auto 0;
+  border-radius: 2px;
+}
+
+
+.services .subtitle {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: #aaa;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+/* Grid Layout */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
-  gap: clamp(1.5rem,3vw,2.5rem);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: clamp(2rem, 4vw, 3rem);
   max-width: 1200px;
   margin: auto;
-  position: relative;
-}
-.service-card {
-  background: rgba(20,20,25,0.75);
-  border-radius: 25px;
-  padding: clamp(20px,3vw,35px) clamp(15px,2vw,25px);
-  text-align: center;
-  cursor: pointer;
-  overflow: hidden;
-  transition: transform 0.5s ease, box-shadow 0.5s ease, background 0.4s ease;
-  position: relative;
-  z-index: 1;
-}
-.service-card:hover {
-  transform: translateY(-15px) scale(1.06);
-  box-shadow: 0 20px 50px rgba(102,252,241,0.3);
-  background: rgba(20,20,25,0.9);
-}
-.service-card i {
-  font-size: clamp(2rem,4vw,3rem);
-  margin-bottom: 20px;
-  color: #66fcf1;
-  transition: all 0.4s ease;
-  z-index: 2;
-}
-.service-card:hover i {
-  color: #fff;
-  transform: rotate(-10deg) scale(1.15);
-  text-shadow: 0 0 15px rgba(102,252,241,0.6);
-}
-.service-card h3, .service-card p {
-  transition: color 0.4s ease, text-shadow 0.4s ease;
-  z-index: 2;
-}
-.service-card:hover h3, .service-card:hover p {
-  color: #fff;
-  text-shadow: 0 0 8px rgba(102,252,241,0.4);
 }
 
-/* ====================== Projects ====================== */
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
-  gap: clamp(1.5rem,3vw,2.5rem);
-  max-width: 1200px;
-  margin: auto;
-}
-.project-card {
+/* ====================== Service Card ====================== */
+.service-card {
   position: relative;
-  background: rgba(20, 20, 25, 0.7);
-  border-radius: 25px;
-  padding: clamp(15px,2vw,25px);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  cursor: pointer;
-  overflow: hidden;
-  transition: transform 0.5s ease, box-shadow 0.5s ease, background 0.4s ease;
-  backdrop-filter: blur(6px);
-}
-.project-card img {
-  width: 100%;
-  height: clamp(150px,25vw,180px);
-  object-fit: cover;
-  border-radius: 20px;
-  margin-bottom: 1rem;
-  transition: transform 0.4s ease;
-}
-.project-card h3 {
-  font-size: clamp(1.2rem,3vw,1.5rem);
-  margin: 0.5rem 0;
-  color: #c5c6c7;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
-}
-.project-card p {
-  font-size: clamp(0.85rem,2vw,0.95rem);
   text-align: center;
-  color: #aaa;
-  margin-bottom: 1rem;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
 }
-.project-buttons {
-  display: flex;
-  gap: 10px;
-  margin-top: 0.5rem;
-}
-.project-link,
-.project-ref {
-  padding: clamp(0.4rem,1.5vw,0.5rem) clamp(0.8rem,2vw,1rem);
+
+.service-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
   border-radius: 20px;
-  font-weight: bold;
+  padding: 2px;
+  background: linear-gradient(135deg, rgba(102,252,241,0.6), rgba(69,162,158,0.4));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(102, 252, 241, 0.2);
+}
+
+#service .subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #aaa;
+  margin-bottom: 4rem;
+}
+
+/* ====================== Premium Icon ====================== */
+.service-card i {
+  font-size: 3rem;
+  margin-bottom: 1.2rem;
+  background: linear-gradient(135deg, #66fcf1, #45a29e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.service-card:hover i {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 8px rgba(102,252,241,0.7));
+}
+
+/* ====================== Title ====================== */
+.service-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.8rem;
+  position: relative;
+}
+
+.service-card h3::after {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 3px;
+  margin: 0.6rem auto 0;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #66fcf1, #45a29e);
+  opacity: 0.8;
+}
+
+/* ====================== Description ====================== */
+.service-card p {
+  font-size: 0.95rem;
+  color: #bbb;
+  line-height: 1.6;
+  background: rgba(255,255,255,0.05);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-top: 0.8rem;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.service-card:hover p {
+  background: rgba(102,252,241,0.07);
+  color: #e0fdfb;
+}
+
+/* ====================== Responsive ====================== */
+@media (max-width: 768px) {
+  .service-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .service-card i {
+    font-size: 2.5rem;
+  }
+
+  .service-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .service-card p {
+    font-size: 0.9rem;
+  }
+}
+
+
+
+
+
+
+/* ===== Projects Section ===== */
+#projects {
+  padding: 6rem 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+#projects h2 {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  font-weight: 700;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 18px;
+  background: linear-gradient(90deg, #66fcf1, #45a29e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#projects h2::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #4F9DFF, #FF6B6B);
+  margin: 0.6rem auto 0;
+  border-radius: 2px;
+}
+
+.projects-tagline {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #aaa;
+  margin-bottom: 4rem;
+}
+
+/* Project Grid */
+.project-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+}
+
+/* Individual Project Card */
+.project-card {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+}
+
+.project-card.reverse {
+  flex-direction: row-reverse;
+}
+
+.project-img {
+  flex: 1 1 400px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.2);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.project-img img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  transition: all 0.5s ease;
+}
+
+.project-card:hover .project-img img {
+  filter: brightness(0.7);
+  transform: scale(1.05);
+}
+
+/* Project Content */
+.project-content {
+  flex: 1 1 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.project-content h4 {
+  font-size: 2rem;
+  color: #fffcfc;
+}
+
+.project-content p {
+  font-size: 1rem;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+
+
+
+/* Project Links */
+.project-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Glassmorphic Pill Buttons with Teal-Purple Gradient */
+.project-links a {
+  padding: 0.6rem 1.6rem;
+  border-radius: 50px; /* pill shape */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  background: rgba(138, 43, 226, 0.2); /* purple-teal glass tint */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  gap: 0.5rem;
+  box-shadow: 0 8px 20px rgba(138, 43, 226, 0.25);
+}
+
+/* Hover Effect */
+.project-links a:hover {
+  transform: translateY(-3px) scale(1.05);
+  background: rgba(138, 43, 226, 0.35); /* stronger glass effect */
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 10px 25px rgba(138, 43, 226, 0.4);
+  color: #ffffff;
+}
+
+
+
+
+
+
+/* Tech Stack Pills */
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.tech-stack span {
+  padding: 0.4rem 0.8rem;
+  background: rgba(79, 157, 255, 0.2);
+  color: #4F9DFF;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 20px;
   transition: all 0.3s ease;
 }
-.project-link {
-  background: linear-gradient(45deg, #66fcf1, #45a29e);
-  color: #0b0c10;
+
+.tech-stack span:hover {
+  background: #4F9DFF;
+  color: #fff;
 }
-.project-link:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(102, 252, 241, 0.5);
+
+/* Responsive */
+@media (max-width: 900px) {
+  .project-card, .project-card.reverse {
+    flex-direction: column;
+  }
+
+  .project-img img {
+    height: 250px;
+  }
+
+  .project-content h4 {
+    font-size: 1.6rem;
+  }
+
+  .project-content p {
+    font-size: 0.95rem;
+  }
 }
-.project-ref {
-  background: rgba(102, 252, 241, 0.2);
-  color: #66fcf1;
-}
-.project-ref:hover {
-  background: linear-gradient(45deg, #66fcf1, #45a29e);
-  color: #0b0c10;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(102, 252, 241, 0.5);
-}
+
 
 /* ====================== Contact ====================== */
 .contact {
-  padding: clamp(50px,8vw,80px) 20px;
+  padding: clamp(50px, 8vw, 80px) 20px;
   background: #101015;
   display: flex;
   flex-direction: column;
@@ -593,61 +908,109 @@ section {
   position: relative;
   overflow: hidden;
 }
+
 .contact h2 {
-  font-size: clamp(1.8rem,5vw,2.5rem);
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
   margin-bottom: 0.5rem;
   color: #fff;
 }
+
 .contact .subtitle {
-  font-size: clamp(1rem,3vw,1.2rem);
+  font-size: clamp(1rem, 3vw, 1.2rem);
   margin-bottom: 3rem;
   color: #aaa;
 }
-.contact-info {
+
+/* Vertical List Style with Pills */
+.contact-list {
   display: flex;
-  gap: clamp(2rem,5vw,3rem);
-  margin-bottom: 3rem;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
 }
+
 .contact-item {
   display: flex;
   align-items: center;
-  gap: 12px;
-  color: #c5c6c7;
-  font-size: clamp(0.9rem,2vw,1rem);
+  gap: 1rem;
+  background: rgba(102, 252, 241, 0.1);
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  min-width: 280px;
+  max-width: 400px;
   transition: all 0.3s ease;
+  cursor: pointer;
+  font-size: clamp(1rem, 1.2vw, 1.1rem);
 }
+
 .contact-item i {
+  font-size: clamp(1.4rem, 1.6vw, 1.6rem);
   color: #66fcf1;
-  font-size: clamp(1.2rem,3vw,1.4rem);
-  transition: transform 0.3s ease, color 0.3s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
-.contact-item:hover { color: #fff; transform: translateY(-5px); }
+
+.contact-item a {
+  text-decoration: none;
+  color: #c5c6c7;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.contact-item:hover {
+  background: rgba(102, 252, 241, 0.2);
+  transform: translateY(-4px);
+}
+
+.contact-item:hover a {
+  color: #fff;
+  transform: translateX(5px);
+}
+
 .contact-item:hover i {
   color: #45a29e;
-  transform: rotate(12deg) scale(1.1);
+  transform: scale(1.2);
 }
 
 /* Contact Buttons */
 .contact-buttons {
+  margin-top: 2.5rem;
   display: flex;
-  gap: clamp(1rem,3vw,1.5rem);
-  justify-content: center;
+  gap: 1rem;
   flex-wrap: wrap;
+  justify-content: center;
 }
-.contact-buttons a {
-  padding: clamp(0.6rem,1.5vw,0.8rem) clamp(1.5rem,3vw,2rem);
+
+.contact-buttons a.btn {
+  font-weight: 600;
   border-radius: 30px;
-  background: linear-gradient(45deg, #66fcf1, #45a29e);
+  padding: 0.8rem 2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(102, 252, 241, 0.2);
   color: #0b0c10;
-  font-weight: bold;
-  transition: all 0.4s ease;
 }
-.contact-buttons a:hover {
-  transform: translateY(-5px) scale(1.05);
-  box-shadow: 0 10px 25px rgba(102, 252, 241, 0.4);
+
+.contact-buttons a.btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(102, 252, 241, 0.3);
 }
+
+.contact-buttons a.btn-primary {
+  background: linear-gradient(135deg, #66fcf1, #45a29e);
+}
+
+.contact-buttons a.btn-secondary {
+  border: 2px solid #66fcf1;
+  background: rgba(0, 0, 0, 0.15);
+  color: #66fcf1;
+}
+
+.contact-buttons a.btn-secondary:hover {
+  background: linear-gradient(135deg, #66fcf1, #45a29e);
+  color: #0b0c10;
+}
+
+
+
+
 
 /* ====================== Footer ====================== */
 footer {
@@ -666,4 +1029,123 @@ footer a {
 footer a:hover {
   color: #fff;
   text-shadow: 0 0 10px rgba(102,252,241,0.7);
+}
+
+
+/* ====================== Animations ====================== */
+
+/* Base hidden state (apply with JS/IntersectionObserver) */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Navbar */
+.navbar {
+  opacity: 0;
+  transform: translateY(-30px);
+  animation: navDrop 0.8s ease forwards;
+}
+@keyframes navDrop {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero section elements */
+.hero-left h1 {
+  opacity: 0;
+  transform: translateX(-40px);
+  animation: slideInLeft 0.8s ease forwards;
+  animation-delay: 0.2s;
+}
+.hero-left h2 {
+  opacity: 0;
+  transform: translateX(-40px);
+  animation: slideInLeft 0.8s ease forwards;
+  animation-delay: 0.4s;
+}
+.hero-left p {
+  opacity: 0;
+  transform: translateX(-40px);
+  animation: slideInLeft 0.8s ease forwards;
+  animation-delay: 0.6s;
+}
+.hero-buttons a {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.7s ease forwards;
+}
+.hero-buttons a:nth-child(1) { animation-delay: 0.8s; }
+.hero-buttons a:nth-child(2) { animation-delay: 1s; }
+
+.hero-right {
+  opacity: 0;
+  transform: translateX(50px);
+  animation: slideInRight 0.9s ease forwards;
+  animation-delay: 1.2s;
+}
+
+/* Skills cards */
+.tech-item {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+.tech-item.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Services */
+.service-card {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: all 0.7s ease;
+}
+.service-card.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Projects: alternate left/right reveal */
+.project-card {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: all 0.9s ease;
+}
+.project-card.reverse {
+  transform: translateX(60px);
+}
+.project-card.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Contact items */
+.contact-item {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.7s ease;
+}
+.contact-item.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Simple keyframes */
+@keyframes slideInLeft {
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideInRight {
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
 }
