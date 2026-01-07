@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact Aman T Shekar | Web Developer Freelancer</title>
+
+    <!-- SEO -->
+    <meta name="description"
+        content="Get in touch with Aman T Shekar for your next web development project. Freelance services for React, Node.js, and custom websites.">
+    <meta name="keywords"
+        content="Contact Web Developer, Hire Freelancer, Aman T Shekar Contact, Web Development Quote, React Developer India">
+    <meta name="author" content="Aman T Shekar">
+    <meta name="robots" content="index, follow">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Syncopate:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <style>
+        .contact-page-hero {
+            padding: 180px 0 100px;
+            text-align: center;
+        }
+
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-top: 5rem;
+        }
+
+        .method-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            padding: 3rem 2rem;
+            border-radius: 4px;
+            text-align: center;
+            transition: all 0.4s var(--ease);
+        }
+
+        .method-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .method-icon {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .method-title {
+            font-family: var(--font-h);
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .method-link {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .method-link:hover {
+            color: #fff;
+        }
+
+        /* Contact Form Styles */
+        .contact-form-container {
+            max-width: 700px;
+            margin: 6rem auto;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 3rem;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            color: var(--text-dim);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--border);
+            padding: 1rem;
+            color: #fff;
+            border-radius: 4px;
+            font-family: var(--font-main);
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .global-presence {
+            margin-top: 6rem;
+            background: url('world-map.png') no-repeat center center;
+            /* Placeholder if no image */
+            background-size: contain;
+            min-height: 400px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.01);
+        }
+
+        .presence-text {
+            text-align: center;
+            z-index: 2;
+        }
+    </style>
+</head>
+
+<body class="dark-theme">
+    <div class="grain"></div>
+
+    <!-- Navbar -->
+    <nav class="nav-container">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="nav-logo">
+                    <div class="sq"></div>
+                    ATS
+                </a>
+                <div class="nav-links">
+                    <a href="index.html#projects">Portfolio</a>
+                    <a href="about.html">About</a>
+                    <a href="index.html#services">Services</a>
+                    <a href="index.html#experience">Experience</a>
+                    <a href="contact.html" class="active nav-cta">Contact</a>
+                </div>
+                <button class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="contact-page-hero">
+        <div class="container">
+            <span class="section-label">Command Center</span>
+            <h1 class="hero-title" style="font-size: clamp(3rem, 6vw, 5rem);">INITIATE PROTOCOL</h1>
+
+            <div class="contact-methods">
+                <!-- Email -->
+                <div class="method-card">
+                    <i class="fa-solid fa-envelope method-icon"></i>
+                    <h3 class="method-title">Email Protocol</h3>
+                    <p style="margin-bottom: 1rem; color: var(--text-dim);">Direct Line</p>
+                    <a href="mailto:contact@amantshekar.com" class="method-link">contact@amantshekar.com</a>
+                </div>
+
+                <!-- Social -->
+                <div class="method-card">
+                    <i class="fa-brands fa-linkedin method-icon"></i>
+                    <h3 class="method-title">Network Uplink</h3>
+                    <p style="margin-bottom: 1rem; color: var(--text-dim);">Professional Profile</p>
+                    <a href="#" class="method-link">Connect on LinkedIn</a>
+                </div>
+
+                <!-- GitHub -->
+                <div class="method-card">
+                    <i class="fa-brands fa-github method-icon"></i>
+                    <h3 class="method-title">Code Repository</h3>
+                    <p style="margin-bottom: 1rem; color: var(--text-dim);">Review Source</p>
+                    <a href="https://github.com/AmanTShekar" class="method-link">github.com/AmanTShekar</a>
+                </div>
+            </div>
+
+            <div class="contact-form-container">
+                <h2 style="font-family: var(--font-h); color: #fff; margin-bottom: 2rem;">Secure Transmission</h2>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Identity</label>
+                        <input type="text" id="name" name="name" class="form-input" placeholder="Enter Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">Return Address</label>
+                        <input type="email" id="email" name="email" class="form-input" placeholder="Enter Email"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="form-label">Data Packet</label>
+                        <textarea id="message" name="message" class="form-input" rows="5"
+                            placeholder="Enter Message Details..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Transmit</button>
+                </form>
+            </div>
+
+            <div class="global-presence">
+                <div class="presence-text">
+                    <h2 style="font-family: var(--font-h); font-size: 2rem; color: #fff; margin-bottom: 1rem;">GLOBAL
+                        OPERATION</h2>
+                    <p style="color: var(--text-dim);">Available for remote contracts worldwide.</p>
+                    <p style="color: var(--accent); margin-top: 1rem;">EST / PST / IST / GMT</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Aman T Shekar. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

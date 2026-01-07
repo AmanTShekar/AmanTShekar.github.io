@@ -1,0 +1,38 @@
+/* Aggressive Mobile Heading Fixes */
+@media (max-width: 768px) {
+    .contact-card h2 {
+        font-size: 2.5rem !important;
+        letter-spacing: -1px !important;
+        line-height: 1.1 !important;
+        word-wrap: break-word;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-card h2 {
+        font-size: 1.8rem !important;
+        letter-spacing: 0px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .section-label {
+        font-size: 0.6rem !important;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 360px) {
+    .contact-card h2 {
+        font-size: 1.5rem !important;
+    }
+}
+
+@media (max-width: 320px) {
+    .contact-card h2 {
+        font-size: 1.3rem !important;
+    }
+
+    .section-label {
+        font-size: 0.55rem !important;
+    }
+}

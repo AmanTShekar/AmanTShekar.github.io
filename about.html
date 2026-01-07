@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About Aman T Shekar | Web Developer Freelancer & Full Stack Engineer</title>
+
+    <!-- SEO -->
+    <meta name="description"
+        content="Learn more about Aman T Shekar, a visionary Web Developer Freelancer and Full Stack Architect. Innovative, reliable, and dedicated to building premium digital experiences.">
+    <meta name="keywords"
+        content="About Aman T Shekar, Aman Shekar Bio, Web Developer Freelancer, Aman T, Freelance Developer Story, Full Stack Engineer">
+    <meta name="author" content="Aman T Shekar">
+    <meta name="robots" content="index, follow">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Syncopate:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        media="print" onload="this.media='all'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    </noscript>
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <style>
+        /* Inline styles for specific About page layouts to keep main CSS clean */
+        .about-hero {
+            padding: 180px 0 100px;
+            text-align: center;
+        }
+
+        .about-title {
+            font-family: var(--font-h);
+            font-size: clamp(2.5rem, 5vw, 4.5rem);
+            font-weight: 700;
+            color: #fff;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            letter-spacing: -2px;
+        }
+
+        .about-content-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .about-text {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .highlight-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            border-radius: 4px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 1rem;
+        }
+
+        .stat-row:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .stat-label {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-value {
+            color: #fff;
+            font-weight: 700;
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 900px) {
+            .about-content-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-hero {
+                padding: 120px 0 60px;
+            }
+
+            .about-title {
+                font-size: 2.5rem;
+                letter-spacing: -1px;
+            }
+
+            .about-text {
+                font-size: 1rem;
+            }
+
+            .highlight-box {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .about-hero {
+                padding: 100px 0 40px;
+            }
+
+            .about-title {
+                font-size: 2rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .about-text {
+                font-size: 0.95rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .highlight-box {
+                padding: 1.2rem;
+            }
+
+            .stat-row {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: left;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body class="dark-theme">
+    <div class="grain"></div>
+
+    <!-- Navbar -->
+    <nav class="nav-container">
+        <div class="container">
+            <div class="nav-content">
+                <a href="index.html" class="nav-logo">
+                    <div class="sq"></div>
+                    ATS
+                </a>
+                <div class="nav-links">
+                    <a href="index.html#projects">Portfolio</a>
+                    <a href="about.html" class="active">About</a>
+                    <a href="index.html#services">Services</a>
+                    <a href="index.html#experience">Experience</a>
+                    <a href="contact.html" class="nav-cta">Contact</a>
+                </div>
+                <button class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="about-hero">
+        <div class="container">
+            <span class="section-label">Aman T Shekar</span>
+            <h1 class="about-title">ARCHITECTING<br>DIGITAL REALITY</h1>
+
+            <div class="about-content-grid">
+                <div class="text-column">
+                    <p class="about-text">
+                        Hello, I am <strong>Aman T Shekar</strong>. I am a dedicated <strong>Web Developer
+                            Freelancer</strong> and Full Stack Engineer based in India. My journey began with a
+                        curiosity for how things work on the web, which quickly evolved into a passion for architecting
+                        complex digital ecosystems.
+                    </p>
+                    <p class="about-text">
+                        As a freelancer, I don't just write code; I build solutions. Whether you are looking for a
+                        high-performance e-commerce platform, a custom React application, or a sleek brand portfolio, I
+                        bring a unique blend of technical precision and artistic vision to every project.
+                    </p>
+                    <p class="about-text">
+                        My philosophy is simple: <strong>Functionality should eventually become art.</strong> I strive
+                        to create web experiences that are not only robust and scalable but also visually immersive and
+                        intuitive. When you hire <strong>Aman T Shekar</strong>, you are partnering with a developer who
+                        cares deeply about the success of your digital presence.
+                    </p>
+
+                    <h2 style="font-family: var(--font-h); color: #fff; margin-top: 3rem; margin-bottom: 1.5rem;">Why
+                        Hire Aman T Shekar?</h2>
+                    <p class="about-text">
+                        In a sea of developers, I stand out by delivering consistent quality and clear communication. As
+                        a <strong>freelancer</strong>, I value long-term partnerships. I specialize in the MERN stack
+                        (MongoDB, Express, React, Node.js) and Python, ensuring I have the right tools to solve any
+                        problem.
+                    </p>
+                </div>
+
+                <div class="stats-column">
+                    <div class="highlight-box">
+                        <h3 style="color: var(--accent); font-family: var(--font-h); margin-bottom: 2rem;">The Profile
+                        </h3>
+
+                        <div class="stat-row">
+                            <span class="stat-label">Name</span>
+                            <span class="stat-value">Aman T Shekar</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Role</span>
+                            <span class="stat-value">Web Developer Freelancer</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Location</span>
+                            <span class="stat-value">India (Remote Worldwide)</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Experience</span>
+                            <span class="stat-value">1+ Years</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Specialty</span>
+                            <span class="stat-value">MERN, Python, UI/UX</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Status</span>
+                            <span class="stat-value" style="color: #0f0;">Available for Hire</span>
+                        </div>
+                    </div>
+
+                    <div class="highlight-box"
+                        style="margin-top: 2rem; text-align: center; border-color: var(--accent);">
+                        <p style="color: #fff; margin-bottom: 1.5rem; font-family: var(--font-h); font-size: 1.2rem;">
+                            Ready to Initiate?</p>
+                        <a href="contact.html" class="btn btn-primary"
+                            style="display: inline-block; width: 100%;">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reuse Footer from index (simplified) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="nav-logo">
+                        <div class="sq"></div>ATS
+                    </a>
+                    <p class="footer-desc">
+                        <strong>Aman T Shekar</strong><br>
+                        Web Developer Freelancer.<br>
+                        Building the future, one line of code at a time.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Navigation</h4>
+                        <a href="index.html">Home</a>
+                        <a href="index.html#projects">Portfolio</a>
+                        <a href="about.html">About</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Aman T Shekar. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+    <script src="script.js" defer></script>
+</body>
+
+</html>
