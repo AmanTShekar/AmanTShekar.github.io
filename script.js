@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /**
  * PORTFOLIO v5.0 | INTERACTION ENGINE
  * Optimized GSAP Engine for Performance & Immersion
@@ -142,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
-=======
+
 // ====================== Hamburger Menu ======================
 function toggleMenu() {
   const navLinks = document.getElementById("navLinks");
@@ -273,6 +272,3 @@ window.addEventListener("scroll", () => {
     }
   });
 });
-
- 
->>>>>>> 5c2dab960849602b7cde0c28cfd3e4e080e6a179
