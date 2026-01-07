@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-<<<<<<< HEAD
     <loc>https://amantshhekar.com/</loc>
     <lastmod>2026-01-08</lastmod>
     <changefreq>weekly</changefreq>
@@ -19,10 +18,8 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
-=======
     <loc>https://amantshekar.github.io/Aman.github.io/</loc>
     <lastmod>2025-09-17</lastmod>
     <priority>1.0</priority>
   </url>
->>>>>>> 5c2dab960849602b7cde0c28cfd3e4e080e6a179
 </urlset>
