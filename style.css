@@ -2993,3 +2993,19 @@ body.no-scroll {
     transform: none !important;
     will-change: auto !important;
 }
+/* Frosted Glass Navbar Enhancement */
+.nav-container {
+    background: rgba(0, 0, 0, 0.7) !important;
+    backdrop-filter: blur(20px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+.nav-container.scrolled {
+    background: rgba(0, 0, 0, 0.85) !important;
+    backdrop-filter: blur(25px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(25px) saturate(200%) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
+}
