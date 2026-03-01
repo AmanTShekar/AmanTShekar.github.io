@@ -15,6 +15,28 @@
     <meta name="author" content="Aman T Shekar">
     <meta name="robots" content="index, follow">
 
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://amantshekar.github.io/Aman.github.io/about.html">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="About Aman T Shekar | Full Stack Engineer">
+    <meta property="og:description"
+        content="Learn more about Aman T Shekar, a Full Stack Engineer dedicated to building premium, high-performance digital experiences.">
+    <meta property="og:image" content="https://amantshekar.github.io/Aman.github.io/profile.webp">
+    <meta property="og:url" content="https://amantshekar.github.io/Aman.github.io/about.html">
+    <meta property="og:site_name" content="Aman T Shekar Portfolio">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="About Aman T Shekar | Full Stack Engineer">
+    <meta name="twitter:description"
+        content="Full Stack Engineer specializing in React, Node.js, MERN stack, and Python-driven solutions.">
+    <meta name="twitter:image" content="https://amantshekar.github.io/Aman.github.io/profile.webp">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#000000">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -66,6 +88,12 @@
             padding: 2rem;
             border-radius: 4px;
             backdrop-filter: blur(10px);
+            transition: all 0.5s var(--ease);
+        }
+
+        .highlight-box:hover {
+            border-color: rgba(41, 151, 255, 0.2);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
         }
 
         .stat-row {
@@ -74,6 +102,12 @@
             margin-bottom: 1.5rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             padding-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .stat-row:hover {
+            border-bottom-color: rgba(41, 151, 255, 0.2);
+            padding-left: 0.5rem;
         }
 
         .stat-row:last-child {
@@ -91,6 +125,42 @@
         .stat-value {
             color: #fff;
             font-weight: 700;
+        }
+
+        .about-cta-heading {
+            color: var(--accent);
+            font-family: var(--font-h);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+        }
+
+        .about-section-heading {
+            font-family: var(--font-h);
+            color: #fff;
+            font-size: 1.4rem;
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+
+        .cta-box {
+            margin-top: 2rem;
+            text-align: center;
+            border-color: var(--accent);
+        }
+
+        .cta-box p {
+            color: #fff;
+            margin-bottom: 1.5rem;
+            font-family: var(--font-h);
+            font-size: 1.2rem;
+        }
+
+        .status-available {
+            color: #00ff88;
         }
 
         /* Mobile Responsive Styles */
@@ -117,6 +187,11 @@
 
             .highlight-box {
                 padding: 1.5rem;
+            }
+
+            .about-section-heading {
+                font-size: 1.2rem;
+                margin-top: 2rem;
             }
         }
 
@@ -167,7 +242,6 @@
                 <div class="nav-links">
                     <a href="index.html#projects">Portfolio</a>
                     <a href="about.html" class="active">About</a>
-                    <a href="index.html#services">Services</a>
                     <a href="index.html#experience">Experience</a>
                     <a href="contact.html" class="nav-cta">Contact</a>
                 </div>
@@ -203,8 +277,7 @@
                         cares deeply about the success of your digital presence.
                     </p>
 
-                    <h2 style="font-family: var(--font-h); color: #fff; margin-top: 3rem; margin-bottom: 1.5rem;">Why
-                        Hire Aman T Shekar?</h2>
+                    <h2 class="about-section-heading">Why Hire Aman T Shekar?</h2>
                     <p class="about-text">
                         In a sea of developers, I stand out by delivering consistent quality and clear communication. As
                         a <strong>freelancer</strong>, I value long-term partnerships. I specialize in the MERN stack
@@ -215,7 +288,7 @@
 
                 <div class="stats-column">
                     <div class="highlight-box">
-                        <h3 style="color: var(--accent); font-family: var(--font-h); margin-bottom: 2rem;">The Profile
+                        <h3 class="about-cta-heading">The Profile
                         </h3>
 
                         <div class="stat-row">
@@ -240,13 +313,12 @@
                         </div>
                         <div class="stat-row">
                             <span class="stat-label">Status</span>
-                            <span class="stat-value" style="color: #0f0;">Available for Hire</span>
+                            <span class="stat-value status-available">Available for Hire</span>
                         </div>
                     </div>
 
-                    <div class="highlight-box"
-                        style="margin-top: 2rem; text-align: center; border-color: var(--accent);">
-                        <p style="color: #fff; margin-bottom: 1.5rem; font-family: var(--font-h); font-size: 1.2rem;">
+                    <div class="highlight-box cta-box">
+                        <p class="about-cta-heading">
                             Ready to Initiate?</p>
                         <a href="contact.html" class="btn btn-primary"
                             style="display: inline-block; width: 100%;">Contact</a>

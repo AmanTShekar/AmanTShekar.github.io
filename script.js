@@ -140,6 +140,51 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // 8. Works Section - Work Cards Reveal
+  gsap.utils.toArray('.work-card').forEach((item, i) => {
+    gsap.from(item, {
+      scrollTrigger: {
+        trigger: item,
+        start: 'top 92%',
+      },
+      y: 30,
+      opacity: 0,
+      duration: 0.8,
+      delay: i * 0.1,
+      ease: 'power2.out'
+    });
+  });
+
+  // 9. Testimonial Cards Reveal
+  gsap.utils.toArray('.testimonial-card').forEach((card, i) => {
+    gsap.from(card, {
+      scrollTrigger: {
+        trigger: card,
+        start: 'top 92%',
+      },
+      y: 40,
+      opacity: 0,
+      duration: 0.8,
+      delay: i * 0.15,
+      ease: 'power2.out'
+    });
+  });
+
+  // 10. Service Cards Reveal
+  gsap.utils.toArray('.service-card').forEach((card, i) => {
+    gsap.from(card, {
+      scrollTrigger: {
+        trigger: card,
+        start: 'top 92%',
+      },
+      y: 30,
+      opacity: 0,
+      duration: 0.8,
+      delay: i * 0.1,
+      ease: 'power2.out'
+    });
+  });
+
 });
 
 // ====================== Hamburger Menu ======================
