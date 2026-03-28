@@ -221,7 +221,7 @@
 
             <div class="contact-form-container">
                 <h2 style="font-family: var(--font-h); color: #fff; margin-bottom: 2rem;">Secure Transmission</h2>
-                <form class="contact-form">
+                <form class="contact-form" action="mailto:aman.tshekar@gmail.com" method="post" enctype="text/plain">
                     <div class="form-group">
                         <label for="name" class="form-label">Identity</label>
                         <input type="text" id="name" name="name" class="form-input" placeholder="Enter Name" required>
@@ -236,7 +236,8 @@
                         <textarea id="message" name="message" class="form-input" rows="5"
                             placeholder="Enter Message Details..." required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Transmit</button>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Transmit Via Email Client</button>
+                    <p style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.5; text-align: center;">This will open your default mail app with the pre-filled data packet.</p>
                 </form>
             </div>
 
