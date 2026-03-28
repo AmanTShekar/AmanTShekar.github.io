@@ -15,9 +15,9 @@ Next-gen design-to-code platform for architectural web engineering.
 Premium Travel Blog Architecture designed for cinematic storytelling and immersive typography.
 
 ## 🛠️ Technical Ecosystem
-- **Core**: JavaScript (ES6+), React.js, Node.js, Python
-- **Infrastructure**: MongoDB, SQL, AWS, Docker
-- **Visuals**: GSAP, Tailwind, Framer Motion
+- **Core**: JavaScript (ES6+), TypeScript, React.js, Next.js, Node.js, Express.js, Python, Rust
+- **Infrastructure**: MongoDB, PostgreSQL, SQL, LanceDB, Redis, AWS, Docker, Vercel
+- **Intelligence & Motion**: Ollama, GSAP, ScrollTrigger, Framer Motion, AI-Driven Logic, Redux, JWT
 
 ---
 [View My Portfolio](https://amantshekar.github.io/Aman.github.io/)
