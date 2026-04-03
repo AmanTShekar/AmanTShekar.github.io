@@ -1,4 +1,4 @@
-﻿/* =========================================
+/* =========================================
    PORTFOLIO v5.2 | ARCHITECT LEVEL POLISH
    Performance Optimized & Layout Hardened
    ========================================= */
@@ -703,6 +703,35 @@ body {
   display: block;
   position: relative;
   transition: all 0.5s var(--ease);
+}
+
+.badge-status {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: rgba(41, 151, 255, 0.9);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  font-size: 0.6rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-radius: 2px;
+  z-index: 5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  animation: badge-pulse 2s infinite;
+}
+
+@keyframes badge-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(41, 151, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(41, 151, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(41, 151, 255, 0);
+  }
 }
 
 .project-overlay {

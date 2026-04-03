@@ -6,6 +6,7 @@ This document is a simplified directory for all production websites and their co
 
 | Project Name | Live Website URL | GitHub Repository Link |
 | :--- | :--- | :--- |
+| **Terminal Buddy** | [Beta Testing](https://github.com/AmanTShekar/zenith-terminal-buddy.git) | [GitHub Source](https://github.com/AmanTShekar/zenith-terminal-buddy.git) |
 | **Aanandham.go** | [aanandham.in](https://aanandham.in/) | [GitHub Source](https://github.com/AmanTShekar) |
 | **Stay Abroad Living** | [stayabroadliving.com](https://stayabroadliving.com/) | [GitHub Source](https://github.com/AmanTShekar/Booking_site_react.git) |
 | **PRISM AI Gateway** | [smart-hire-au...app](https://smart-hire-augmented-recruitment-sy.vercel.app) | [GitHub Source](https://github.com/AmanTShekar/Smart_Hire_Augmented_Recruitment_Sy) |
