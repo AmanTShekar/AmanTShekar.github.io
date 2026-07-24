@@ -6,7 +6,7 @@ Architecting digital experiences through engineering precision. Specializing in 
 
 ## 🚀 Featured Artifacts
 
-### Zenith IDE Ecosystem
+### Zen Visual Editor Ecosystem
 ![Zenith Mockup](zenith.png)
 Next-gen design-to-code platform for architectural web engineering. 
 

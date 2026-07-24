@@ -3633,3 +3633,20 @@ body.no-scroll {
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+/* =========================================
+   ACCESSIBILITY & HARDWARE ACCELERATION
+   ========================================= */
+
+/* Keyboard Focus States */
+a:focus-visible, button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 4px;
+  box-shadow: 0 0 0 4px var(--accent-glow);
+}
+
+/* Hardware Acceleration for GSAP */
+.project-card, .work-card, .testimonial-card, .service-card, .tech-item, .bento-item, .hero-title .line, .image-frame {
+  will-change: transform, opacity;
+}

@@ -240,7 +240,12 @@
 
             <div class="contact-form-container">
                 <h2 style="font-family: var(--font-h); color: #fff; margin-bottom: 2rem;">Secure Transmission</h2>
-                <form class="contact-form" action="mailto:aman.tshekar@gmail.com" method="post" enctype="text/plain">
+                <form id="contactForm" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                    <!-- Web3Forms Access Key -->
+                    <input type="hidden" name="access_key" value="09bbf206-cb28-4de7-8424-89715dfa826c">
+                    <input type="hidden" name="subject" value="New Transmission — Portfolio Contact Form">
+                    <input type="hidden" name="from_name" value="Portfolio Visitor">
+
                     <div class="form-group">
                         <label for="name" class="form-label">Identity</label>
                         <input type="text" id="name" name="name" class="form-input" placeholder="Enter Name" required>
@@ -255,8 +260,11 @@
                         <textarea id="message" name="message" class="form-input" rows="5"
                             placeholder="Enter Message Details..." required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Transmit Via Email Client</button>
-                    <p style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.5; text-align: center;">This will open your default mail app with the pre-filled data packet.</p>
+                    <button type="submit" id="submitBtn" class="btn btn-primary" style="width: 100%;">
+                        <i class="fa-solid fa-paper-plane" style="margin-right: 8px;"></i> Transmit Data Packet
+                    </button>
+                    <div id="formStatus" style="margin-top: 1rem; text-align: center; font-size: 0.9rem; display: none;"></div>
+                    <p style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.5; text-align: center;">Direct submission via Web3Forms API — works 100% natively on GitHub Pages.</p>
                 </form>
             </div>
 

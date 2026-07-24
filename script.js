@@ -28,7 +28,29 @@ document.addEventListener('DOMContentLoaded', () => {
     ease: 'sine.inOut'
   });
 
-  // 3. Staggered Bento Grid & Section Headers
+  // 3. Hero Tagline Animation (Replaces the native implementation)
+  const tagline = document.querySelector('.hero-tagline');
+  if (tagline) {
+    const text = tagline.textContent.trim();
+    tagline.innerHTML = '';
+    text.split(' ').forEach((word, i) => {
+      const span = document.createElement('span');
+      span.textContent = word + ' ';
+      span.style.display = 'inline-block';
+      tagline.appendChild(span);
+    });
+    
+    gsap.from('.hero-tagline span', {
+      y: 10,
+      opacity: 0,
+      stagger: 0.1,
+      duration: 0.6,
+      ease: 'power2.out',
+      delay: 0.3
+    });
+  }
+
+  // 4. Staggered Bento Grid & Section Headers
   const sections = gsap.utils.toArray('section');
   sections.forEach(section => {
     const header = section.querySelector('.section-header');
@@ -51,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
       gsap.from(items, {
         scrollTrigger: {
           trigger: section,
-          start: 'top 95%', // More aggressive trigger
+          start: 'top 95%',
           toggleActions: 'play none none none'
         },
         y: 30,
@@ -59,12 +81,12 @@ document.addEventListener('DOMContentLoaded', () => {
         stagger: 0.05,
         duration: 0.8,
         ease: 'power2.out',
-        clearProps: 'all' // Ensures GSAP doesn't leave styles behind
+        clearProps: 'all'
       });
     }
   });
 
-  // 4. Bento Item Hover Parallax (Desktop Only)
+  // 5. Bento Item Hover Parallax (Desktop Only)
   if (window.matchMedia('(min-width: 1024px)').matches) {
     document.querySelectorAll('.bento-item').forEach(item => {
       item.addEventListener('mousemove', (e) => {
@@ -92,36 +114,58 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 5. Project Reveal Logic
-  gsap.utils.toArray('.project-card').forEach((card) => {
-    gsap.from(card, {
-      scrollTrigger: {
-        trigger: card,
-        start: 'top 92%',
-      },
-      y: 40,
-      opacity: 0,
-      duration: 1,
-      ease: 'power2.out'
+  // 6. Generic GSAP Scroll Reveals (Replacing native IntersectionObserver)
+  const revealSelectors = ['.project-card', '.work-card', '.testimonial-card', '.service-card', '.tech-item', '.contact-item', '.reveal'];
+  revealSelectors.forEach(selector => {
+    gsap.utils.toArray(selector).forEach((el, i) => {
+      gsap.from(el, {
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 92%',
+        },
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        delay: (i % 3) * 0.1, // Slight stagger for grid items
+        ease: 'power2.out'
+      });
     });
   });
 
-  // 6. Smooth Navbar Transition
-  const checkNav = () => {
-    const nav = document.querySelector('.nav-container');
-    if (window.scrollY > 20) {
-      nav.classList.add('scrolled');
-    } else {
-      nav.classList.remove('scrolled');
-    }
-  };
+  // 7. Cursor Gradient Effect (Re-implemented for performance)
+  let rafId;
+  const gradientItems = document.querySelectorAll('.tech-item, .service-card, .project-card, .bento-item');
+  gradientItems.forEach(item => {
+    const moveHandler = e => {
+      const rect = item.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
 
-  window.addEventListener('scroll', checkNav, { passive: true });
-  checkNav(); // Initial check
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        item.style.setProperty('--x', `${x}%`);
+        item.style.setProperty('--y', `${y}%`);
+      });
+    };
 
-  // 7. Mobile Menu Logic
+    item.addEventListener('mousemove', moveHandler, { passive: true });
+    item.addEventListener('mouseleave', () => {
+      item.style.setProperty('--x', '50%');
+      item.style.setProperty('--y', '50%');
+    });
+  });
+
+  // 8. Mobile Menu Logic & Smooth Scroll
   const menuToggle = document.getElementById('menuToggle');
   const navLinks = document.querySelector('.nav-links');
+  
+  const closeMenu = () => {
+    if (navLinks && navLinks.classList.contains('active')) {
+      navLinks.classList.remove('active');
+      if (menuToggle) menuToggle.classList.remove('active');
+      document.body.classList.remove('no-scroll');
+    }
+  };
 
   if (menuToggle && navLinks) {
     menuToggle.addEventListener('click', () => {
@@ -130,190 +174,126 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.classList.toggle('no-scroll');
     });
 
-    // Close menu when link is clicked
     navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        menuToggle.classList.remove('active');
-        document.body.classList.remove('no-scroll');
-      });
+      link.addEventListener('click', closeMenu);
     });
   }
 
-  // 8. Works Section - Work Cards Reveal
-  gsap.utils.toArray('.work-card').forEach((item, i) => {
-    gsap.from(item, {
-      scrollTrigger: {
-        trigger: item,
-        start: 'top 92%',
-      },
-      y: 30,
-      opacity: 0,
-      duration: 0.8,
-      delay: i * 0.1,
-      ease: 'power2.out'
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', e => {
+      e.preventDefault();
+      const targetId = anchor.getAttribute('href');
+      if (targetId === '#') return;
+      const target = document.querySelector(targetId);
+      if (target) {
+        if (window.innerWidth <= 768) closeMenu();
+        const offset = target.getBoundingClientRect().top + window.pageYOffset - 70;
+        window.scrollTo({ top: offset, behavior: 'smooth' });
+      }
     });
   });
 
-  // 9. Testimonial Cards Reveal
-  gsap.utils.toArray('.testimonial-card').forEach((card, i) => {
-    gsap.from(card, {
-      scrollTrigger: {
-        trigger: card,
-        start: 'top 92%',
-      },
-      y: 40,
-      opacity: 0,
-      duration: 0.8,
-      delay: i * 0.15,
-      ease: 'power2.out'
-    });
-  });
+  // 9. Consolidated Scroll Handler (Navbar State & Active Links)
+  const navContainer = document.querySelector('.nav-container');
+  const sectionIds = document.querySelectorAll("section[id]");
+  const navLinksAll = document.querySelectorAll(".nav-links a");
 
-  // 10. Service Cards Reveal
-  gsap.utils.toArray('.service-card').forEach((card, i) => {
-    gsap.from(card, {
-      scrollTrigger: {
-        trigger: card,
-        start: 'top 92%',
-      },
-      y: 30,
-      opacity: 0,
-      duration: 0.8,
-      delay: i * 0.1,
-      ease: 'power2.out'
-    });
-  });
+  let isScrolling = false;
 
-});
-
-// ====================== Hamburger Menu ======================
-function toggleMenu() {
-  const navLinks = document.getElementById("navLinks");
-  const hamburger = document.querySelector(".hamburger");
-  navLinks.classList.toggle("active");
-  hamburger.classList.toggle("open");
-}
-
-function closeMenu() {
-  const navLinks = document.getElementById("navLinks");
-  const hamburger = document.querySelector(".hamburger");
-  navLinks.classList.remove("active");
-  hamburger.classList.remove("open");
-}
-
-// ====================== Smooth Scroll ======================
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', e => {
-    e.preventDefault();
-    const targetId = anchor.getAttribute('href');
-    if (targetId === '#') return;
-    const target = document.querySelector(targetId);
-    if (target) {
-      if (window.innerWidth <= 768) closeMenu();
-      const offset = target.getBoundingClientRect().top + window.pageYOffset - 70;
-      window.scrollTo({ top: offset, behavior: 'smooth' });
+  const handleScroll = () => {
+    // Navbar visual state
+    if (window.scrollY > 20) {
+      if (navContainer) navContainer.classList.add('scrolled');
+    } else {
+      if (navContainer) navContainer.classList.remove('scrolled');
     }
-  });
-});
 
-// ====================== Reveal On Scroll ======================
-const revealItems = document.querySelectorAll('.tech-item, .service-card, .project-card');
-
-const revealObserver = new IntersectionObserver((entries, observer) => {
-  entries.forEach((entry, i) => {
-    if (entry.isIntersecting) {
-      setTimeout(() => {
-        entry.target.classList.add('appear');
-      }, i * 150); // stagger animation
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.15 });
-
-revealItems.forEach(el => revealObserver.observe(el));
-
-// ====================== Cursor Gradient Effect ======================
-let rafId;
-revealItems.forEach(item => {
-  const moveHandler = e => {
-    const rect = item.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-
-    if (rafId) cancelAnimationFrame(rafId);
-    rafId = requestAnimationFrame(() => {
-      item.style.setProperty('--x', `${x}%`);
-      item.style.setProperty('--y', `${y}%`);
+    // Active nav link
+    let current = "";
+    sectionIds.forEach(section => {
+      const sectionTop = section.offsetTop - 80;
+      const sectionHeight = section.offsetHeight;
+      if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
+        current = section.getAttribute("id");
+      }
     });
+
+    navLinksAll.forEach(link => {
+      link.classList.remove("active-link");
+      if (link.getAttribute("href") === `#${current}`) {
+        link.classList.add("active-link");
+      }
+    });
+    
+    isScrolling = false;
   };
 
-  item.addEventListener('mousemove', moveHandler);
-  item.addEventListener('mouseleave', () => {
-    item.style.setProperty('--x', '50%');
-    item.style.setProperty('--y', '50%');
-  });
-});
+  // Throttle scroll using requestAnimationFrame
+  window.addEventListener('scroll', () => {
+    if (!isScrolling) {
+      window.requestAnimationFrame(handleScroll);
+      isScrolling = true;
+    }
+  }, { passive: true });
+  
+  handleScroll(); // Initial check
 
-// ====================== Hero Tagline Animation ======================
-document.addEventListener("DOMContentLoaded", () => {
-  const tagline = document.querySelector('.hero-tagline');
-  if (tagline) {
-    const text = tagline.textContent.trim();
-    tagline.innerHTML = '';
+  // 10. Serverless Contact Form Submission (Web3Forms API for GitHub Pages)
+  const contactForm = document.getElementById('contactForm');
+  const formStatus = document.getElementById('formStatus');
+  const submitBtn = document.getElementById('submitBtn');
 
-    text.split(' ').forEach((word, i) => {
-      const span = document.createElement('span');
-      span.textContent = word + ' ';
-      span.style.opacity = 0;
-      span.style.display = 'inline-block';
-      span.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      span.style.transitionDelay = `${i * 0.2}s`;
-      span.style.transform = 'translateY(10px)';
-      tagline.appendChild(span);
+  if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(contactForm);
+      const originalBtnText = submitBtn.innerHTML;
+      
+      // Update UI state
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="margin-right: 8px;"></i> Transmitting...';
+      if (formStatus) {
+        formStatus.style.display = 'block';
+        formStatus.style.color = 'var(--accent)';
+        formStatus.textContent = 'Encrypting & routing message via serverless pipeline...';
+      }
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
+        });
+        const data = await response.json();
+
+        if (data.success) {
+          if (formStatus) {
+            formStatus.style.color = '#10B981'; // Success green
+            formStatus.innerHTML = '<i class="fa-solid fa-circle-check"></i> Transmission Received! Aman will reply shortly.';
+          }
+          contactForm.reset();
+        } else {
+          // Fallback to mailto if access key is not set or API error occurs
+          throw new Error(data.message || 'API key configuration needed');
+        }
+      } catch (err) {
+        console.warn('Web3Forms Notice (Falling back to Mailto):', err);
+        const name = formData.get('name') || '';
+        const email = formData.get('email') || '';
+        const message = formData.get('message') || '';
+        const mailtoUrl = `mailto:aman.tshekar@gmail.com?subject=Transmission%20from%20${encodeURIComponent(name)}&body=${encodeURIComponent(`Identity: ${name}\nReturn Address: ${email}\n\nData Packet:\n${message}`)}`;
+        
+        window.location.href = mailtoUrl;
+        
+        if (formStatus) {
+          formStatus.style.color = 'var(--accent)';
+          formStatus.innerHTML = '<i class="fa-solid fa-envelope"></i> Opening default mail client...';
+        }
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnText;
+      }
     });
-
-    setTimeout(() => {
-      tagline.querySelectorAll('span').forEach(span => {
-        span.style.opacity = 1;
-        span.style.transform = 'translateY(0)';
-      });
-    }, 300);
   }
-});
 
-const reveals = document.querySelectorAll('.reveal, .tech-item, .service-card, .project-card, .contact-item');
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('active');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.2 });
-
-reveals.forEach(el => observer.observe(el));
-
-// ====================== Active Nav Link on Scroll ======================
-const sections = document.querySelectorAll("section[id]"); // all sections with IDs
-const navLinksAll = document.querySelectorAll("nav ul li a");
-
-window.addEventListener("scroll", () => {
-  let current = "";
-
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop - 80; // offset for navbar height
-    const sectionHeight = section.offsetHeight;
-    if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
-      current = section.getAttribute("id");
-    }
-  });
-
-  navLinksAll.forEach(link => {
-    link.classList.remove("active-link");
-    if (link.getAttribute("href") === `#${current}`) {
-      link.classList.add("active-link");
-    }
-  });
 });
