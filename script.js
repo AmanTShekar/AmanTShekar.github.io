@@ -4,90 +4,100 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Initialize GSAP & ScrollTrigger
-  gsap.registerPlugin(ScrollTrigger);
+  // 1. Initialize GSAP & ScrollTrigger safely if loaded
+  const hasGsap = typeof gsap !== 'undefined';
 
-  // 2. Cinematic Hero Entrance
-  const heroTl = gsap.timeline({ defaults: { ease: 'power4.out', duration: 1.5 } });
+  if (hasGsap) {
+    if (typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+    }
 
-  heroTl
-    .from('.nav-container', { y: -30, opacity: 0, duration: 1 })
-    .from('.hero-title .line', { y: 100, opacity: 0, stagger: 0.15, skewY: 5 }, '-=0.8')
-    .from('.availability-badge', { x: -20, opacity: 0 }, '-=1.2')
-    .from('.hero-sub', { y: 30, opacity: 0 }, '-=1.2')
-    .from('.hero-actions', { y: 30, opacity: 0 }, '-=1.2')
-    .from('.image-frame', { x: 100, opacity: 0, duration: 2, scale: 0.9 }, '-=1.5')
-    .from('.exp-badge', { scale: 0, opacity: 0, ease: 'back.out(2)' }, '-=1.2');
+    // 2. Cinematic Hero Entrance
+    const heroTl = gsap.timeline({ defaults: { ease: 'power4.out', duration: 1.5 } });
 
-  // 2b. Hero Image Drift
-  gsap.to('.image-frame img', {
-    y: 15,
-    duration: 4,
-    repeat: -1,
-    yoyo: true,
-    ease: 'sine.inOut'
-  });
+    heroTl
+      .from('.nav-container', { y: -30, opacity: 0, duration: 1 })
+      .from('.hero-title .line', { y: 100, opacity: 0, stagger: 0.15, skewY: 5 }, '-=0.8')
+      .from('.availability-badge', { x: -20, opacity: 0 }, '-=1.2')
+      .from('.hero-sub', { y: 30, opacity: 0 }, '-=1.2')
+      .from('.hero-actions', { y: 30, opacity: 0 }, '-=1.2')
+      .from('.image-frame', { x: 100, opacity: 0, duration: 2, scale: 0.9 }, '-=1.5')
+      .from('.exp-badge', { scale: 0, opacity: 0, ease: 'back.out(2)' }, '-=1.2');
+
+    // 2b. Hero Image Drift
+    gsap.to('.image-frame img', {
+      y: 15,
+      duration: 4,
+      repeat: -1,
+      yoyo: true,
+      ease: 'sine.inOut'
+    });
+  }
 
   // 3. Hero Tagline Animation (Replaces the native implementation)
   const tagline = document.querySelector('.hero-tagline');
   if (tagline) {
     const text = tagline.textContent.trim();
     tagline.innerHTML = '';
-    text.split(' ').forEach((word, i) => {
+    text.split(' ').forEach((word) => {
       const span = document.createElement('span');
       span.textContent = word + ' ';
       span.style.display = 'inline-block';
       tagline.appendChild(span);
     });
     
-    gsap.from('.hero-tagline span', {
-      y: 10,
-      opacity: 0,
-      stagger: 0.1,
-      duration: 0.6,
-      ease: 'power2.out',
-      delay: 0.3
-    });
+    if (hasGsap) {
+      gsap.from('.hero-tagline span', {
+        y: 10,
+        opacity: 0,
+        stagger: 0.1,
+        duration: 0.6,
+        ease: 'power2.out',
+        delay: 0.3
+      });
+    }
   }
 
   // 4. Staggered Bento Grid & Section Headers
-  const sections = gsap.utils.toArray('section');
-  sections.forEach(section => {
-    const header = section.querySelector('.section-header');
-    if (header) {
-      gsap.from(header, {
-        scrollTrigger: {
-          trigger: section,
-          start: 'top 95%',
-        },
-        y: 20,
-        opacity: 0,
-        duration: 0.8,
-        ease: 'power2.out'
-      });
-    }
+  if (hasGsap && typeof ScrollTrigger !== 'undefined') {
+    const sections = gsap.utils.toArray('section');
+    sections.forEach(section => {
+      const header = section.querySelector('.section-header');
+      if (header) {
+        gsap.from(header, {
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 95%',
+          },
+          y: 20,
+          opacity: 0,
+          duration: 0.8,
+          ease: 'power2.out'
+        });
+      }
 
-    // Bento Items Reveal
-    const items = section.querySelectorAll('.bento-item');
-    if (items.length > 0) {
-      gsap.from(items, {
-        scrollTrigger: {
-          trigger: section,
-          start: 'top 95%',
-          toggleActions: 'play none none none'
-        },
-        y: 30,
-        opacity: 0,
-        stagger: 0.05,
-        duration: 0.8,
-        ease: 'power2.out',
-        clearProps: 'all'
-      });
-    }
-  });
+      // Bento Items Reveal
+      const items = section.querySelectorAll('.bento-item');
+      if (items.length > 0) {
+        gsap.from(items, {
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 95%',
+            toggleActions: 'play none none none'
+          },
+          y: 30,
+          opacity: 0,
+          stagger: 0.05,
+          duration: 0.8,
+          ease: 'power2.out',
+          clearProps: 'all'
+        });
+      }
+    });
+  }
 
   // 5. Bento Item Hover Parallax (Desktop Only)
-  if (window.matchMedia('(min-width: 1024px)').matches) {
+  if (hasGsap && window.matchMedia('(min-width: 1024px)').matches) {
     document.querySelectorAll('.bento-item').forEach(item => {
       item.addEventListener('mousemove', (e) => {
         const rect = item.getBoundingClientRect();
@@ -115,22 +125,24 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 6. Generic GSAP Scroll Reveals (Replacing native IntersectionObserver)
-  const revealSelectors = ['.project-card', '.work-card', '.testimonial-card', '.service-card', '.tech-item', '.contact-item', '.reveal'];
-  revealSelectors.forEach(selector => {
-    gsap.utils.toArray(selector).forEach((el, i) => {
-      gsap.from(el, {
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 92%',
-        },
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-        delay: (i % 3) * 0.1, // Slight stagger for grid items
-        ease: 'power2.out'
+  if (hasGsap && typeof ScrollTrigger !== 'undefined') {
+    const revealSelectors = ['.project-card', '.work-card', '.testimonial-card', '.service-card', '.tech-item', '.contact-item', '.reveal'];
+    revealSelectors.forEach(selector => {
+      gsap.utils.toArray(selector).forEach((el, i) => {
+        gsap.from(el, {
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 92%',
+          },
+          y: 40,
+          opacity: 0,
+          duration: 0.8,
+          delay: (i % 3) * 0.1, // Slight stagger for grid items
+          ease: 'power2.out'
+        });
       });
     });
-  });
+  }
 
   // 7. Cursor Gradient Effect (Re-implemented for performance)
   let rafId;
@@ -252,11 +264,11 @@ document.addEventListener('DOMContentLoaded', () => {
       
       // Update UI state
       submitBtn.disabled = true;
-      submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="margin-right: 8px;"></i> Transmitting...';
+      submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="margin-right: 8px;"></i> Sending...';
       if (formStatus) {
+        formStatus.className = 'form-status-banner status-loading';
         formStatus.style.display = 'block';
-        formStatus.style.color = 'var(--accent)';
-        formStatus.textContent = 'Encrypting & routing message via serverless pipeline...';
+        formStatus.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="margin-right: 8px;"></i> Sending your message...';
       }
 
       try {
@@ -268,8 +280,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (data.success) {
           if (formStatus) {
-            formStatus.style.color = '#10B981'; // Success green
-            formStatus.innerHTML = '<i class="fa-solid fa-circle-check"></i> Transmission Received! Aman will reply shortly.';
+            formStatus.className = 'form-status-banner status-success';
+            formStatus.innerHTML = '<div style="font-weight: 600; font-size: 1.05rem; margin-bottom: 4px;"><i class="fa-solid fa-circle-check" style="margin-right: 8px;"></i> Message Sent Successfully!</div><div style="opacity: 0.9; font-size: 0.9rem;">Thank you for reaching out! Aman has received your message and will reply to you shortly.</div>';
           }
           contactForm.reset();
         } else {
@@ -281,13 +293,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const name = formData.get('name') || '';
         const email = formData.get('email') || '';
         const message = formData.get('message') || '';
-        const mailtoUrl = `mailto:aman.tshekar@gmail.com?subject=Transmission%20from%20${encodeURIComponent(name)}&body=${encodeURIComponent(`Identity: ${name}\nReturn Address: ${email}\n\nData Packet:\n${message}`)}`;
+        const mailtoUrl = `mailto:aman.tshekar@gmail.com?subject=Portfolio%20Contact%20from%20${encodeURIComponent(name)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
         
         window.location.href = mailtoUrl;
         
         if (formStatus) {
-          formStatus.style.color = 'var(--accent)';
-          formStatus.innerHTML = '<i class="fa-solid fa-envelope"></i> Opening default mail client...';
+          formStatus.className = 'form-status-banner status-error';
+          formStatus.innerHTML = '<div style="font-weight: 600; font-size: 1.05rem; margin-bottom: 4px;"><i class="fa-solid fa-envelope" style="margin-right: 8px;"></i> Opening Email App...</div><div style="opacity: 0.9; font-size: 0.9rem;">Opening your default email client to send your message directly to aman.tshekar@gmail.com</div>';
         }
       } finally {
         submitBtn.disabled = false;
