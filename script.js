@@ -172,13 +172,18 @@ document.addEventListener('DOMContentLoaded', () => {
             trigger: el,
             start: 'top 92%',
             onEnter: () => {
-              const cardTitle = el.querySelector('h3, .project-title, .service-title, .roadmap-company');
-              if (cardTitle && !cardTitle.dataset.scrambled) {
-                cardTitle.dataset.scrambled = "true";
-                const orig = cardTitle.textContent.trim();
-                cardTitle.textContent = "";
-                scrambleText(cardTitle, orig, 600);
-              }
+              const textsToScramble = el.querySelectorAll('h3, h4, p, .project-title, .service-title, .roadmap-company, .service-desc, .testimonial-text, .author-name, .roadmap-desc, .roadmap-role, .roadmap-date, .tech-name');
+              textsToScramble.forEach(textEl => {
+                // Only scramble pure text elements to avoid breaking inner HTML like spans/icons
+                if (!textEl.dataset.scrambled && textEl.children.length === 0) {
+                  textEl.dataset.scrambled = "true";
+                  const orig = textEl.textContent.trim();
+                  if(orig.length > 0) {
+                    textEl.textContent = "";
+                    scrambleText(textEl, orig, Math.min(Math.max(orig.length * 15, 400), 1200));
+                  }
+                }
+              });
             }
           },
           keyframes: [
