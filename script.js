@@ -30,6 +30,54 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(update);
   }
 
+  // True Pixel-to-Solid Reveal Engine
+  function pixelReveal(card) {
+    if (card.dataset.pixelRevealed) return;
+    card.dataset.pixelRevealed = "true";
+    
+    // Make sure card can contain absolute overlay
+    if (getComputedStyle(card).position === 'static') {
+      card.style.position = 'relative';
+    }
+    
+    // Figure out the dark mode background vs light mode
+    const isDark = card.closest('.experience-section') || card.closest('.testimonials-section');
+    const bgColor = isDark ? '#000000' : '#fff0e6';
+
+    const overlay = document.createElement('div');
+    overlay.className = 'pixel-reveal-overlay';
+    overlay.style.position = 'absolute';
+    overlay.style.top = '-5px';
+    overlay.style.left = '-5px';
+    overlay.style.right = '-5px';
+    overlay.style.bottom = '-5px';
+    overlay.style.display = 'grid';
+    overlay.style.gridTemplateColumns = 'repeat(12, 1fr)';
+    overlay.style.gridTemplateRows = 'repeat(10, 1fr)';
+    overlay.style.zIndex = '9999';
+    overlay.style.pointerEvents = 'none';
+
+    // Fill grid with solid blocks
+    for (let i = 0; i < 120; i++) {
+      const block = document.createElement('div');
+      block.style.background = bgColor;
+      overlay.appendChild(block);
+    }
+    card.appendChild(overlay);
+
+    // Fade out blocks randomly
+    gsap.to(overlay.children, {
+      opacity: 0,
+      duration: 0.05,
+      stagger: {
+        amount: 0.6,
+        from: "random"
+      },
+      ease: "steps(1)",
+      onComplete: () => overlay.remove()
+    });
+  }
+
   if (hasGsap) {
     if (typeof ScrollTrigger !== 'undefined') {
       gsap.registerPlugin(ScrollTrigger);
@@ -146,6 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
             toggleActions: 'play none none none',
             onEnter: () => {
               items.forEach(item => {
+                pixelReveal(item);
                 const bentoTitle = item.querySelector('h3, .tech-name, .contact-title');
                 if (bentoTitle && !bentoTitle.dataset.scrambled) {
                   bentoTitle.dataset.scrambled = "true";
@@ -155,15 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
               });
             }
-          },
-          keyframes: [
-            { opacity: 0, filter: 'blur(20px)', scale: 0.95, duration: 0.05 },
-            { opacity: 0.5, filter: 'blur(10px)', scale: 0.98, duration: 0.1 },
-            { opacity: 1, filter: 'blur(0px)', scale: 1, duration: 0.15 }
-          ],
-          stagger: 0.05,
-          ease: 'steps(1)',
-          clearProps: 'all'
+          }
         });
       }
     });
@@ -182,6 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
             trigger: el,
             start: 'top 92%',
             onEnter: () => {
+              pixelReveal(el);
               const cardTitle = el.querySelector('h3, .project-title, .service-title, .roadmap-company, .roadmap-role, .author-name, .work-name, .tech-name');
               if (cardTitle && !cardTitle.dataset.scrambled) {
                 cardTitle.dataset.scrambled = "true";
@@ -190,15 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 scrambleText(cardTitle, orig, 600);
               }
             }
-          },
-          keyframes: [
-            { opacity: 0, filter: 'blur(20px)', scale: 0.95, duration: 0.05 },
-            { opacity: 0.5, filter: 'blur(10px)', scale: 0.98, duration: 0.1 },
-            { opacity: 1, filter: 'blur(0px)', scale: 1, duration: 0.15 }
-          ],
-          delay: (i % 3) * 0.1, // Slight stagger for grid items
-          ease: 'steps(1)',
-          clearProps: 'all'
+          }
         });
       });
     });
