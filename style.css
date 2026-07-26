@@ -218,20 +218,10 @@ body::after {
 
 .nav-container.scrolled {
   padding: 1rem 0;
-  background: #000000 !important; /* Black CRT Header */
-  border-bottom: 4px solid #ffb89e;
-  box-shadow: 0px 8px 0px rgba(255, 184, 158, 0.5);
+  background: #ffffff !important; /* Solid retro block background */
+  border-bottom: 4px solid #2d241e;
+  box-shadow: 0px 8px 0px rgba(45, 36, 30, 1);
 }
-
-.nav-container.scrolled .nav-logo {
-  color: #ffb89e;
-  text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.2);
-}
-
-.nav-container.scrolled .nav-links a:not(.nav-cta) {
-  color: #ffb89e;
-}
-
 .nav-content {
   display: flex;
   justify-content: space-between;
