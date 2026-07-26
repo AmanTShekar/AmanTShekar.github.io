@@ -4012,31 +4012,17 @@ a:focus-visible, button:focus-visible {
 /* =========================================
    PAC-MAN MOUTH CHOMP ANIMATION (DUAL JAW)
    ========================================= */
-.pm-svg {
-  display: block;
-  image-rendering: pixelated;
-  image-rendering: crisp-edges;
-  overflow: visible;
-  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.7));
-}
 
-.pacman-jaw-top {
-  transform-origin: 0% 100%;
-  animation: pacmanChompTop 0.15s infinite alternate;
-}
 
-.pacman-jaw-bottom {
-  transform-origin: 0% 0%;
-  animation: pacmanChompBottom 0.15s infinite alternate;
-}
 
-@keyframes pacmanChompTop {
-  0% { transform: rotate(0deg); }
+
+
+
+
   100% { transform: rotate(-50deg); }
 }
 
-@keyframes pacmanChompBottom {
-  0% { transform: rotate(0deg); }
+
   100% { transform: rotate(50deg); }
 }
 
@@ -4177,31 +4163,17 @@ section, .hero-section, .portfolio-section, .project-section, .services-section,
 }
 
 /* PAC-MAN MOUTH CHOMP ANIMATION (DUAL JAW) */
-.pm-svg {
-  display: block;
-  image-rendering: pixelated;
-  image-rendering: crisp-edges;
-  overflow: visible;
-  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.7));
-}
 
-.pacman-jaw-top {
-  transform-origin: 0% 100%;
-  animation: pacmanChompTop 0.15s infinite alternate;
-}
 
-.pacman-jaw-bottom {
-  transform-origin: 0% 0%;
-  animation: pacmanChompBottom 0.15s infinite alternate;
-}
 
-@keyframes pacmanChompTop {
-  0% { transform: rotate(0deg); }
+
+
+
+
   100% { transform: rotate(-50deg); }
 }
 
-@keyframes pacmanChompBottom {
-  0% { transform: rotate(0deg); }
+
   100% { transform: rotate(50deg); }
 }
 
@@ -4225,4 +4197,25 @@ section, .hero-section, .portfolio-section, .project-section, .services-section,
   .brutal-hero-box {
     padding: 1.25rem !important;
   }
+}
+
+/* =========================================
+   PAC-MAN MOUTH CHOMP - RELIABLE SINGLE CIRCLE
+   ========================================= */
+.pm-svg {
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  overflow: hidden;
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.7));
+}
+
+.pm-mouth {
+  transform-origin: 20px 20px;
+  animation: pmChomp 0.2s steps(3) infinite alternate;
+}
+
+@keyframes pmChomp {
+  0%  { transform: rotate(-25deg); }
+  100% { transform: rotate(25deg); }
 }
