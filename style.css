@@ -1,4 +1,4 @@
-﻿/* =========================================
+/* =========================================
    PORTFOLIO v5.2 | ARCHITECT LEVEL POLISH
    Performance Optimized & Layout Hardened
    ========================================= */
@@ -4620,18 +4620,21 @@ a:focus-visible, button:focus-visible {
 .pm-svg {
   display: block;
   image-rendering: pixelated;
+  image-rendering: crisp-edges;
   overflow: visible;
-  filter: drop-shadow(0 0 8px rgba(255,215,0,0.7));
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.7));
 }
 
 .pacman-jaw-top {
+  transform-box: view-box;
   transform-origin: 20px 20px;
-  animation: pacmanChompTop 0.22s steps(2) infinite alternate;
+  animation: pacmanChompTop 0.2s steps(2) infinite alternate;
 }
 
 .pacman-jaw-bottom {
+  transform-box: view-box;
   transform-origin: 20px 20px;
-  animation: pacmanChompBottom 0.22s steps(2) infinite alternate;
+  animation: pacmanChompBottom 0.2s steps(2) infinite alternate;
 }
 
 @keyframes pacmanChompTop {
@@ -4639,7 +4642,7 @@ a:focus-visible, button:focus-visible {
     transform: rotate(0deg);
   }
   100% {
-    transform: rotate(-38deg);
+    transform: rotate(-52deg);
   }
 }
 
@@ -4648,6 +4651,77 @@ a:focus-visible, button:focus-visible {
     transform: rotate(0deg);
   }
   100% {
-    transform: rotate(38deg);
+    transform: rotate(52deg);
+  }
+}
+
+/* =========================================
+   MULTI-RESOLUTION & ASPECT RATIO OPTIMIZATION
+   (Ultrawide, 4K, Laptop, Tablet, Mobile)
+   ========================================= */
+
+/* 4K & Ultrawide Display Optimization (>1600px) */
+@media (min-width: 1600px) {
+  .container {
+    max-width: 1500px !important;
+  }
+  .hero-title {
+    font-size: clamp(4rem, 6vw, 6.5rem) !important;
+  }
+  .bento-stack {
+    gap: 2.5rem !important;
+  }
+}
+
+/* Laptop & Medium Screens (1024px - 1440px) */
+@media (max-width: 1440px) {
+  .container {
+    max-width: 1200px !important;
+  }
+}
+
+/* Tablet / Landscape Mobile (601px - 1023px) */
+@media (max-width: 1024px) {
+  .pm-svg {
+    width: 46px !important;
+    height: 46px !important;
+  }
+  .pm-track-wrapper, .collab-pm-wrapper {
+    height: 70px !important;
+  }
+  .pm-dots-row, .collab-pm-dots {
+    left: 50px !important;
+    right: 65px !important;
+  }
+  .pm-ghost svg, .collab-pm-ghost svg {
+    width: 40px !important;
+    height: 48px !important;
+  }
+}
+
+/* Mobile & Portrait Aspect Ratios (<= 600px) */
+@media (max-width: 600px) {
+  .pm-svg {
+    width: 38px !important;
+    height: 38px !important;
+  }
+  .pm-track-wrapper, .collab-pm-wrapper {
+    height: 60px !important;
+  }
+  .pm-dots-row, .collab-pm-dots {
+    left: 42px !important;
+    right: 48px !important;
+  }
+  .pm-ghost svg, .collab-pm-ghost svg {
+    width: 32px !important;
+    height: 40px !important;
+  }
+  .cpm-dot {
+    width: 8px !important;
+    height: 8px !important;
+  }
+  .cpm-dot.power {
+    width: 14px !important;
+    height: 14px !important;
   }
 }
