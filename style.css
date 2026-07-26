@@ -271,113 +271,190 @@ body {
 }
 
 /* =========================================
-   MINIMALIST PIXEL-DEV HERO STYLES
+   TRON x RETRO 3D GAME MENU HERO STYLES
    ========================================= */
-.pixel-hero-section {
+.tron-hero-section {
   position: relative;
   overflow: hidden;
-  background: #040408;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: #02050e;
+  border-bottom: 2px solid rgba(0, 240, 255, 0.3);
 }
 
-.pixel-bg-grid {
+.tron-grid-bg {
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
   background-image: 
-    linear-gradient(rgba(41, 151, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(41, 151, 255, 0.03) 1px, transparent 1px);
-  background-size: 24px 24px;
+    linear-gradient(rgba(0, 240, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.08) 1px, transparent 1px);
+  background-size: 36px 36px;
+  background-position: center center;
   z-index: 0;
   pointer-events: none;
 }
 
-.pixel-badge {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(41, 151, 255, 0.25);
-  border-radius: 0;
-  box-shadow: 0 0 10px rgba(41, 151, 255, 0.08);
+.tron-horizon-aura {
+  position: absolute;
+  top: -20%; right: -10%; width: 60%; height: 80%;
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.15), rgba(255, 0, 127, 0.05), transparent 70%);
+  z-index: 0;
+  pointer-events: none;
 }
 
-.pixel-badge span {
-  font-family: 'Silkscreen', var(--font-main);
-  font-size: 0.65rem;
-  letter-spacing: 1.5px;
+/* 3D Bevel Retro Game Menu Console Box */
+.tron-menu-deck {
+  background: rgba(4, 10, 24, 0.85);
+  border-top: 2px solid #00f0ff;
+  border-left: 2px solid #00f0ff;
+  border-right: 2px solid #004466;
+  border-bottom: 2px solid #004466;
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.9),
+    0 0 25px rgba(0, 240, 255, 0.2),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2);
+  padding: 2.5rem;
+  border-radius: 4px;
+  backdrop-filter: blur(16px);
+  position: relative;
+  z-index: 2;
+  clip-path: polygon(0 16px, 16px 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%);
 }
 
-.pixel-title {
-  font-family: var(--font-h);
-  font-size: clamp(3rem, 7.5vw, 6.5rem);
-  line-height: 0.95;
-  letter-spacing: -2px;
+.tron-badge {
+  background: rgba(0, 240, 255, 0.06);
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  border-radius: 2px;
+  color: #00f0ff;
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.15);
 }
 
-.pixel-sub-card {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-left: 2px solid var(--accent);
+.tron-title {
+  font-family: 'Orbitron', var(--font-h);
+  font-weight: 900;
+  text-shadow: 3px 3px 0px #001a26, 0 0 25px rgba(0, 240, 255, 0.4);
+}
+
+.tron-cyan-glow {
+  color: #00f0ff !important;
+  -webkit-text-stroke: none !important;
+  text-shadow: 0 0 15px rgba(0, 240, 255, 0.8), 0 0 30px rgba(0, 240, 255, 0.4);
+}
+
+.tron-sub-card {
+  background: rgba(0, 0, 0, 0.6);
+  border-top: 2px solid #004466;
+  border-left: 2px solid #004466;
+  border-right: 2px solid #00f0ff;
+  border-bottom: 2px solid #00f0ff;
   padding: 1.25rem 1.5rem;
-  border-radius: 0;
-  backdrop-filter: blur(10px);
+  border-radius: 2px;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.9);
+  color: #d1d5db;
 }
 
-.btn-pixel-primary {
-  background: #ffffff;
+/* 3D Bevel Retro Game Menu Buttons */
+.tron-actions {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.btn-tron-primary {
+  background: linear-gradient(135deg, #00f0ff 0%, #0088cc 100%);
   color: #000000;
-  border-radius: 0;
-  border: 1px solid #ffffff;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  transition: all 0.3s ease;
+  font-family: var(--font-main);
+  font-weight: 800;
+  letter-spacing: 2px;
+  border-top: 2px solid #ffffff;
+  border-left: 2px solid #ffffff;
+  border-right: 2px solid #004466;
+  border-bottom: 2px solid #004466;
+  box-shadow: 0 6px 0 #002b40, 0 0 20px rgba(0, 240, 255, 0.5);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  text-transform: uppercase;
 }
 
-.btn-pixel-primary:hover {
-  background: var(--accent);
-  border-color: var(--accent);
+.btn-tron-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 9px 0 #002b40, 0 0 30px rgba(0, 240, 255, 0.8);
+  color: #000000;
+}
+
+.btn-tron-outline {
+  background: rgba(0, 240, 255, 0.05);
+  border-top: 2px solid #00f0ff;
+  border-left: 2px solid #00f0ff;
+  border-right: 2px solid #004466;
+  border-bottom: 2px solid #004466;
+  color: #00f0ff;
+  font-family: var(--font-main);
+  font-weight: 800;
+  letter-spacing: 2px;
+  box-shadow: 0 6px 0 #001a26, 0 0 15px rgba(0, 240, 255, 0.2);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  text-transform: uppercase;
+}
+
+.btn-tron-outline:hover {
+  background: rgba(0, 240, 255, 0.15);
+  border-color: #00f0ff;
   color: #ffffff;
-  box-shadow: 0 0 20px rgba(41, 151, 255, 0.3);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 9px 0 #001a26, 0 0 25px rgba(0, 240, 255, 0.6);
 }
 
-.btn-pixel-outline {
-  background: rgba(255, 255, 255, 0.02);
-  color: #ffffff;
-  border-radius: 0;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  transition: all 0.3s ease;
-}
-
-.btn-pixel-outline:hover {
-  border-color: #ffffff;
-  background: rgba(255, 255, 255, 0.08);
-  transform: translateY(-2px);
-}
-
-.pixel-frame {
-  border: 1px solid rgba(255, 255, 255, 0.12) !important;
-  border-radius: 0 !important;
+/* TRON Profile Picture Light Frame */
+.tron-frame {
+  border-top: 2px solid #00f0ff !important;
+  border-left: 2px solid #00f0ff !important;
+  border-right: 2px solid #004466 !important;
+  border-bottom: 2px solid #004466 !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 40px rgba(0, 240, 255, 0.3) !important;
   position: relative;
 }
 
-.pixel-corner {
+.tron-corner {
   position: absolute;
-  width: 8px;
-  height: 8px;
-  background: var(--accent);
+  width: 14px;
+  height: 14px;
+  border-color: #00f0ff;
+  border-style: solid;
   z-index: 4;
-  box-shadow: 0 0 8px var(--accent);
 }
 
-.pixel-corner.top-left { top: -4px; left: -4px; }
-.pixel-corner.top-right { top: -4px; right: -4px; }
-.pixel-corner.bottom-left { bottom: -4px; left: -4px; }
-.pixel-corner.bottom-right { bottom: -4px; right: -4px; }
+.tron-corner.top-left { top: -6px; left: -6px; border-width: 3px 0 0 3px; }
+.tron-corner.top-right { top: -6px; right: -6px; border-width: 3px 3px 0 0; }
+.tron-corner.bottom-left { bottom: -6px; left: -6px; border-width: 0 0 3px 3px; }
+.tron-corner.bottom-right { bottom: -6px; right: -6px; border-width: 0 3px 3px 0; }
 
-.pixel-exp-badge {
-  border-radius: 0 !important;
-  border: 1px solid rgba(41, 151, 255, 0.3) !important;
-  background: #000000 !important;
+.tron-blob {
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.35), rgba(255, 0, 127, 0.15), transparent 70%) !important;
+}
+
+.tron-exp-badge {
+  background: rgba(2, 6, 16, 0.95) !important;
+  border-top: 2px solid #00f0ff !important;
+  border-left: 2px solid #00f0ff !important;
+  border-right: 2px solid #004466 !important;
+  border-bottom: 2px solid #004466 !important;
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.4) !important;
+  border-radius: 2px !important;
+}
+
+.tron-exp-badge strong {
+  font-family: var(--font-h) !important;
+  font-size: 1.8rem !important;
+  color: #00f0ff !important;
+  text-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
+}
+
+.tron-scroll-text {
+  font-family: var(--font-main);
+  font-size: 0.6rem;
+  color: #00f0ff;
+  letter-spacing: 4px;
+}
+
+.tron-line {
+  background: linear-gradient(#00f0ff, transparent) !important;
 }
 
 .hero-container {
