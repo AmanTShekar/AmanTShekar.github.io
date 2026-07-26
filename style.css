@@ -4007,18 +4007,6 @@ a:focus-visible, button:focus-visible {
   will-change: transform, opacity;
 }
 
-/* Mobile Responsive Adjustments for Retro Arcade Hero */
-@media (max-width: 768px) {
-  .arcade-hud-bar {
-    flex-direction: column;
-    gap: 0.5rem;
-    text-align: center;
-    font-size: 0.55rem;
-  }
-  .arcade-title {
-    font-size: clamp(2.2rem, 8vw, 3.5rem);
-  }
-  .arcade-sub-box {
 
 /* =========================================
    PAC-MAN MOUTH CHOMP ANIMATION (DUAL JAW)
@@ -4044,29 +4032,18 @@ a:focus-visible, button:focus-visible {
 }
 
 @keyframes pacmanChompTop {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(-50deg);
-  }
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-50deg); }
 }
 
 @keyframes pacmanChompBottom {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(50deg);
-  }
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(50deg); }
 }
 
 /* =========================================
    MASTER RESPONSIVE & MULTI-SCREEN SYSTEM
-   (Ultrawide, 4K, Laptop, Tablet, Mobile)
    ========================================= */
-
-/* Global Container & Section Safety */
 .container {
   width: 100% !important;
   max-width: 1280px;
@@ -4080,7 +4057,6 @@ section, .hero-section, .portfolio-section, .project-section, .services-section,
   position: relative;
 }
 
-/* 1. HERO SECTION RESPONSIVE SYSTEM */
 .hero-section {
   padding: clamp(100px, 12vw, 150px) 0 clamp(40px, 6vw, 80px) !important;
 }
@@ -4199,7 +4175,6 @@ section, .hero-section, .portfolio-section, .project-section, .services-section,
   display: block !important;
 }
 
-/* 2. PROJECTS SECTION RESPONSIVE GRID */
 .project-grid {
   display: grid !important;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)) !important;
@@ -4239,7 +4214,6 @@ section, .hero-section, .portfolio-section, .project-section, .services-section,
   display: block !important;
 }
 
-/* 3. SERVICES SECTION RESPONSIVE GRID */
 .service-grid {
   display: grid !important;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)) !important;
@@ -4263,7 +4237,6 @@ section, .hero-section, .portfolio-section, .project-section, .services-section,
   box-shadow: 12px 12px 0px rgba(45, 36, 30, 1) !important;
 }
 
-/* 4. BENTO / TECH STACK RESPONSIVE GRID */
 .bento-stack {
   display: grid !important;
   grid-template-columns: repeat(3, 1fr) !important;
@@ -4297,7 +4270,6 @@ section, .hero-section, .portfolio-section, .project-section, .services-section,
   box-shadow: 3px 3px 0px rgba(45, 36, 30, 1) !important;
 }
 
-/* 5. TESTIMONIALS RESPONSIVE GRID */
 .testimonial-grid {
   display: grid !important;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)) !important;
@@ -4312,11 +4284,6 @@ section, .hero-section, .portfolio-section, .project-section, .services-section,
   box-shadow: 8px 8px 0px rgba(45, 36, 30, 1) !important;
 }
 
-/* =========================================
-   BREAKPOINT OVERRIDES
-   ========================================= */
-
-/* 4K & Ultrawide Display (>1600px) */
 @media (min-width: 1600px) {
   .container {
     max-width: 1500px !important;
@@ -4334,14 +4301,12 @@ section, .hero-section, .portfolio-section, .project-section, .services-section,
   }
 }
 
-/* Laptop & Medium Screens (1024px - 1440px) */
 @media (max-width: 1440px) {
   .container {
     max-width: 1180px !important;
   }
 }
 
-/* Tablet & iPad (769px - 1024px) */
 @media (max-width: 1024px) {
   .hero-container {
     grid-template-columns: 1fr !important;
@@ -4366,7 +4331,6 @@ section, .hero-section, .portfolio-section, .project-section, .services-section,
   }
 }
 
-/* Mobile Devices (<= 768px) */
 @media (max-width: 768px) {
   .container {
     padding: 0 1.15rem !important;
@@ -4452,7 +4416,6 @@ section, .hero-section, .portfolio-section, .project-section, .services-section,
     transform: scale(0.7) !important;
   }
 
-  /* Timeline Mobile */
   .roadmap-item, .roadmap-item:nth-child(even) {
     flex-direction: column !important;
     padding-left: 42px !important;
@@ -4467,7 +4430,6 @@ section, .hero-section, .portfolio-section, .project-section, .services-section,
   }
 }
 
-/* Extra Small Phones (<= 400px) */
 @media (max-width: 400px) {
   .container {
     padding: 0 0.75rem !important;
@@ -4490,7 +4452,6 @@ section, .hero-section, .portfolio-section, .project-section, .services-section,
   }
 }
 
-/* Loader Hidden Rule */
 .retro-loader.loader-hidden {
   display: none !important;
   visibility: hidden !important;
