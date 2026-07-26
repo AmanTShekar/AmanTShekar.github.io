@@ -201,20 +201,21 @@ document.addEventListener('DOMContentLoaded', () => {
             onEnter: () => {
               items.forEach(item => {
                 pixelReveal(item);
-                const textsToScramble = item.querySelectorAll('h3, p, .tech-name, .contact-title, .contact-desc');
-                textsToScramble.forEach(textEl => {
-                  if (!textEl.dataset.scrambled && textEl.children.length === 0) {
-                    textEl.dataset.scrambled = "true";
-                    const orig = textEl.textContent.trim();
-                    if (orig.length > 0) {
-                      textEl.textContent = "";
-                      scrambleText(textEl, orig, Math.min(Math.max(orig.length * 15, 400), 1200));
-                    }
-                  }
-                });
+                const bentoTitle = item.querySelector('h3, .tech-name, .contact-title');
+                if (bentoTitle && !bentoTitle.dataset.scrambled) {
+                  bentoTitle.dataset.scrambled = "true";
+                  const orig = bentoTitle.textContent.trim();
+                  bentoTitle.textContent = "";
+                  scrambleText(bentoTitle, orig, 600);
+                }
               });
             }
-          }
+          },
+          y: 40,
+          duration: 0.3,
+          stagger: 0.05,
+          ease: 'steps(4)',
+          clearProps: 'all'
         });
       }
     });
@@ -234,19 +235,20 @@ document.addEventListener('DOMContentLoaded', () => {
             start: 'top 92%',
             onEnter: () => {
               pixelReveal(el);
-              const textsToScramble = el.querySelectorAll('h3, h4, p, .project-title, .service-title, .roadmap-company, .roadmap-role, .author-name, .work-name, .tech-name, .service-desc, .roadmap-desc, .roadmap-date, .testimonial-text');
-              textsToScramble.forEach(textEl => {
-                if (!textEl.dataset.scrambled && textEl.children.length === 0) {
-                  textEl.dataset.scrambled = "true";
-                  const orig = textEl.textContent.trim();
-                  if (orig.length > 0) {
-                    textEl.textContent = "";
-                    scrambleText(textEl, orig, Math.min(Math.max(orig.length * 15, 400), 1200));
-                  }
-                }
-              });
+              const cardTitle = el.querySelector('h3, .project-title, .service-title, .roadmap-company, .roadmap-role, .author-name, .work-name, .tech-name');
+              if (cardTitle && !cardTitle.dataset.scrambled) {
+                cardTitle.dataset.scrambled = "true";
+                const orig = cardTitle.textContent.trim();
+                cardTitle.textContent = "";
+                scrambleText(cardTitle, orig, 600);
+              }
             }
-          }
+          },
+          y: 40,
+          duration: 0.3,
+          delay: (i % 3) * 0.1, // Slight stagger for grid items
+          ease: 'steps(4)',
+          clearProps: 'all'
         });
       });
     });
