@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
           heroTl
             .from('.nav-container', { y: -20, opacity: 0 }, '+=0.4')
             .add(() => {
-              document.querySelectorAll('.brutal-hero-box, .brutal-description-box, .image-frame').forEach(el => pixelReveal(el));
+              document.querySelectorAll('.brutal-hero-box, .brutal-description-box, .image-frame, .hero-tagline, .nav-container').forEach(el => pixelReveal(el));
             })
             .from('.brutal-hero-box', { x: -20, opacity: 0 })
             .from('.hero-title .line', { x: -20, opacity: 0, stagger: 0.1 })
@@ -170,7 +170,10 @@ document.addEventListener('DOMContentLoaded', () => {
         ScrollTrigger.create({
           trigger: section,
           start: 'top 85%',
-          onEnter: () => scrambleText(title, originalText, Math.max(originalText.length * 50, 600)),
+          onEnter: () => {
+            pixelReveal(title);
+            scrambleText(title, originalText, Math.max(originalText.length * 50, 600));
+          },
           once: true
         });
       }
