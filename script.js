@@ -89,8 +89,8 @@ function startPacManChomp(polyId) {
   const poly = document.getElementById(polyId);
   if (!poly) return null;
   let open = true;
-  const OPEN_PTS = '20,20 40,13 40,27';   // ~35deg mouth opening
-  const CLOSED_PTS = '20,20 40,19 40,21'; // nearly closed
+  const OPEN_PTS = '20,20 40,11 40,29';   // ~45deg mouth opening
+  const CLOSED_PTS = '20,20 40,20 40,20'; // fully closed
   const interval = setInterval(() => {
     poly.setAttribute('points', open ? OPEN_PTS : CLOSED_PTS);
     open = !open;
@@ -191,7 +191,7 @@ function startPacManChomp(polyId) {
         // Wait one frame so layout is painted, then measure & start
         requestAnimationFrame(() => {
           // Use window.innerWidth as the reliable full-screen track width
-          const trackW = Math.max(window.innerWidth - 120, 300);
+          const trackW = Math.max(window.innerWidth - 130, 200);
           const t0 = performance.now();
 
           const tick = (now) => {
@@ -206,7 +206,7 @@ function startPacManChomp(polyId) {
             if (dots.length) {
               const spacing = trackW / (NUM_DOTS - 1);
               dots.forEach((d, i) => {
-                if (t * trackW + 34 > i * spacing) {
+                if (t * trackW + 25 > i * spacing) {
                   d.classList.add('eaten');
                   if ((i === 4 || i === NUM_DOTS - 2) && !ghostFleeing) {
                     ghostFleeing = true;
@@ -276,7 +276,7 @@ function startPacManChomp(polyId) {
 
     const runCollabOnce = () => {
       resetCollab();
-      const trackW = Math.max(window.innerWidth - 130, 280);
+      const trackW = Math.max(window.innerWidth - 130, 200);
       const t0 = performance.now();
 
       const tick = (now) => {
@@ -287,7 +287,7 @@ function startPacManChomp(polyId) {
         if (cDots.length) {
           const spacing = trackW / (COLLAB_DOTS - 1);
           cDots.forEach((d, i) => {
-            if (t * trackW + 36 > i * spacing) {
+            if (t * trackW + 30 > i * spacing) {
               d.classList.add('eaten');
               if ((i === 5 || i === COLLAB_DOTS - 2) && !collabGhostFlee) {
                 collabGhostFlee = true;

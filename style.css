@@ -4009,8 +4009,6 @@ a:focus-visible, button:focus-visible {
 }
 
 
-100% { transform: rotate(25deg); }
-}
 
 /* =========================================================
    PAC-MAN LOADER & COLLAB TRACK — FULL IMPLEMENTATION
@@ -4019,27 +4017,28 @@ a:focus-visible, button:focus-visible {
 /* ---- Loader Pac-Man Track ---- */
 .pm-track-wrapper {
   position: absolute;
-  bottom: 70px;
+  bottom: 80px;
   left: 0;
   right: 0;
   width: 100%;
-  overflow: hidden;
+  padding: 0;
+  background: rgba(255,255,255,0.6);
+  border-top: 3px solid #2d241e;
+  border-bottom: 3px solid #2d241e;
 }
 
 .pm-track {
   position: relative;
   width: 100%;
-  height: 60px;
-  display: flex;
-  align-items: center;
+  height: 64px;
 }
 
 /* Pac-Man character container — starts at left edge */
 .pm-char {
   position: absolute;
-  left: 10px;
+  left: 0;
   top: 50%;
-  transform: translateY(-50%) translateX(0);
+  margin-top: -25px;
   z-index: 10;
   will-change: transform;
   line-height: 0;
@@ -4055,24 +4054,26 @@ a:focus-visible, button:focus-visible {
 /* Ghost at right end */
 .pm-ghost {
   position: absolute;
-  right: 10px;
+  right: 6px;
   top: 50%;
-  transform: translateY(-50%);
+  margin-top: -27px;
   z-index: 5;
   transition: filter 0.3s;
+  line-height: 0;
 }
 
 /* Dots row — centered vertically on the track */
 .pm-dots-row {
   position: absolute;
-  left: 70px;
-  right: 70px;
+  left: 60px;
+  right: 60px;
   top: 50%;
-  transform: translateY(-50%);
+  margin-top: -5px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   z-index: 3;
+  pointer-events: none;
 }
 
 .pm-dot {
@@ -4108,8 +4109,6 @@ a:focus-visible, button:focus-visible {
   position: relative;
   width: 100%;
   height: 70px;
-  display: flex;
-  align-items: center;
   background: rgba(45, 36, 30, 0.05);
   border-top: 3px solid #2d241e;
   border-bottom: 3px solid #2d241e;
@@ -4117,9 +4116,9 @@ a:focus-visible, button:focus-visible {
 
 .collab-pm-char {
   position: absolute;
-  left: 10px;
+  left: 0;
   top: 50%;
-  transform: translateY(-50%) translateX(0);
+  margin-top: -30px;
   z-index: 10;
   will-change: transform;
   line-height: 0;
@@ -4127,23 +4126,25 @@ a:focus-visible, button:focus-visible {
 
 .collab-pm-ghost {
   position: absolute;
-  right: 10px;
+  right: 6px;
   top: 50%;
-  transform: translateY(-50%);
+  margin-top: -31px;
   z-index: 5;
   transition: filter 0.3s;
+  line-height: 0;
 }
 
 .collab-pm-dots {
   position: absolute;
-  left: 80px;
-  right: 80px;
+  left: 70px;
+  right: 70px;
   top: 50%;
-  transform: translateY(-50%);
+  margin-top: -6px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   z-index: 3;
+  pointer-events: none;
 }
 
 .cpm-dot {
