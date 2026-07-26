@@ -1,4 +1,4 @@
-/* =========================================
+﻿/* =========================================
    PORTFOLIO v5.2 | ARCHITECT LEVEL POLISH
    Performance Optimized & Layout Hardened
    ========================================= */
@@ -3048,7 +3048,7 @@ body.no-scroll {
 
   /* Social Footer */
   .nav-links::after {
-    content: 'ATS Ã‚Â© 2026';
+    content: 'ATS Ãƒâ€šÃ‚Â© 2026';
     font-size: 0.7rem;
     color: rgba(255, 255, 255, 0.3);
     position: absolute;
@@ -3498,7 +3498,7 @@ body.no-scroll {
 
 
 /* =========================================
-   WORKS Ã¢â‚¬â€ RESPONSIVE
+   WORKS ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â RESPONSIVE
    ========================================= */
 @media (max-width: 768px) {
   .works-section {
@@ -3549,7 +3549,7 @@ body.no-scroll {
 }
 
 /* =========================================
-   TESTIMONIALS Ã¢â‚¬â€ RESPONSIVE
+   TESTIMONIALS ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â RESPONSIVE
    ========================================= */
 @media (max-width: 768px) {
   .testimonials-section {
@@ -3593,7 +3593,7 @@ body.no-scroll {
 }
 
 /* =========================================
-   WORKS Ã¢â‚¬â€ CASE STUDIES
+   WORKS ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â CASE STUDIES
    ========================================= */
 .works-section {
   padding: 140px 0;
@@ -3795,7 +3795,7 @@ body.no-scroll {
 }
 
 /* =========================================
-   TESTIMONIALS Ã¢â‚¬â€ CLIENT FEEDBACK
+   TESTIMONIALS ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â CLIENT FEEDBACK
    ========================================= */
 .testimonials-section {
   padding: 140px 0;
@@ -4020,16 +4020,6 @@ a:focus-visible, button:focus-visible {
   }
   .arcade-sub-box {
     font-size: 1.1rem;
-    padding: 1rem;
-  }
-  .arcade-actions {
-    flex-direction: column;
-    gap: 1rem;
-    width: 100%;
-  }
-  .btn-arcade-primary, .btn-arcade-outline {
-    width: 100%;
-
 
 /* =========================================
    PAC-MAN MOUTH CHOMP ANIMATION (DUAL JAW)
@@ -4073,14 +4063,23 @@ a:focus-visible, button:focus-visible {
 }
 
 /* =========================================
-   FULL HERO SECTION & MULTI-SCREEN OPTIMIZATION
-   (Ultrawide, 4K, Laptop, Tablet, Mobile)
+   FULL HERO, PROJECTS & MULTI-SCREEN OPTIMIZATION
+   (Prevents Card & Shadow Cutoff across 4K, Laptop, Tablet, Mobile)
    ========================================= */
+
+/* Global Container & Section Safety */
+.container {
+  padding: 0 1.75rem !important;
+  box-sizing: border-box !important;
+}
+
+section, .hero-section, .portfolio-section, .bento-section, .experience-section, .contact-section {
+  overflow: visible !important;
+}
 
 /* Base Desktop & Laptop Hero Layout */
 .hero-section {
   position: relative;
-  overflow: hidden;
   padding: 130px 0 70px;
 }
 
@@ -4102,6 +4101,7 @@ a:focus-visible, button:focus-visible {
   position: relative;
   z-index: 2;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .brutal-title {
@@ -4143,6 +4143,7 @@ a:focus-visible, button:focus-visible {
   width: 100%;
   max-width: 320px;
   margin: 0 auto;
+  overflow: visible !important;
 }
 
 .image-frame img {
@@ -4157,10 +4158,31 @@ a:focus-visible, button:focus-visible {
   z-index: 2;
 }
 
+/* Projects Section Un-Cutoff Rules */
+.project-card {
+  overflow: visible !important;
+  margin-bottom: 1rem;
+}
+
+.project-image {
+  box-shadow: 8px 8px 0px rgba(45, 36, 30, 1) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.project-card:hover .project-image {
+  transform: translate(-4px, -4px) !important;
+  box-shadow: 12px 12px 0px rgba(45, 36, 30, 1) !important;
+}
+
+.bento-item {
+  overflow: visible !important;
+}
+
 /* 4K & Ultrawide Display Optimization (>1600px) */
 @media (min-width: 1600px) {
   .container {
     max-width: 1500px !important;
+    padding: 0 2rem !important;
   }
   .hero-container {
     grid-template-columns: 1.2fr 0.8fr !important;
@@ -4212,10 +4234,10 @@ a:focus-visible, button:focus-visible {
   }
 }
 
-/* Mobile Devices (<= 768px) — COMPLETE MOBILE HERO POLISH */
+/* Mobile Devices (<= 768px) — COMPLETE NO-CUTOFF POLISH */
 @media (max-width: 768px) {
   .container {
-    padding: 0 1rem !important;
+    padding: 0 1.25rem !important;
   }
   .hero-section {
     padding: 95px 0 40px !important;
@@ -4292,7 +4314,7 @@ a:focus-visible, button:focus-visible {
     font-size: 0.55rem !important;
   }
   .real-retro-elements {
-    display: none !important; /* Clean mobile background without floating overlapping icons */
+    display: none !important;
   }
   .easter-egg.invader {
     top: -15px !important;
@@ -4303,7 +4325,7 @@ a:focus-visible, button:focus-visible {
   /* Bento Grid Mobile */
   .bento-stack, .project-grid, .service-grid, .testimonial-grid {
     grid-template-columns: 1fr !important;
-    gap: 1.5rem !important;
+    gap: 1.75rem !important;
   }
   .bento-main, .bento-wide, .bento-item {
     grid-column: span 1 !important;
