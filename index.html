@@ -116,6 +116,14 @@
 </head>
 
 <body class="dark-theme">
+  <!-- Retro Boot Loading Screen -->
+  <div class="retro-loader" id="retroLoader">
+    <div class="loader-content">
+      <div class="loader-title">SYSTEM BOOT...</div>
+      <div class="loader-bar" id="loaderBar">[          ] 0%</div>
+      <div class="loader-text" id="loaderText">Initializing modules...</div>
+    </div>
+  </div>
 
   <!-- Grainy Overlay for texture -->
   <div class="grain"></div>
@@ -143,13 +151,79 @@
   </nav>
 
   <main>
-    <!-- Hero Section: FULL RETRO NEUBRUTALIST HERO PAGE -->
+    <!-- Hero Section: SKIN & PEACH NEUBRUTALIST HERO -->
     <section id="hero" class="hero-section brutal-hero-section">
       <div class="brutal-grid-bg"></div>
-      
+
+      <!-- Real Google Dino Game Design (SVG Pixel Art) -->
+      <div class="real-dino-game">
+        <div class="dino-ground"></div>
+        <div class="dino-character">
+          <svg viewBox="0 0 44 47" width="44" height="47" fill="#2d241e">
+            <rect x="22" y="0" width="20" height="15" />
+            <rect x="42" y="2" width="2" height="13" />
+            <rect x="26" y="2" width="2" height="2" fill="#fff0e6" />
+            <rect x="22" y="15" width="9" height="2" />
+            <rect x="33" y="15" width="9" height="2" />
+            <rect x="22" y="17" width="7" height="2" />
+            <rect x="22" y="19" width="9" height="2" />
+            <rect x="19" y="15" width="3" height="8" />
+            <rect x="17" y="21" width="2" height="4" />
+            <rect x="15" y="23" width="2" height="11" />
+            <rect x="17" y="34" width="14" height="4" />
+            <rect x="27" y="23" width="2" height="11" />
+            <rect x="13" y="25" width="2" height="9" />
+            <rect x="11" y="23" width="2" height="9" />
+            <rect x="9" y="19" width="2" height="9" />
+            <rect x="7" y="17" width="2" height="9" />
+            <rect x="29" y="23" width="6" height="2" />
+            <rect x="33" y="25" width="2" height="2" />
+            <rect x="19" y="38" width="4" height="9" class="leg-left" />
+            <rect x="15" y="45" width="8" height="2" class="leg-left" />
+            <rect x="29" y="38" width="4" height="9" class="leg-right" />
+            <rect x="25" y="45" width="8" height="2" class="leg-right" />
+          </svg>
+        </div>
+        <div class="cactus-obstacle">
+          <svg viewBox="0 0 24 48" width="24" height="48" fill="#2d241e">
+            <rect x="8" y="0" width="8" height="48" />
+            <rect x="0" y="12" width="4" height="16" />
+            <rect x="4" y="24" width="4" height="4" />
+            <rect x="0" y="10" width="8" height="2" />
+            <rect x="20" y="6" width="4" height="16" />
+            <rect x="16" y="18" width="4" height="4" />
+            <rect x="16" y="4" width="8" height="2" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Real Retro Game Characters (SVG) -->
+      <div class="real-retro-elements">
+        <!-- Super Mario -->
+        <div class="retro-char super-mario">
+           <svg viewBox="0 0 16 16" width="64" height="64" fill="#2d241e">
+             <rect x="5" y="0" width="5" height="1"/><rect x="4" y="1" width="9" height="1"/><rect x="4" y="2" width="3" height="1"/><rect x="8" y="2" width="2" height="1"/><rect x="11" y="2" width="1" height="1"/><rect x="3" y="3" width="1" height="1"/><rect x="5" y="3" width="1" height="1"/><rect x="7" y="3" width="3" height="1"/><rect x="11" y="3" width="1" height="1"/><rect x="13" y="3" width="1" height="1"/><rect x="3" y="4" width="1" height="1"/><rect x="5" y="4" width="2" height="1"/><rect x="8" y="4" width="3" height="1"/><rect x="12" y="4" width="2" height="1"/><rect x="3" y="5" width="2" height="1"/><rect x="7" y="5" width="4" height="1"/><rect x="5" y="6" width="7" height="1"/><rect x="4" y="7" width="2" height="1"/><rect x="7" y="7" width="1" height="1"/><rect x="3" y="8" width="3" height="1"/><rect x="7" y="8" width="1" height="1"/><rect x="10" y="8" width="3" height="1"/><rect x="2" y="9" width="4" height="1"/><rect x="7" y="9" width="2" height="1"/><rect x="10" y="9" width="4" height="1"/><rect x="1" y="10" width="4" height="1"/><rect x="6" y="10" width="1" height="1"/><rect x="9" y="10" width="1" height="1"/><rect x="11" y="10" width="4" height="1"/><rect x="1" y="11" width="14" height="1"/><rect x="1" y="12" width="3" height="1"/><rect x="12" y="12" width="3" height="1"/><rect x="3" y="13" width="3" height="1"/><rect x="10" y="13" width="3" height="1"/><rect x="2" y="14" width="4" height="1"/><rect x="10" y="14" width="4" height="1"/>
+           </svg>
+        </div>
+        <!-- Red Dead Redemption (Cowboy Silhouette) -->
+        <div class="retro-char red-dead">
+           <svg viewBox="0 0 24 24" width="80" height="80" fill="#2d241e">
+             <path d="M6,10 L18,10 L16,7 L8,7 Z M2,11 L22,11 L22,12 L2,12 Z M9,12 L15,12 L15,18 L9,18 Z M8,18 L16,18 L16,22 L8,22 Z" />
+           </svg>
+        </div>
+        <!-- Space Fighter -->
+        <div class="retro-char space-fighter">
+           <svg viewBox="0 0 11 11" width="44" height="44" fill="#2d241e">
+             <rect x="5" y="0" width="1" height="1"/><rect x="4" y="1" width="3" height="1"/><rect x="4" y="2" width="3" height="1"/><rect x="3" y="3" width="5" height="1"/><rect x="2" y="4" width="7" height="1"/><rect x="1" y="5" width="9" height="1"/><rect x="0" y="6" width="11" height="1"/><rect x="0" y="7" width="1" height="1"/><rect x="2" y="7" width="7" height="1"/><rect x="10" y="7" width="1" height="1"/><rect x="0" y="8" width="1" height="1"/><rect x="3" y="8" width="5" height="1"/><rect x="10" y="8" width="1" height="1"/>
+           </svg>
+        </div>
+      </div>
+
+
+
       <div class="container hero-container">
-        <!-- Hero Content Column -->
-        <div class="hero-content">
+        <!-- Main Dark Cyber Neubrutalist Box -->
+        <div class="brutal-hero-box">
           <div class="availability-badge brutal-badge">
             <span class="dot pulse"></span>
             <span>Direct Availability: Jan 2026</span>
@@ -168,31 +242,20 @@
             </p>
           </div>
 
-          <!-- Quick Links Brutalist Button Bar (Matching Reference Image 1) -->
-          <div class="brutal-quick-links-wrap">
-            <span class="brutal-quick-label">Quick links</span>
-            <div class="brutal-quick-links-bar">
-              <a href="#works" class="brutal-quick-btn">
-                <span>Show Works</span>
-                <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
-              </a>
-              <a href="#projects" class="brutal-quick-btn">
-                <span>Projects</span>
-                <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
-              </a>
-              <a href="#about" class="brutal-quick-btn">
-                <span>About</span>
-                <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
-              </a>
-              <a href="contact.html" class="brutal-quick-btn">
-                <span>Contact</span>
-                <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
-              </a>
-            </div>
+          <!-- Original Buttons with Neubrutalist 3px Black Border & Hard Shadow -->
+          <div class="hero-actions brutal-actions">
+            <a href="#works" class="btn btn-brutal-primary">
+              <span>Show Works</span>
+              <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
+            </a>
+            <a href="#projects" class="btn btn-brutal-secondary">
+              <span>Projects</span>
+              <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
+            </a>
           </div>
         </div>
 
-        <!-- Profile Frame (Matching Reference Image 2) -->
+        <!-- Profile Frame with Dark Neubrutalist 3px Black Border & Hard Shadow -->
         <div class="hero-image">
           <div class="image-frame brutal-frame">
             <img src="profile.webp" alt="Aman T Shekar Profile" fetchpriority="high" width="400" height="500">
@@ -206,8 +269,8 @@
       </div>
 
       <div class="scroll-down brutal-scroll">
-        <span>SCROLL</span>
-        <div class="line brutal-line"></div>
+        <span class="scroll-text-retro">SCROLL</span>
+        <div class="pixel-arrow"><i class="fa-solid fa-chevron-down"></i></div>
       </div>
     </section>
 

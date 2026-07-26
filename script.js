@@ -12,26 +12,51 @@ document.addEventListener('DOMContentLoaded', () => {
       gsap.registerPlugin(ScrollTrigger);
     }
 
-    // 2. Cinematic Hero Entrance
-    const heroTl = gsap.timeline({ defaults: { ease: 'power4.out', duration: 1.5 } });
+    // 2. Retro Boot Sequence & Hero Reveal
+    const retroLoader = document.getElementById('retroLoader');
+    const loaderBar = document.getElementById('loaderBar');
+    const loaderText = document.getElementById('loaderText');
 
-    heroTl
-      .from('.nav-container', { y: -30, opacity: 0, duration: 1 })
-      .from('.brutal-card', { y: 40, opacity: 0, scale: 0.95, duration: 1.2 }, '-=0.6')
-      .from('.hero-title .line', { y: 60, opacity: 0, stagger: 0.15 }, '-=0.8')
-      .from('.brutal-description-box', { opacity: 0, y: 20, duration: 0.8 }, '-=0.8')
-      .from('.brutal-quick-btn', { opacity: 0, y: 20, stagger: 0.1, duration: 0.8 }, '-=0.6')
-      .from('.image-frame', { x: 80, opacity: 0, duration: 1.5, scale: 0.95 }, '-=1.2')
-      .from('.exp-badge', { scale: 0, opacity: 0, ease: 'back.out(2)' }, '-=0.8');
+    if (retroLoader) {
+      document.body.style.overflow = 'hidden'; // prevent scrolling while loading
+      let progress = 0;
+      const interval = setInterval(() => {
+        progress += 10;
+        const filled = '|'.repeat(progress / 10);
+        const empty = ' '.repeat(10 - (progress / 10));
+        loaderBar.textContent = `[${filled}${empty}] ${progress}%`;
+        
+        if (progress === 30) loaderText.textContent = 'Loading core modules...';
+        if (progress === 70) loaderText.textContent = 'Establishing secure connection...';
+        if (progress === 100) loaderText.textContent = 'SYSTEM ONLINE.';
+        
+        if (progress >= 100) {
+          clearInterval(interval);
+          gsap.to(retroLoader, {
+            y: '-100%',
+            duration: 0.4,
+            ease: 'power4.in',
+            delay: 0.3,
+            onComplete: () => {
+              retroLoader.style.display = 'none';
+              document.body.style.overflow = '';
+            }
+          });
 
-    // 2b. Hero Image Drift
-    gsap.to('.image-frame img', {
-      y: 15,
-      duration: 4,
-      repeat: -1,
-      yoyo: true,
-      ease: 'sine.inOut'
-    });
+          // Blocky Hero Reveal
+          const heroTl = gsap.timeline({ defaults: { ease: 'none', duration: 0.15 } });
+
+          heroTl
+            .from('.nav-container', { y: -20, opacity: 0 }, '+=0.4')
+            .from('.brutal-hero-box', { x: -20, opacity: 0 })
+            .from('.hero-title .line', { x: -20, opacity: 0, stagger: 0.1 })
+            .from('.brutal-description-box', { y: 20, opacity: 0 })
+            .from('.hero-actions', { y: 20, opacity: 0 })
+            .from('.image-frame', { x: 20, opacity: 0 })
+            .from('.exp-badge', { scale: 0.8, opacity: 0 });
+        }
+      }, 80); // Speed of loading
+    }
   }
 
   // 3. Hero Tagline Animation (Replaces the native implementation)
@@ -51,8 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
         y: 10,
         opacity: 0,
         stagger: 0.1,
-        duration: 0.6,
-        ease: 'power2.out',
+        duration: 0.15,
+        ease: 'none',
         delay: 0.3
       });
     }
@@ -71,8 +96,8 @@ document.addEventListener('DOMContentLoaded', () => {
           },
           y: 20,
           opacity: 0,
-          duration: 0.8,
-          ease: 'power2.out'
+          duration: 0.2,
+          ease: 'none'
         });
       }
 
@@ -85,44 +110,19 @@ document.addEventListener('DOMContentLoaded', () => {
             start: 'top 95%',
             toggleActions: 'play none none none'
           },
-          y: 30,
+          y: 20,
           opacity: 0,
           stagger: 0.05,
-          duration: 0.8,
-          ease: 'power2.out',
+          duration: 0.2,
+          ease: 'none',
           clearProps: 'all'
         });
       }
     });
   }
 
-  // 5. Bento Item Hover Parallax (Desktop Only)
-  if (hasGsap && window.matchMedia('(min-width: 1024px)').matches) {
-    document.querySelectorAll('.bento-item').forEach(item => {
-      item.addEventListener('mousemove', (e) => {
-        const rect = item.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-
-        gsap.to(item, {
-          rotateY: x * 5,
-          rotateX: -y * 5,
-          transformPerspective: 1000,
-          duration: 0.4,
-          ease: 'power2.out'
-        });
-      });
-
-      item.addEventListener('mouseleave', () => {
-        gsap.to(item, {
-          rotateY: 0,
-          rotateX: 0,
-          duration: 0.8,
-          ease: 'power2.out'
-        });
-      });
-    });
-  }
+  // 5. Bento Item Hover Parallax (REMOVED FOR RETRO THEME)
+  // 3D Tilt conflicts with flat 2D blocky aesthetics.
 
   // 6. Generic GSAP Scroll Reveals (Replacing native IntersectionObserver)
   if (hasGsap && typeof ScrollTrigger !== 'undefined') {
@@ -134,11 +134,11 @@ document.addEventListener('DOMContentLoaded', () => {
             trigger: el,
             start: 'top 92%',
           },
-          y: 40,
+          y: 20,
           opacity: 0,
-          duration: 0.8,
+          duration: 0.2,
           delay: (i % 3) * 0.1, // Slight stagger for grid items
-          ease: 'power2.out'
+          ease: 'none'
         });
       });
     });
