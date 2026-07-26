@@ -125,10 +125,14 @@ document.addEventListener('DOMContentLoaded', () => {
             start: 'top 95%',
             toggleActions: 'play none none none'
           },
-          clipPath: 'inset(0 100% 0 0)',
+          keyframes: [
+            { opacity: 0, duration: 0.05 },
+            { opacity: 1, duration: 0.05 },
+            { opacity: 0, duration: 0.05 },
+            { opacity: 1, duration: 0.1 }
+          ],
           stagger: 0.05,
-          duration: 0.25,
-          ease: 'none',
+          ease: 'steps(1)',
           clearProps: 'all'
         });
       }
@@ -148,10 +152,14 @@ document.addEventListener('DOMContentLoaded', () => {
             trigger: el,
             start: 'top 92%',
           },
-          clipPath: 'inset(0 100% 0 0)',
-          duration: 0.25,
+          keyframes: [
+            { opacity: 0, duration: 0.05 },
+            { opacity: 1, duration: 0.05 },
+            { opacity: 0, duration: 0.05 },
+            { opacity: 1, duration: 0.1 }
+          ],
           delay: (i % 3) * 0.1, // Slight stagger for grid items
-          ease: 'none',
+          ease: 'steps(1)',
           clearProps: 'all'
         });
       });
