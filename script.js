@@ -123,6 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const dots = [];
 
         if (dotsRow) {
+          dotsRow.innerHTML = ''; // Clear any existing dots
           for (let i = 0; i < NUM_DOTS; i++) {
             const d = document.createElement('span');
             d.className = (i === 4 || i === NUM_DOTS - 2) ? 'pm-dot power' : 'pm-dot';
@@ -131,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         }
 
-        const TOTAL_MS = 3000;
+        const TOTAL_MS = 1800;
         let ghostFleeing = false;
         let rafId;
         let finished = false;
@@ -620,8 +621,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const wipe = document.createElement('div');
       Object.assign(wipe.style, {
-        position: 'fixed', top: '0', left: '0',
-        width: '100vw', height: '100vh',
+        position: 'fixed', top: '0', left: '0', right: '0',
+        width: '100%', height: '100vh',
         background: '#000',
         zIndex: '999999',
         transform: 'translateY(101%)',
