@@ -84,18 +84,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     
-// Pac-Man mouth chomp animation — drives the SVG polygon directly
+// Pac-Man mouth chomp — smooth sine-wave driven RAF animation
 function startPacManChomp(polyId) {
   const poly = document.getElementById(polyId);
   if (!poly) return null;
-  let open = true;
-  const OPEN_PTS = '20,20 40,11 40,29';   // ~45deg mouth opening
-  const CLOSED_PTS = '20,20 40,20 40,20'; // fully closed
-  const interval = setInterval(() => {
-    poly.setAttribute('points', open ? OPEN_PTS : CLOSED_PTS);
-    open = !open;
-  }, 120); // ~8 chomps/sec
-  return interval;
+  let raf;
+  let running = true;
+  const cx = 20, cy = 20, r = 20;
+  const MAX_ANGLE = 42;
+  const SPEED = 7;
+
+  function animate(now) {
+    if (!running) return;
+    const phase = Math.abs(Math.sin(now * 0.001 * Math.PI * SPEED));
+    const angleDeg = 4 + phase * MAX_ANGLE;
+    const angleRad = angleDeg * Math.PI / 180;
+    const x1 = cx + r * Math.cos(-angleRad);
+    const y1 = cy + r * Math.sin(-angleRad);
+    const x2 = cx + r * Math.cos(angleRad);
+    const y2 = cy + r * Math.sin(angleRad);
+    poly.setAttribute('points', cx+','+cy+' '+x1.toFixed(1)+','+y1.toFixed(1)+' '+x2.toFixed(1)+','+y2.toFixed(1));
+    raf = requestAnimationFrame(animate);
+  }
+
+  raf = requestAnimationFrame(animate);
+  return function stop() { running = false; cancelAnimationFrame(raf); };
 }
 
     // 2. Retro Boot Sequence — Real Pac-Man end-to-end
@@ -137,7 +150,7 @@ function startPacManChomp(polyId) {
         const NUM_DOTS = 20;
         const dots = [];
 
-        const pmChompInterval = startPacManChomp('pmMouthPoly');
+        const stopPmChomp = startPacManChomp('pmMouthPoly');
         if (dotsRow) {
           dotsRow.innerHTML = ''; // Clear any existing dots
           for (let i = 0; i < NUM_DOTS; i++) {
@@ -169,6 +182,7 @@ function startPacManChomp(polyId) {
         const closeLoader = () => {
           if (finished) return;
           finished = true;
+          if (stopPmChomp) stopPmChomp();
           cancelAnimationFrame(rafId);
           updateBar(100);
           if (loaderText) loaderText.textContent = 'SYSTEM ONLINE.';
@@ -263,7 +277,7 @@ function startPacManChomp(polyId) {
       cDots.push(d);
     }
 
-    let collabChompInterval = null;
+    let stopCollabChomp = null;
     const resetCollab = () => {
       collabGhostFlee = false;
       cDots.forEach(d => d.classList.remove('eaten'));
