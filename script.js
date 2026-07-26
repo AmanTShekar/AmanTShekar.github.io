@@ -17,12 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     heroTl
       .from('.nav-container', { y: -30, opacity: 0, duration: 1 })
+      .from('.arcade-hud-bar', { y: -20, opacity: 0, scale: 0.95, duration: 0.8 }, '-=0.6')
       .from('.hero-title .line', { y: 100, opacity: 0, stagger: 0.15, skewY: 5 }, '-=0.8')
       .from('.availability-badge', { x: -20, opacity: 0 }, '-=1.2')
       .from('.hero-sub', { y: 30, opacity: 0 }, '-=1.2')
       .from('.hero-actions', { y: 30, opacity: 0 }, '-=1.2')
       .from('.image-frame', { x: 100, opacity: 0, duration: 2, scale: 0.9 }, '-=1.5')
-      .from('.exp-badge', { scale: 0, opacity: 0, ease: 'back.out(2)' }, '-=1.2');
+      .from('.exp-badge', { scale: 0, opacity: 0, ease: 'back.out(2)' }, '-=1.2')
+      .from('.arcade-hp-container', { y: 20, opacity: 0, duration: 0.8 }, '-=0.8');
 
     // 2b. Hero Image Drift
     gsap.to('.image-frame img', {
