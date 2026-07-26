@@ -224,7 +224,99 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-  // 3. Hero Tagline Animation (Replaces the native implementation)
+  // 3. Collab Section — Real Pac-Man track animation (ScrollTrigger activated, loops)
+  const collabWrapper = document.getElementById('collabPmWrapper');
+  const collabChar    = document.getElementById('collabPmChar');
+  const collabDots    = document.getElementById('collabPmDots');
+  const collabGhost   = document.getElementById('collabPmGhost');
+
+  if (collabWrapper && collabChar && collabDots) {
+    const COLLAB_DOTS  = 22;
+    const COLLAB_MS    = 2400; // one left-to-right run
+    const cDots        = [];
+    let collabRaf;
+    let collabStarted  = false;
+    let collabGhostFlee = false;
+
+    // Inject dots
+    for (let i = 0; i < COLLAB_DOTS; i++) {
+      const d = document.createElement('span');
+      d.className = (i === 5 || i === COLLAB_DOTS - 2) ? 'cpm-dot power' : 'cpm-dot';
+      collabDots.appendChild(d);
+      cDots.push(d);
+    }
+
+    const resetCollab = () => {
+      collabGhostFlee = false;
+      cDots.forEach(d => d.classList.remove('eaten'));
+      if (collabChar) collabChar.style.transform = 'translateX(0px)';
+      if (collabGhost) {
+        const gs = collabGhost.querySelector('svg');
+        if (gs) gs.style.filter = '';
+      }
+    };
+
+    const runCollabOnce = () => {
+      resetCollab();
+      const trackW = Math.max(window.innerWidth - 130, 280);
+      const t0 = performance.now();
+
+      const tick = (now) => {
+        const t = Math.min((now - t0) / COLLAB_MS, 1);
+
+        if (collabChar) collabChar.style.transform = 'translateX(' + Math.round(t * trackW) + 'px)';
+
+        if (cDots.length) {
+          const spacing = trackW / (COLLAB_DOTS - 1);
+          cDots.forEach((d, i) => {
+            if (t * trackW + 36 > i * spacing) {
+              d.classList.add('eaten');
+              if ((i === 5 || i === COLLAB_DOTS - 2) && !collabGhostFlee) {
+                collabGhostFlee = true;
+                if (collabGhost) {
+                  const gs = collabGhost.querySelector('svg');
+                  if (gs) gs.style.filter = 'hue-rotate(195deg) brightness(0.55)';
+                }
+              }
+            }
+          });
+        }
+
+        if (t < 1) {
+          collabRaf = requestAnimationFrame(tick);
+        } else {
+          // Pause at end, then loop back
+          setTimeout(() => {
+            collabGhostFlee = false;
+            runCollabOnce();
+          }, 800);
+        }
+      };
+
+      collabRaf = requestAnimationFrame(tick);
+    };
+
+    // Trigger when contact section scrolls into view
+    if (hasGsap && typeof ScrollTrigger !== 'undefined') {
+      ScrollTrigger.create({
+        trigger: '#contact',
+        start: 'top 80%',
+        once: false,
+        onEnter: () => {
+          if (!collabStarted) {
+            collabStarted = true;
+            requestAnimationFrame(() => runCollabOnce());
+          }
+        }
+      });
+    } else {
+      // Fallback: start immediately
+      requestAnimationFrame(() => runCollabOnce());
+    }
+  }
+
+  // 4. Hero Tagline Animation (Replaces the native implementation)
+
   const tagline = document.querySelector('.hero-tagline');
   if (tagline) {
     const text = tagline.textContent.trim();
