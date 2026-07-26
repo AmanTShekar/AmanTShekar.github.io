@@ -1,3 +1,4 @@
+*, *::before, *::after { box-sizing: border-box; }
 ﻿/* =========================================
    PORTFOLIO v5.2 | ARCHITECT LEVEL POLISH
    Performance Optimized & Layout Hardened
@@ -501,9 +502,9 @@ body::after {
 }
 
 /* Larger Title Size & Old Header Font */
-.brutal-title {
+.brutal-title { word-break: break-word; overflow-wrap: break-word; hyphens: auto; 
   font-family: var(--font-h) !important; /* OLD HEADER FONT */
-  font-size: clamp(2.5rem, 4.5vw, 4rem) !important; /* BIGGER TITLE */
+  font-size: clamp(1.8rem, 4.5vw, 4rem); /* BIGGER TITLE */
   font-weight: 800;
   line-height: 1.15 !important;
   letter-spacing: -1px !important;
@@ -4103,7 +4104,7 @@ section, .hero-section, .portfolio-section, .project-section, .services-section,
   gap: clamp(2rem, 4vw, 4rem);
 }
 
-.brutal-title {
+.brutal-title { word-break: break-word; overflow-wrap: break-word; hyphens: auto; 
   font-size: clamp(2.2rem, 5vw, 4rem);
   line-height: 1.1;
   margin-bottom: 1rem;
@@ -4221,5 +4222,11 @@ section, .hero-section, .portfolio-section, .project-section, .services-section,
   .roadmap-item:nth-child(even) .roadmap-content::before,
   .roadmap-item:nth-child(even) .roadmap-content::after {
     display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .brutal-hero-box {
+    padding: 1.25rem !important;
   }
 }
