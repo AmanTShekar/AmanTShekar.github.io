@@ -83,10 +83,10 @@ document.addEventListener('DOMContentLoaded', () => {
       gsap.registerPlugin(ScrollTrigger);
     }
 
-    // 2. Retro Boot Sequence & Hero Reveal
+    // 2. Retro Boot Sequence — Real Pac-Man end-to-end
     const retroLoader = document.getElementById('retroLoader');
-    const loaderBar = document.getElementById('loaderBar');
-    const loaderText = document.getElementById('loaderText');
+    const loaderBar   = document.getElementById('loaderBar');
+    const loaderText  = document.getElementById('loaderText');
 
     if (retroLoader) {
       const hasBooted = sessionStorage.getItem('retroBootComplete');
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const runHeroReveal = () => {
         const heroTl = gsap.timeline({ defaults: { ease: 'none', duration: 0.15 } });
         heroTl
-          .from('.nav-container', { y: -20, opacity: 0 }, hasBooted ? '+=0.1' : '+=0.4')
+          .from('.nav-container', { y: -20, opacity: 0 }, hasBooted ? '+=0.05' : '+=0.4')
           .add(() => {
             document.querySelectorAll('.brutal-hero-box, .brutal-description-box, .image-frame, .hero-tagline, .nav-container').forEach(el => pixelReveal(el));
           })
@@ -111,36 +111,99 @@ document.addEventListener('DOMContentLoaded', () => {
         runHeroReveal();
       } else {
         document.body.style.overflow = 'hidden';
-        let progress = 0;
-        const interval = setInterval(() => {
-          progress += 10;
-          const filled = '|'.repeat(progress / 10);
-          const empty = ' '.repeat(10 - (progress / 10));
-          loaderBar.textContent = `[${filled}${empty}] ${progress}%`;
-          
-          if (progress === 30) loaderText.textContent = 'Loading core modules...';
-          if (progress === 70) loaderText.textContent = 'Establishing secure connection...';
-          if (progress === 100) loaderText.textContent = 'SYSTEM ONLINE.';
-          
-          if (progress >= 100) {
-            clearInterval(interval);
-            sessionStorage.setItem('retroBootComplete', 'true');
-            gsap.to(retroLoader, {
-              y: '-100%',
-              duration: 0.4,
-              ease: 'power4.in',
-              delay: 0.3,
-              onComplete: () => {
-                retroLoader.style.display = 'none';
-                document.body.style.overflow = '';
+
+        // Build dot track
+        const dotsRow = document.getElementById('pmDotsRow');
+        const pmChar  = document.getElementById('pmChar');
+        const pmGhost = document.getElementById('pmGhost');
+        const NUM_DOTS = 20;
+        const dots = [];
+
+        if (dotsRow) {
+          for (let i = 0; i < NUM_DOTS; i++) {
+            const d = document.createElement('span');
+            d.className = (i === 4 || i === NUM_DOTS - 2) ? 'pm-dot power' : 'pm-dot';
+            dotsRow.appendChild(d);
+            dots.push(d);
+          }
+        }
+
+        const TOTAL_MS = 3000;
+        const t0 = performance.now();
+        let ghostFleeing = false;
+        let rafId;
+        const phases = [
+          { pct: 25,  msg: 'Loading modules...' },
+          { pct: 55,  msg: 'Crunching assets...' },
+          { pct: 80,  msg: 'Connecting systems...' },
+          { pct: 100, msg: 'SYSTEM ONLINE.' }
+        ];
+        let phaseIdx = 0;
+
+        const updateBar = (pct) => {
+          if (!loaderBar) return;
+          const n = Math.floor(pct / 10);
+          loaderBar.textContent = '[' + '|'.repeat(n) + ' '.repeat(10 - n) + '] ' + Math.floor(pct) + '%';
+        };
+
+        const tick = (now) => {
+          const t = Math.min((now - t0) / TOTAL_MS, 1);
+          const pct = t * 100;
+
+          // Move Pac-Man
+          const trackW = dotsRow ? dotsRow.getBoundingClientRect().width : (window.innerWidth - 140);
+          if (pmChar) pmChar.style.transform = 'translateX(' + (t * trackW) + 'px)';
+
+          // Eat dots
+          if (dots.length && trackW > 0) {
+            const spacing = trackW / (NUM_DOTS - 1);
+            dots.forEach((d, i) => {
+              if (t * trackW + 30 > i * spacing) {
+                d.classList.add('eaten');
+                if ((i === 4 || i === NUM_DOTS - 2) && !ghostFleeing) {
+                  ghostFleeing = true;
+                  if (pmGhost) {
+                    const gs = pmGhost.querySelector('svg');
+                    if (gs) gs.style.filter = 'hue-rotate(195deg) brightness(0.6)';
+                  }
+                }
               }
             });
-            runHeroReveal();
           }
-        }, 80);
+
+          updateBar(pct);
+          if (phaseIdx < phases.length && pct >= phases[phaseIdx].pct) {
+            if (loaderText) loaderText.textContent = phases[phaseIdx].msg;
+            phaseIdx++;
+          }
+
+          if (t < 1) {
+            rafId = requestAnimationFrame(tick);
+          } else {
+            cancelAnimationFrame(rafId);
+            updateBar(100);
+            if (loaderText) loaderText.textContent = 'SYSTEM ONLINE.';
+            sessionStorage.setItem('retroBootComplete', 'true');
+            setTimeout(() => {
+              gsap.to(retroLoader, {
+                y: '-100%',
+                duration: 0.5,
+                ease: 'steps(12)',
+                onComplete: () => {
+                  retroLoader.style.display = 'none';
+                  document.body.style.overflow = '';
+                }
+              });
+              runHeroReveal();
+            }, 350);
+          }
+        };
+
+        requestAnimationFrame(tick);
       }
     }
   }
+
 
   // 3. Hero Tagline Animation (Replaces the native implementation)
   const tagline = document.querySelector('.hero-tagline');
@@ -427,38 +490,41 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 9. Retro Page Transitions
+  // 9. Universal Smooth Retro Page Transitions (all pages to all pages)
   if (hasGsap) {
-    const internalLinks = document.querySelectorAll('a[href="index.html"], a[href="about.html"], a[href="contact.html"], a[href="./"], a[href="/"]');
-    internalLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-        if (e.ctrlKey || e.metaKey || e.shiftKey) return;
-        const targetUrl = link.getAttribute('href');
-        if (!targetUrl || targetUrl.startsWith('#') || targetUrl.startsWith('mailto:')) return;
-        
-        e.preventDefault();
-        
-        const wipe = document.createElement('div');
-        wipe.className = 'page-wipe';
-        wipe.style.position = 'fixed';
-        wipe.style.top = '0';
-        wipe.style.left = '0';
-        wipe.style.width = '100vw';
-        wipe.style.height = '100vh';
-        wipe.style.backgroundColor = '#000000';
-        wipe.style.zIndex = '999999';
-        wipe.style.transform = 'translateY(100%)';
-        document.body.appendChild(wipe);
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a');
+      if (!link) return;
+      if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+      if (link.target === '_blank') return;
+      if (link.hasAttribute('download')) return;
 
-        gsap.to(wipe, {
-          y: '0%',
-          duration: 0.4,
-          ease: 'steps(8)',
-          onComplete: () => {
-            window.location.href = targetUrl;
-          }
-        });
+      const href = link.getAttribute('href');
+      if (!href) return;
+      if (href.startsWith('mailto:') || href.startsWith('tel:')) return;
+      if (href.startsWith('http') && !href.includes(location.hostname)) return;
+      if (href.startsWith('#')) return;
+
+      e.preventDefault();
+
+      const wipe = document.createElement('div');
+      Object.assign(wipe.style, {
+        position: 'fixed', top: '0', left: '0',
+        width: '100vw', height: '100vh',
+        background: '#000',
+        zIndex: '999999',
+        transform: 'translateY(101%)',
+        pointerEvents: 'all'
+      });
+      document.body.appendChild(wipe);
+
+      gsap.to(wipe, {
+        y: '0%',
+        duration: 0.38,
+        ease: 'steps(9)',
+        onComplete: () => { window.location.href = href; }
       });
     });
   }
 });
+
