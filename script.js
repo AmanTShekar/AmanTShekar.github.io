@@ -129,9 +129,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const TOTAL_MS = 3000;
-        const t0 = performance.now();
         let ghostFleeing = false;
         let rafId;
+        let finished = false;
         const phases = [
           { pct: 25,  msg: 'Loading modules...' },
           { pct: 55,  msg: 'Crunching assets...' },
@@ -142,67 +142,84 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const updateBar = (pct) => {
           if (!loaderBar) return;
-          const n = Math.floor(pct / 10);
+          const n = Math.min(Math.floor(pct / 10), 10);
           loaderBar.textContent = '[' + '|'.repeat(n) + ' '.repeat(10 - n) + '] ' + Math.floor(pct) + '%';
         };
 
-        const tick = (now) => {
-          const t = Math.min((now - t0) / TOTAL_MS, 1);
-          const pct = t * 100;
-
-          // Move Pac-Man
-          const trackW = dotsRow ? dotsRow.getBoundingClientRect().width : (window.innerWidth - 140);
-          if (pmChar) pmChar.style.transform = 'translateX(' + (t * trackW) + 'px)';
-
-          // Eat dots
-          if (dots.length && trackW > 0) {
-            const spacing = trackW / (NUM_DOTS - 1);
-            dots.forEach((d, i) => {
-              if (t * trackW + 30 > i * spacing) {
-                d.classList.add('eaten');
-                if ((i === 4 || i === NUM_DOTS - 2) && !ghostFleeing) {
-                  ghostFleeing = true;
-                  if (pmGhost) {
-                    const gs = pmGhost.querySelector('svg');
-                    if (gs) gs.style.filter = 'hue-rotate(195deg) brightness(0.6)';
-                  }
-                }
-              }
-            });
-          }
-
-          updateBar(pct);
-          if (phaseIdx < phases.length && pct >= phases[phaseIdx].pct) {
-            if (loaderText) loaderText.textContent = phases[phaseIdx].msg;
-            phaseIdx++;
-          }
-
-          if (t < 1) {
-            rafId = requestAnimationFrame(tick);
-          } else {
-            cancelAnimationFrame(rafId);
-            updateBar(100);
-            if (loaderText) loaderText.textContent = 'SYSTEM ONLINE.';
-            sessionStorage.setItem('retroBootComplete', 'true');
-            setTimeout(() => {
-              gsap.to(retroLoader, {
-                y: '-100%',
-                duration: 0.5,
-                ease: 'steps(12)',
-                onComplete: () => {
-                  retroLoader.style.display = 'none';
-                  document.body.style.overflow = '';
-                }
-              });
-              runHeroReveal();
-            }, 350);
-          }
+        const closeLoader = () => {
+          if (finished) return;
+          finished = true;
+          cancelAnimationFrame(rafId);
+          updateBar(100);
+          if (loaderText) loaderText.textContent = 'SYSTEM ONLINE.';
+          sessionStorage.setItem('retroBootComplete', 'true');
+          gsap.to(retroLoader, {
+            y: '-100%',
+            duration: 0.5,
+            ease: 'steps(12)',
+            delay: 0.3,
+            onComplete: () => {
+              retroLoader.style.display = 'none';
+              document.body.style.overflow = '';
+            }
+          });
+          runHeroReveal();
         };
 
-        requestAnimationFrame(tick);
+        // Hard failsafe — always close after 5s no matter what
+        const failsafe = setTimeout(closeLoader, 5000);
+
+        // Wait one frame so layout is painted, then measure & start
+        requestAnimationFrame(() => {
+          // Use window.innerWidth as the reliable full-screen track width
+          const trackW = Math.max(window.innerWidth - 120, 300);
+          const t0 = performance.now();
+
+          const tick = (now) => {
+            if (finished) return;
+            const t = Math.min((now - t0) / TOTAL_MS, 1);
+            const pct = t * 100;
+
+            // Move Pac-Man across the full track
+            if (pmChar) pmChar.style.transform = 'translateX(' + Math.round(t * trackW) + 'px)';
+
+            // Eat dots proportionally
+            if (dots.length) {
+              const spacing = trackW / (NUM_DOTS - 1);
+              dots.forEach((d, i) => {
+                if (t * trackW + 34 > i * spacing) {
+                  d.classList.add('eaten');
+                  if ((i === 4 || i === NUM_DOTS - 2) && !ghostFleeing) {
+                    ghostFleeing = true;
+                    if (pmGhost) {
+                      const gs = pmGhost.querySelector('svg');
+                      if (gs) gs.style.filter = 'hue-rotate(195deg) brightness(0.55)';
+                    }
+                  }
+                }
+              });
+            }
+
+            updateBar(pct);
+            if (phaseIdx < phases.length && pct >= phases[phaseIdx].pct) {
+              if (loaderText) loaderText.textContent = phases[phaseIdx].msg;
+              phaseIdx++;
+            }
+
+            if (t < 1) {
+              rafId = requestAnimationFrame(tick);
+            } else {
+              clearTimeout(failsafe);
+              closeLoader();
+            }
+          };
+
+          rafId = requestAnimationFrame(tick);
+        });
       }
     }
   }
+
 
 
   // 3. Hero Tagline Animation (Replaces the native implementation)
