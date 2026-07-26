@@ -1891,6 +1891,23 @@ body::after {
 .experience-section {
   padding: 120px 0;
   position: relative;
+  background: #000000;
+  border-top: 4px solid #2d241e;
+  border-bottom: 4px solid #2d241e;
+}
+
+.experience-section .section-title {
+  color: #ffb89e;
+  text-shadow: 4px 4px 0px rgba(255, 255, 255, 0.2);
+}
+
+.experience-section .section-label {
+  color: #000000;
+  background: #ffb89e;
+}
+
+.experience-section .header-line {
+  background: #ffb89e;
 }
 
 /* Connect Header to Road */
@@ -1928,7 +1945,7 @@ body::after {
   bottom: 0;
   left: 50%;
   width: 4px;
-  background: #2d241e; /* Solid thick retro line */
+  background: #ffb89e; /* Solid thick retro line */
   transform: translateX(-50%);
   z-index: 0;
 }
@@ -1941,11 +1958,11 @@ body::after {
   left: 50%;
   width: 20px;
   height: 20px;
-  background: #ffffff;
-  border: 4px solid #2d241e;
+  background: #ffb89e;
+  border: 4px solid #ffb89e;
   border-radius: 0px; /* Square start point */
   transform: translate(-50%, -50%);
-  box-shadow: 4px 4px 0px rgba(45, 36, 30, 1);
+  box-shadow: 4px 4px 0px rgba(255, 184, 158, 0.5);
   z-index: 1;
 }
 
@@ -1969,8 +1986,8 @@ body::after {
   top: 30px;
   width: 24px;
   height: 24px;
-  background: #ffffff;
-  border: 4px solid #2d241e;
+  background: #000000;
+  border: 4px solid #ffb89e;
   border-radius: 0px;
   transform: translate(-50%, -50%);
   z-index: 2;
@@ -1978,14 +1995,14 @@ body::after {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 4px 4px 0px rgba(45, 36, 30, 1);
+  box-shadow: 4px 4px 0px rgba(255, 184, 158, 0.5);
 }
 
 .roadmap-marker::after {
   content: '';
   width: 8px;
   height: 8px;
-  background: #2d241e;
+  background: #ffb89e;
   border-radius: 0px;
   transition: all 0.2s ease;
 }
@@ -1993,22 +2010,22 @@ body::after {
 .roadmap-item:hover .roadmap-marker {
   background: #ffb89e;
   transform: translate(-50%, -50%) translate(-2px, -2px);
-  box-shadow: 6px 6px 0px rgba(45, 36, 30, 1);
+  box-shadow: 6px 6px 0px rgba(255, 184, 158, 0.5);
 }
 
 .roadmap-item:hover .roadmap-marker::after {
-  background: #2d241e;
+  background: #000000;
 }
 
 .roadmap-content {
   width: 45%;
-  background: #ffffff;
-  border: 4px solid #2d241e;
+  background: #000000;
+  border: 4px solid #ffb89e;
   padding: 2.5rem;
   border-radius: 0px;
   position: relative;
   transition: all 0.2s ease;
-  box-shadow: 8px 8px 0px rgba(45, 36, 30, 1);
+  box-shadow: 8px 8px 0px rgba(255, 184, 158, 0.5);
 }
 
 /* Link Arms (Horizontal) */
@@ -2057,30 +2074,30 @@ body::after {
 
 .roadmap-content:hover {
   transform: translate(-4px, -4px);
-  background: #ffffff;
-  box-shadow: 12px 12px 0px rgba(45, 36, 30, 1);
+  background: #000000;
+  box-shadow: 12px 12px 0px rgba(255, 184, 158, 0.5);
 }
 
 .roadmap-date {
   font-family: 'Press Start 2P', monospace;
-  color: #2d241e;
+  color: #000000;
   margin-bottom: 1.2rem;
   display: inline-block;
   font-size: 0.6rem;
   letter-spacing: 0px;
   font-weight: 400;
-  border: 3px solid #2d241e;
+  border: 3px solid #ffb89e;
   padding: 8px 12px;
   border-radius: 0px;
   background: #ffb89e;
-  box-shadow: 4px 4px 0px rgba(45, 36, 30, 1);
+  box-shadow: 4px 4px 0px rgba(255, 184, 158, 0.5);
 }
 
 .roadmap-role {
   font-family: 'Press Start 2P', monospace;
   font-size: 1rem;
   font-weight: 400;
-  color: #2d241e;
+  color: #ffb89e;
   margin-bottom: 0.8rem;
   letter-spacing: 0px;
   line-height: 1.4;
@@ -2089,20 +2106,20 @@ body::after {
 .roadmap-company {
   font-family: 'Outfit', sans-serif;
   font-size: 0.85rem;
-  color: #2d241e;
+  color: #ffffff;
   text-transform: uppercase;
   margin-bottom: 1.5rem;
   display: block;
   letter-spacing: 0px;
   font-weight: 700;
   padding-bottom: 1rem;
-  border-bottom: 4px solid #2d241e;
+  border-bottom: 4px solid #ffb89e;
 }
 
 .roadmap-desc {
   font-family: 'Outfit', sans-serif;
   font-size: 0.8rem;
-  color: #2d241e;
+  color: #ffffff;
   line-height: 1.7;
   font-weight: 700;
 }
