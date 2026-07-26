@@ -2171,7 +2171,7 @@ body::after {
 
 .service-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: 2rem;
   margin-top: 4rem;
 }
@@ -4064,28 +4064,28 @@ section, .hero-section, .portfolio-section, .project-section, .services-section,
 /* Grids: Auto-Fit strategy replaces rigid media queries */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: 2rem;
   width: 100%;
 }
 
 .service-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: 1.5rem;
   width: 100%;
 }
 
 .testimonial-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: 1.5rem;
   width: 100%;
 }
 
 .bento-stack {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: 1.5rem;
   width: 100%;
 }
@@ -4212,4 +4212,14 @@ section, .hero-section, .portfolio-section, .project-section, .services-section,
   display: none;
   visibility: hidden;
   pointer-events: none;
+}
+
+/* Fix timeline pseudo elements on mobile */
+@media (max-width: 900px) {
+  .roadmap-item:nth-child(odd) .roadmap-content::before,
+  .roadmap-item:nth-child(odd) .roadmap-content::after,
+  .roadmap-item:nth-child(even) .roadmap-content::before,
+  .roadmap-item:nth-child(even) .roadmap-content::after {
+    display: none !important;
+  }
 }
