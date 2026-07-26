@@ -3978,13 +3978,7 @@ body.no-scroll {
    PREMIUM ENHANCEMENTS
    ========================================= */
 
-/* Section Title Gradient */
-.section-title {
-  background: linear-gradient(to right, #fff, var(--text-dim));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+
 
 /* =========================================
    ACCESSIBILITY & HARDWARE ACCELERATION
