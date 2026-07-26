@@ -145,13 +145,11 @@ document.addEventListener('DOMContentLoaded', () => {
             start: 'top 95%',
             toggleActions: 'play none none none'
           },
-          keyframes: [
-            { opacity: 0, filter: 'blur(20px)', scale: 0.95, duration: 0.05 },
-            { opacity: 0.5, filter: 'blur(10px)', scale: 0.98, duration: 0.1 },
-            { opacity: 1, filter: 'blur(0px)', scale: 1, duration: 0.15 }
-          ],
+          y: 40,
+          opacity: 0,
+          duration: 0.3,
           stagger: 0.05,
-          ease: 'steps(1)',
+          ease: 'steps(4)',
           clearProps: 'all'
         });
       }
@@ -180,13 +178,11 @@ document.addEventListener('DOMContentLoaded', () => {
               }
             }
           },
-          keyframes: [
-            { opacity: 0, filter: 'blur(20px)', scale: 0.95, duration: 0.05 },
-            { opacity: 0.5, filter: 'blur(10px)', scale: 0.98, duration: 0.1 },
-            { opacity: 1, filter: 'blur(0px)', scale: 1, duration: 0.15 }
-          ],
+          y: 40,
+          opacity: 0,
+          duration: 0.3,
           delay: (i % 3) * 0.1, // Slight stagger for grid items
-          ease: 'steps(1)',
+          ease: 'steps(4)',
           clearProps: 'all'
         });
       });
