@@ -4021,15 +4021,13 @@ a:focus-visible, button:focus-visible {
 }
 
 .pacman-jaw-top {
-  transform-box: view-box;
-  transform-origin: 20px 20px;
-  animation: pacmanChompTop 0.2s steps(2) infinite alternate;
+  transform-origin: 0% 100%;
+  animation: pacmanChompTop 0.15s infinite alternate;
 }
 
 .pacman-jaw-bottom {
-  transform-box: view-box;
-  transform-origin: 20px 20px;
-  animation: pacmanChompBottom 0.2s steps(2) infinite alternate;
+  transform-origin: 0% 0%;
+  animation: pacmanChompBottom 0.15s infinite alternate;
 }
 
 @keyframes pacmanChompTop {
@@ -4188,15 +4186,13 @@ section, .hero-section, .portfolio-section, .project-section, .services-section,
 }
 
 .pacman-jaw-top {
-  transform-box: view-box;
-  transform-origin: 20px 20px;
-  animation: pacmanChompTop 0.2s steps(2) infinite alternate;
+  transform-origin: 0% 100%;
+  animation: pacmanChompTop 0.15s infinite alternate;
 }
 
 .pacman-jaw-bottom {
-  transform-box: view-box;
-  transform-origin: 20px 20px;
-  animation: pacmanChompBottom 0.2s steps(2) infinite alternate;
+  transform-origin: 0% 0%;
+  animation: pacmanChompBottom 0.15s infinite alternate;
 }
 
 @keyframes pacmanChompTop {
