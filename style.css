@@ -271,222 +271,191 @@ body {
 }
 
 /* =========================================
-   RETRO PIXEL GAME HERO STYLES
+   RETRO NEUBRUTALIST HERO STYLES (MATCHING REFERENCE IMAGES)
    ========================================= */
-.pixel-game-hero {
+.brutal-hero-section {
   position: relative;
   overflow: hidden;
-  background: #080a14;
-  border-bottom: 3px solid #00f0ff;
+  background: #0f172a;
+  border-bottom: 3px solid #000000;
+  padding: 80px 0;
 }
 
-.pixel-grid-bg {
+.brutal-grid-bg {
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
   background-image: 
-    linear-gradient(rgba(0, 240, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 240, 255, 0.08) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
   background-size: 32px 32px;
   z-index: 0;
   pointer-events: none;
 }
 
-/* 3D Bevel Retro Arcade Console Deck */
-.pixel-game-deck {
-  background: rgba(10, 14, 26, 0.94);
-  border-top: 3px solid #00f0ff;
-  border-left: 3px solid #00f0ff;
-  border-right: 3px solid #00334d;
-  border-bottom: 3px solid #00334d;
-  box-shadow: 
-    6px 6px 0px #000000, 
-    12px 12px 0px rgba(0, 240, 255, 0.25);
-  padding: 2rem 2.2rem;
-  border-radius: 0;
+/* Crisp White Neubrutalist Card (Matching Reference Image 2) */
+.brutal-card {
+  background: #ffffff;
+  color: #000000;
+  border: 3px solid #000000;
+  box-shadow: 8px 8px 0px #000000;
+  padding: 2.5rem;
+  border-radius: 4px;
   position: relative;
   z-index: 2;
 }
 
-.pixel-badge {
-  background: #000000;
-  border-top: 2px solid #00f0ff;
-  border-left: 2px solid #00f0ff;
-  border-right: 2px solid #00334d;
-  border-bottom: 2px solid #00334d;
-  border-radius: 0;
+.brutal-badge {
+  background: #f3f4f6;
+  border: 2px solid #000000;
+  border-radius: 20px;
+  color: #000000;
+  font-weight: 700;
+  font-size: 0.8rem;
   box-shadow: 3px 3px 0px #000000;
-  padding: 0.35rem 0.9rem;
+  padding: 0.35rem 1rem;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  margin-bottom: 1.2rem;
 }
 
-.pixel-font-sm {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.55rem;
-  color: #ffe600;
-  letter-spacing: 0.5px;
-}
-
-.pixel-font-xs {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.55rem;
-  color: #00f0ff;
-  letter-spacing: 2px;
-  text-shadow: 2px 2px 0px #000000;
-}
-
-/* REDUCED SIZE TITLE: Compact & Crisp Pixel Title */
-.pixel-title {
-  font-family: 'Press Start 2P', 'Silkscreen', monospace;
-  font-size: clamp(1.1rem, 2.2vw, 1.8rem);
-  font-weight: 400;
-  line-height: 1.45;
+/* Bold Neubrutalist Typography */
+.brutal-title {
+  font-family: 'Outfit', 'Syncopate', sans-serif;
+  font-size: clamp(2.2rem, 5vw, 4.2rem);
+  font-weight: 900;
+  line-height: 1.05;
   letter-spacing: -0.5px;
-  margin-top: 1.2rem;
-  margin-bottom: 1.4rem;
-  color: #ffffff;
-  text-shadow: 3px 3px 0px #000000, 5px 5px 0px rgba(0, 240, 255, 0.2);
+  color: #000000;
+  margin-bottom: 1.5rem;
 }
 
-.pixel-cyan-glow {
-  color: #00f0ff !important;
-  -webkit-text-stroke: none !important;
-  text-shadow: 3px 3px 0px #000000, 0 0 12px rgba(0, 240, 255, 0.8);
+.brutal-highlight {
+  background: linear-gradient(180deg, transparent 60%, #fed7aa 60%);
+  color: #000000 !important;
+  display: inline-block;
 }
 
-/* Inset CRT Screen Subtitle Box */
-.pixel-crt-screen {
-  background: #000000;
-  border-top: 2px solid #00334d;
-  border-left: 2px solid #00334d;
-  border-right: 2px solid #00f0ff;
-  border-bottom: 2px solid #00f0ff;
-  box-shadow: inset 4px 4px 0px rgba(0, 0, 0, 0.9);
-  padding: 1rem 1.25rem;
-  margin-bottom: 1.6rem;
+/* Description Text */
+.brutal-description-box {
+  background: #f8fafc;
+  border: 2px solid #000000;
+  box-shadow: 4px 4px 0px #000000;
+  padding: 1.1rem 1.4rem;
+  border-radius: 2px;
+  margin-bottom: 2rem;
 }
 
-.pixel-sub-text {
-  font-family: 'VT323', 'Silkscreen', monospace;
-  font-size: 1.3rem;
-  line-height: 1.45;
-  color: #d1d5db;
-  letter-spacing: 0.5px;
+.brutal-sub-text {
+  font-family: var(--font-main);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #1e293b;
+  font-weight: 400;
   margin-bottom: 0;
 }
 
-/* 3D Bevel Buttons */
-.pixel-actions {
+/* Quick Links Brutalist Button Bar (100% Matching Reference Image 1) */
+.brutal-quick-links-wrap {
+  margin-top: 1.5rem;
+}
+
+.brutal-quick-label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #000000;
+  display: block;
+  margin-bottom: 0.8rem;
+  letter-spacing: -0.5px;
+}
+
+.brutal-quick-links-bar {
   display: flex;
-  gap: 1.2rem;
-}
-
-.btn-pixel-primary {
-  background: linear-gradient(135deg, #00f0ff 0%, #0088cc 100%);
-  color: #000000;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.62rem;
-  padding: 0.9rem 1.6rem;
-  border-radius: 0;
-  border-top: 2px solid #ffffff;
-  border-left: 2px solid #ffffff;
-  border-right: 2px solid #00334d;
-  border-bottom: 2px solid #00334d;
-  box-shadow: 4px 4px 0px #000000, 8px 8px 0px rgba(0, 240, 255, 0.35);
-  transition: all 0.15s ease;
-  text-transform: uppercase;
-}
-
-.btn-pixel-primary:hover {
-  background: #ffffff;
-  color: #000000;
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px #000000, 10px 10px 0px #00f0ff;
-}
-
-.btn-pixel-outline {
+  flex-wrap: wrap;
+  border: 3px solid #000000;
+  box-shadow: 6px 6px 0px #000000;
+  border-radius: 2px;
+  overflow: hidden;
   background: #000000;
-  color: #ffe600;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.62rem;
-  padding: 0.9rem 1.6rem;
-  border-radius: 0;
-  border-top: 2px solid #ffe600;
-  border-left: 2px solid #ffe600;
-  border-right: 2px solid #665c00;
-  border-bottom: 2px solid #665c00;
-  box-shadow: 4px 4px 0px #000000, 8px 8px 0px rgba(255, 230, 0, 0.3);
-  transition: all 0.15s ease;
-  text-transform: uppercase;
+  gap: 2px;
 }
 
-.btn-pixel-outline:hover {
-  background: rgba(255, 230, 0, 0.15);
-  color: #ffffff;
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px #000000, 10px 10px 0px #ffe600;
-}
-
-/* 3D Bevel Pixel Profile Box */
-.pixel-frame {
-  border-top: 3px solid #00f0ff !important;
-  border-left: 3px solid #00f0ff !important;
-  border-right: 3px solid #00334d !important;
-  border-bottom: 3px solid #00334d !important;
-  border-radius: 0 !important;
-  box-shadow: 6px 6px 0px #000000, 12px 12px 0px rgba(0, 240, 255, 0.25) !important;
+.brutal-quick-btn {
+  flex: 1;
+  min-width: 140px;
+  background: #d1d5db; /* Neutral Grey matching reference image 1 */
+  color: #000000;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  padding: 0.95rem 1.25rem;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
 }
 
-.pixel-corner {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  background: #00f0ff;
-  box-shadow: 0 0 6px #00f0ff;
-  z-index: 4;
+.brutal-quick-btn .arrow-icon {
+  font-size: 0.95rem;
+  color: #000000;
+  transition: transform 0.2s ease;
 }
 
-.pixel-corner.top-left { top: -4px; left: -4px; }
-.pixel-corner.top-right { top: -4px; right: -4px; }
-.pixel-corner.bottom-left { bottom: -4px; left: -4px; }
-.pixel-corner.bottom-right { bottom: -4px; right: -4px; }
-
-.pixel-blob {
-  background: radial-gradient(circle, rgba(0, 240, 255, 0.3), rgba(255, 0, 127, 0.1), transparent 70%) !important;
+.brutal-quick-btn:hover {
+  background: #ffffff;
+  color: #000000;
 }
 
-.pixel-exp-badge {
-  background: #000000 !important;
-  border-top: 2px solid #00f0ff !important;
-  border-left: 2px solid #00f0ff !important;
-  border-right: 2px solid #00334d !important;
-  border-bottom: 2px solid #00334d !important;
-  box-shadow: 4px 4px 0px #000000, 8px 8px 0px rgba(0, 240, 255, 0.3) !important;
-  border-radius: 0 !important;
-  font-family: 'Press Start 2P', monospace !important;
-  padding: 0.8rem 1rem !important;
+.brutal-quick-btn:hover .arrow-icon {
+  transform: translate(3px, -3px);
+}
+
+/* Profile Picture Brutalist Frame (Matching Reference Image 2) */
+.brutal-frame {
+  background: #ffffff !important;
+  border: 3px solid #000000 !important;
+  border-radius: 4px !important;
+  box-shadow: 8px 8px 0px #000000 !important;
+  position: relative;
+}
+
+.brutal-exp-badge {
+  background: #d1d5db !important;
+  border: 3px solid #000000 !important;
+  box-shadow: 4px 4px 0px #000000 !important;
+  border-radius: 2px !important;
+  color: #000000 !important;
+  padding: 0.8rem 1.1rem !important;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.pixel-exp-badge strong {
-  font-family: 'Press Start 2P', monospace !important;
-  font-size: 1.3rem !important;
-  color: #ffe600 !important;
-  text-shadow: 2px 2px 0px #000000;
+.brutal-exp-badge strong {
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 800 !important;
+  font-size: 1.5rem !important;
+  color: #000000 !important;
 }
 
-.pixel-exp-badge span {
-  font-family: 'Press Start 2P', monospace !important;
-  font-size: 0.48rem !important;
-  color: #00f0ff !important;
+.brutal-exp-badge span {
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 0.65rem !important;
+  color: #000000 !important;
+  text-transform: uppercase;
 }
 
-.pixel-line {
-  background: linear-gradient(#00f0ff, transparent) !important;
+.brutal-scroll {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.brutal-line {
+  background: linear-gradient(#ffffff, transparent) !important;
 }
 
 .hero-container {

@@ -17,10 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     heroTl
       .from('.nav-container', { y: -30, opacity: 0, duration: 1 })
-      .from('.pixel-game-deck', { y: 40, opacity: 0, scale: 0.95, duration: 1.2 }, '-=0.6')
+      .from('.brutal-card', { y: 40, opacity: 0, scale: 0.95, duration: 1.2 }, '-=0.6')
       .from('.hero-title .line', { y: 60, opacity: 0, stagger: 0.15 }, '-=0.8')
-      .from('.pixel-crt-screen', { opacity: 0, y: 20, duration: 0.8 }, '-=0.8')
-      .from('.btn-pixel-primary, .btn-pixel-outline', { opacity: 0, y: 20, stagger: 0.15, duration: 0.8 }, '-=0.6')
+      .from('.brutal-description-box', { opacity: 0, y: 20, duration: 0.8 }, '-=0.8')
+      .from('.brutal-quick-btn', { opacity: 0, y: 20, stagger: 0.1, duration: 0.8 }, '-=0.6')
       .from('.image-frame', { x: 80, opacity: 0, duration: 1.5, scale: 0.95 }, '-=1.2')
       .from('.exp-badge', { scale: 0, opacity: 0, ease: 'back.out(2)' }, '-=0.8');
 
