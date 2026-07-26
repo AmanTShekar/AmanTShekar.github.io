@@ -4019,7 +4019,6 @@ a:focus-visible, button:focus-visible {
     font-size: clamp(2.2rem, 8vw, 3.5rem);
   }
   .arcade-sub-box {
-    font-size: 1.1rem;
 
 /* =========================================
    PAC-MAN MOUTH CHOMP ANIMATION (DUAL JAW)
@@ -4063,109 +4062,168 @@ a:focus-visible, button:focus-visible {
 }
 
 /* =========================================
-   FULL HERO, PROJECTS & MULTI-SCREEN OPTIMIZATION
-   (Prevents Card & Shadow Cutoff across 4K, Laptop, Tablet, Mobile)
+   MASTER RESPONSIVE & MULTI-SCREEN SYSTEM
+   (Ultrawide, 4K, Laptop, Tablet, Mobile)
    ========================================= */
 
 /* Global Container & Section Safety */
 .container {
+  width: 100% !important;
+  max-width: 1280px;
+  margin: 0 auto !important;
   padding: 0 1.75rem !important;
   box-sizing: border-box !important;
 }
 
-section, .hero-section, .portfolio-section, .bento-section, .experience-section, .contact-section {
+section, .hero-section, .portfolio-section, .project-section, .services-section, .bento-section, .experience-section, .testimonials-section, .contact-section {
   overflow: visible !important;
+  position: relative;
 }
 
-/* Base Desktop & Laptop Hero Layout */
+/* 1. HERO SECTION RESPONSIVE SYSTEM */
 .hero-section {
-  position: relative;
-  padding: 130px 0 70px;
+  padding: clamp(100px, 12vw, 150px) 0 clamp(40px, 6vw, 80px) !important;
 }
 
 .hero-container {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  align-items: center;
-  gap: 3rem;
-  width: 100%;
+  display: grid !important;
+  grid-template-columns: 1.15fr 0.85fr !important;
+  align-items: center !important;
+  gap: clamp(1.5rem, 4vw, 3.5rem) !important;
+  width: 100% !important;
 }
 
 .brutal-hero-box {
-  background: #ffffff;
-  color: #2d241e;
-  border: 4px solid #2d241e;
-  box-shadow: 8px 8px 0px rgba(45, 36, 30, 0.25);
-  padding: 2.5rem;
-  border-radius: 0px;
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  box-sizing: border-box;
+  background: #ffffff !important;
+  color: #2d241e !important;
+  border: 4px solid #2d241e !important;
+  box-shadow: 8px 8px 0px rgba(45, 36, 30, 0.25) !important;
+  padding: clamp(1.25rem, 3.5vw, 2.5rem) !important;
+  border-radius: 0px !important;
+  position: relative !important;
+  z-index: 2 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
 }
 
 .brutal-title {
   font-family: var(--font-h) !important;
-  font-size: clamp(2.4rem, 4.2vw, 3.8rem) !important;
-  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3.8rem) !important;
+  font-weight: 800 !important;
   line-height: 1.15 !important;
   letter-spacing: -1px !important;
-  color: #000000;
-  word-break: break-word;
+  color: #000000 !important;
+  word-break: break-word !important;
+  margin-bottom: 1.25rem !important;
 }
 
 .brutal-highlight {
-  background: #ffb89e;
+  background: #ffb89e !important;
   color: #000000 !important;
-  display: inline-block;
-  padding: 0 8px;
-  border: 3px solid #000000;
-  box-shadow: 4px 4px 0px rgba(45, 36, 30, 0.25);
-  max-width: 100%;
-  box-sizing: border-box;
+  display: inline-block !important;
+  padding: 0 8px !important;
+  border: 3px solid #000000 !important;
+  box-shadow: 4px 4px 0px rgba(45, 36, 30, 0.25) !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.brutal-description-box {
+  background: #ffffff !important;
+  border: 3px solid #000000 !important;
+  padding: clamp(1rem, 2vw, 1.25rem) !important;
+  margin-bottom: 1.75rem !important;
+  box-shadow: 6px 6px 0px rgba(45, 36, 30, 0.25) !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.brutal-sub-text {
+  font-family: 'Press Start 2P', 'Silkscreen', monospace !important;
+  font-size: clamp(0.55rem, 1.2vw, 0.65rem) !important;
+  line-height: 1.8 !important;
+  color: #000000 !important;
+  margin-bottom: 0 !important;
+  text-transform: uppercase !important;
+  word-break: break-word !important;
 }
 
 .hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 2rem;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 1rem !important;
+  margin-top: 1.5rem !important;
+  width: 100% !important;
+}
+
+.hero-actions .btn {
+  font-family: 'Orbitron', sans-serif !important;
+  font-weight: 800 !important;
+  font-size: clamp(0.75rem, 1.2vw, 0.9rem) !important;
+  padding: 0.85rem 1.5rem !important;
+  border: 4px solid #2d241e !important;
+  box-shadow: 6px 6px 0px rgba(45, 36, 30, 1) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.6rem !important;
+  text-transform: uppercase !important;
+  text-decoration: none !important;
+  min-height: 48px !important;
+  box-sizing: border-box !important;
 }
 
 .hero-image {
-  width: 100%;
-  display: flex;
-  justify-content: center;
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
 }
 
 .image-frame {
-  position: relative;
-  width: 100%;
-  max-width: 320px;
-  margin: 0 auto;
+  position: relative !important;
+  width: 100% !important;
+  max-width: clamp(250px, 30vw, 340px) !important;
+  margin: 0 auto !important;
   overflow: visible !important;
 }
 
 .image-frame img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 0.82;
-  object-fit: cover;
-  border-radius: 0px;
-  border: 4px solid #2d241e;
-  box-shadow: 8px 8px 0px rgba(45, 36, 30, 0.25);
-  position: relative;
-  z-index: 2;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 0.82 !important;
+  object-fit: cover !important;
+  border: 4px solid #2d241e !important;
+  box-shadow: 8px 8px 0px rgba(45, 36, 30, 0.25) !important;
+  position: relative !important;
+  z-index: 2 !important;
+  display: block !important;
 }
 
-/* Projects Section Un-Cutoff Rules */
+/* 2. PROJECTS SECTION RESPONSIVE GRID */
+.project-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)) !important;
+  gap: clamp(1.5rem, 3vw, 2.5rem) !important;
+  width: 100% !important;
+  margin-top: 2rem !important;
+}
+
 .project-card {
+  text-decoration: none !important;
+  color: inherit !important;
+  display: flex !important;
+  flex-direction: column !important;
   overflow: visible !important;
-  margin-bottom: 1rem;
 }
 
 .project-image {
+  border: 4px solid #2d241e !important;
   box-shadow: 8px 8px 0px rgba(45, 36, 30, 1) !important;
+  background: #ffffff !important;
+  position: relative !important;
+  aspect-ratio: 16/10 !important;
+  overflow: hidden !important;
+  display: block !important;
   transition: transform 0.2s ease, box-shadow 0.2s ease !important;
 }
 
@@ -4174,15 +4232,95 @@ section, .hero-section, .portfolio-section, .bento-section, .experience-section,
   box-shadow: 12px 12px 0px rgba(45, 36, 30, 1) !important;
 }
 
+.project-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block !important;
+}
+
+/* 3. SERVICES SECTION RESPONSIVE GRID */
+.service-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)) !important;
+  gap: clamp(1.25rem, 2.5vw, 2rem) !important;
+  width: 100% !important;
+  margin-top: 2rem !important;
+}
+
+.service-card {
+  background: #ffffff !important;
+  border: 4px solid #2d241e !important;
+  padding: clamp(1.5rem, 3vw, 2rem) !important;
+  box-shadow: 8px 8px 0px rgba(45, 36, 30, 1) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.service-card:hover {
+  transform: translate(-4px, -4px) !important;
+  box-shadow: 12px 12px 0px rgba(45, 36, 30, 1) !important;
+}
+
+/* 4. BENTO / TECH STACK RESPONSIVE GRID */
+.bento-stack {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: clamp(1.25rem, 2.5vw, 2rem) !important;
+  width: 100% !important;
+}
+
 .bento-item {
+  background: #ffffff !important;
+  border: 4px solid #2d241e !important;
+  padding: clamp(1.25rem, 3vw, 2rem) !important;
+  box-shadow: 8px 8px 0px rgba(45, 36, 30, 1) !important;
   overflow: visible !important;
 }
 
-/* 4K & Ultrawide Display Optimization (>1600px) */
+.mini-tags {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 0.5rem !important;
+  margin-top: 0.8rem !important;
+}
+
+.mini-tags span {
+  background: #ffffff !important;
+  border: 2px solid #2d241e !important;
+  padding: 0.3rem 0.65rem !important;
+  font-size: 0.72rem !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 700 !important;
+  color: #2d241e !important;
+  box-shadow: 3px 3px 0px rgba(45, 36, 30, 1) !important;
+}
+
+/* 5. TESTIMONIALS RESPONSIVE GRID */
+.testimonial-grid {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)) !important;
+  gap: clamp(1.25rem, 2.5vw, 2rem) !important;
+  width: 100% !important;
+}
+
+.testimonial-card {
+  background: #ffffff !important;
+  border: 4px solid #2d241e !important;
+  padding: clamp(1.5rem, 3vw, 2rem) !important;
+  box-shadow: 8px 8px 0px rgba(45, 36, 30, 1) !important;
+}
+
+/* =========================================
+   BREAKPOINT OVERRIDES
+   ========================================= */
+
+/* 4K & Ultrawide Display (>1600px) */
 @media (min-width: 1600px) {
   .container {
     max-width: 1500px !important;
-    padding: 0 2rem !important;
+    padding: 0 2.5rem !important;
   }
   .hero-container {
     grid-template-columns: 1.2fr 0.8fr !important;
@@ -4201,22 +4339,20 @@ section, .hero-section, .portfolio-section, .bento-section, .experience-section,
   .container {
     max-width: 1180px !important;
   }
-  .hero-container {
-    gap: 2rem !important;
-  }
 }
 
 /* Tablet & iPad (769px - 1024px) */
 @media (max-width: 1024px) {
-  .hero-section {
-    padding: 110px 0 50px !important;
-  }
   .hero-container {
     grid-template-columns: 1fr !important;
     gap: 2.5rem !important;
   }
-  .brutal-hero-box {
-    padding: 2rem !important;
+  .bento-stack {
+    grid-template-columns: 1fr !important;
+  }
+  .bento-main, .bento-wide, .bento-item {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
   }
   .image-frame {
     max-width: 300px !important;
@@ -4228,38 +4364,34 @@ section, .hero-section, .portfolio-section, .bento-section, .experience-section,
   .pm-track-wrapper, .collab-pm-wrapper {
     height: 70px !important;
   }
-  .pm-dots-row, .collab-pm-dots {
-    left: 50px !important;
-    right: 65px !important;
-  }
 }
 
-/* Mobile Devices (<= 768px) — COMPLETE NO-CUTOFF POLISH */
+/* Mobile Devices (<= 768px) */
 @media (max-width: 768px) {
   .container {
-    padding: 0 1.25rem !important;
+    padding: 0 1.15rem !important;
   }
   .hero-section {
-    padding: 95px 0 40px !important;
+    padding: 95px 0 35px !important;
   }
   .hero-container {
     grid-template-columns: 1fr !important;
-    gap: 1.75rem !important;
+    gap: 1.5rem !important;
   }
   .brutal-hero-box {
-    padding: 1.25rem 1rem !important;
-    border: 3px solid #2d241e !important;
+    padding: 1.15rem 0.95rem !important;
+    border-width: 3px !important;
     box-shadow: 5px 5px 0px rgba(45, 36, 30, 0.25) !important;
   }
   .brutal-badge {
-    font-size: 0.48rem !important;
-    padding: 0.35rem 0.75rem !important;
-    margin-bottom: 1rem !important;
+    font-size: 0.46rem !important;
+    padding: 0.35rem 0.65rem !important;
+    margin-bottom: 0.85rem !important;
   }
   .brutal-title {
-    font-size: clamp(1.85rem, 8vw, 2.7rem) !important;
-    line-height: 1.18 !important;
-    margin-bottom: 1rem !important;
+    font-size: clamp(1.75rem, 7.5vw, 2.5rem) !important;
+    line-height: 1.16 !important;
+    margin-bottom: 0.85rem !important;
   }
   .brutal-highlight {
     padding: 0 4px !important;
@@ -4267,32 +4399,30 @@ section, .hero-section, .portfolio-section, .bento-section, .experience-section,
     box-shadow: 3px 3px 0px rgba(45, 36, 30, 0.25) !important;
   }
   .brutal-description-box {
-    padding: 1rem 0.85rem !important;
-    margin-bottom: 1.5rem !important;
+    padding: 0.85rem 0.75rem !important;
+    margin-bottom: 1.25rem !important;
     border-width: 2px !important;
     box-shadow: 4px 4px 0px rgba(45, 36, 30, 0.25) !important;
   }
   .brutal-sub-text {
-    font-size: 0.6rem !important;
-    line-height: 1.7 !important;
+    font-size: 0.58rem !important;
+    line-height: 1.65 !important;
   }
   .hero-actions {
-    display: flex !important;
     flex-direction: column !important;
     width: 100% !important;
-    gap: 0.75rem !important;
-    margin-top: 1.5rem !important;
+    gap: 0.65rem !important;
+    margin-top: 1.25rem !important;
   }
   .hero-actions .btn {
     width: 100% !important;
-    box-sizing: border-box !important;
     justify-content: center !important;
-    padding: 0.85rem 1rem !important;
-    font-size: 0.8rem !important;
+    padding: 0.8rem 1rem !important;
+    font-size: 0.78rem !important;
     box-shadow: 5px 5px 0px rgba(45, 36, 30, 1) !important;
   }
   .hero-image {
-    margin-top: 0.5rem !important;
+    margin-top: 0.25rem !important;
   }
   .image-frame {
     max-width: 260px !important;
@@ -4302,64 +4432,61 @@ section, .hero-section, .portfolio-section, .bento-section, .experience-section,
     box-shadow: 6px 6px 0px rgba(45, 36, 30, 0.25) !important;
   }
   .brutal-exp-badge {
-    padding: 0.5rem 0.8rem !important;
+    padding: 0.4rem 0.75rem !important;
     bottom: -10px !important;
     right: -5px !important;
     left: auto !important;
   }
   .brutal-exp-badge strong {
-    font-size: 1.2rem !important;
+    font-size: 1.15rem !important;
   }
   .brutal-exp-badge span {
-    font-size: 0.55rem !important;
+    font-size: 0.52rem !important;
   }
   .real-retro-elements {
     display: none !important;
   }
   .easter-egg.invader {
-    top: -15px !important;
+    top: -12px !important;
     right: -5px !important;
-    transform: scale(0.75) !important;
-  }
-
-  /* Bento Grid Mobile */
-  .bento-stack, .project-grid, .service-grid, .testimonial-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1.75rem !important;
-  }
-  .bento-main, .bento-wide, .bento-item {
-    grid-column: span 1 !important;
-    grid-row: span 1 !important;
+    transform: scale(0.7) !important;
   }
 
   /* Timeline Mobile */
   .roadmap-item, .roadmap-item:nth-child(even) {
     flex-direction: column !important;
-    padding-left: 45px !important;
-    margin-bottom: 40px !important;
+    padding-left: 42px !important;
+    margin-bottom: 35px !important;
   }
   .roadmap-content {
     width: 100% !important;
-    padding: 1.25rem !important;
+    padding: 1.15rem !important;
   }
   .roadmap-marker {
-    left: 15px !important;
+    left: 12px !important;
   }
 }
 
 /* Extra Small Phones (<= 400px) */
 @media (max-width: 400px) {
   .container {
-    padding: 0 0.85rem !important;
+    padding: 0 0.75rem !important;
   }
   .brutal-title {
-    font-size: clamp(1.6rem, 8.5vw, 2.2rem) !important;
+    font-size: clamp(1.5rem, 8vw, 2.1rem) !important;
   }
   .brutal-hero-box {
-    padding: 1rem 0.85rem !important;
+    padding: 0.95rem 0.75rem !important;
   }
   .image-frame {
-    max-width: 220px !important;
+    max-width: 210px !important;
+  }
+  .pm-svg {
+    width: 36px !important;
+    height: 36px !important;
+  }
+  .pm-track-wrapper, .collab-pm-wrapper {
+    height: 55px !important;
   }
 }
 
