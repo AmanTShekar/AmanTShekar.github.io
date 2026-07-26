@@ -87,16 +87,31 @@ document.addEventListener('DOMContentLoaded', () => {
   if (hasGsap && typeof ScrollTrigger !== 'undefined') {
     const sections = gsap.utils.toArray('section');
     sections.forEach(section => {
-      const header = section.querySelector('.section-header');
-      if (header) {
-        gsap.from(header, {
+      const title = section.querySelector('.section-title');
+      const label = section.querySelector('.section-label');
+      
+      if (title) {
+        const originalText = title.textContent.trim();
+        title.textContent = "";
+        gsap.to(title, {
           scrollTrigger: {
             trigger: section,
-            start: 'top 95%',
+            start: 'top 85%',
           },
-          y: 20,
+          text: originalText,
+          duration: originalText.length * 0.05,
+          ease: 'none'
+        });
+      }
+      
+      if (label) {
+        gsap.from(label, {
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 85%',
+          },
           opacity: 0,
-          duration: 0.2,
+          duration: 0.1,
           ease: 'none'
         });
       }
@@ -110,10 +125,9 @@ document.addEventListener('DOMContentLoaded', () => {
             start: 'top 95%',
             toggleActions: 'play none none none'
           },
-          y: 20,
-          opacity: 0,
+          clipPath: 'inset(0 100% 0 0)',
           stagger: 0.05,
-          duration: 0.2,
+          duration: 0.25,
           ease: 'none',
           clearProps: 'all'
         });
@@ -134,11 +148,11 @@ document.addEventListener('DOMContentLoaded', () => {
             trigger: el,
             start: 'top 92%',
           },
-          y: 20,
-          opacity: 0,
-          duration: 0.2,
+          clipPath: 'inset(0 100% 0 0)',
+          duration: 0.25,
           delay: (i % 3) * 0.1, // Slight stagger for grid items
-          ease: 'none'
+          ease: 'none',
+          clearProps: 'all'
         });
       });
     });
