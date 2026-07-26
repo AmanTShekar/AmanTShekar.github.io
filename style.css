@@ -1,4 +1,4 @@
-/* =========================================
+﻿/* =========================================
    PORTFOLIO v5.2 | ARCHITECT LEVEL POLISH
    Performance Optimized & Layout Hardened
    ========================================= */
@@ -3038,7 +3038,7 @@ body.no-scroll {
 
   /* Social Footer */
   .nav-links::after {
-    content: 'ATS © 2026';
+    content: 'ATS Â© 2026';
     font-size: 0.7rem;
     color: rgba(255, 255, 255, 0.3);
     position: absolute;
@@ -3488,7 +3488,7 @@ body.no-scroll {
 
 
 /* =========================================
-   WORKS — RESPONSIVE
+   WORKS â€” RESPONSIVE
    ========================================= */
 @media (max-width: 768px) {
   .works-section {
@@ -3539,7 +3539,7 @@ body.no-scroll {
 }
 
 /* =========================================
-   TESTIMONIALS — RESPONSIVE
+   TESTIMONIALS â€” RESPONSIVE
    ========================================= */
 @media (max-width: 768px) {
   .testimonials-section {
@@ -3583,7 +3583,7 @@ body.no-scroll {
 }
 
 /* =========================================
-   WORKS — CASE STUDIES
+   WORKS â€” CASE STUDIES
    ========================================= */
 .works-section {
   padding: 140px 0;
@@ -3785,7 +3785,7 @@ body.no-scroll {
 }
 
 /* =========================================
-   TESTIMONIALS — CLIENT FEEDBACK
+   TESTIMONIALS â€” CLIENT FEEDBACK
    ========================================= */
 .testimonials-section {
   padding: 140px 0;
@@ -4113,7 +4113,8 @@ a:focus-visible, button:focus-visible {
          f o n t - s i z e :   0 . 8 5 r e m   ! i m p o r t a n t ; 
      } 
  } 
-  
+ 
+ 
  
  / *   = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
        R E T R O   E A S T E R   E G G S   A N I M A T I O N S 
@@ -4141,7 +4142,8 @@ a:focus-visible, button:focus-visible {
      t r a n s f o r m :   s c a l e ( 1 . 2 )   r o t a t e ( 1 5 d e g )   ! i m p o r t a n t ; 
      c u r s o r :   p o i n t e r ; 
  } 
-  
+ 
+ 
  
 /* =========================================
    PAC-MAN LOADING SCREEN
@@ -4404,7 +4406,7 @@ a:focus-visible, button:focus-visible {
   left: 0;
   bottom: 11px;
   z-index: 10;
-  /* JS will drive translateX � CSS sets the chomp */
+  /* JS will drive translateX — CSS sets the chomp */
   transform: translateX(0);
 }
 
@@ -4517,7 +4519,7 @@ a:focus-visible, button:focus-visible {
   50% { transform: translateY(-4px) scaleX(0.9); }
 }
 
-/* Pac-Man loader track � make it full-width and centered vertically */
+/* Pac-Man loader track — make it full-width and centered vertically */
 .retro-loader {
   display: flex;
   flex-direction: column;
@@ -4543,7 +4545,7 @@ a:focus-visible, button:focus-visible {
 }
 
 /* =========================================
-   COLLAB SECTION � REAL PAC-MAN TRACK
+   COLLAB SECTION — REAL PAC-MAN TRACK
    ========================================= */
 .collab-pm-wrapper {
   width: 100%;
@@ -4610,4 +4612,42 @@ a:focus-visible, button:focus-visible {
 }
 .cpm-dot.eaten {
   visibility: hidden;
+}
+
+/* =========================================
+   PAC-MAN MOUTH CHOMP ANIMATION (DUAL JAW)
+   ========================================= */
+.pm-svg {
+  display: block;
+  image-rendering: pixelated;
+  overflow: visible;
+  filter: drop-shadow(0 0 8px rgba(255,215,0,0.7));
+}
+
+.pacman-jaw-top {
+  transform-origin: 20px 20px;
+  animation: pacmanChompTop 0.22s steps(2) infinite alternate;
+}
+
+.pacman-jaw-bottom {
+  transform-origin: 20px 20px;
+  animation: pacmanChompBottom 0.22s steps(2) infinite alternate;
+}
+
+@keyframes pacmanChompTop {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-38deg);
+  }
+}
+
+@keyframes pacmanChompBottom {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(38deg);
+  }
 }
