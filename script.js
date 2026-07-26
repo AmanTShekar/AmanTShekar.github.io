@@ -119,6 +119,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
           heroTl
             .from('.nav-container', { y: -20, opacity: 0 }, '+=0.4')
+            .add(() => {
+              document.querySelectorAll('.brutal-hero-box, .brutal-description-box, .image-frame').forEach(el => pixelReveal(el));
+            })
             .from('.brutal-hero-box', { x: -20, opacity: 0 })
             .from('.hero-title .line', { x: -20, opacity: 0, stagger: 0.1 })
             .from('.brutal-description-box', { y: 20, opacity: 0 })
