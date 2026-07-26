@@ -7,6 +7,29 @@ document.addEventListener('DOMContentLoaded', () => {
   // 1. Initialize GSAP & ScrollTrigger safely if loaded
   const hasGsap = typeof gsap !== 'undefined';
 
+  // Custom Retro Scramble Engine
+  function scrambleText(element, finalString, duration = 800) {
+    const chars = '!<>-_\\/[]{}—=+*^?#________';
+    let start = Date.now();
+    function update() {
+      let now = Date.now();
+      let progress = Math.min((now - start) / duration, 1);
+      let result = '';
+      for (let i = 0; i < finalString.length; i++) {
+        if (finalString[i] === ' ') { result += ' '; continue; }
+        if (Math.random() < progress) {
+          result += finalString[i];
+        } else {
+          result += chars[Math.floor(Math.random() * chars.length)];
+        }
+      }
+      element.textContent = result;
+      if (progress < 1) requestAnimationFrame(update);
+      else element.textContent = finalString;
+    }
+    requestAnimationFrame(update);
+  }
+
   if (hasGsap) {
     if (typeof ScrollTrigger !== 'undefined') {
       gsap.registerPlugin(ScrollTrigger);
@@ -93,14 +116,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (title) {
         const originalText = title.textContent.trim();
         title.textContent = "";
-        gsap.to(title, {
-          scrollTrigger: {
-            trigger: section,
-            start: 'top 85%',
-          },
-          text: originalText,
-          duration: originalText.length * 0.05,
-          ease: 'none'
+        ScrollTrigger.create({
+          trigger: section,
+          start: 'top 85%',
+          onEnter: () => scrambleText(title, originalText, Math.max(originalText.length * 50, 600)),
+          once: true
         });
       }
       
@@ -151,6 +171,15 @@ document.addEventListener('DOMContentLoaded', () => {
           scrollTrigger: {
             trigger: el,
             start: 'top 92%',
+            onEnter: () => {
+              const cardTitle = el.querySelector('h3, .project-title, .service-title, .roadmap-company');
+              if (cardTitle && !cardTitle.dataset.scrambled) {
+                cardTitle.dataset.scrambled = "true";
+                const orig = cardTitle.textContent.trim();
+                cardTitle.textContent = "";
+                scrambleText(cardTitle, orig, 600);
+              }
+            }
           },
           keyframes: [
             { opacity: 0, duration: 0.05 },
