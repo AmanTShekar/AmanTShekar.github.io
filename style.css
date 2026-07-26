@@ -4020,6 +4020,7 @@ a:focus-visible, button:focus-visible {
   .btn-arcade-primary, .btn-arcade-outline {
     width: 100%;
 
+
 /* =========================================
    PAC-MAN MOUTH CHOMP ANIMATION (DUAL JAW)
    ========================================= */
@@ -4066,11 +4067,11 @@ a:focus-visible, button:focus-visible {
    (Ultrawide, 4K, Laptop, Tablet, Mobile)
    ========================================= */
 
-/* Base Hero Layout Refinements */
+/* Base Desktop & Laptop Hero Layout */
 .hero-section {
   position: relative;
   overflow: hidden;
-  padding: 140px 0 80px;
+  padding: 130px 0 70px;
 }
 
 .hero-container {
@@ -4103,6 +4104,17 @@ a:focus-visible, button:focus-visible {
   word-break: break-word;
 }
 
+.brutal-highlight {
+  background: #ffb89e;
+  color: #000000 !important;
+  display: inline-block;
+  padding: 0 8px;
+  border: 3px solid #000000;
+  box-shadow: 4px 4px 0px rgba(45, 36, 30, 0.25);
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
@@ -4119,7 +4131,7 @@ a:focus-visible, button:focus-visible {
 .image-frame {
   position: relative;
   width: 100%;
-  max-width: 340px;
+  max-width: 320px;
   margin: 0 auto;
 }
 
@@ -4148,7 +4160,7 @@ a:focus-visible, button:focus-visible {
     font-size: clamp(3.5rem, 5vw, 5.5rem) !important;
   }
   .image-frame {
-    max-width: 400px !important;
+    max-width: 380px !important;
   }
 }
 
@@ -4165,7 +4177,7 @@ a:focus-visible, button:focus-visible {
 /* Tablet & iPad (769px - 1024px) */
 @media (max-width: 1024px) {
   .hero-section {
-    padding: 120px 0 60px !important;
+    padding: 110px 0 50px !important;
   }
   .hero-container {
     grid-template-columns: 1fr !important;
@@ -4175,7 +4187,7 @@ a:focus-visible, button:focus-visible {
     padding: 2rem !important;
   }
   .image-frame {
-    max-width: 320px !important;
+    max-width: 300px !important;
   }
   .pm-svg {
     width: 46px !important;
@@ -4190,47 +4202,92 @@ a:focus-visible, button:focus-visible {
   }
 }
 
-/* Mobile & Small Aspect Ratios (<= 768px) */
+/* Mobile Devices (<= 768px) — COMPLETE MOBILE HERO POLISH */
 @media (max-width: 768px) {
   .container {
-    padding: 0 1.25rem !important;
+    padding: 0 1rem !important;
   }
   .hero-section {
-    padding: 100px 0 50px !important;
+    padding: 95px 0 40px !important;
   }
   .hero-container {
     grid-template-columns: 1fr !important;
-    gap: 2rem !important;
+    gap: 1.75rem !important;
   }
   .brutal-hero-box {
-    padding: 1.5rem 1.2rem !important;
+    padding: 1.25rem 1rem !important;
+    border: 3px solid #2d241e !important;
+    box-shadow: 5px 5px 0px rgba(45, 36, 30, 0.25) !important;
+  }
+  .brutal-badge {
+    font-size: 0.48rem !important;
+    padding: 0.35rem 0.75rem !important;
+    margin-bottom: 1rem !important;
   }
   .brutal-title {
-    font-size: clamp(2rem, 8vw, 3rem) !important;
+    font-size: clamp(1.85rem, 8vw, 2.7rem) !important;
     line-height: 1.18 !important;
+    margin-bottom: 1rem !important;
+  }
+  .brutal-highlight {
+    padding: 0 4px !important;
+    border-width: 2px !important;
+    box-shadow: 3px 3px 0px rgba(45, 36, 30, 0.25) !important;
+  }
+  .brutal-description-box {
+    padding: 1rem 0.85rem !important;
+    margin-bottom: 1.5rem !important;
+    border-width: 2px !important;
+    box-shadow: 4px 4px 0px rgba(45, 36, 30, 0.25) !important;
+  }
+  .brutal-sub-text {
+    font-size: 0.6rem !important;
+    line-height: 1.7 !important;
   }
   .hero-actions {
+    display: flex !important;
     flex-direction: column !important;
     width: 100% !important;
-    gap: 0.8rem !important;
+    gap: 0.75rem !important;
+    margin-top: 1.5rem !important;
   }
   .hero-actions .btn {
     width: 100% !important;
-    text-align: center !important;
+    box-sizing: border-box !important;
     justify-content: center !important;
-    padding: 1rem 1.2rem !important;
+    padding: 0.85rem 1rem !important;
+    font-size: 0.8rem !important;
+    box-shadow: 5px 5px 0px rgba(45, 36, 30, 1) !important;
+  }
+  .hero-image {
+    margin-top: 0.5rem !important;
   }
   .image-frame {
-    max-width: 280px !important;
+    max-width: 260px !important;
+  }
+  .image-frame img {
+    border-width: 3px !important;
+    box-shadow: 6px 6px 0px rgba(45, 36, 30, 0.25) !important;
+  }
+  .brutal-exp-badge {
+    padding: 0.5rem 0.8rem !important;
+    bottom: -10px !important;
+    right: -5px !important;
+    left: auto !important;
+  }
+  .brutal-exp-badge strong {
+    font-size: 1.2rem !important;
+  }
+  .brutal-exp-badge span {
+    font-size: 0.55rem !important;
   }
   .real-retro-elements {
-    opacity: 0.25 !important;
-    pointer-events: none !important;
+    display: none !important; /* Clean mobile background without floating overlapping icons */
   }
   .easter-egg.invader {
-    top: -20px !important;
-    right: -10px !important;
-    transform: scale(0.8) !important;
+    top: -15px !important;
+    right: -5px !important;
+    transform: scale(0.75) !important;
   }
 
   /* Bento Grid Mobile */
@@ -4251,46 +4308,26 @@ a:focus-visible, button:focus-visible {
   }
   .roadmap-content {
     width: 100% !important;
-    padding: 1.5rem !important;
+    padding: 1.25rem !important;
   }
   .roadmap-marker {
     left: 15px !important;
   }
 }
 
-/* Extra Small Phones (<= 480px) */
-@media (max-width: 480px) {
-  .brutal-badge {
-    font-size: 0.48rem !important;
-    padding: 0.4rem 0.8rem !important;
+/* Extra Small Phones (<= 400px) */
+@media (max-width: 400px) {
+  .container {
+    padding: 0 0.85rem !important;
   }
   .brutal-title {
-    font-size: clamp(1.75rem, 9vw, 2.4rem) !important;
+    font-size: clamp(1.6rem, 8.5vw, 2.2rem) !important;
   }
   .brutal-hero-box {
-    padding: 1.25rem 1rem !important;
+    padding: 1rem 0.85rem !important;
   }
   .image-frame {
-    max-width: 240px !important;
-  }
-  .pm-svg {
-    width: 38px !important;
-    height: 38px !important;
-  }
-  .pm-track-wrapper, .collab-pm-wrapper {
-    height: 60px !important;
-  }
-  .pm-dots-row, .collab-pm-dots {
-    left: 40px !important;
-    right: 45px !important;
-  }
-  .cpm-dot {
-    width: 8px !important;
-    height: 8px !important;
-  }
-  .cpm-dot.power {
-    width: 13px !important;
-    height: 13px !important;
+    max-width: 220px !important;
   }
 }
 
