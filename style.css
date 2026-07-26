@@ -271,227 +271,220 @@ body {
 }
 
 /* =========================================
-   AUTHENTIC RETRO GAME HERO STYLES
+   CYBER EMERALD GLASS HERO DECK STYLES
    ========================================= */
-.retro-hero-section {
+.cyber-hero-section {
   position: relative;
   overflow: hidden;
-  background: #060712;
-  border-bottom: 2px solid rgba(0, 240, 255, 0.3);
+  background: #030712;
+  border-bottom: 1px solid rgba(16, 185, 129, 0.2);
 }
 
-.retro-grid-bg {
+.cyber-grid-bg {
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
   background-image: 
-    linear-gradient(rgba(0, 240, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 240, 255, 0.06) 1px, transparent 1px);
-  background-size: 32px 32px;
+    linear-gradient(rgba(16, 185, 129, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 185, 129, 0.05) 1px, transparent 1px);
+  background-size: 36px 36px;
+  background-position: center center;
   z-index: 0;
   pointer-events: none;
 }
 
-/* 3D Bevel Retro Arcade Shadow Box */
-.retro-2side-box {
-  background: rgba(8, 12, 24, 0.94);
-  border-top: 2px solid #00f0ff;
-  border-left: 2px solid #00f0ff;
-  border-right: 2px solid #004466;
-  border-bottom: 2px solid #004466;
+.cyber-glow-aura {
+  position: absolute;
+  top: -15%; right: -10%; width: 55%; height: 75%;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.15), rgba(6, 182, 212, 0.08), transparent 70%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Frosted Cyber Glass Card Deck */
+.cyber-hero-card {
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(16, 185, 129, 0.35);
   box-shadow: 
-    6px 6px 0px #000000, 
-    12px 12px 0px rgba(0, 240, 255, 0.25),
-    inset 0 1px 2px rgba(255, 255, 255, 0.2);
-  padding: 2.2rem 2.5rem;
-  border-radius: 0;
+    0 25px 60px rgba(0, 0, 0, 0.8), 
+    0 0 35px rgba(16, 185, 129, 0.12),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  padding: 2.8rem;
+  border-radius: 12px;
+  backdrop-filter: blur(20px);
   position: relative;
   z-index: 2;
 }
 
-.retro-badge {
-  background: #000000;
-  border-top: 1.5px solid #00f0ff;
-  border-left: 1.5px solid #00f0ff;
-  border-right: 1.5px solid #004466;
-  border-bottom: 1.5px solid #004466;
-  border-radius: 0;
-  box-shadow: 3px 3px 0px #000000, 6px 6px 0px rgba(0, 240, 255, 0.2);
-  padding: 0.4rem 1rem;
+.cyber-badge {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  border-radius: 20px;
+  padding: 0.4rem 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.15);
 }
 
-.retro-font-sm {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.58rem;
-  color: #00f0ff;
+.cyber-tech-tag {
+  font-family: 'Silkscreen', var(--font-mono);
+  font-size: 0.62rem;
+  color: #00ff9d;
   letter-spacing: 0.5px;
 }
 
-.retro-font-xs {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.55rem;
-  color: #00f0ff;
-  letter-spacing: 2px;
-  text-shadow: 2px 2px 0px #000000;
+/* Big Display Title: Orbitron */
+.cyber-title {
+  font-family: 'Orbitron', var(--font-h);
+  font-size: clamp(2.4rem, 5.5vw, 4.8rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -1px;
+  margin-top: 1.2rem;
+  margin-bottom: 1.6rem;
+  color: #f8fafc;
+  text-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
 }
 
-.retro-title {
-  font-family: 'Press Start 2P', 'Silkscreen', monospace;
-  font-size: clamp(1.4rem, 3.2vw, 2.5rem);
-  font-weight: 400;
-  line-height: 1.45;
-  letter-spacing: -0.5px;
-  margin-bottom: 1.5rem;
-  text-shadow: 3px 3px 0px #000000, 6px 6px 0px rgba(0, 34, 51, 0.9);
+.cyber-gradient-text {
+  background: linear-gradient(135deg, #00ff9d 0%, #10b981 50%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none !important;
+  filter: drop-shadow(0 0 20px rgba(16, 185, 129, 0.4));
 }
 
-.retro-cyan-glow {
-  color: #00f0ff !important;
-  -webkit-text-stroke: none !important;
-  text-shadow: 3px 3px 0px #000000, 0 0 15px rgba(0, 240, 255, 0.8);
+/* Subtitle Inset Card */
+.cyber-sub-card {
+  background: rgba(3, 7, 18, 0.75);
+  border-left: 3px solid #10b981;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 1.25rem 1.6rem;
+  border-radius: 6px;
+  margin-bottom: 2rem;
 }
 
-/* Inset Retro Arcade CRT Console Screen Box */
-.retro-2side-inner {
-  background: #000000;
-  border-top: 2px solid #004466;
-  border-left: 2px solid #004466;
-  border-right: 2px solid #00f0ff;
-  border-bottom: 2px solid #00f0ff;
-  box-shadow: inset 4px 4px 0px rgba(0, 0, 0, 0.9);
-  padding: 1.1rem 1.4rem;
-  margin-bottom: 1.8rem;
-}
-
-.retro-sub-text {
-  font-family: 'VT323', 'Silkscreen', monospace;
-  font-size: 1.35rem;
-  line-height: 1.5;
-  color: #d1d5db;
-  letter-spacing: 0.5px;
+.cyber-sub-text {
+  font-family: var(--font-main);
+  font-size: 1.08rem;
+  line-height: 1.65;
+  color: #94a3b8;
+  font-weight: 300;
   margin-bottom: 0;
 }
 
-/* 3D Bevel Retro Game Menu Buttons */
-.retro-actions {
+/* Cyber Action Buttons */
+.cyber-actions {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.2rem;
 }
 
-.btn-retro-primary {
-  background: linear-gradient(135deg, #00f0ff 0%, #0088cc 100%);
-  color: #000000;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.65rem;
-  padding: 0.95rem 1.8rem;
-  border-radius: 0;
-  border-top: 2px solid #ffffff;
-  border-left: 2px solid #ffffff;
-  border-right: 2px solid #004466;
-  border-bottom: 2px solid #004466;
-  box-shadow: 4px 4px 0px #000000, 8px 8px 0px rgba(0, 240, 255, 0.4);
-  transition: all 0.15s ease;
+.btn-cyber-primary {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #030712;
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 1rem 2.2rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.35);
+  transition: all 0.25s ease;
   text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.btn-retro-primary:hover {
-  background: #ffffff;
-  color: #000000;
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px #000000, 12px 12px 0px #00f0ff;
+.btn-cyber-primary:hover {
+  background: linear-gradient(135deg, #00ff9d 0%, #10b981 100%);
+  color: #030712;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(16, 185, 129, 0.55);
 }
 
-.btn-retro-primary:active {
-  transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0px #000000, 4px 4px 0px rgba(0, 240, 255, 0.4);
-}
-
-.btn-retro-outline {
-  background: #000000;
-  color: #ffe600;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.65rem;
-  padding: 0.95rem 1.8rem;
-  border-radius: 0;
-  border-top: 2px solid #ffe600;
-  border-left: 2px solid #ffe600;
-  border-right: 2px solid #665c00;
-  border-bottom: 2px solid #665c00;
-  box-shadow: 4px 4px 0px #000000, 8px 8px 0px rgba(255, 230, 0, 0.3);
-  transition: all 0.15s ease;
+.btn-cyber-outline {
+  background: rgba(15, 23, 42, 0.6);
+  color: #00ff9d;
+  font-family: var(--font-main);
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 1rem 2.2rem;
+  border-radius: 8px;
+  border: 1.5px solid rgba(16, 185, 129, 0.5);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  transition: all 0.25s ease;
   text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.btn-retro-outline:hover {
-  background: rgba(255, 230, 0, 0.15);
+.btn-cyber-outline:hover {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: #00ff9d;
   color: #ffffff;
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px #000000, 12px 12px 0px #ffe600;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
 }
 
-.btn-retro-outline:active {
-  transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0px #000000, 4px 4px 0px rgba(255, 230, 0, 0.3);
-}
-
-/* 3D Bevel Retro Profile Box */
-.retro-frame-box {
-  border-top: 2px solid #00f0ff !important;
-  border-left: 2px solid #00f0ff !important;
-  border-right: 2px solid #004466 !important;
-  border-bottom: 2px solid #004466 !important;
-  border-radius: 0 !important;
-  box-shadow: 6px 6px 0px #000000, 12px 12px 0px rgba(0, 240, 255, 0.3) !important;
+/* Cyber Profile Picture Glass Frame */
+.cyber-frame {
+  border: 1.5px solid rgba(16, 185, 129, 0.4) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 35px rgba(16, 185, 129, 0.2) !important;
   position: relative;
 }
 
-.retro-corner {
+.cyber-bracket {
   position: absolute;
-  width: 10px;
-  height: 10px;
-  background: #00f0ff;
-  box-shadow: 0 0 8px #00f0ff;
+  width: 14px;
+  height: 14px;
+  border-color: #00ff9d;
+  border-style: solid;
   z-index: 4;
 }
 
-.retro-corner.top-left { top: -5px; left: -5px; }
-.retro-corner.top-right { top: -5px; right: -5px; }
-.retro-corner.bottom-left { bottom: -5px; left: -5px; }
-.retro-corner.bottom-right { bottom: -5px; right: -5px; }
+.cyber-bracket.top-left { top: -4px; left: -4px; border-width: 2px 0 0 2px; }
+.cyber-bracket.top-right { top: -4px; right: -4px; border-width: 2px 2px 0 0; }
+.cyber-bracket.bottom-left { bottom: -4px; left: -4px; border-width: 0 0 2px 2px; }
+.cyber-bracket.bottom-right { bottom: -4px; right: -4px; border-width: 0 2px 2px 0; }
 
-.retro-blob {
-  background: radial-gradient(circle, rgba(0, 240, 255, 0.3), rgba(255, 0, 127, 0.1), transparent 70%) !important;
+.cyber-blob {
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.3), rgba(6, 182, 212, 0.15), transparent 70%) !important;
 }
 
-.retro-exp-badge {
-  background: #000000 !important;
-  border-top: 2px solid #00f0ff !important;
-  border-left: 2px solid #00f0ff !important;
-  border-right: 2px solid #004466 !important;
-  border-bottom: 2px solid #004466 !important;
-  box-shadow: 4px 4px 0px #000000, 8px 8px 0px rgba(0, 240, 255, 0.4) !important;
-  border-radius: 0 !important;
-  font-family: 'Press Start 2P', monospace !important;
-  padding: 0.9rem 1.1rem !important;
+.cyber-exp-badge {
+  background: rgba(15, 23, 42, 0.95) !important;
+  border: 1px solid rgba(16, 185, 129, 0.5) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(16, 185, 129, 0.25) !important;
+  border-radius: 8px !important;
+  padding: 0.9rem 1.2rem !important;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.retro-exp-badge strong {
-  font-family: 'Press Start 2P', monospace !important;
-  font-size: 1.4rem !important;
-  color: #ffe600 !important;
-  text-shadow: 2px 2px 0px #000000;
+.cyber-exp-badge strong {
+  font-family: 'Orbitron', var(--font-h) !important;
+  font-size: 1.6rem !important;
+  color: #00ff9d !important;
+  text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
 }
 
-.retro-exp-badge span {
-  font-family: 'Press Start 2P', monospace !important;
-  font-size: 0.5rem !important;
-  color: #00f0ff !important;
+.cyber-exp-badge span {
+  font-family: var(--font-main) !important;
+  font-size: 0.65rem !important;
+  color: #cbd5e1 !important;
 }
 
-.retro-line {
-  background: linear-gradient(#00f0ff, transparent) !important;
+.cyber-scroll-label {
+  font-family: 'Silkscreen', var(--font-mono);
+  font-size: 0.58rem;
+  color: #10b981;
+  letter-spacing: 2px;
+}
+
+.cyber-line {
+  background: linear-gradient(#10b981, transparent) !important;
 }
 
 .hero-container {

@@ -17,10 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     heroTl
       .from('.nav-container', { y: -30, opacity: 0, duration: 1 })
-      .from('.retro-2side-box', { y: 40, opacity: 0, scale: 0.95, duration: 1.2 }, '-=0.6')
+      .from('.cyber-hero-card', { y: 40, opacity: 0, scale: 0.95, duration: 1.2 }, '-=0.6')
       .from('.hero-title .line', { y: 60, opacity: 0, stagger: 0.15 }, '-=0.8')
-      .from('.retro-sub-text', { opacity: 0, y: 20, duration: 0.8 }, '-=0.8')
-      .from('.btn-retro-primary, .btn-retro-outline', { opacity: 0, y: 20, stagger: 0.15, duration: 0.8 }, '-=0.6')
+      .from('.cyber-sub-card', { opacity: 0, y: 20, duration: 0.8 }, '-=0.8')
+      .from('.btn-cyber-primary, .btn-cyber-outline', { opacity: 0, y: 20, stagger: 0.15, duration: 0.8 }, '-=0.6')
       .from('.image-frame', { x: 80, opacity: 0, duration: 1.5, scale: 0.95 }, '-=1.2')
       .from('.exp-badge', { scale: 0, opacity: 0, ease: 'back.out(2)' }, '-=0.8');
 
