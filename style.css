@@ -1,4 +1,4 @@
-/* =========================================
+﻿/* =========================================
    PORTFOLIO v5.2 | ARCHITECT LEVEL POLISH
    Performance Optimized & Layout Hardened
    ========================================= */
@@ -3038,7 +3038,7 @@ body.no-scroll {
 
   /* Social Footer */
   .nav-links::after {
-    content: 'ATS Â© 2026';
+    content: 'ATS Ã‚Â© 2026';
     font-size: 0.7rem;
     color: rgba(255, 255, 255, 0.3);
     position: absolute;
@@ -3488,7 +3488,7 @@ body.no-scroll {
 
 
 /* =========================================
-   WORKS â€” RESPONSIVE
+   WORKS Ã¢â‚¬â€ RESPONSIVE
    ========================================= */
 @media (max-width: 768px) {
   .works-section {
@@ -3539,7 +3539,7 @@ body.no-scroll {
 }
 
 /* =========================================
-   TESTIMONIALS â€” RESPONSIVE
+   TESTIMONIALS Ã¢â‚¬â€ RESPONSIVE
    ========================================= */
 @media (max-width: 768px) {
   .testimonials-section {
@@ -3583,7 +3583,7 @@ body.no-scroll {
 }
 
 /* =========================================
-   WORKS â€” CASE STUDIES
+   WORKS Ã¢â‚¬â€ CASE STUDIES
    ========================================= */
 .works-section {
   padding: 140px 0;
@@ -3785,7 +3785,7 @@ body.no-scroll {
 }
 
 /* =========================================
-   TESTIMONIALS â€” CLIENT FEEDBACK
+   TESTIMONIALS Ã¢â‚¬â€ CLIENT FEEDBACK
    ========================================= */
 .testimonials-section {
   padding: 140px 0;
@@ -4019,600 +4019,6 @@ a:focus-visible, button:focus-visible {
   }
   .btn-arcade-primary, .btn-arcade-outline {
     width: 100%;
-    text-align: center;
-    padding: 1rem 1.5rem;
-  }
-}
-
- / *   = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
-       F I N A L   C O M P R E H E N S I V E   M O B I L E   P A S S   
-       E n s u r e s   p e r f e c t   a s p e c t   r a t i o   &   r e s p o n s i v e   b e h a v i o r 
-       = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =   * / 
- @ m e d i a   ( m a x - w i d t h :   7 6 8 p x )   { 
-     / *   G l o b a l   C o n t a i n e r   P a d d i n g   * / 
-     . c o n t a i n e r   { 
-         p a d d i n g :   0   1 r e m   ! i m p o r t a n t ; 
-     } 
- 
-     / *   H e r o   S e c t i o n   * / 
-     . h e r o - c o n t a i n e r   { 
-         g r i d - t e m p l a t e - c o l u m n s :   1 f r   ! i m p o r t a n t ; 
-         g a p :   2 r e m   ! i m p o r t a n t ; 
-     } 
-     . b r u t a l - h e r o - b o x ,   . b r u t a l - d e s c r i p t i o n - b o x   { 
-         w i d t h :   1 0 0 %   ! i m p o r t a n t ; 
-         p a d d i n g :   1 . 5 r e m   ! i m p o r t a n t ; 
-     } 
-     . h e r o - t i t l e   { 
-         f o n t - s i z e :   c l a m p ( 2 r e m ,   1 0 v w ,   3 r e m )   ! i m p o r t a n t ; 
-     } 
-     . h e r o - a c t i o n s   { 
-         f l e x - d i r e c t i o n :   c o l u m n   ! i m p o r t a n t ; 
-         w i d t h :   1 0 0 %   ! i m p o r t a n t ; 
-     } 
-     . h e r o - a c t i o n s   . b t n   { 
-         w i d t h :   1 0 0 %   ! i m p o r t a n t ; 
-         t e x t - a l i g n :   c e n t e r   ! i m p o r t a n t ; 
-     } 
- 
-     / *   G r i d   F i x e s   ( B e n t o ,   P r o j e c t s ,   S e r v i c e s ,   T e s t i m o n i a l s )   * / 
-     . b e n t o - s t a c k ,   
-     . p r o j e c t - g r i d ,   
-     . s e r v i c e - g r i d ,   
-     . t e s t i m o n i a l - g r i d   { 
-         g r i d - t e m p l a t e - c o l u m n s :   1 f r   ! i m p o r t a n t ; 
-         g a p :   1 . 5 r e m   ! i m p o r t a n t ; 
-     } 
-     . b e n t o - m a i n ,   
-     . b e n t o - w i d e ,   
-     . b e n t o - i t e m   { 
-         g r i d - c o l u m n :   s p a n   1   ! i m p o r t a n t ; 
-         g r i d - r o w :   s p a n   1   ! i m p o r t a n t ; 
-     } 
- 
-     / *   E x p e r i e n c e   T i m e l i n e   * / 
-     . r o a d m a p - i t e m ,   
-     . r o a d m a p - i t e m : n t h - c h i l d ( e v e n )   { 
-         f l e x - d i r e c t i o n :   c o l u m n   ! i m p o r t a n t ; 
-         p a d d i n g - l e f t :   5 0 p x   ! i m p o r t a n t ; 
-         m a r g i n - b o t t o m :   4 0 p x   ! i m p o r t a n t ; 
-     } 
-     . r o a d m a p - c o n t e n t   { 
-         w i d t h :   1 0 0 %   ! i m p o r t a n t ; 
-         p a d d i n g :   1 . 5 r e m   ! i m p o r t a n t ; 
-     } 
-     . r o a d m a p - m a r k e r   { 
-         l e f t :   1 5 p x   ! i m p o r t a n t ; 
-     } 
- 
-     / *   S e c t i o n   T i t l e s   * / 
-     . s e c t i o n - t i t l e   { 
-         f o n t - s i z e :   c l a m p ( 1 . 8 r e m ,   8 v w ,   2 . 5 r e m )   ! i m p o r t a n t ; 
-         t e x t - a l i g n :   c e n t e r   ! i m p o r t a n t ; 
-     } 
-     . s e c t i o n - h e a d e r   { 
-         a l i g n - i t e m s :   c e n t e r   ! i m p o r t a n t ; 
-         t e x t - a l i g n :   c e n t e r   ! i m p o r t a n t ; 
-     } 
- 
-     / *   F o o t e r   &   C o n t a c t   * / 
-     . c o n t a c t - c a r d   { 
-         p a d d i n g :   2 r e m   1 r e m   ! i m p o r t a n t ; 
-     } 
-     . c o n t a c t - l i n k s   { 
-         f l e x - d i r e c t i o n :   c o l u m n   ! i m p o r t a n t ; 
-         g a p :   1 r e m   ! i m p o r t a n t ; 
-     } 
- } 
- 
- @ m e d i a   ( m a x - w i d t h :   4 8 0 p x )   { 
-     . b t n ,   . s o c i a l - i c o n ,   . t e c h - c a t e g o r y ,   . s e r v i c e - c a r d   { 
-         p a d d i n g :   0 . 8 r e m   1 r e m   ! i m p o r t a n t ; 
-     } 
-     . h e r o - t a g l i n e   s p a n   { 
-         f o n t - s i z e :   0 . 8 5 r e m   ! i m p o r t a n t ; 
-     } 
- } 
- 
- 
- 
- / *   = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = 
-       R E T R O   E A S T E R   E G G S   A N I M A T I O N S 
-       = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =   * / 
- @ k e y f r a m e s   f l o a t R e t r o   { 
-     0 % ,   1 0 0 %   {   t r a n s f o r m :   t r a n s l a t e Y ( 0 ) ;   } 
-     5 0 %   {   t r a n s f o r m :   t r a n s l a t e Y ( - 1 0 p x ) ;   } 
- } 
- @ k e y f r a m e s   c h o m p R e t r o   { 
-     0 %   {   t r a n s f o r m :   t r a n s l a t e X ( 0 )   s c a l e X ( 1 ) ;   } 
-     5 0 %   {   t r a n s f o r m :   t r a n s l a t e X ( - 1 0 0 v w )   s c a l e X ( 1 ) ;   } 
-     5 0 . 1 %   {   t r a n s f o r m :   t r a n s l a t e X ( - 1 0 0 v w )   s c a l e X ( - 1 ) ;   } 
-     1 0 0 %   {   t r a n s f o r m :   t r a n s l a t e X ( 0 )   s c a l e X ( - 1 ) ;   } 
- } 
- 
- . e a s t e r - e g g . i n v a d e r   { 
-     a n i m a t i o n :   f l o a t R e t r o   2 s   i n f i n i t e   s t e p s ( 2 ) ; 
-     f i l t e r :   d r o p - s h a d o w ( 4 p x   4 p x   0 p x   r g b a ( 4 5 , 3 6 , 3 0 , 0 . 3 ) ) ; 
- } 
- . e a s t e r - e g g . p a c m a n   { 
-     / *   S i m p l e   f l o a t   f o r   p a c m a n   * / 
-     a n i m a t i o n :   f l o a t R e t r o   1 s   i n f i n i t e   s t e p s ( 2 ) ; 
- } 
- . e a s t e r - e g g : h o v e r   { 
-     t r a n s f o r m :   s c a l e ( 1 . 2 )   r o t a t e ( 1 5 d e g )   ! i m p o r t a n t ; 
-     c u r s o r :   p o i n t e r ; 
- } 
- 
- 
- 
-/* =========================================
-   PAC-MAN LOADING SCREEN
-   ========================================= */
-.pacman-loader-track {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0;
-  margin: 2rem 0 1.5rem;
-  height: 70px;
-  position: relative;
-  overflow: hidden;
-}
-.pacman-body {
-  flex-shrink: 0;
-  z-index: 2;
-  animation: pacmanChewLoader 0.35s steps(2) infinite;
-}
-@keyframes pacmanChewLoader {
-  0%   { clip-path: polygon(50% 50%, 100% 0%, 100% 100%, 0 100%, 0 0); }
-  50%  { clip-path: polygon(50% 50%, 100% 25%, 100% 75%, 0 100%, 0 0); }
-  100% { clip-path: polygon(50% 50%, 100% 0%, 100% 100%, 0 100%, 0 0); }
-}
-.pacman-dots {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-left: 10px;
-}
-.pdot {
-  width: 12px;
-  height: 12px;
-  background: #FFD700;
-  border-radius: 0;
-  display: inline-block;
-  animation: dotEat 0.35s steps(1) infinite;
-}
-.pdot:nth-child(2) { animation-delay: 0.07s; }
-.pdot:nth-child(3) { animation-delay: 0.14s; }
-.pdot:nth-child(4) { animation-delay: 0.21s; }
-.pdot:nth-child(5) { animation-delay: 0.28s; }
-.pdot:nth-child(6) { animation-delay: 0.35s; }
-@keyframes dotEat {
-  0%, 49% { opacity: 1; }
-  50%, 100% { opacity: 0; }
-}
-.pdot.ghost-pill {
-  width: 22px;
-  height: 22px;
-  background: #ff4d2d;
-  border-radius: 50% 50% 0 0;
-  animation: none;
-  opacity: 1;
-  position: relative;
-}
-.pdot.ghost-pill::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 6px;
-  background: repeating-linear-gradient(
-    90deg, #ff4d2d 0 5px, transparent 5px 8px
-  );
-}
-.loader-title {
-  font-family: var(--font-retro);
-  font-size: 1rem;
-  letter-spacing: 2px;
-  margin-bottom: 0.5rem;
-  color: #FFD700;
-  text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700;
-  animation: flickerText 2s infinite steps(2);
-}
-
-/* =========================================
-   CONTACT SECTION PAC-MAN CHASE
-   ========================================= */
-.collab-pacman-row {
-  display: inline-flex;
-  align-items: center;
-  gap: 16px;
-  padding: 1rem 2rem;
-  margin-bottom: 0.5rem;
-}
-.collab-pacman {
-  flex-shrink: 0;
-  animation: pacmanChomping 0.35s steps(2) infinite;
-  filter: drop-shadow(0 0 8px rgba(255,215,0,0.6));
-}
-@keyframes pacmanChomping {
-  0%   { clip-path: polygon(50% 50%, 100% 0%, 100% 100%, 0% 100%, 0% 0%); }
-  50%  { clip-path: polygon(50% 50%, 100% 30%, 100% 70%, 0% 100%, 0% 0%); }
-  100% { clip-path: polygon(50% 50%, 100% 0%, 100% 100%, 0% 100%, 0% 0%); }
-}
-.collab-dot {
-  width: 14px;
-  height: 14px;
-  background: #FFD700;
-  display: inline-block;
-  border-radius: 0;
-  animation: collabDotPulse 0.6s steps(2) infinite;
-}
-.collab-dot:nth-child(3) { animation-delay: 0.15s; }
-.collab-dot:nth-child(4) { animation-delay: 0.3s; }
-@keyframes collabDotPulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.3; transform: scale(0.7); }
-}
-.collab-ghost {
-  flex-shrink: 0;
-  animation: ghostBob 0.7s steps(2) infinite;
-  filter: drop-shadow(0 0 6px rgba(255,77,45,0.5));
-}
-@keyframes ghostBob {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-
-/* =========================================
-   DOWNLOAD RESUME BUTTON
-   ========================================= */
-.btn-brutal-download {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  background: #000 !important;
-  color: #FFD700 !important;
-  border: 4px solid #2d241e !important;
-  padding: 0.9rem 1.5rem !important;
-  font-family: var(--font-retro) !important;
-  font-size: 0.6rem !important;
-  text-decoration: none;
-  box-shadow: 5px 5px 0 #FFD700 !important;
-  cursor: pointer;
-  letter-spacing: 1px;
-  transition: none !important;
-  position: relative;
-}
-.btn-brutal-download:hover {
-  transform: translate(-3px, -3px) !important;
-  box-shadow: 8px 8px 0 #FFD700 !important;
-  background: #FFD700 !important;
-  color: #000 !important;
-}
-.btn-brutal-download i {
-  font-size: 0.9rem;
-  animation: downloadBounce 1.5s steps(4) infinite;
-}
-@keyframes downloadBounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(3px); }
-}
-
-/* =========================================
-   SCATTERED RETRO SVG SPRITES (PAGE DECO)
-   ========================================= */
-.retro-deco-sprite {
-  position: absolute;
-  pointer-events: none;
-  z-index: 1;
-  image-rendering: pixelated;
-}
-.retro-deco-sprite.float-anim {
-  animation: floatRetro 2.5s steps(3) infinite;
-}
-.retro-deco-sprite.spin-slow {
-  animation: spinRetro 4s steps(8) infinite;
-}
-@keyframes spinRetro {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-/* =========================================
-   REAL END-TO-END PAC-MAN LOADER (FULL REWRITE)
-   ========================================= */
-
-/* Base loader overlay */
-.retro-loader {
-  position: fixed !important;
-  inset: 0;
-  background: #000 !important;
-  z-index: 99999;
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 0 !important;
-}
-
-/* Title + text block in the center */
-.loader-center-content {
-  text-align: center;
-  margin-bottom: 48px;
-  z-index: 2;
-}
-.loader-center-content .loader-title {
-  font-family: 'Press Start 2P', monospace;
-  font-size: clamp(1rem, 3vw, 1.6rem);
-  color: #FFD700;
-  text-shadow: 0 0 12px #FFD700, 0 0 24px #FF8C00;
-  margin-bottom: 14px;
-  animation: flickerText 2s steps(2) infinite;
-}
-.loader-center-content .loader-text {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.6rem;
-  color: #888;
-  letter-spacing: 1px;
-}
-
-/* Progress bar below the track */
-.retro-loader .loader-bar {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 0.65rem;
-  color: #FFD700;
-  margin-top: 24px;
-  letter-spacing: 2px;
-}
-
-/* ---- THE TRACK ---- */
-.pm-track-wrapper {
-  width: 100vw;
-  overflow: hidden;
-  position: relative;
-  height: 80px;
-  display: flex;
-  align-items: center;
-}
-
-.pm-track {
-  width: 100%;
-  height: 80px;
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-/* Ground line */
-.pm-track::after {
-  content: '';
-  position: absolute;
-  bottom: 8px;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: repeating-linear-gradient(
-    90deg,
-    #333 0px, #333 12px,
-    transparent 12px, transparent 18px
-  );
-}
-
-/* ---- PAC-MAN CHARACTER ---- */
-.pm-char {
-  position: absolute;
-  left: 0;
-  bottom: 11px;
-  z-index: 10;
-  /* JS will drive translateX — CSS sets the chomp */
-  transform: translateX(0);
-}
-
-/* Chomp: alternate between open/closed mouth using clip-path */
-.pm-svg {
-  display: block;
-  image-rendering: pixelated;
-  animation: realChomp 0.22s steps(1) infinite;
-  filter: drop-shadow(0 0 8px rgba(255,215,0,0.7));
-}
-
-@keyframes realChomp {
-  0%, 100% {
-    /* wide open mouth */
-    clip-path: polygon(
-      50% 50%,
-      100% 15%,
-      100% 50%,
-      100% 85%,
-      85% 100%,
-      50% 100%,
-      15% 100%,
-      0% 85%,
-      0% 50%,
-      0% 15%,
-      15% 0%,
-      50% 0%,
-      85% 0%
-    );
-  }
-  50% {
-    /* mouth slightly closed */
-    clip-path: polygon(
-      50% 50%,
-      100% 30%,
-      100% 50%,
-      100% 70%,
-      85% 100%,
-      50% 100%,
-      15% 100%,
-      0% 85%,
-      0% 50%,
-      0% 15%,
-      15% 0%,
-      50% 0%,
-      85% 0%
-    );
-  }
-}
-
-/* ---- DOTS ROW ---- */
-.pm-dots-row {
-  position: absolute;
-  left: 60px;
-  right: 80px;
-  bottom: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 5;
-}
-
-.pm-dot {
-  width: 10px;
-  height: 10px;
-  background: #FFD700;
-  border-radius: 0; /* square, retro */
-  display: inline-block;
-  flex-shrink: 0;
-  transition: none;
-  image-rendering: pixelated;
-}
-
-.pm-dot.eaten {
-  visibility: hidden;
-}
-
-/* Power pill / big dot */
-.pm-dot.power {
-  width: 18px;
-  height: 18px;
-  background: #FFD700;
-  box-shadow: 0 0 8px 2px rgba(255,215,0,0.8);
-  animation: powerPulse 0.5s steps(2) infinite;
-}
-
-@keyframes powerPulse {
-  0%, 100% { box-shadow: 0 0 8px 2px rgba(255,215,0,0.8); }
-  50% { box-shadow: 0 0 14px 4px rgba(255,140,0,1); }
-}
-
-/* ---- GHOST ---- */
-.pm-ghost {
-  position: absolute;
-  right: 10px;
-  bottom: 11px;
-  z-index: 5;
-  animation: ghostWiggle 0.35s steps(2) infinite;
-  filter: drop-shadow(0 0 6px rgba(255,77,45,0.6));
-}
-
-@keyframes ghostWiggle {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
-}
-
-/* ghostFlee triggered when power pill eaten */
-@keyframes ghostFlee {
-  0%, 100% { transform: translateY(0) scaleX(1); }
-  50% { transform: translateY(-4px) scaleX(0.9); }
-}
-
-/* Pac-Man loader track — make it full-width and centered vertically */
-.retro-loader {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.pm-track-wrapper {
-  width: 100vw;
-}
-.pm-dots-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* =========================================
-   LOADER HIDDEN STATE (beats !important)
-   ========================================= */
-.retro-loader.loader-hidden {
-  display: none !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-}
-
-/* =========================================
-   COLLAB SECTION — REAL PAC-MAN TRACK
-   ========================================= */
-.collab-pm-wrapper {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  padding: 2rem 0 0;
-}
-.collab-pm-track {
-  width: 100%;
-  height: 80px;
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-.collab-pm-track::after {
-  content: '';
-  position: absolute;
-  bottom: 6px;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: repeating-linear-gradient(
-    90deg, #2d241e 0 12px, transparent 12px 18px
-  );
-}
-.collab-pm-char {
-  position: absolute;
-  left: 0;
-  bottom: 9px;
-  z-index: 10;
-  transform: translateX(0);
-}
-.collab-pm-dots {
-  position: absolute;
-  left: 70px;
-  right: 80px;
-  bottom: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 5;
-}
-.collab-pm-ghost {
-  position: absolute;
-  right: 6px;
-  bottom: 9px;
-  z-index: 5;
-  animation: ghostWiggle 0.4s steps(2) infinite;
-}
-.cpm-dot {
-  width: 11px;
-  height: 11px;
-  background: #FFD700;
-  display: inline-block;
-  flex-shrink: 0;
-  image-rendering: pixelated;
-}
-.cpm-dot.power {
-  width: 18px;
-  height: 18px;
-  background: #FFD700;
-  box-shadow: 0 0 8px 2px rgba(255,215,0,0.7);
-  animation: powerPulse 0.5s steps(2) infinite;
-}
-.cpm-dot.eaten {
-  visibility: hidden;
-}
 
 /* =========================================
    PAC-MAN MOUTH CHOMP ANIMATION (DUAL JAW)
@@ -4642,7 +4048,7 @@ a:focus-visible, button:focus-visible {
     transform: rotate(0deg);
   }
   100% {
-    transform: rotate(-52deg);
+    transform: rotate(-50deg);
   }
 }
 
@@ -4651,37 +4057,126 @@ a:focus-visible, button:focus-visible {
     transform: rotate(0deg);
   }
   100% {
-    transform: rotate(52deg);
+    transform: rotate(50deg);
   }
 }
 
 /* =========================================
-   MULTI-RESOLUTION & ASPECT RATIO OPTIMIZATION
+   FULL HERO SECTION & MULTI-SCREEN OPTIMIZATION
    (Ultrawide, 4K, Laptop, Tablet, Mobile)
    ========================================= */
+
+/* Base Hero Layout Refinements */
+.hero-section {
+  position: relative;
+  overflow: hidden;
+  padding: 140px 0 80px;
+}
+
+.hero-container {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 3rem;
+  width: 100%;
+}
+
+.brutal-hero-box {
+  background: #ffffff;
+  color: #2d241e;
+  border: 4px solid #2d241e;
+  box-shadow: 8px 8px 0px rgba(45, 36, 30, 0.25);
+  padding: 2.5rem;
+  border-radius: 0px;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.brutal-title {
+  font-family: var(--font-h) !important;
+  font-size: clamp(2.4rem, 4.2vw, 3.8rem) !important;
+  font-weight: 800;
+  line-height: 1.15 !important;
+  letter-spacing: -1px !important;
+  color: #000000;
+  word-break: break-word;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.hero-image {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.image-frame {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+.image-frame img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 0.82;
+  object-fit: cover;
+  border-radius: 0px;
+  border: 4px solid #2d241e;
+  box-shadow: 8px 8px 0px rgba(45, 36, 30, 0.25);
+  position: relative;
+  z-index: 2;
+}
 
 /* 4K & Ultrawide Display Optimization (>1600px) */
 @media (min-width: 1600px) {
   .container {
     max-width: 1500px !important;
   }
-  .hero-title {
-    font-size: clamp(4rem, 6vw, 6.5rem) !important;
+  .hero-container {
+    grid-template-columns: 1.2fr 0.8fr !important;
+    gap: 4rem !important;
   }
-  .bento-stack {
-    gap: 2.5rem !important;
+  .brutal-title {
+    font-size: clamp(3.5rem, 5vw, 5.5rem) !important;
+  }
+  .image-frame {
+    max-width: 400px !important;
   }
 }
 
 /* Laptop & Medium Screens (1024px - 1440px) */
 @media (max-width: 1440px) {
   .container {
-    max-width: 1200px !important;
+    max-width: 1180px !important;
+  }
+  .hero-container {
+    gap: 2rem !important;
   }
 }
 
-/* Tablet / Landscape Mobile (601px - 1023px) */
+/* Tablet & iPad (769px - 1024px) */
 @media (max-width: 1024px) {
+  .hero-section {
+    padding: 120px 0 60px !important;
+  }
+  .hero-container {
+    grid-template-columns: 1fr !important;
+    gap: 2.5rem !important;
+  }
+  .brutal-hero-box {
+    padding: 2rem !important;
+  }
+  .image-frame {
+    max-width: 320px !important;
+  }
   .pm-svg {
     width: 46px !important;
     height: 46px !important;
@@ -4693,14 +4188,91 @@ a:focus-visible, button:focus-visible {
     left: 50px !important;
     right: 65px !important;
   }
-  .pm-ghost svg, .collab-pm-ghost svg {
-    width: 40px !important;
-    height: 48px !important;
+}
+
+/* Mobile & Small Aspect Ratios (<= 768px) */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.25rem !important;
+  }
+  .hero-section {
+    padding: 100px 0 50px !important;
+  }
+  .hero-container {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+  .brutal-hero-box {
+    padding: 1.5rem 1.2rem !important;
+  }
+  .brutal-title {
+    font-size: clamp(2rem, 8vw, 3rem) !important;
+    line-height: 1.18 !important;
+  }
+  .hero-actions {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 0.8rem !important;
+  }
+  .hero-actions .btn {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+    padding: 1rem 1.2rem !important;
+  }
+  .image-frame {
+    max-width: 280px !important;
+  }
+  .real-retro-elements {
+    opacity: 0.25 !important;
+    pointer-events: none !important;
+  }
+  .easter-egg.invader {
+    top: -20px !important;
+    right: -10px !important;
+    transform: scale(0.8) !important;
+  }
+
+  /* Bento Grid Mobile */
+  .bento-stack, .project-grid, .service-grid, .testimonial-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+  .bento-main, .bento-wide, .bento-item {
+    grid-column: span 1 !important;
+    grid-row: span 1 !important;
+  }
+
+  /* Timeline Mobile */
+  .roadmap-item, .roadmap-item:nth-child(even) {
+    flex-direction: column !important;
+    padding-left: 45px !important;
+    margin-bottom: 40px !important;
+  }
+  .roadmap-content {
+    width: 100% !important;
+    padding: 1.5rem !important;
+  }
+  .roadmap-marker {
+    left: 15px !important;
   }
 }
 
-/* Mobile & Portrait Aspect Ratios (<= 600px) */
-@media (max-width: 600px) {
+/* Extra Small Phones (<= 480px) */
+@media (max-width: 480px) {
+  .brutal-badge {
+    font-size: 0.48rem !important;
+    padding: 0.4rem 0.8rem !important;
+  }
+  .brutal-title {
+    font-size: clamp(1.75rem, 9vw, 2.4rem) !important;
+  }
+  .brutal-hero-box {
+    padding: 1.25rem 1rem !important;
+  }
+  .image-frame {
+    max-width: 240px !important;
+  }
   .pm-svg {
     width: 38px !important;
     height: 38px !important;
@@ -4709,19 +4281,22 @@ a:focus-visible, button:focus-visible {
     height: 60px !important;
   }
   .pm-dots-row, .collab-pm-dots {
-    left: 42px !important;
-    right: 48px !important;
-  }
-  .pm-ghost svg, .collab-pm-ghost svg {
-    width: 32px !important;
-    height: 40px !important;
+    left: 40px !important;
+    right: 45px !important;
   }
   .cpm-dot {
     width: 8px !important;
     height: 8px !important;
   }
   .cpm-dot.power {
-    width: 14px !important;
-    height: 14px !important;
+    width: 13px !important;
+    height: 13px !important;
   }
+}
+
+/* Loader Hidden Rule */
+.retro-loader.loader-hidden {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
