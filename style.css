@@ -4009,213 +4009,160 @@ a:focus-visible, button:focus-visible {
 }
 
 
-/* =========================================
-   PAC-MAN MOUTH CHOMP ANIMATION (DUAL JAW)
-   ========================================= */
-
-
-
-
-
-
-
-  100% { transform: rotate(-50deg); }
+100% { transform: rotate(25deg); }
 }
 
+/* =========================================================
+   PAC-MAN LOADER & COLLAB TRACK — FULL IMPLEMENTATION
+   ========================================================= */
 
-  100% { transform: rotate(50deg); }
-}
-
-/* =========================================
-
-/* =========================================
-   CLEAN MODERN RESPONSIVE LAYOUT
-   ========================================= */
-/* Universal Container */
-.container, section .container {
+/* ---- Loader Pac-Man Track ---- */
+.pm-track-wrapper {
+  position: absolute;
+  bottom: 70px;
+  left: 0;
+  right: 0;
   width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
+  overflow: hidden;
 }
 
-/* Base Section Overrides */
-section, .hero-section, .portfolio-section, .project-section, .services-section, .bento-section, .experience-section, .testimonials-section, .contact-section {
-  overflow: visible; /* Prevent box-shadow clipping */
+.pm-track {
   position: relative;
   width: 100%;
-}
-
-/* Grids: Auto-Fit strategy replaces rigid media queries */
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-  gap: 2rem;
-  width: 100%;
-}
-
-.service-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-  gap: 1.5rem;
-  width: 100%;
-}
-
-.testimonial-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-  gap: 1.5rem;
-  width: 100%;
-}
-
-.bento-stack {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-  gap: 1.5rem;
-  width: 100%;
-}
-
-/* Hero Section Fluid Layout */
-.hero-section {
-  padding-top: clamp(100px, 12vw, 150px);
-  padding-bottom: clamp(40px, 6vw, 80px);
-}
-
-.hero-container {
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  align-items: center;
-  gap: clamp(2rem, 4vw, 4rem);
-}
-
-.brutal-title { word-break: break-word; overflow-wrap: break-word; hyphens: auto; 
-  font-size: clamp(2.2rem, 5vw, 4rem);
-  line-height: 1.1;
-  margin-bottom: 1rem;
-}
-
-.brutal-sub-text {
-  font-size: clamp(0.7rem, 1.2vw, 0.9rem);
-  line-height: 1.6;
-}
-
-.hero-actions {
+  height: 60px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-.hero-actions .btn {
-  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  flex: 1 1 auto;
-  min-width: fit-content;
-  padding: 0.8rem 1.5rem;
 }
 
-.image-frame {
-  max-width: 100%;
-  width: clamp(250px, 30vw, 380px);
-  margin: 0 auto;
+/* Pac-Man character container — starts at left edge */
+.pm-char {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%) translateX(0);
+  z-index: 10;
+  will-change: transform;
+  line-height: 0;
 }
 
-/* Tablet & Mobile Overrides */
-@media (max-width: 1024px) {
-  .hero-container {
-    grid-template-columns: 1fr;
-    text-align: left;
-  }
-  
-  .bento-stack {
-    grid-template-columns: 1fr;
-  }
-  
-  /* Ensure bento elements span full width naturally on mobile */
-  .bento-main, .bento-wide, .bento-item {
-    grid-column: 1 / -1;
-  }
-}
-
-@media (max-width: 768px) {
-  .container, section .container {
-    padding: 0 1rem;
-  }
-  
-  .hero-actions {
-    flex-direction: column;
-  }
-  
-  .hero-actions .btn {
-    width: 100%;
-  }
-
-  /* Timeline mobile format */
-  .roadmap-item {
-    flex-direction: column;
-    padding-left: 40px;
-  }
-  
-  .roadmap-marker {
-    left: 10px;
-  }
-}
-
-/* PAC-MAN MOUTH CHOMP ANIMATION (DUAL JAW) */
-
-
-
-
-
-
-
-  100% { transform: rotate(-50deg); }
-}
-
-
-  100% { transform: rotate(50deg); }
-}
-
-.retro-loader.loader-hidden {
-  display: none;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-/* Fix timeline pseudo elements on mobile */
-@media (max-width: 900px) {
-  .roadmap-item:nth-child(odd) .roadmap-content::before,
-  .roadmap-item:nth-child(odd) .roadmap-content::after,
-  .roadmap-item:nth-child(even) .roadmap-content::before,
-  .roadmap-item:nth-child(even) .roadmap-content::after {
-    display: none !important;
-  }
-}
-
-@media (max-width: 768px) {
-  .brutal-hero-box {
-    padding: 1.25rem !important;
-  }
-}
-
-/* =========================================
-   PAC-MAN MOUTH CHOMP - RELIABLE SINGLE CIRCLE
-   ========================================= */
 .pm-svg {
   display: block;
   image-rendering: pixelated;
   image-rendering: crisp-edges;
+  filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.8));
+}
+
+/* Ghost at right end */
+.pm-ghost {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  transition: filter 0.3s;
+}
+
+/* Dots row — centered vertically on the track */
+.pm-dots-row {
+  position: absolute;
+  left: 70px;
+  right: 70px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 3;
+}
+
+.pm-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: #2d241e;
+  border-radius: 50%;
+  transition: opacity 0.05s;
+  flex-shrink: 0;
+}
+
+.pm-dot.power {
+  width: 13px;
+  height: 13px;
+  background: #ffb89e;
+  border: 2px solid #2d241e;
+}
+
+.pm-dot.eaten {
+  opacity: 0;
+}
+
+/* ---- Collab Pac-Man Track ---- */
+.collab-pm-wrapper {
+  position: relative;
+  width: 100%;
   overflow: hidden;
-  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.7));
+  margin-bottom: 2rem;
 }
 
-.pm-mouth {
-  transform-origin: 20px 20px;
-  animation: pmChomp 0.2s steps(3) infinite alternate;
+.collab-pm-track {
+  position: relative;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  background: rgba(45, 36, 30, 0.05);
+  border-top: 3px solid #2d241e;
+  border-bottom: 3px solid #2d241e;
 }
 
-@keyframes pmChomp {
-  0%  { transform: rotate(-25deg); }
-  100% { transform: rotate(25deg); }
+.collab-pm-char {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%) translateX(0);
+  z-index: 10;
+  will-change: transform;
+  line-height: 0;
+}
+
+.collab-pm-ghost {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  transition: filter 0.3s;
+}
+
+.collab-pm-dots {
+  position: absolute;
+  left: 80px;
+  right: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 3;
+}
+
+.cpm-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: #2d241e;
+  border-radius: 50%;
+  transition: opacity 0.05s;
+  flex-shrink: 0;
+}
+
+.cpm-dot.power {
+  width: 15px;
+  height: 15px;
+  background: #ffb89e;
+  border: 2px solid #2d241e;
+}
+
+.cpm-dot.eaten {
+  opacity: 0;
 }

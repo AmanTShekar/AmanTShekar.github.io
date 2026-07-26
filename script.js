@@ -83,6 +83,21 @@ document.addEventListener('DOMContentLoaded', () => {
       gsap.registerPlugin(ScrollTrigger);
     }
 
+    
+// Pac-Man mouth chomp animation — drives the SVG polygon directly
+function startPacManChomp(polyId) {
+  const poly = document.getElementById(polyId);
+  if (!poly) return null;
+  let open = true;
+  const OPEN_PTS = '20,20 40,13 40,27';   // ~35deg mouth opening
+  const CLOSED_PTS = '20,20 40,19 40,21'; // nearly closed
+  const interval = setInterval(() => {
+    poly.setAttribute('points', open ? OPEN_PTS : CLOSED_PTS);
+    open = !open;
+  }, 120); // ~8 chomps/sec
+  return interval;
+}
+
     // 2. Retro Boot Sequence — Real Pac-Man end-to-end
     const retroLoader = document.getElementById('retroLoader');
     const loaderBar   = document.getElementById('loaderBar');
@@ -122,6 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const NUM_DOTS = 20;
         const dots = [];
 
+        const pmChompInterval = startPacManChomp('pmMouthPoly');
         if (dotsRow) {
           dotsRow.innerHTML = ''; // Clear any existing dots
           for (let i = 0; i < NUM_DOTS; i++) {
@@ -247,6 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
       cDots.push(d);
     }
 
+    let collabChompInterval = null;
     const resetCollab = () => {
       collabGhostFlee = false;
       cDots.forEach(d => d.classList.remove('eaten'));

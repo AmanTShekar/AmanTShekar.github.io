@@ -127,13 +127,9 @@
       <div class="pm-track" id="pmTrack">
         <!-- Pac-Man character -->
         <div class="pm-char" id="pmChar">
-          <svg class="pm-svg" id="pmSvg" viewBox="0 0 40 40" width="52" height="52">
-              <!-- Full yellow circle -->
+          <svg class="pm-svg" id="pmSvg" viewBox="0 0 40 40" width="50" height="50" style="display:block;overflow:hidden;image-rendering:pixelated;">
               <circle cx="20" cy="20" r="20" fill="#FFD700"/>
-              <!-- Black mouth wedge - rotates around center -->
-              <g class="pm-mouth" id="pmMouth">
-                <polygon points="20,20 40,14 40,26" fill="#000000"/>
-              </g>
+              <polygon id="pmMouthPoly" points="20,20 40,13 40,27" fill="#000"/>
             </svg>
         </div>
         <!-- Dots will be injected by JS -->
@@ -945,13 +941,9 @@
         <div class="collab-pm-track" id="collabPmTrack">
           <!-- Pac-Man -->
           <div class="collab-pm-char" id="collabPmChar">
-            <svg class="pm-svg" viewBox="0 0 40 40" width="62" height="62">
-              <!-- Full yellow circle -->
+            <svg class="pm-svg" id="collabPmSvg" viewBox="0 0 40 40" width="60" height="60" style="display:block;overflow:hidden;image-rendering:pixelated;">
               <circle cx="20" cy="20" r="20" fill="#FFD700"/>
-              <!-- Black mouth wedge - rotates around center -->
-              <g class="pm-mouth">
-                <polygon points="20,20 40,14 40,26" fill="#000000"/>
-              </g>
+              <polygon id="collabMouthPoly" points="20,20 40,13 40,27" fill="#000"/>
             </svg>
           </div>
           <!-- Dots injected by JS -->
