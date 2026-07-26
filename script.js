@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
       };
 
       if (hasBooted) {
-        retroLoader.style.display = 'none';
+        retroLoader.classList.add('loader-hidden');
         runHeroReveal();
       } else {
         document.body.style.overflow = 'hidden';
@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ease: 'steps(12)',
             delay: 0.3,
             onComplete: () => {
-              retroLoader.style.display = 'none';
+              retroLoader.classList.add('loader-hidden');
               document.body.style.overflow = '';
             }
           });
