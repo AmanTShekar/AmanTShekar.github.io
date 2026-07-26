@@ -3485,70 +3485,7 @@ body.no-scroll {
   }
 }
 
-.service-card {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 3rem 2.5rem;
-  transition: all 0.5s var(--ease);
-  position: relative;
-  overflow: hidden;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
 
-.service-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
-  opacity: 0;
-  transition: opacity 0.5s var(--ease);
-}
-
-.service-card:hover {
-  border-color: rgba(41, 151, 255, 0.3);
-  background: rgba(255, 255, 255, 0.04);
-  transform: translateY(-10px);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(41, 151, 255, 0.08);
-}
-
-.service-card:hover::before {
-  opacity: 1;
-}
-
-.service-icon {
-  font-size: 2.5rem;
-  color: var(--accent);
-  margin-bottom: 2rem;
-  display: block;
-  filter: drop-shadow(0 0 12px rgba(41, 151, 255, 0.3));
-  transition: transform 0.5s var(--ease);
-}
-
-.service-card:hover .service-icon {
-  transform: scale(1.1) rotate(-5deg);
-}
-
-.service-title {
-  font-family: var(--font-h);
-  font-size: 1.1rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: -0.5px;
-  margin-bottom: 1rem;
-  color: #fff;
-}
-
-.service-desc {
-  color: var(--text-dim);
-  font-size: 0.9rem;
-  line-height: 1.7;
-  font-weight: 300;
-}
 
 /* =========================================
    WORKS — RESPONSIVE
