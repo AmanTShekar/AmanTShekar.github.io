@@ -119,7 +119,22 @@
   <!-- Retro Boot Loading Screen -->
   <div class="retro-loader" id="retroLoader">
     <div class="loader-content">
-      <div class="loader-title">SYSTEM BOOT...</div>
+      <div class="loader-title" id="loaderTitle">LOADING...</div>
+      <!-- Pac-Man Eating Animation -->
+      <div class="pacman-loader-track">
+        <div class="pacman-body" id="pacmanBody">
+          <!-- Pac-Man SVG (pixel art) -->
+          <svg viewBox="0 0 20 20" width="64" height="64" fill="#FFD700" id="pacmanSvg">
+            <!-- Full circle minus mouth -->
+            <path d="M10,0 L10,0 A10,10 0 1,1 10,20 L10,20 L10,10 Z" />
+          </svg>
+        </div>
+        <div class="pacman-dots" id="pacmanDots">
+          <span class="pdot"></span><span class="pdot"></span><span class="pdot"></span>
+          <span class="pdot"></span><span class="pdot"></span><span class="pdot"></span>
+          <span class="pdot ghost-pill"></span>
+        </div>
+      </div>
       <div class="loader-bar" id="loaderBar">[          ] 0%</div>
       <div class="loader-text" id="loaderText">Initializing modules...</div>
     </div>
@@ -251,6 +266,10 @@
             <a href="#projects" class="btn btn-brutal-secondary">
               <span>Projects</span>
               <i class="fa-solid fa-arrow-up-right-from-square arrow-icon"></i>
+            </a>
+            <a href="aman.pdf" class="btn btn-brutal-download" target="_blank" rel="noopener noreferrer" download>
+              <i class="fa-solid fa-download"></i>
+              <span>Resume</span>
             </a>
           </div>
         </div>
@@ -897,12 +916,28 @@
 
     <!-- Contact Section (Command Center) -->
     <section id="contact" class="contact-section" style="position: relative; overflow: hidden;">
-      
-      <!-- Easter Egg: Pac-Man (Static/Floating) -->
-      <div class="easter-egg pacman" style="position: absolute; top: 20px; right: 10%; z-index: 10; opacity: 0.8;">
-        <svg viewBox="0 0 14 14" width="42" height="42" fill="#2d241e" xmlns="http://www.w3.org/2000/svg">
-          <path d="M4,0 h6 v1 h-6 v-1  M2,1 h10 v1 h-10 v-1  M1,2 h12 v1 h-12 v-1  M0,3 h14 v1 h-14 v-1  M0,4 h14 v1 h-14 v-1  M0,5 h14 v1 h-14 v-1  M0,6 h7 v1 h-7 v-1  M0,7 h5 v1 h-5 v-1  M0,8 h7 v1 h-7 v-1  M0,9 h14 v1 h-14 v-1  M0,10 h14 v1 h-14 v-1  M1,11 h12 v1 h-12 v-1  M2,12 h10 v1 h-10 v-1  M4,13 h6 v1 h-6 v-1"/>
-        </svg>
+
+      <!-- Big Pac-Man above COLLABORATE heading -->
+      <div style="text-align:center; padding-top: 3rem; position: relative; z-index: 5;">
+        <!-- Pac-Man + Ghost chase in the contact section -->
+        <div class="collab-pacman-row">
+          <!-- Pac-Man -->
+          <svg class="collab-pacman" viewBox="0 0 20 20" width="72" height="72" fill="#FFD700">
+            <path d="M10,0 L10,0 A10,10 0 1,1 10,20 L10,20 L10,10 Z" />
+          </svg>
+          <!-- 3 dots -->
+          <span class="collab-dot"></span>
+          <span class="collab-dot"></span>
+          <span class="collab-dot"></span>
+          <!-- Ghost SVG pixel art -->
+          <svg class="collab-ghost" viewBox="0 0 12 16" width="54" height="72" fill="#ff4d2d" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3,0 h6 v1 h-6 v-1 M1,1 h10 v1 h-10 v-1 M0,2 h12 v1 h-12 v-1 M0,3 h12 v1 h-12 v-1 M0,4 h12 v1 h-12 v-1 M0,5 h12 v1 h-12 v-1 M0,6 h12 v1 h-12 v-1 M0,7 h12 v1 h-12 v-1 M0,8 h2 v2 h2 v-2 h1 v2 h2 v-2 h1 v2 h2 v-2 h2 v1 h-12 v-1 M0,9 h2 v2 h-2 v-2 M4,9 h2 v2 h-2 v-2 M8,9 h2 v2 h-2 v-2 M2,10 h2 v1 h-2 v-1 M6,10 h2 v1 h-2 v-1 M10,10 h2 v1 h-2 v-1 M0,11 h12 v1 h-12 v-1 M0,12 h12 v4"/>
+            <rect x="2" y="5" width="3" height="3" fill="#fff"/>
+            <rect x="3" y="6" width="2" height="2" fill="#000"/>
+            <rect x="7" y="5" width="3" height="3" fill="#fff"/>
+            <rect x="8" y="6" width="2" height="2" fill="#000"/>
+          </svg>
+        </div>
       </div>
 
       <div class="container">

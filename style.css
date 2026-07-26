@@ -4143,3 +4143,177 @@ a:focus-visible, button:focus-visible {
  } 
   
  
+/* =========================================
+   PAC-MAN LOADING SCREEN
+   ========================================= */
+.pacman-loader-track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin: 2rem 0 1.5rem;
+  height: 70px;
+  position: relative;
+  overflow: hidden;
+}
+.pacman-body {
+  flex-shrink: 0;
+  z-index: 2;
+  animation: pacmanChewLoader 0.35s steps(2) infinite;
+}
+@keyframes pacmanChewLoader {
+  0%   { clip-path: polygon(50% 50%, 100% 0%, 100% 100%, 0 100%, 0 0); }
+  50%  { clip-path: polygon(50% 50%, 100% 25%, 100% 75%, 0 100%, 0 0); }
+  100% { clip-path: polygon(50% 50%, 100% 0%, 100% 100%, 0 100%, 0 0); }
+}
+.pacman-dots {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-left: 10px;
+}
+.pdot {
+  width: 12px;
+  height: 12px;
+  background: #FFD700;
+  border-radius: 0;
+  display: inline-block;
+  animation: dotEat 0.35s steps(1) infinite;
+}
+.pdot:nth-child(2) { animation-delay: 0.07s; }
+.pdot:nth-child(3) { animation-delay: 0.14s; }
+.pdot:nth-child(4) { animation-delay: 0.21s; }
+.pdot:nth-child(5) { animation-delay: 0.28s; }
+.pdot:nth-child(6) { animation-delay: 0.35s; }
+@keyframes dotEat {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.pdot.ghost-pill {
+  width: 22px;
+  height: 22px;
+  background: #ff4d2d;
+  border-radius: 50% 50% 0 0;
+  animation: none;
+  opacity: 1;
+  position: relative;
+}
+.pdot.ghost-pill::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg, #ff4d2d 0 5px, transparent 5px 8px
+  );
+}
+.loader-title {
+  font-family: var(--font-retro);
+  font-size: 1rem;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+  color: #FFD700;
+  text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700;
+  animation: flickerText 2s infinite steps(2);
+}
+
+/* =========================================
+   CONTACT SECTION PAC-MAN CHASE
+   ========================================= */
+.collab-pacman-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 1rem 2rem;
+  margin-bottom: 0.5rem;
+}
+.collab-pacman {
+  flex-shrink: 0;
+  animation: pacmanChomping 0.35s steps(2) infinite;
+  filter: drop-shadow(0 0 8px rgba(255,215,0,0.6));
+}
+@keyframes pacmanChomping {
+  0%   { clip-path: polygon(50% 50%, 100% 0%, 100% 100%, 0% 100%, 0% 0%); }
+  50%  { clip-path: polygon(50% 50%, 100% 30%, 100% 70%, 0% 100%, 0% 0%); }
+  100% { clip-path: polygon(50% 50%, 100% 0%, 100% 100%, 0% 100%, 0% 0%); }
+}
+.collab-dot {
+  width: 14px;
+  height: 14px;
+  background: #FFD700;
+  display: inline-block;
+  border-radius: 0;
+  animation: collabDotPulse 0.6s steps(2) infinite;
+}
+.collab-dot:nth-child(3) { animation-delay: 0.15s; }
+.collab-dot:nth-child(4) { animation-delay: 0.3s; }
+@keyframes collabDotPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.7); }
+}
+.collab-ghost {
+  flex-shrink: 0;
+  animation: ghostBob 0.7s steps(2) infinite;
+  filter: drop-shadow(0 0 6px rgba(255,77,45,0.5));
+}
+@keyframes ghostBob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* =========================================
+   DOWNLOAD RESUME BUTTON
+   ========================================= */
+.btn-brutal-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: #000 !important;
+  color: #FFD700 !important;
+  border: 4px solid #2d241e !important;
+  padding: 0.9rem 1.5rem !important;
+  font-family: var(--font-retro) !important;
+  font-size: 0.6rem !important;
+  text-decoration: none;
+  box-shadow: 5px 5px 0 #FFD700 !important;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: none !important;
+  position: relative;
+}
+.btn-brutal-download:hover {
+  transform: translate(-3px, -3px) !important;
+  box-shadow: 8px 8px 0 #FFD700 !important;
+  background: #FFD700 !important;
+  color: #000 !important;
+}
+.btn-brutal-download i {
+  font-size: 0.9rem;
+  animation: downloadBounce 1.5s steps(4) infinite;
+}
+@keyframes downloadBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(3px); }
+}
+
+/* =========================================
+   SCATTERED RETRO SVG SPRITES (PAGE DECO)
+   ========================================= */
+.retro-deco-sprite {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  image-rendering: pixelated;
+}
+.retro-deco-sprite.float-anim {
+  animation: floatRetro 2.5s steps(3) infinite;
+}
+.retro-deco-sprite.spin-slow {
+  animation: spinRetro 4s steps(8) infinite;
+}
+@keyframes spinRetro {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
