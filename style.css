@@ -271,32 +271,32 @@ body {
 }
 
 /* =========================================
-   RETRO 2-SIDE SHADOW BOX GAME HERO STYLES
+   RETRO 2-SIDE SHADOW BOX GAME HERO STYLES (SMOOTH & REFINED)
    ========================================= */
 .retro-hero-section {
   position: relative;
   overflow: hidden;
-  background: #030612;
-  border-bottom: 2px solid rgba(0, 240, 255, 0.3);
+  background: #050811;
+  border-bottom: 1px solid rgba(56, 189, 248, 0.2);
 }
 
 .retro-grid-bg {
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
   background-image: 
-    linear-gradient(rgba(0, 240, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 240, 255, 0.06) 1px, transparent 1px);
-  background-size: 32px 32px;
+    linear-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
+  background-size: 28px 28px;
   z-index: 0;
   pointer-events: none;
 }
 
-/* 2-Side Hard Pixel Shadow Retro Box */
+/* 2-Side Hard Pixel Shadow Retro Box (Refined Proportions) */
 .retro-2side-box {
-  background: rgba(6, 10, 24, 0.92);
-  border: 2px solid #00f0ff;
-  box-shadow: 8px 8px 0px #000000, 16px 16px 0px rgba(0, 240, 255, 0.3);
-  padding: 2.5rem;
+  background: rgba(8, 13, 24, 0.94);
+  border: 1.5px solid rgba(56, 189, 248, 0.4);
+  box-shadow: 5px 5px 0px #000000, 10px 10px 0px rgba(56, 189, 248, 0.18);
+  padding: 2rem 2.2rem;
   border-radius: 0;
   position: relative;
   z-index: 2;
@@ -304,71 +304,76 @@ body {
 
 .retro-badge {
   background: #000000;
-  border: 1.5px solid #00f0ff;
+  border: 1px solid rgba(56, 189, 248, 0.5);
   border-radius: 0;
-  box-shadow: 3px 3px 0px #000000, 6px 6px 0px rgba(0, 240, 255, 0.3);
+  box-shadow: 2px 2px 0px #000000, 4px 4px 0px rgba(56, 189, 248, 0.2);
+  padding: 0.35rem 0.9rem;
 }
 
 .retro-font-sm {
   font-family: 'Press Start 2P', monospace;
-  font-size: 0.6rem;
-  color: #00f0ff;
-  letter-spacing: 1px;
+  font-size: 0.55rem;
+  color: #38bdf8;
+  letter-spacing: 0.5px;
 }
 
 .retro-font-xs {
   font-family: 'Press Start 2P', monospace;
-  font-size: 0.55rem;
-  color: #00f0ff;
-  letter-spacing: 2px;
-  text-shadow: 2px 2px 0px #000000;
+  font-size: 0.5rem;
+  color: #38bdf8;
+  letter-spacing: 1.5px;
+  text-shadow: 1px 1px 0px #000000;
 }
 
 .retro-title {
-  font-family: 'Orbitron', 'Press Start 2P', sans-serif;
-  font-weight: 900;
+  font-family: 'Orbitron', var(--font-h);
+  font-size: clamp(2.2rem, 5.2vw, 4.4rem);
+  font-weight: 800;
+  line-height: 1.05;
   letter-spacing: -1px;
-  text-shadow: 4px 4px 0px #000000, 8px 8px 0px rgba(0, 34, 51, 0.9);
+  margin-bottom: 1.5rem;
+  text-shadow: 3px 3px 0px #000000, 5px 5px 0px rgba(0, 20, 35, 0.8);
 }
 
 .retro-cyan-glow {
-  color: #00f0ff !important;
+  color: #38bdf8 !important;
   -webkit-text-stroke: none !important;
-  text-shadow: 3px 3px 0px #000000, 0 0 15px rgba(0, 240, 255, 0.8);
+  text-shadow: 2px 2px 0px #000000, 0 0 12px rgba(56, 189, 248, 0.5);
 }
 
 /* Inset 2-Side Shadow Subtitle Box */
 .retro-2side-inner {
-  background: #000000;
-  border: 2px solid rgba(0, 240, 255, 0.4);
-  box-shadow: inset 4px 4px 0px rgba(0, 0, 0, 0.9), 5px 5px 0px rgba(0, 240, 255, 0.2);
-  padding: 1.25rem 1.5rem;
-  margin-bottom: 2rem;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  box-shadow: inset 3px 3px 0px rgba(0, 0, 0, 0.9), 3px 3px 0px rgba(56, 189, 248, 0.12);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.8rem;
 }
 
 .retro-sub-text {
-  font-family: 'VT323', 'Silkscreen', monospace;
-  font-size: 1.35rem;
-  line-height: 1.5;
-  color: #d1d5db;
+  font-family: var(--font-main);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #cbd5e1;
+  font-weight: 300;
   margin-bottom: 0;
 }
 
-/* 2-Side Hard Shadow Buttons */
+/* 2-Side Hard Shadow Buttons (Smaller & Sleeker) */
 .retro-actions {
   display: flex;
-  gap: 1.5rem;
+  gap: 1.2rem;
 }
 
 .btn-retro-primary {
-  background: #00f0ff;
+  background: #38bdf8;
   color: #000000;
   font-family: 'Press Start 2P', monospace;
-  font-size: 0.68rem;
-  padding: 1.1rem 2rem;
+  font-size: 0.6rem;
+  padding: 0.85rem 1.6rem;
   border-radius: 0;
-  border: 2px solid #ffffff;
-  box-shadow: 4px 4px 0px #000000, 8px 8px 0px #005580;
+  border: 1.5px solid #ffffff;
+  box-shadow: 3px 3px 0px #000000, 6px 6px 0px #0284c7;
   transition: all 0.15s ease;
   text-transform: uppercase;
 }
@@ -377,72 +382,72 @@ body {
   background: #ffffff;
   color: #000000;
   transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px #000000, 12px 12px 0px #00f0ff;
+  box-shadow: 5px 5px 0px #000000, 9px 9px 0px #38bdf8;
 }
 
 .btn-retro-primary:active {
-  transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0px #000000, 4px 4px 0px #005580;
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0px #000000, 3px 3px 0px #0284c7;
 }
 
 .btn-retro-outline {
   background: #000000;
-  color: #00f0ff;
+  color: #38bdf8;
   font-family: 'Press Start 2P', monospace;
-  font-size: 0.68rem;
-  padding: 1.1rem 2rem;
+  font-size: 0.6rem;
+  padding: 0.85rem 1.6rem;
   border-radius: 0;
-  border: 2px solid #00f0ff;
-  box-shadow: 4px 4px 0px #000000, 8px 8px 0px rgba(0, 240, 255, 0.4);
+  border: 1.5px solid #38bdf8;
+  box-shadow: 3px 3px 0px #000000, 6px 6px 0px rgba(56, 189, 248, 0.3);
   transition: all 0.15s ease;
   text-transform: uppercase;
 }
 
 .btn-retro-outline:hover {
-  background: rgba(0, 240, 255, 0.15);
+  background: rgba(56, 189, 248, 0.12);
   color: #ffffff;
   transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px #000000, 12px 12px 0px #00f0ff;
+  box-shadow: 5px 5px 0px #000000, 9px 9px 0px #38bdf8;
 }
 
 .btn-retro-outline:active {
-  transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0px #000000, 4px 4px 0px rgba(0, 240, 255, 0.4);
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0px #000000, 3px 3px 0px rgba(56, 189, 248, 0.3);
 }
 
 /* 2-Side Shadow Profile Box */
 .retro-frame-box {
-  border: 2px solid #00f0ff !important;
+  border: 1.5px solid #38bdf8 !important;
   border-radius: 0 !important;
-  box-shadow: 8px 8px 0px #000000, 16px 16px 0px rgba(0, 240, 255, 0.3) !important;
+  box-shadow: 5px 5px 0px #000000, 10px 10px 0px rgba(56, 189, 248, 0.2) !important;
   position: relative;
 }
 
 .retro-corner {
   position: absolute;
-  width: 10px;
-  height: 10px;
-  background: #00f0ff;
-  box-shadow: 0 0 8px #00f0ff;
+  width: 8px;
+  height: 8px;
+  background: #38bdf8;
+  box-shadow: 0 0 6px #38bdf8;
   z-index: 4;
 }
 
-.retro-corner.top-left { top: -5px; left: -5px; }
-.retro-corner.top-right { top: -5px; right: -5px; }
-.retro-corner.bottom-left { bottom: -5px; left: -5px; }
-.retro-corner.bottom-right { bottom: -5px; right: -5px; }
+.retro-corner.top-left { top: -4px; left: -4px; }
+.retro-corner.top-right { top: -4px; right: -4px; }
+.retro-corner.bottom-left { bottom: -4px; left: -4px; }
+.retro-corner.bottom-right { bottom: -4px; right: -4px; }
 
 .retro-blob {
-  background: radial-gradient(circle, rgba(0, 240, 255, 0.3), rgba(255, 0, 127, 0.1), transparent 70%) !important;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.25), transparent 70%) !important;
 }
 
 .retro-exp-badge {
   background: #000000 !important;
-  border: 2px solid #00f0ff !important;
-  box-shadow: 4px 4px 0px #000000, 8px 8px 0px rgba(0, 240, 255, 0.4) !important;
+  border: 1.5px solid #38bdf8 !important;
+  box-shadow: 3px 3px 0px #000000, 6px 6px 0px rgba(56, 189, 248, 0.3) !important;
   border-radius: 0 !important;
   font-family: 'Press Start 2P', monospace !important;
-  padding: 1rem 1.2rem !important;
+  padding: 0.8rem 1rem !important;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -450,19 +455,19 @@ body {
 
 .retro-exp-badge strong {
   font-family: 'Press Start 2P', monospace !important;
-  font-size: 1.4rem !important;
-  color: #00f0ff !important;
+  font-size: 1.2rem !important;
+  color: #38bdf8 !important;
   text-shadow: 2px 2px 0px #000000;
 }
 
 .retro-exp-badge span {
   font-family: 'Press Start 2P', monospace !important;
-  font-size: 0.5rem !important;
+  font-size: 0.45rem !important;
   color: #ffffff !important;
 }
 
 .retro-line {
-  background: linear-gradient(#00f0ff, transparent) !important;
+  background: linear-gradient(#38bdf8, transparent) !important;
 }
 
 .hero-container {
