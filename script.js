@@ -143,7 +143,18 @@ document.addEventListener('DOMContentLoaded', () => {
           scrollTrigger: {
             trigger: section,
             start: 'top 95%',
-            toggleActions: 'play none none none'
+            toggleActions: 'play none none none',
+            onEnter: () => {
+              items.forEach(item => {
+                const bentoTitle = item.querySelector('h3, .tech-name, .contact-title');
+                if (bentoTitle && !bentoTitle.dataset.scrambled) {
+                  bentoTitle.dataset.scrambled = "true";
+                  const orig = bentoTitle.textContent.trim();
+                  bentoTitle.textContent = "";
+                  scrambleText(bentoTitle, orig, 600);
+                }
+              });
+            }
           },
           keyframes: [
             { opacity: 0, filter: 'blur(20px)', scale: 0.95, duration: 0.05 },
@@ -163,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 6. Generic GSAP Scroll Reveals (Replacing native IntersectionObserver)
   if (hasGsap && typeof ScrollTrigger !== 'undefined') {
-    const revealSelectors = ['.project-card', '.work-card', '.testimonial-card', '.service-card', '.tech-item', '.contact-item', '.reveal'];
+    const revealSelectors = ['.project-card', '.work-card', '.testimonial-card', '.service-card', '.tech-item', '.contact-item', '.roadmap-item', '.reveal'];
     revealSelectors.forEach(selector => {
       gsap.utils.toArray(selector).forEach((el, i) => {
         gsap.from(el, {
@@ -171,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
             trigger: el,
             start: 'top 92%',
             onEnter: () => {
-              const cardTitle = el.querySelector('h3, .project-title, .service-title, .roadmap-company');
+              const cardTitle = el.querySelector('h3, .project-title, .service-title, .roadmap-company, .roadmap-role, .author-name, .work-name, .tech-name');
               if (cardTitle && !cardTitle.dataset.scrambled) {
                 cardTitle.dataset.scrambled = "true";
                 const orig = cardTitle.textContent.trim();
