@@ -89,12 +89,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const loaderText  = document.getElementById('loaderText');
 
     if (retroLoader) {
-      const hasBooted = sessionStorage.getItem('retroBootComplete');
+    // Use a one-shot flag — set only when clicking a nav link, consumed immediately
+    // This means: reload/new tab ALWAYS shows the animation; cross-page nav skips it
+    const skipOnce = sessionStorage.getItem('skipLoader');
+    if (skipOnce) sessionStorage.removeItem('skipLoader'); // consume immediately
 
       const runHeroReveal = () => {
         const heroTl = gsap.timeline({ defaults: { ease: 'none', duration: 0.15 } });
         heroTl
-          .from('.nav-container', { y: -20, opacity: 0 }, hasBooted ? '+=0.05' : '+=0.4')
+          .from('.nav-container', { y: -20, opacity: 0 }, skipOnce ? '+=0.05' : '+=0.4')
           .add(() => {
             document.querySelectorAll('.brutal-hero-box, .brutal-description-box, .image-frame, .hero-tagline, .nav-container').forEach(el => pixelReveal(el));
           })
@@ -106,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
           .from('.exp-badge', { scale: 0.8, opacity: 0 });
       };
 
-      if (hasBooted) {
+      if (skipOnce) {
         retroLoader.classList.add('loader-hidden');
         runHeroReveal();
       } else {
@@ -152,7 +155,6 @@ document.addEventListener('DOMContentLoaded', () => {
           cancelAnimationFrame(rafId);
           updateBar(100);
           if (loaderText) loaderText.textContent = 'SYSTEM ONLINE.';
-          sessionStorage.setItem('retroBootComplete', 'true');
           gsap.to(retroLoader, {
             y: '-100%',
             duration: 0.5,
@@ -535,6 +537,8 @@ document.addEventListener('DOMContentLoaded', () => {
       });
       document.body.appendChild(wipe);
 
+      // Set skip-once flag BEFORE navigating so the destination page skips the loader
+      sessionStorage.setItem('skipLoader', '1');
       gsap.to(wipe, {
         y: '0%',
         duration: 0.38,
