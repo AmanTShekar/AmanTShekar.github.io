@@ -89,47 +89,56 @@ document.addEventListener('DOMContentLoaded', () => {
     const loaderText = document.getElementById('loaderText');
 
     if (retroLoader) {
-      document.body.style.overflow = 'hidden'; // prevent scrolling while loading
-      let progress = 0;
-      const interval = setInterval(() => {
-        progress += 10;
-        const filled = '|'.repeat(progress / 10);
-        const empty = ' '.repeat(10 - (progress / 10));
-        loaderBar.textContent = `[${filled}${empty}] ${progress}%`;
-        
-        if (progress === 30) loaderText.textContent = 'Loading core modules...';
-        if (progress === 70) loaderText.textContent = 'Establishing secure connection...';
-        if (progress === 100) loaderText.textContent = 'SYSTEM ONLINE.';
-        
-        if (progress >= 100) {
-          clearInterval(interval);
-          gsap.to(retroLoader, {
-            y: '-100%',
-            duration: 0.4,
-            ease: 'power4.in',
-            delay: 0.3,
-            onComplete: () => {
-              retroLoader.style.display = 'none';
-              document.body.style.overflow = '';
-            }
-          });
+      const hasBooted = sessionStorage.getItem('retroBootComplete');
 
-          // Blocky Hero Reveal
-          const heroTl = gsap.timeline({ defaults: { ease: 'none', duration: 0.15 } });
+      const runHeroReveal = () => {
+        const heroTl = gsap.timeline({ defaults: { ease: 'none', duration: 0.15 } });
+        heroTl
+          .from('.nav-container', { y: -20, opacity: 0 }, hasBooted ? '+=0.1' : '+=0.4')
+          .add(() => {
+            document.querySelectorAll('.brutal-hero-box, .brutal-description-box, .image-frame, .hero-tagline, .nav-container').forEach(el => pixelReveal(el));
+          })
+          .from('.brutal-hero-box', { x: -20, opacity: 0 })
+          .from('.hero-title .line', { x: -20, opacity: 0, stagger: 0.1 })
+          .from('.brutal-description-box', { y: 20, opacity: 0 })
+          .from('.hero-actions', { y: 20, opacity: 0 })
+          .from('.image-frame', { x: 20, opacity: 0 })
+          .from('.exp-badge', { scale: 0.8, opacity: 0 });
+      };
 
-          heroTl
-            .from('.nav-container', { y: -20, opacity: 0 }, '+=0.4')
-            .add(() => {
-              document.querySelectorAll('.brutal-hero-box, .brutal-description-box, .image-frame, .hero-tagline, .nav-container').forEach(el => pixelReveal(el));
-            })
-            .from('.brutal-hero-box', { x: -20, opacity: 0 })
-            .from('.hero-title .line', { x: -20, opacity: 0, stagger: 0.1 })
-            .from('.brutal-description-box', { y: 20, opacity: 0 })
-            .from('.hero-actions', { y: 20, opacity: 0 })
-            .from('.image-frame', { x: 20, opacity: 0 })
-            .from('.exp-badge', { scale: 0.8, opacity: 0 });
-        }
-      }, 80); // Speed of loading
+      if (hasBooted) {
+        retroLoader.style.display = 'none';
+        runHeroReveal();
+      } else {
+        document.body.style.overflow = 'hidden';
+        let progress = 0;
+        const interval = setInterval(() => {
+          progress += 10;
+          const filled = '|'.repeat(progress / 10);
+          const empty = ' '.repeat(10 - (progress / 10));
+          loaderBar.textContent = `[${filled}${empty}] ${progress}%`;
+          
+          if (progress === 30) loaderText.textContent = 'Loading core modules...';
+          if (progress === 70) loaderText.textContent = 'Establishing secure connection...';
+          if (progress === 100) loaderText.textContent = 'SYSTEM ONLINE.';
+          
+          if (progress >= 100) {
+            clearInterval(interval);
+            sessionStorage.setItem('retroBootComplete', 'true');
+            gsap.to(retroLoader, {
+              y: '-100%',
+              duration: 0.4,
+              ease: 'power4.in',
+              delay: 0.3,
+              onComplete: () => {
+                retroLoader.style.display = 'none';
+                document.body.style.overflow = '';
+              }
+            });
+            runHeroReveal();
+          }
+        }, 80);
+      }
     }
   }
 
@@ -418,4 +427,38 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // 9. Retro Page Transitions
+  if (hasGsap) {
+    const internalLinks = document.querySelectorAll('a[href="index.html"], a[href="about.html"], a[href="contact.html"], a[href="./"], a[href="/"]');
+    internalLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        if (e.ctrlKey || e.metaKey || e.shiftKey) return;
+        const targetUrl = link.getAttribute('href');
+        if (!targetUrl || targetUrl.startsWith('#') || targetUrl.startsWith('mailto:')) return;
+        
+        e.preventDefault();
+        
+        const wipe = document.createElement('div');
+        wipe.className = 'page-wipe';
+        wipe.style.position = 'fixed';
+        wipe.style.top = '0';
+        wipe.style.left = '0';
+        wipe.style.width = '100vw';
+        wipe.style.height = '100vh';
+        wipe.style.backgroundColor = '#000000';
+        wipe.style.zIndex = '999999';
+        wipe.style.transform = 'translateY(100%)';
+        document.body.appendChild(wipe);
+
+        gsap.to(wipe, {
+          y: '0%',
+          duration: 0.4,
+          ease: 'steps(8)',
+          onComplete: () => {
+            window.location.href = targetUrl;
+          }
+        });
+      });
+    });
+  }
 });
