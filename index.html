@@ -128,8 +128,12 @@
         <!-- Pac-Man character -->
         <div class="pm-char" id="pmChar">
           <svg class="pm-svg" id="pmSvg" viewBox="0 0 40 40" width="52" height="52" fill="#FFD700">
-            <path class="pacman-jaw-top" d="M 0,20 A 20,20 0 0,1 40,20 Z"/>
-            <path class="pacman-jaw-bottom" d="M 0,20 A 20,20 0 0,0 40,20 Z"/>
+            <!-- Left half (static) -->
+              <path d="M 20,20 L 20,0 A 20,20 0 0,0 20,40 Z"/>
+              <!-- Top jaw -->
+              <path class="pacman-jaw-top" d="M 20,20 L 40,20 A 20,20 0 0,0 20,0 Z"/>
+              <!-- Bottom jaw -->
+              <path class="pacman-jaw-bottom" d="M 20,20 L 40,20 A 20,20 0 0,1 20,40 Z"/>
           </svg>
         </div>
         <!-- Dots will be injected by JS -->
@@ -942,8 +946,12 @@
           <!-- Pac-Man -->
           <div class="collab-pm-char" id="collabPmChar">
             <svg class="pm-svg" viewBox="0 0 40 40" width="62" height="62" fill="#FFD700">
-              <path class="pacman-jaw-top" d="M 0,20 A 20,20 0 0,1 40,20 Z"/>
-              <path class="pacman-jaw-bottom" d="M 0,20 A 20,20 0 0,0 40,20 Z"/>
+              <!-- Left half (static) -->
+              <path d="M 20,20 L 20,0 A 20,20 0 0,0 20,40 Z"/>
+              <!-- Top jaw -->
+              <path class="pacman-jaw-top" d="M 20,20 L 40,20 A 20,20 0 0,0 20,0 Z"/>
+              <!-- Bottom jaw -->
+              <path class="pacman-jaw-bottom" d="M 20,20 L 40,20 A 20,20 0 0,1 20,40 Z"/>
             </svg>
           </div>
           <!-- Dots injected by JS -->

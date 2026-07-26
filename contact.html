@@ -62,8 +62,12 @@
   <div style="position:fixed; bottom:100px; right:25px; z-index:0; opacity:0.2; pointer-events:none; animation: floatRetro 3.5s steps(3) infinite;">
     <!-- Pac-Man (pixel style) -->
     <svg class="pm-svg" viewBox="0 0 40 40" width="52" height="52" fill="#FFD700">
-      <path class="pacman-jaw-top" d="M 0,20 A 20,20 0 0,1 40,20 Z"/>
-      <path class="pacman-jaw-bottom" d="M 0,20 A 20,20 0 0,0 40,20 Z"/>
+      <!-- Left half (static) -->
+              <path d="M 20,20 L 20,0 A 20,20 0 0,0 20,40 Z"/>
+              <!-- Top jaw -->
+              <path class="pacman-jaw-top" d="M 20,20 L 40,20 A 20,20 0 0,0 20,0 Z"/>
+              <!-- Bottom jaw -->
+              <path class="pacman-jaw-bottom" d="M 20,20 L 40,20 A 20,20 0 0,1 20,40 Z"/>
     </svg>
   </div>
 
