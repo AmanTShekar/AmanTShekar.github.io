@@ -271,78 +271,70 @@ body {
 }
 
 /* =========================================
-   RETRO NEUBRUTALIST HERO STYLES (MATCHING REFERENCE IMAGES)
+   RETRO NEUBRUTALIST HERO PAGE STYLES
    ========================================= */
 .brutal-hero-section {
   position: relative;
   overflow: hidden;
   background: #0f172a;
-  border-bottom: 3px solid #000000;
-  padding: 80px 0;
+  border-bottom: 3.5px solid #000000;
+  padding: 90px 0 70px 0;
 }
 
 .brutal-grid-bg {
   position: absolute;
   top: 0; left: 0; width: 100%; height: 100%;
   background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 32px 32px;
   z-index: 0;
   pointer-events: none;
 }
 
-/* Crisp White Neubrutalist Card (Matching Reference Image 2) */
-.brutal-card {
-  background: #ffffff;
-  color: #000000;
-  border: 3px solid #000000;
-  box-shadow: 8px 8px 0px #000000;
-  padding: 2.5rem;
-  border-radius: 4px;
-  position: relative;
-  z-index: 2;
-}
-
 .brutal-badge {
-  background: #f3f4f6;
-  border: 2px solid #000000;
+  background: #ffffff;
+  border: 2.5px solid #000000;
   border-radius: 20px;
   color: #000000;
-  font-weight: 700;
+  font-weight: 800;
   font-size: 0.8rem;
   box-shadow: 3px 3px 0px #000000;
-  padding: 0.35rem 1rem;
+  padding: 0.35rem 1.1rem;
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.4rem;
 }
 
-/* Bold Neubrutalist Typography */
+/* Reduced Compact Title Size */
 .brutal-title {
   font-family: 'Outfit', 'Syncopate', sans-serif;
-  font-size: clamp(2.2rem, 5vw, 4.2rem);
+  font-size: clamp(1.4rem, 2.8vw, 2.5rem);
   font-weight: 900;
-  line-height: 1.05;
+  line-height: 1.15;
   letter-spacing: -0.5px;
-  color: #000000;
+  color: #ffffff;
   margin-bottom: 1.5rem;
+  text-shadow: 3px 3px 0px #000000;
 }
 
 .brutal-highlight {
-  background: linear-gradient(180deg, transparent 60%, #fed7aa 60%);
+  background: #f59e0b;
   color: #000000 !important;
   display: inline-block;
+  padding: 0 8px;
+  border: 2px solid #000000;
+  box-shadow: 3px 3px 0px #000000;
 }
 
-/* Description Text */
+/* Neubrutalist Description Box */
 .brutal-description-box {
-  background: #f8fafc;
-  border: 2px solid #000000;
-  box-shadow: 4px 4px 0px #000000;
-  padding: 1.1rem 1.4rem;
-  border-radius: 2px;
+  background: #ffffff;
+  border: 3px solid #000000;
+  box-shadow: 6px 6px 0px #000000;
+  padding: 1.25rem 1.5rem;
+  border-radius: 4px;
   margin-bottom: 2rem;
 }
 
@@ -350,24 +342,25 @@ body {
   font-family: var(--font-main);
   font-size: 1.05rem;
   line-height: 1.6;
-  color: #1e293b;
-  font-weight: 400;
+  color: #0f172a;
+  font-weight: 500;
   margin-bottom: 0;
 }
 
-/* Quick Links Brutalist Button Bar (100% Matching Reference Image 1) */
+/* Quick Links Brutalist Button Bar (Matching Reference Image 1) */
 .brutal-quick-links-wrap {
   margin-top: 1.5rem;
 }
 
 .brutal-quick-label {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 800;
-  color: #000000;
+  color: #ffffff;
   display: block;
   margin-bottom: 0.8rem;
   letter-spacing: -0.5px;
+  text-shadow: 2px 2px 0px #000000;
 }
 
 .brutal-quick-links-bar {
@@ -375,7 +368,7 @@ body {
   flex-wrap: wrap;
   border: 3px solid #000000;
   box-shadow: 6px 6px 0px #000000;
-  border-radius: 2px;
+  border-radius: 4px;
   overflow: hidden;
   background: #000000;
   gap: 2px;
@@ -416,9 +409,9 @@ body {
 /* Profile Picture Brutalist Frame (Matching Reference Image 2) */
 .brutal-frame {
   background: #ffffff !important;
-  border: 3px solid #000000 !important;
+  border: 3.5px solid #000000 !important;
   border-radius: 4px !important;
-  box-shadow: 8px 8px 0px #000000 !important;
+  box-shadow: 10px 10px 0px #000000 !important;
   position: relative;
 }
 
@@ -426,7 +419,7 @@ body {
   background: #d1d5db !important;
   border: 3px solid #000000 !important;
   box-shadow: 4px 4px 0px #000000 !important;
-  border-radius: 2px !important;
+  border-radius: 4px !important;
   color: #000000 !important;
   padding: 0.8rem 1.1rem !important;
   display: flex;
