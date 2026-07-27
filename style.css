@@ -4298,7 +4298,7 @@ a:focus-visible, button:focus-visible {
 .exp-badge {
   position: absolute !important;
   top: 10% !important;
-  left: -3.5rem !important;
+  left: -5rem !important;
   background: #ffffff !important;
   border: 3px solid #2d241e !important;
   padding: 1rem 1.2rem !important;
