@@ -720,3 +720,68 @@ function startPacManChomp(pathId) {
   }
 
 });
+
+// =========================================
+// PROJECT CARDS: FLIP SCRAMBLE EFFECT
+// =========================================
+document.addEventListener('DOMContentLoaded', () => {
+  const flipCards = document.querySelectorAll('.project-card.flip-enabled');
+  
+  const chars = '!<>-_/[]{}—=+*^?#________';
+  
+  function scrambleText(element) {
+    const finalStr = element.getAttribute('data-final');
+    if (!finalStr) return;
+    
+    let iterations = 0;
+    const maxIterations = 20;
+    
+    const interval = setInterval(() => {
+      element.innerText = finalStr.split('').map((char, index) => {
+        if (index < iterations / 2) {
+          return finalStr[index];
+        }
+        return chars[Math.floor(Math.random() * chars.length)];
+      }).join('');
+      
+      if (iterations >= maxIterations) {
+        clearInterval(interval);
+        element.innerText = finalStr;
+      }
+      iterations++;
+    }, 40);
+  }
+
+  flipCards.forEach(card => {
+    card.addEventListener('click', function(e) {
+      if (e.target.closest('a')) return;
+      
+      const isFlipped = this.classList.contains('flipped');
+      this.classList.toggle('flipped');
+      
+      if (!isFlipped) {
+        const scrambleElements = this.querySelectorAll('.scramble-text');
+        setTimeout(() => {
+          scrambleElements.forEach(el => scrambleText(el));
+        }, 300); 
+      }
+    });
+  });
+});
+
+// =========================================
+// DIGITIZE REVEAL ANIMATION
+// =========================================
+document.addEventListener('DOMContentLoaded', () => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.digitize-reveal').forEach(el => {
+    observer.observe(el);
+  });
+});
