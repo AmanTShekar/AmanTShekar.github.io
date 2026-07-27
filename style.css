@@ -4222,3 +4222,17 @@ a:focus-visible, button:focus-visible {
   left: -30px !important;
   z-index: 20 !important;
 }
+
+.image-frame.borderless-frame {
+  width: 140%;
+  max-width: 800px;
+  transform: translateX(-20%);
+  z-index: 1;
+}
+
+.image-frame.borderless-frame img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 0;
+}
