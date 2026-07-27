@@ -4167,3 +4167,5 @@ a:focus-visible, button:focus-visible {
 .cpm-dot.eaten {
   opacity: 0;
 }
+
+.loader-hidden { display: none !important; }
