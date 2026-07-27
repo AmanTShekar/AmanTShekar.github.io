@@ -1,14 +1,3 @@
-// Ultimate Scroll Reset (Handles hashes, GSAP, and browser cache)
-if (history.scrollRestoration) { history.scrollRestoration = 'manual'; }
-window.onbeforeunload = function () { window.scrollTo(0, 0); };
-window.onload = function() {
-  setTimeout(function() {
-    window.scrollTo(0, 0);
-    if (typeof ScrollTrigger !== 'undefined') {
-      ScrollTrigger.refresh();
-    }
-  }, 50);
-};
 /**
  * PORTFOLIO v5.0 | INTERACTION ENGINE
  * Optimized GSAP Engine for Performance & Immersion
@@ -763,6 +752,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
 
 
 
