@@ -686,29 +686,38 @@ function startPacManChomp(pathId) {
   if (profileImg) {
     const pixelateImage = () => {
       const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d', { willReadFrequently: true });
-      const w = profileImg.clientWidth || 400;
-      const h = profileImg.clientHeight || 500;
+      const ctx = canvas.getContext('2d');
+      const w = profileImg.clientWidth || profileImg.naturalWidth || 400;
+      const h = profileImg.clientHeight || profileImg.naturalHeight || 500;
       canvas.width = w;
       canvas.height = h;
       canvas.className = profileImg.className;
       canvas.style.cssText = profileImg.style.cssText;
       canvas.style.imageRendering = 'pixelated';
       
-      // Block size (higher = more pixelated)
-      const pixelSize = 8;
-      const lowW = w / pixelSize;
-      const lowH = h / pixelSize;
+      const pixelSize = 10; 
+      const lowW = Math.floor(w / pixelSize);
+      const lowH = Math.floor(h / pixelSize);
       
-      // Draw small, then draw big with nearest neighbor interpolation
+      const offCanvas = document.createElement('canvas');
+      offCanvas.width = lowW;
+      offCanvas.height = lowH;
+      const offCtx = offCanvas.getContext('2d');
+      
+      offCtx.drawImage(profileImg, 0, 0, lowW, lowH);
+      
       ctx.imageSmoothingEnabled = false;
-      ctx.drawImage(profileImg, 0, 0, lowW, lowH);
-      ctx.drawImage(canvas, 0, 0, lowW, lowH, 0, 0, w, h);
+      ctx.drawImage(offCanvas, 0, 0, lowW, lowH, 0, 0, w, h);
       
       profileImg.parentNode.replaceChild(canvas, profileImg);
+      
+      if (typeof pixelReveal === 'function') {
+        const frame = canvas.closest('.image-frame');
+        if (frame) pixelReveal(frame);
+      }
     };
     
-    if (profileImg.complete) {
+    if (profileImg.complete && profileImg.naturalWidth !== 0) {
       pixelateImage();
     } else {
       profileImg.addEventListener('load', pixelateImage);
