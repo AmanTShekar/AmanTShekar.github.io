@@ -4214,3 +4214,11 @@ a:focus-visible, button:focus-visible {
 .retro-level-badge:hover strong {
   color: #000;
 }
+
+.retro-level-badge {
+  bottom: auto !important;
+  right: auto !important;
+  top: -10px !important;
+  left: -30px !important;
+  z-index: 20 !important;
+}
