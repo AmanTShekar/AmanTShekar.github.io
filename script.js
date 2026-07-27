@@ -449,7 +449,7 @@ function startPacManChomp(pathId) {
 
   // 6. Generic GSAP Scroll Reveals (Replacing native IntersectionObserver)
   if (hasGsap && typeof ScrollTrigger !== 'undefined') {
-    const revealSelectors = ['.project-card', '.work-card', '.testimonial-card', '.service-card', '.tech-item', '.contact-item', '.roadmap-item', '.footer', '.section-header', '.hero-section', '.reveal'];
+    const revealSelectors = ['.project-card', '.work-card', '.testimonial-card', '.service-card', '.tech-item', '.contact-item', '.roadmap-item', '.footer', '.section-header', '.hero-section', '.reveal', '.contact-content', '.collab-pm-wrapper', '.bento-item'];
     revealSelectors.forEach(selector => {
       gsap.utils.toArray(selector).forEach((el, i) => {
         gsap.from(el, {
@@ -458,7 +458,7 @@ function startPacManChomp(pathId) {
             start: 'top 92%',
             onEnter: () => {
               pixelReveal(el);
-              const cardTitle = el.querySelector('h3, .project-title, .service-title, .roadmap-company, .roadmap-role, .author-name, .work-name, .tech-name');
+              const cardTitle = el.querySelector('h2, h3, .project-title, .service-title, .roadmap-company, .roadmap-role, .author-name, .work-name, .tech-name, .section-label');
               if (cardTitle && !cardTitle.dataset.scrambled) {
                 cardTitle.dataset.scrambled = "true";
                 const orig = cardTitle.textContent.trim();
@@ -768,5 +768,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
 
 
