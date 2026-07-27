@@ -1289,7 +1289,7 @@ body::after {
    CONTACT (THE COMMAND CENTER)
    ========================================= */
 .contact-section {
-  padding: 160px 0;
+  padding: 20px 0 160px 0;
   background: #ffffff;
   border-top: 4px solid #2d241e;
 }
@@ -1749,7 +1749,7 @@ body::after {
   .works-section,
   .testimonials-section,
   .contact-section {
-    padding: 80px 0;
+    padding: 20px 0 80px 0;
   }
 
   .section-header {
@@ -2589,7 +2589,7 @@ body.no-scroll {
   /* MOBILE RESPONSIVE - CONTACT SECTION */
   @media (max-width: 768px) {
     .contact-section {
-      padding: 80px 0 !important;
+      padding: 20px 0 80px 0 !important;
     }
 
     .contact-card {
@@ -2641,7 +2641,7 @@ body.no-scroll {
 
   @media (max-width: 480px) {
     .contact-section {
-      padding: 60px 0 !important;
+      padding: 20px 0 60px 0 !important;
     }
 
     .contact-card {
@@ -4430,6 +4430,8 @@ a:focus-visible, button:focus-visible {
   transform: translateY(0);
   filter: grayscale(0) blur(0);
 }
+
+
 
 
 
