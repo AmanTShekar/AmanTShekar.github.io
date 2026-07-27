@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -170,6 +170,9 @@
           <a href="about.html">About</a>
           <a href="#experience">Experience</a>
           <a href="contact.html" class="nav-cta">Contact</a>
+          <button class="audio-toggle" id="audioToggle" type="button" aria-label="Toggle sound effects" aria-pressed="false" title="Sound: Off">
+            <i class="fa-solid fa-volume-xmark" id="audioIcon"></i>
+          </button>
         </div>
         <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
           <span></span>
@@ -185,9 +188,10 @@
       <div class="brutal-grid-bg"></div>
 
       <!-- Real Google Dino Game Design (SVG Pixel Art) -->
-      <div class="real-dino-game">
+      <div class="real-dino-game" id="dinoGame" tabindex="0" aria-label="Dino run game — press Space or click to jump">
+        <div class="dino-hint" id="dinoHint">PRESS SPACE</div>
         <div class="dino-ground"></div>
-        <div class="dino-character">
+        <div class="dino-character" id="dinoCharacter">
           <svg viewBox="0 0 44 47" width="44" height="47" fill="#2d241e">
             <rect x="22" y="0" width="20" height="15" />
             <rect x="42" y="2" width="2" height="13" />
@@ -213,7 +217,29 @@
             <rect x="25" y="45" width="8" height="2" class="leg-right" />
           </svg>
         </div>
-        <div class="cactus-obstacle">
+        <div class="cactus-obstacle" data-cactus>
+          <svg viewBox="0 0 24 48" width="24" height="48" fill="#2d241e">
+            <rect x="8" y="0" width="8" height="48" />
+            <rect x="0" y="12" width="4" height="16" />
+            <rect x="4" y="24" width="4" height="4" />
+            <rect x="0" y="10" width="8" height="2" />
+            <rect x="20" y="6" width="4" height="16" />
+            <rect x="16" y="18" width="4" height="4" />
+            <rect x="16" y="4" width="8" height="2" />
+          </svg>
+        </div>
+        <div class="cactus-obstacle" data-cactus>
+          <svg viewBox="0 0 24 48" width="24" height="48" fill="#2d241e">
+            <rect x="8" y="0" width="8" height="48" />
+            <rect x="0" y="12" width="4" height="16" />
+            <rect x="4" y="24" width="4" height="4" />
+            <rect x="0" y="10" width="8" height="2" />
+            <rect x="20" y="6" width="4" height="16" />
+            <rect x="16" y="18" width="4" height="4" />
+            <rect x="16" y="4" width="8" height="2" />
+          </svg>
+        </div>
+        <div class="cactus-obstacle" data-cactus>
           <svg viewBox="0 0 24 48" width="24" height="48" fill="#2d241e">
             <rect x="8" y="0" width="8" height="48" />
             <rect x="0" y="12" width="4" height="16" />
@@ -258,7 +284,7 @@
             <span>Direct Availability: Jan 2026</span>
           </div>
 
-          <h1 class="hero-title brutal-title">
+          <h1 class="hero-title">
             <span class="line">DIGITAL</span>
             <span class="line emphasize brutal-highlight">ARCHITECT</span>
             <span class="line">& ENGINEER.</span>
@@ -1247,3 +1273,4 @@
 
 
 
+add 

@@ -730,7 +730,7 @@ body::after {
 }
 
 .hero-title {
-  font-family: 'Outfit', 'Syncopate', sans-serif;
+  font-family: 'Orbitron', sans-serif;
   font-size: clamp(1.1rem, 2.2vw, 1.8rem) !important;
   line-height: 1.2 !important;
   letter-spacing: -0.5px !important;
@@ -4015,6 +4015,46 @@ body.no-scroll {
 
 
 /* =========================================
+   ARCADE PAC-MAN SCROLLBAR — gold thumb on brown border
+   Cross-browser: Firefox + WebKit (Chrome/Edge/Safari).
+   ========================================= */
+* {
+  scrollbar-color: #FFD700 #2d241e; /* Firefox: thumb track */
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #2d241e;
+  border-left: 2px solid #1a130f;
+  border-right: 2px solid #1a130f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FFD700;
+  border: 2px solid #2d241e;
+  border-radius: 0; /* retro: square corners */
+  box-shadow: inset 0 0 0 2px #FFD700;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ffe569;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #ffea7a;
+}
+
+/* Corner where two scrollbars meet */
+::-webkit-scrollbar-corner {
+  background: #2d241e;
+}
+
+/* =========================================
    ACCESSIBILITY & HARDWARE ACCELERATION
    ========================================= */
 
@@ -4431,6 +4471,201 @@ a:focus-visible, button:focus-visible {
   transform: translateY(0);
   filter: grayscale(0) blur(0);
 }
+
+/* =========================================
+   AUDIO TOGGLE (NAVBAR) — RETRO PIXEL ICON
+   ========================================= */
+.audio-toggle {
+  background: var(--bg, #fff0e6);
+  border: 2px solid var(--border, #2d241e);
+  padding: 0.5rem 0.7rem;
+  margin-left: 0.5rem;
+  box-shadow: 3px 3px 0px rgba(45, 36, 30, 1);
+  cursor: pointer;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--border, #2d241e);
+  transition: transform 0.12s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.12s;
+  font-family: 'Press Start 2P', monospace;
+  line-height: 1;
+}
+
+.audio-toggle:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 6px 6px 0px rgba(45, 36, 30, 1);
+}
+
+.audio-toggle:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0px rgba(45, 36, 30, 1);
+}
+
+.audio-toggle[aria-pressed="true"] {
+  background: #2d241e;
+  color: #FFD700;
+  box-shadow: 3px 3px 0 rgba(255, 215, 0, 0.7);
+}
+
+.audio-toggle[aria-pressed="true"]:hover {
+  box-shadow: 6px 6px 0 rgba(255, 215, 0, 0.85);
+}
+
+/* =========================================
+   INTERACTIVE DINO GAME (HERO)
+   ========================================= */
+.real-dino-game {
+  pointer-events: auto !important; /* allow interaction */
+}
+
+.dino-hint {
+  position: absolute;
+  bottom: 70px;
+  left: 10%;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.5rem;
+  color: #2d241e;
+  background: #FFD700;
+  padding: 4px 8px;
+  border: 2px solid #2d241e;
+  box-shadow: 3px 3px 0 #2d241e;
+  z-index: 4;
+  letter-spacing: 1px;
+  opacity: 1;
+  transition: opacity 0.3s steps(4);
+  pointer-events: none;
+  animation: hintPulse 1.5s steps(4) infinite;
+}
+
+.dino-hint.hidden {
+  opacity: 0;
+}
+
+@keyframes hintPulse {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+
+/* When JS takes over, freeze the auto-jump so we drive it */
+.dino-character.player-controlled {
+  animation: none !important;
+}
+
+.dino-character.jumping {
+  animation: none !important;
+  transition: bottom 0.18s cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.dino-character.hit {
+  filter: grayscale(1) brightness(1.4);
+  animation: dinoShake 0.3s steps(3) 2;
+}
+
+@keyframes dinoShake {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  25%      { transform: translateY(0) translateX(-3px); }
+  75%      { transform: translateY(0) translateX(3px); }
+}
+
+.dino-ground.paused,
+.cactus-obstacle.paused {
+  animation-play-state: paused;
+}
+
+/* Score HUD inside the dino strip */
+.dino-score {
+  position: absolute;
+  bottom: 30px;
+  right: 12px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.55rem;
+  color: #2d241e;
+  z-index: 4;
+  letter-spacing: 1px;
+  pointer-events: none;
+}
+
+.dino-score span { color: #c4302b; }
+
+/* =========================================
+   KONAMI CRT SCANLINE FLASH OVERLAY
+   ========================================= */
+.konami-flash {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999998;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.85) 0px,
+    rgba(0, 0, 0, 0.85) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  opacity: 0;
+  mix-blend-mode: multiply;
+}
+
+.konami-flash.active {
+  animation: konamiScan 1.6s steps(40) 1;
+}
+
+@keyframes konamiScan {
+  0%   { opacity: 0; transform: translateY(0); }
+  10%  { opacity: 1; }
+  50%  { opacity: 1; }
+  100% { opacity: 0; transform: translateY(6px); }
+}
+
+.konami-toast {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-12px);
+  background: #000;
+  color: #FFD700;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.7rem;
+  padding: 14px 24px;
+  border: 3px solid #FFD700;
+  box-shadow: 6px 6px 0 #FFD700;
+  z-index: 999999;
+  letter-spacing: 2px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.konami-toast.active {
+  animation: konamiToastIn 2.4s steps(20) 1;
+}
+
+@keyframes konamiToastIn {
+  0%   { opacity: 0; transform: translateX(-50%) translateY(-28px); }
+  10%  { opacity: 1; transform: translateX(-50%) translateY(0); }
+  80%  { opacity: 1; transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-28px); }
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+@media (max-width: 768px) {
+  .audio-toggle {
+    padding: 0.6rem 1rem;
+    margin-left: 0;
+    margin-top: 0.5rem;
+    width: 100%;
+    justify-content: center;
+  }
+  .dino-hint {
+    left: 4%;
+    bottom: 60px;
+    font-size: 0.4rem;
+  }
+}
+
+
 
 
 
