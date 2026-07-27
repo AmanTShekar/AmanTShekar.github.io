@@ -4265,3 +4265,8 @@ a:focus-visible, button:focus-visible {
   opacity: 1 !important;
   visibility: visible !important;
 }
+
+#xpBadge:hover .badge-hover-content-old {
+  display: block !important;
+  opacity: 1 !important;
+}

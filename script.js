@@ -684,7 +684,7 @@ function startPacManChomp(pathId) {
 
 
   // Easter Egg: Experience Badge Click
-  const expBadge = document.querySelector('.retro-level-badge');
+  const expBadge = document.getElementById('xpBadge');
   if (expBadge) {
     let clickCount = 0;
     expBadge.addEventListener('click', (e) => {
