@@ -142,7 +142,6 @@ function startPacManChomp(pathId) {
           .from('.hero-title .line', { x: -20, opacity: 0, stagger: 0.1 })
           .from('.brutal-description-box', { y: 20, opacity: 0 })
           .from('.hero-actions', { y: 20, opacity: 0 })
-          .from('.image-frame', { x: 20, opacity: 0 })
           .from('.exp-badge', { scale: 0.8, opacity: 0 });
       };
 
@@ -704,17 +703,13 @@ function startPacManChomp(pathId) {
       offCanvas.height = lowH;
       const offCtx = offCanvas.getContext('2d');
       
+      offCtx.imageSmoothingEnabled = false;
       offCtx.drawImage(profileImg, 0, 0, lowW, lowH);
       
       ctx.imageSmoothingEnabled = false;
       ctx.drawImage(offCanvas, 0, 0, lowW, lowH, 0, 0, w, h);
       
       profileImg.parentNode.replaceChild(canvas, profileImg);
-      
-      if (typeof pixelReveal === 'function') {
-        const frame = canvas.closest('.image-frame');
-        if (frame) pixelReveal(frame);
-      }
     };
     
     if (profileImg.complete && profileImg.naturalWidth !== 0) {
