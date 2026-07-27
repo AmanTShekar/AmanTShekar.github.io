@@ -4224,9 +4224,9 @@ a:focus-visible, button:focus-visible {
 }
 
 .image-frame.borderless-frame {
-  width: 140%;
-  max-width: 800px;
-  transform: translateX(-20%);
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto;
   z-index: 1;
 }
 
