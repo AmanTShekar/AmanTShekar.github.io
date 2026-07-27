@@ -84,26 +84,36 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     
-// Pac-Man mouth chomp — smooth sine-wave driven RAF animation
-function startPacManChomp(polyId) {
-  const poly = document.getElementById(polyId);
-  if (!poly) return null;
+// Pac-Man mouth chomp — real pie-arc opens/closes like classic Pac-Man
+function startPacManChomp(pathId) {
+  const path = document.getElementById(pathId);
+  if (!path) return null;
   let raf;
   let running = true;
   const cx = 20, cy = 20, r = 20;
-  const MAX_ANGLE = 42;
-  const SPEED = 7;
+  const MAX_ANGLE = 38; // max half-angle of mouth opening (degrees)
+  const SPEED = 7;      // chomps per second
+
+  function buildArc(angleDeg) {
+    if (angleDeg < 0.5) angleDeg = 0.5;
+    const a = angleDeg * Math.PI / 180;
+    // Top lip of mouth (above horizontal center line)
+    const x1 = +(cx + r * Math.cos(-a)).toFixed(3);
+    const y1 = +(cy + r * Math.sin(-a)).toFixed(3);
+    // Bottom lip of mouth (below horizontal center line)
+    const x2 = +(cx + r * Math.cos(a)).toFixed(3);
+    const y2 = +(cy + r * Math.sin(a)).toFixed(3);
+    // Arc: from top lip, counter-clockwise (sweep=0) the LONG way (large-arc=1) to bottom lip
+    // This draws the body of Pac-Man, leaving a pie-wedge gap (the mouth) on the right
+    return 'M '+cx+','+cy+' L '+x1+','+y1+' A '+r+','+r+' 0 1,0 '+x2+','+y2+' Z';
+  }
 
   function animate(now) {
     if (!running) return;
+    // abs(sin) oscillates 0→1→0 repeatedly at SPEED chomps/sec
     const phase = Math.abs(Math.sin(now * 0.001 * Math.PI * SPEED));
-    const angleDeg = 4 + phase * MAX_ANGLE;
-    const angleRad = angleDeg * Math.PI / 180;
-    const x1 = cx + r * Math.cos(-angleRad);
-    const y1 = cy + r * Math.sin(-angleRad);
-    const x2 = cx + r * Math.cos(angleRad);
-    const y2 = cy + r * Math.sin(angleRad);
-    poly.setAttribute('points', cx+','+cy+' '+x1.toFixed(1)+','+y1.toFixed(1)+' '+x2.toFixed(1)+','+y2.toFixed(1));
+    const angleDeg = 2 + phase * MAX_ANGLE;
+    path.setAttribute('d', buildArc(angleDeg));
     raf = requestAnimationFrame(animate);
   }
 
@@ -150,7 +160,7 @@ function startPacManChomp(polyId) {
         const NUM_DOTS = 20;
         const dots = [];
 
-        const stopPmChomp = startPacManChomp('pmMouthPoly');
+        const stopPmChomp = startPacManChomp('pmPath');
         if (dotsRow) {
           dotsRow.innerHTML = ''; // Clear any existing dots
           for (let i = 0; i < NUM_DOTS; i++) {
