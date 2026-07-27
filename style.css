@@ -300,8 +300,9 @@ body::after {
 }
 
 .nav-links a.nav-cta {
-  
-  
+  background: var(--border);
+  color: var(--bg);
+  border: 2px solid var(--border);
   padding: 0.6rem 1.4rem;
   
   
@@ -4430,6 +4431,7 @@ a:focus-visible, button:focus-visible {
   transform: translateY(0);
   filter: grayscale(0) blur(0);
 }
+
 
 
 
