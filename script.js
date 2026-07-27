@@ -75,44 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
       },
       ease: "steps(1)",
       onComplete: () => overlay.remove()
-    
-  // Easter Egg: Experience Badge Click
-  const expBadge = document.querySelector('.retro-level-badge');
-  if (expBadge) {
-    let clickCount = 0;
-    expBadge.addEventListener('click', (e) => {
-      clickCount++;
-      const popup = document.createElement('div');
-      popup.textContent = clickCount >= 5 ? 'MAX LEVEL!' : '+1 XP!';
-      popup.style.position = 'fixed';
-      popup.style.left = (e.clientX + 10) + 'px';
-      popup.style.top = (e.clientY - 20) + 'px';
-      popup.style.color = '#FFD700';
-      popup.style.fontWeight = 'bold';
-      popup.style.fontSize = '1.5rem';
-      popup.style.textShadow = '2px 2px 0 #000';
-      popup.style.pointerEvents = 'none';
-      popup.style.zIndex = '9999';
-      popup.style.fontFamily = "'Courier New', Courier, monospace";
-      document.body.appendChild(popup);
-      
-      gsap.to(popup, {
-        y: -50,
-        opacity: 0,
-        duration: 1,
-        ease: 'power1.out',
-        onComplete: () => popup.remove()
-      });
-      
-      // Little shake animation on the badge
-      gsap.fromTo(expBadge, 
-        { rotation: -5 }, 
-        { rotation: 5, yoyo: true, repeat: 3, duration: 0.05, onComplete: () => gsap.set(expBadge, {rotation: 0}) }
-      );
     });
-  }
-
-});
   }
 
   if (hasGsap) {
@@ -718,5 +681,42 @@ function startPacManChomp(pathId) {
   }
 
 
+
+
+  // Easter Egg: Experience Badge Click
+  const expBadge = document.querySelector('.retro-level-badge');
+  if (expBadge) {
+    let clickCount = 0;
+    expBadge.addEventListener('click', (e) => {
+      clickCount++;
+      const popup = document.createElement('div');
+      popup.textContent = clickCount >= 5 ? 'MAX LEVEL!' : '+1 XP!';
+      popup.style.position = 'fixed';
+      popup.style.left = (e.clientX + 10) + 'px';
+      popup.style.top = (e.clientY - 20) + 'px';
+      popup.style.color = '#FFD700';
+      popup.style.fontWeight = 'bold';
+      popup.style.fontSize = '1.5rem';
+      popup.style.textShadow = '2px 2px 0 #000';
+      popup.style.pointerEvents = 'none';
+      popup.style.zIndex = '9999';
+      popup.style.fontFamily = "'Courier New', Courier, monospace";
+      document.body.appendChild(popup);
+      
+      gsap.to(popup, {
+        y: -50,
+        opacity: 0,
+        duration: 1,
+        ease: 'power1.out',
+        onComplete: () => popup.remove()
+      });
+      
+      // Little shake animation on the badge
+      gsap.fromTo(expBadge, 
+        { rotation: -5 }, 
+        { rotation: 5, yoyo: true, repeat: 3, duration: 0.05, onComplete: () => gsap.set(expBadge, {rotation: 0}) }
+      );
+    });
+  }
 
 });
