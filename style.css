@@ -4215,13 +4215,7 @@ a:focus-visible, button:focus-visible {
   color: #000;
 }
 
-.retro-level-badge {
-  bottom: auto !important;
-  right: auto !important;
-  top: -10px !important;
-  left: -30px !important;
-  z-index: 20 !important;
-}
+
 
 .image-frame.borderless-frame {
   width: 90%;
@@ -4265,4 +4259,9 @@ a:focus-visible, button:focus-visible {
 }
 .retro-level-badge:hover .badge-hover-content {
   display: block;
+}
+
+.exp-badge {
+  opacity: 1 !important;
+  visibility: visible !important;
 }
