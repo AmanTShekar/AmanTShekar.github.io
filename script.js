@@ -760,6 +760,12 @@ document.addEventListener('DOMContentLoaded', () => {
       this.classList.toggle('flipped');
       
       if (!isFlipped) {
+        const cardBack = this.querySelector('.card-back');
+        if (cardBack) {
+          delete cardBack.dataset.pixelRevealed;
+          pixelReveal(cardBack);
+        }
+
         const scrambleElements = this.querySelectorAll('.scramble-text');
         setTimeout(() => {
           scrambleElements.forEach(el => scrambleText(el));
@@ -768,6 +774,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
 
 
 
