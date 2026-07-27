@@ -680,43 +680,6 @@ function startPacManChomp(pathId) {
     });
   }
 
-  // 10. Pixelate Profile Image (Retro Character Effect)
-  const profileImg = document.querySelector('.image-frame img');
-  if (profileImg) {
-    const pixelateImage = () => {
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      const w = profileImg.clientWidth || profileImg.naturalWidth || 400;
-      const h = profileImg.clientHeight || profileImg.naturalHeight || 500;
-      canvas.width = w;
-      canvas.height = h;
-      canvas.className = profileImg.className;
-      canvas.style.cssText = profileImg.style.cssText;
-      canvas.style.imageRendering = 'pixelated';
-      
-      const pixelSize = 10; 
-      const lowW = Math.floor(w / pixelSize);
-      const lowH = Math.floor(h / pixelSize);
-      
-      const offCanvas = document.createElement('canvas');
-      offCanvas.width = lowW;
-      offCanvas.height = lowH;
-      const offCtx = offCanvas.getContext('2d');
-      
-      offCtx.imageSmoothingEnabled = false;
-      offCtx.drawImage(profileImg, 0, 0, lowW, lowH);
-      
-      ctx.imageSmoothingEnabled = false;
-      ctx.drawImage(offCanvas, 0, 0, lowW, lowH, 0, 0, w, h);
-      
-      profileImg.parentNode.replaceChild(canvas, profileImg);
-    };
-    
-    if (profileImg.complete && profileImg.naturalWidth !== 0) {
-      pixelateImage();
-    } else {
-      profileImg.addEventListener('load', pixelateImage);
-    }
-  }
+
 
 });
