@@ -680,5 +680,39 @@ function startPacManChomp(pathId) {
       });
     });
   }
-});
 
+  // 10. Pixelate Profile Image (Retro Character Effect)
+  const profileImg = document.querySelector('.image-frame img');
+  if (profileImg) {
+    const pixelateImage = () => {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d', { willReadFrequently: true });
+      const w = profileImg.clientWidth || 400;
+      const h = profileImg.clientHeight || 500;
+      canvas.width = w;
+      canvas.height = h;
+      canvas.className = profileImg.className;
+      canvas.style.cssText = profileImg.style.cssText;
+      canvas.style.imageRendering = 'pixelated';
+      
+      // Block size (higher = more pixelated)
+      const pixelSize = 8;
+      const lowW = w / pixelSize;
+      const lowH = h / pixelSize;
+      
+      // Draw small, then draw big with nearest neighbor interpolation
+      ctx.imageSmoothingEnabled = false;
+      ctx.drawImage(profileImg, 0, 0, lowW, lowH);
+      ctx.drawImage(canvas, 0, 0, lowW, lowH, 0, 0, w, h);
+      
+      profileImg.parentNode.replaceChild(canvas, profileImg);
+    };
+    
+    if (profileImg.complete) {
+      pixelateImage();
+    } else {
+      profileImg.addEventListener('load', pixelateImage);
+    }
+  }
+
+});
