@@ -4169,3 +4169,48 @@ a:focus-visible, button:focus-visible {
 }
 
 .loader-hidden { display: none !important; }
+
+/* --- Borderless Image Frame & Hover FX --- */
+.borderless-frame {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+.retro-level-badge {
+  background: #000;
+  color: #fff;
+  border: 2px solid #FFD700;
+  box-shadow: 4px 4px 0px #FFD700;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 15px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.retro-level-badge strong {
+  font-size: 1rem;
+  letter-spacing: 2px;
+  color: #FFD700;
+}
+
+.retro-level-badge span {
+  font-size: 2rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.retro-level-badge:hover {
+  transform: translate(-4px, -4px) scale(1.05);
+  box-shadow: 8px 8px 0px #FFD700;
+  background: #FFD700;
+  color: #000;
+}
+.retro-level-badge:hover strong {
+  color: #000;
+}
