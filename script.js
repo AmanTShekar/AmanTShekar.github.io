@@ -449,7 +449,7 @@ function startPacManChomp(pathId) {
 
   // 6. Generic GSAP Scroll Reveals (Replacing native IntersectionObserver)
   if (hasGsap && typeof ScrollTrigger !== 'undefined') {
-    const revealSelectors = ['.project-card', '.work-card', '.testimonial-card', '.service-card', '.tech-item', '.contact-item', '.roadmap-item', '.reveal'];
+    const revealSelectors = ['.project-card', '.work-card', '.testimonial-card', '.service-card', '.tech-item', '.contact-item', '.roadmap-item', '.footer', '.section-header', '.hero-section', '.reveal'];
     revealSelectors.forEach(selector => {
       gsap.utils.toArray(selector).forEach((el, i) => {
         gsap.from(el, {
@@ -769,19 +769,4 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// =========================================
-// DIGITIZE REVEAL ANIMATION
-// =========================================
-document.addEventListener('DOMContentLoaded', () => {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1 });
 
-  document.querySelectorAll('.digitize-reveal').forEach(el => {
-    observer.observe(el);
-  });
-});

@@ -4431,46 +4431,5 @@ a:focus-visible, button:focus-visible {
   filter: grayscale(0) blur(0);
 }
 
-/* =========================================
-   ENTERPRISE SERVICES BENTO (LIGHT THEME)
-   ========================================= */
-.services-bento-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
 
-.service-bento-card {
-  background: var(--bg-card);
-  border: 4px solid var(--border-color);
-  padding: 2.5rem;
-  box-shadow: 8px 8px 0px var(--border-color);
-  transition: all 0.2s ease-in-out;
-  position: relative;
-  overflow: hidden;
-}
-
-.service-bento-card:hover {
-  transform: translate(-4px, -4px);
-  box-shadow: 12px 12px 0px var(--border-color);
-}
-
-.service-bento-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.service-bento-title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 900;
-  font-size: 1.6rem;
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-}
-
-.service-bento-desc {
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
 
