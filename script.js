@@ -127,10 +127,10 @@ function startPacManChomp(pathId) {
     const loaderText  = document.getElementById('loaderText');
 
     if (retroLoader) {
-    // Use a one-shot flag — set only when clicking a nav link, consumed immediately
-    // This means: reload/new tab ALWAYS shows the animation; cross-page nav skips it
-    const skipOnce = sessionStorage.getItem('skipLoader');
-    if (skipOnce) sessionStorage.removeItem('skipLoader'); // consume immediately
+    // Use a session flag — play loader only once per session
+    // This means cross-page nav and back buttons skip it
+    const skipOnce = sessionStorage.getItem('hasSeenLoader');
+    sessionStorage.setItem('hasSeenLoader', '1'); // mark as seen immediately
 
       const runHeroReveal = () => {
         const heroTl = gsap.timeline({ defaults: { ease: 'none', duration: 0.15 } });
@@ -671,8 +671,7 @@ function startPacManChomp(pathId) {
       });
       document.body.appendChild(wipe);
 
-      // Set skip-once flag BEFORE navigating so the destination page skips the loader
-      sessionStorage.setItem('skipLoader', '1');
+      // We now use hasSeenLoader on load, so no need to set skipLoader here
       gsap.to(wipe, {
         y: '0%',
         duration: 0.38,
