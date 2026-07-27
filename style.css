@@ -4253,3 +4253,16 @@ a:focus-visible, button:focus-visible {
   opacity: 0.5;
   filter: blur(20px);
 }
+
+.retro-level-badge .badge-hover-content {
+  display: none;
+  margin-top: 10px;
+  border-top: 1px dashed #FFD700;
+  padding-top: 5px;
+  font-size: 0.8rem;
+  color: #000;
+  text-align: center;
+}
+.retro-level-badge:hover .badge-hover-content {
+  display: block;
+}
