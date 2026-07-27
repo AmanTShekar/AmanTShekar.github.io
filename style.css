@@ -4293,52 +4293,42 @@ a:focus-visible, button:focus-visible {
   opacity: 1 !important;
 }
 
-/* Modern Sleek Glassmorphism Experience Badge */
+
+/* definitive Neubrutalist exp-badge */
 .exp-badge {
-  background: rgba(15, 15, 15, 0.6) !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
-  box-shadow: 0 15px 35px 0 rgba(0, 0, 0, 0.5) !important;
-  backdrop-filter: blur(16px) !important;
-  -webkit-backdrop-filter: blur(16px) !important;
-  border-radius: 16px !important;
+  position: absolute !important;
+  top: 15% !important;
+  left: -2.5rem !important;
+  background: #ffffff !important;
+  border: 4px solid #2d241e !important;
   padding: 1.5rem 2rem !important;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  border-radius: 0px !important;
+  z-index: 3 !important;
+  box-shadow: 8px 8px 0px rgba(45, 36, 30, 1) !important;
+  transition: transform 0.2s, box-shadow 0.2s !important;
+  cursor: pointer !important;
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
   justify-content: center !important;
-  cursor: pointer;
+  backdrop-filter: none !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .exp-badge:hover {
-  background: rgba(25, 25, 25, 0.85) !important;
-  border: 1px solid rgba(255, 215, 0, 0.5) !important;
-  box-shadow: 0 20px 40px 0 rgba(255, 215, 0, 0.2) !important;
-  transform: translateY(-8px) scale(1.05) !important;
+  transform: translate(-4px, -4px) !important;
+  box-shadow: 12px 12px 0px rgba(45, 36, 30, 1) !important;
 }
 
 .exp-badge strong {
-  color: #FFD700 !important;
-  font-size: 3rem !important;
+  color: #2d241e !important;
+  font-size: 2rem !important;
   font-weight: 900 !important;
-  line-height: 1 !important;
-  margin-bottom: 0.4rem !important;
-  text-shadow: 0 0 20px rgba(255, 215, 0, 0.4) !important;
+  text-shadow: none !important;
 }
 
 .exp-badge span {
-  font-size: 0.95rem !important;
-  font-weight: 600 !important;
-  text-transform: uppercase !important;
-  letter-spacing: 2px !important;
-  color: #e0e0e0 !important;
-}
-
-.badge-hover-content-old {
-  color: #fff !important;
-  background: rgba(255,215,0,0.1) !important;
-  padding: 4px 8px !important;
-  border-radius: 4px !important;
-  font-weight: 600 !important;
-  letter-spacing: 1px !important;
+  color: #2d241e !important;
+  font-weight: 700 !important;
 }
