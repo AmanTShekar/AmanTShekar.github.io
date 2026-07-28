@@ -29,9 +29,8 @@
   left: 0;
   right: 0;
   width: 100%;
-  max-width: 100%;
   height: 100vh;
-  background: #ffffff; /* Booting from white screen */
+  background: #fff0e6;
   color: #2d241e;
   z-index: 999999;
   display: flex;
@@ -40,30 +39,87 @@
   font-family: 'Press Start 2P', monospace;
 }
 
-.loader-content {
-  text-align: left;
-  border: 4px solid #2d241e;
-  padding: 2rem;
-  box-shadow: 12px 12px 0px rgba(45, 36, 30, 1);
-  background: #ffb89e; /* Peach terminal */
-}
-
-.loader-title {
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
-}
-
 .loader-bar {
-  font-size: 1rem;
-  margin-bottom: 1rem;
-  white-space: pre; /* Keep spaces intact */
+  font-size: 0.65rem;
+  font-family: 'Press Start 2P', monospace;
+  margin-bottom: 0;
+  white-space: pre;
+  color: #2d241e;
+  text-align: center;
 }
 
 .loader-text {
   font-family: 'Silkscreen', monospace;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-weight: 700;
+  text-align: center;
 }
+
+.loader-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 2rem 2rem 1.5rem;
+  border: 4px solid #2d241e;
+  box-shadow: 8px 8px 0px #2d241e;
+  background: #ffffff;
+  max-width: 360px;
+  width: 90%;
+}
+
+.loader-pm-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+}
+
+.loader-dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.loader-dot {
+  width: 8px;
+  height: 8px;
+  background: #2d241e;
+  flex-shrink: 0;
+  opacity: 0;
+  transform: scale(0);
+}
+
+.loader-dot.show {
+  animation: dotAppear 0.12s steps(1) forwards;
+}
+
+.loader-dot.eaten {
+  animation: dotEat 0.45s ease-out forwards;
+}
+
+@keyframes dotAppear {
+  from { opacity: 0; transform: scale(0); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes dotEat {
+  0%   { opacity: 1; transform: translateX(0) scale(1); }
+  100% { opacity: 0; transform: translateX(22px) scale(0.15); }
+}
+
+.loader-pm {
+  line-height: 0;
+  flex-shrink: 0;
+}
+
+.loader-pm svg {
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.loader-hidden { display: none !important; }
 
 /* Base Reset */
 * {
@@ -5356,6 +5412,7 @@ a:focus-visible, button:focus-visible {
   .contact-card { padding: 1.5rem 1rem; }
   .btn { padding: 0.7rem 1rem; font-size: 0.8rem; }
   .btn.large { padding: 1rem 1.5rem; font-size: 0.65rem; }
+}
 
 /* =========================================
    PERF: Compact profile image on mobile
@@ -5367,13 +5424,10 @@ a:focus-visible, button:focus-visible {
   .image-frame.borderless-frame { max-width: 240px; }
 }
 @media (max-width: 480px) {
-  .image-frame.borderless-frame { max-width: 70px; margin: 0 auto; }
+  .image-frame.borderless-frame { max-width: 50px; margin: 0 auto; }
 }
 @media (max-width: 360px) {
-  .image-frame.borderless-frame { max-width: 55px; margin: 0 auto; }
-}
-
-  .image-frame { max-width: 110px; margin: 0 auto; }
+  .image-frame.borderless-frame { max-width: 40px; margin: 0 auto; }
 }
 
 
