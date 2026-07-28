@@ -5367,10 +5367,10 @@ a:focus-visible, button:focus-visible {
   .image-frame.borderless-frame { max-width: 240px; }
 }
 @media (max-width: 480px) {
-  .image-frame.borderless-frame { max-width: 100px; margin: 0 auto; }
+  .image-frame.borderless-frame { max-width: 70px; margin: 0 auto; }
 }
 @media (max-width: 360px) {
-  .image-frame.borderless-frame { max-width: 80px; margin: 0 auto; }
+  .image-frame.borderless-frame { max-width: 55px; margin: 0 auto; }
 }
 
   .image-frame { max-width: 110px; margin: 0 auto; }
@@ -5386,3 +5386,8 @@ a:focus-visible, button:focus-visible {
 
 
 
+
+@media (max-width: 480px) {
+  .section-title { font-size: clamp(1.2rem, 6vw, 2rem) !important; word-wrap: break-word; overflow-wrap: break-word; }
+  .testimonials-section .section-title { font-size: clamp(1.1rem, 5vw, 1.8rem) !important; }
+}
