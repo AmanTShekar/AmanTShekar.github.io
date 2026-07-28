@@ -288,9 +288,13 @@ function startPacManChomp(pathId) {
 
       if (skipOnce) {
         retroLoader.classList.add('loader-hidden');
+        document.body.style.overflow = '';  // safety clear
         runHeroReveal();
       } else {
         document.body.style.overflow = 'hidden';
+        // Hard‑safety: clear overflow regardless after 6s in case the loader
+        // never finishes (e.g. Pac‑Man SVG missing → no percent close).
+        setTimeout(() => { document.body.style.overflow = ''; }, 6000);
 
         // Build dot track
         const dotsRow = document.getElementById('pmDotsRow');
@@ -438,15 +442,46 @@ function startPacManChomp(pathId) {
     };
 
     const runCollabOnce = () => {
+      if (!stopCollabChomp) { stopCollabChomp = startPacManChomp('collabPmPath'); }
       resetCollab();
       const trackW = Math.max(window.innerWidth - 130, 200);
-      const t0 = performance.now();
 
+      if (typeof gsap !== 'undefined') {
+        const tl = gsap.timeline({
+          onComplete: () => {
+            setTimeout(() => runCollabOnce(), 800);
+          }
+        });
+        tl.to(collabChar, {
+          x: trackW,
+          duration: COLLAB_MS / 1000,
+          ease: 'none',
+          onUpdate: function () {
+            const p = this.progress();
+            if (cDots.length) {
+              const spacing = trackW / (COLLAB_DOTS - 1);
+              cDots.forEach((d, i) => {
+                if (p * trackW + 30 > i * spacing) {
+                  d.classList.add('eaten');
+                  if ((i === 5 || i === COLLAB_DOTS - 2) && !collabGhostFlee) {
+                    collabGhostFlee = true;
+                    if (collabGhost) {
+                      const gs = collabGhost.querySelector('svg');
+                      if (gs) gs.style.filter = 'hue-rotate(195deg) brightness(0.55)';
+                    }
+                  }
+                }
+              });
+            }
+          }
+        });
+        return;
+      }
+
+      const t0 = performance.now();
       const tick = (now) => {
         const t = Math.min((now - t0) / COLLAB_MS, 1);
-
         if (collabChar) collabChar.style.transform = 'translateX(' + Math.round(t * trackW) + 'px)';
-
         if (cDots.length) {
           const spacing = trackW / (COLLAB_DOTS - 1);
           cDots.forEach((d, i) => {
@@ -462,18 +497,15 @@ function startPacManChomp(pathId) {
             }
           });
         }
-
         if (t < 1) {
           collabRaf = requestAnimationFrame(tick);
         } else {
-          // Pause at end, then loop back
           setTimeout(() => {
             collabGhostFlee = false;
             runCollabOnce();
           }, 800);
         }
       };
-
       collabRaf = requestAnimationFrame(tick);
     };
 
@@ -889,11 +921,11 @@ function startPacManChomp(pathId) {
     a.addEventListener('click', () => AudioFX.sfx.click());
   });
 
-  // Buttons (primary, brutal CTA, social nodes, contact-link)
-  document.querySelectorAll('.btn, .social-node, .contact-link, .overlay-btn, .work-card, .nav-logo').forEach(el => {
+  // Buttons (primary, brutal CTA, social nodes, contact-link, blog cards, filter pills)
+  document.querySelectorAll('.btn, .social-node, .contact-link, .overlay-btn, .work-card, .nav-logo, .blog-card, .filter-pill').forEach(el => {
     el.addEventListener('mouseenter', () => AudioFX.sfx.hover());
   });
-  document.querySelectorAll('.btn, .social-node, .contact-link, .overlay-btn').forEach(el => {
+  document.querySelectorAll('.btn, .social-node, .contact-link, .overlay-btn, .blog-card').forEach(el => {
     el.addEventListener('click', () => AudioFX.sfx.click());
   });
 
@@ -974,6 +1006,20 @@ function startPacManChomp(pathId) {
     let scoreEl = null;
     let scoreRaf = null;
     let slideRaf = null;
+    let visible = false;
+
+    if (typeof IntersectionObserver !== 'undefined') {
+      const io = new IntersectionObserver(([entry]) => {
+        visible = entry.isIntersecting;
+        if (visible && started && !dead) {
+          startScoreClock();
+          startSlideLoop();
+        }
+      }, { threshold: 0, rootMargin: '200px' });
+      io.observe(game);
+    } else {
+      visible = true;
+    }
 
     function showScore() {
       if (!scoreEl) {
@@ -993,6 +1039,7 @@ function startPacManChomp(pathId) {
       let last = performance.now();
       const tick = (now) => {
         if (dead) { scoreRaf = null; return; }
+        if (!visible) { scoreRaf = null; return; }
         const dt = (now - last) / 1000;
         last = now;
         score += Math.floor(dt * 50); // ~50 pts/sec while alive
@@ -1103,7 +1150,7 @@ function startPacManChomp(pathId) {
         const dt = (now - last) / 16.67;
         last = now;
         if (dead) { slideRaf = null; return; }
-        // Speed scales slightly with score for difficulty.
+        if (!visible) { slideRaf = null; return; }
         const speed = baseSpeed + Math.min(score / 1000, 3.5);
         const dinoRect = dino.getBoundingClientRect();
         let furthest = -Infinity;
@@ -1164,6 +1211,23 @@ function startPacManChomp(pathId) {
     game.addEventListener('keydown', (e) => {
       if (e.code === 'Space' || e.key === ' ') { e.preventDefault(); if (dead) restart(); else jump(); }
     });
+  })();
+
+  // =========================================
+  // PAUSE INFINITE CSS ANIMATIONS OFF-SCREEN
+  // =========================================
+  (function pauseOffscreenAnimations() {
+    const animatedEls = document.querySelectorAll(
+      '.red-dead, .space-fighter, .super-mario, .pixel-arrow'
+    );
+    if (!animatedEls.length) return;
+    if (typeof IntersectionObserver === 'undefined') return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        entry.target.style.animationPlayState = entry.isIntersecting ? 'running' : 'paused';
+      });
+    }, { threshold: 0, rootMargin: '100px' });
+    animatedEls.forEach(el => io.observe(el));
   })();
 
   // =========================================
@@ -1362,7 +1426,13 @@ function startPacManChomp(pathId) {
     }
 
     function triggerVictory() {
+      let alreadyCompleted = false;
+      try { alreadyCompleted = localStorage.getItem(completedKey) === '1'; } catch (e) {}
+      // Always mark as completed so reload won't re-fire confetti.
       try { localStorage.setItem(completedKey, '1'); } catch (e) {}
+      // First-time only: full victory fanfare (confetti + cascade chime).
+      // Returning users just see the HUD + nothing else.
+      if (alreadyCompleted) return;
       ensureVictory();
       victoryEl.classList.remove('active');
       void victoryEl.offsetWidth;
@@ -1462,6 +1532,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
 
 
 
