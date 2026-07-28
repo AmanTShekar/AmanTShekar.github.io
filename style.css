@@ -105,7 +105,7 @@
 
 @keyframes dotEat {
   0%   { opacity: 1; transform: translateX(0) scale(1); }
-  100% { opacity: 0; transform: translateX(22px) scale(0.15); }
+  100% { opacity: 0; transform: translateX(-24px) scale(0.15); }
 }
 
 .loader-pm {
@@ -5424,10 +5424,10 @@ a:focus-visible, button:focus-visible {
   .image-frame.borderless-frame { max-width: 240px; }
 }
 @media (max-width: 480px) {
-  .image-frame.borderless-frame { max-width: 140px; margin: 0 auto; }
+  .image-frame.borderless-frame { max-width: 160px; margin: 0 auto; }
 }
 @media (max-width: 360px) {
-  .image-frame.borderless-frame { max-width: 120px; margin: 0 auto; }
+  .image-frame.borderless-frame { max-width: 140px; margin: 0 auto; }
 }
 
 
