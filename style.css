@@ -5288,6 +5288,7 @@ a:focus-visible, button:focus-visible {
 /* 480px — tighten hero dino, card padding, project overflow */
 @media (max-width: 480px) {
   .brutal-hero-section { padding: 70px 0 50px; }
+  .pm-track-wrapper, .collab-pm-wrapper { left: 50% !important; transform: translateX(-50%) !important; width: 250px !important; }
   .brutal-hero-box { padding: 1.5rem; }
   .brutal-title { font-size: clamp(1.2rem, 5vw, 1.8rem); }
   .brutal-sub-text { font-size: 0.55rem !important; }
@@ -5356,7 +5357,7 @@ a:focus-visible, button:focus-visible {
   .btn { padding: 0.7rem 1rem; font-size: 0.8rem; }
   .btn.large { padding: 1rem 1.5rem; font-size: 0.65rem; }
 
-  .image-frame { max-width: 160px; }
+  .image-frame { max-width: 110px; margin: 0 auto; }
 }
 
 
