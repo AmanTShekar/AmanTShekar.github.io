@@ -5357,6 +5357,22 @@ a:focus-visible, button:focus-visible {
   .btn { padding: 0.7rem 1rem; font-size: 0.8rem; }
   .btn.large { padding: 1rem 1.5rem; font-size: 0.65rem; }
 
+/* =========================================
+   PERF: Compact profile image on mobile
+   ========================================= */
+@media (max-width: 1200px) {
+  .image-frame.borderless-frame { max-width: 320px; }
+}
+@media (max-width: 768px) {
+  .image-frame.borderless-frame { max-width: 240px; }
+}
+@media (max-width: 480px) {
+  .image-frame.borderless-frame { max-width: 100px; margin: 0 auto; }
+}
+@media (max-width: 360px) {
+  .image-frame.borderless-frame { max-width: 80px; margin: 0 auto; }
+}
+
   .image-frame { max-width: 110px; margin: 0 auto; }
 }
 
