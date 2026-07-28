@@ -5288,7 +5288,7 @@ a:focus-visible, button:focus-visible {
 /* 480px — tighten hero dino, card padding, project overflow */
 @media (max-width: 480px) {
   .brutal-hero-section { padding: 70px 0 50px; }
-  .pm-track-wrapper, .collab-pm-wrapper { left: 50% !important; transform: translateX(-50%) !important; width: 250px !important; }
+  .collab-pm-wrapper { left: 50% !important; transform: translateX(-50%) !important; width: 250px !important; }
   .brutal-hero-box { padding: 1.5rem; }
   .brutal-title { font-size: clamp(1.2rem, 5vw, 1.8rem); }
   .brutal-sub-text { font-size: 0.55rem !important; }
@@ -5391,3 +5391,7 @@ a:focus-visible, button:focus-visible {
   .section-title { font-size: clamp(1.2rem, 6vw, 2rem) !important; word-wrap: break-word; overflow-wrap: break-word; }
   .testimonials-section .section-title { font-size: clamp(1.1rem, 5vw, 1.8rem) !important; }
 }
+
+.loader-center-content { text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; }
+
+.pm-track { position: relative; width: 100%; height: 100%; }

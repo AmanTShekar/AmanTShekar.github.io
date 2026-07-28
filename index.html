@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -117,7 +117,6 @@
     <div class="loader-center-content">
       <div class="loader-title" id="loaderTitle">SYSTEM BOOT...</div>
       <div class="loader-text" id="loaderText">Initializing modules...</div>
-    </div>
     <!-- Full-width Pac-Man track -->
     <div class="pm-track-wrapper">
       <div class="pm-track" id="pmTrack">
@@ -151,6 +150,7 @@
         </div>
       </div>
     </div>
+    </div> <!-- /loader-center-content -->
     <div class="loader-bar" id="loaderBar">[          ] 0%</div>
   </div>
 
@@ -317,7 +317,10 @@
         <!-- Profile Frame with Dark Neubrutalist 3px Black Border & Hard Shadow -->
         <div class="hero-image">
           <div class="image-frame borderless-frame" style="position: relative;">
-            <img src="profile_final.jpg" alt="Aman T Shekar Profile" fetchpriority="high" width="800" height="400">
+            <picture>
+              <source srcset="profile.webp" type="image/webp">
+              <img src="profile_final.jpg" alt="Aman T Shekar Profile" fetchpriority="high" width="800" height="400">
+            </picture>
             
             <div class="exp-badge retro-level-badge">
               <strong>1</strong>

@@ -358,7 +358,7 @@ function startPacManChomp(pathId) {
         // Wait one frame so layout is painted, then measure & start
         requestAnimationFrame(() => {
           // Use window.innerWidth as the reliable full-screen track width
-          const trackW = window.innerWidth <= 480 ? 180 : Math.max(window.innerWidth - 130, 200);
+          const trackW = 200;
           const t0 = performance.now();
 
           const tick = (now) => {
