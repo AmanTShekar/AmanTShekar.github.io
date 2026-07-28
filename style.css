@@ -5367,10 +5367,10 @@ a:focus-visible, button:focus-visible {
   .image-frame.borderless-frame { max-width: 240px; }
 }
 @media (max-width: 480px) {
-  .image-frame.borderless-frame { max-width: 50px; margin: 0 auto; }
+  .image-frame.borderless-frame { max-width: 70px; margin: 0 auto; }
 }
 @media (max-width: 360px) {
-  .image-frame.borderless-frame { max-width: 40px; margin: 0 auto; }
+  .image-frame.borderless-frame { max-width: 55px; margin: 0 auto; }
 }
 
   .image-frame { max-width: 110px; margin: 0 auto; }
@@ -5395,7 +5395,3 @@ a:focus-visible, button:focus-visible {
 .loader-center-content { text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; }
 
 .pm-track { position: relative; width: 100%; height: 100%; }
-
-@media (max-width: 480px) {
-  .hero-image .exp-badge, .hero-image .easter-egg { display: none !important; }
-}
