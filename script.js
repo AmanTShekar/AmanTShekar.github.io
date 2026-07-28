@@ -1,7 +1,194 @@
+// Ultimate Scroll Reset (Handles hashes, GSAP, and browser cache)
+if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+window.onbeforeunload = function () { window.scrollTo(0, 0); };
+window.onload = function() {
+  setTimeout(function() {
+    window.scrollTo(0, 0);
+    if (typeof ScrollTrigger !== 'undefined') {
+      ScrollTrigger.refresh();
+    }
+  }, 100);
+};
 /**
  * PORTFOLIO v5.0 | INTERACTION ENGINE
  * Optimized GSAP Engine for Performance & Immersion
  */
+
+// =========================================
+// RETRO SFX ENGINE — Web Audio API (synthesized 8-bit)
+// Hoisted to module scope so multiple DOMContentLoaded blocks can share it.
+// Off by default. Persists to localStorage 'portfolioAudio'.
+// =========================================
+const AudioFX = (() => {
+  const KEY = 'portfolioAudio';
+  let ctx = null;
+  let master = null;
+  let enabled = false;
+
+  function ensureCtx() {
+    if (ctx) return;
+    try {
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return;
+      ctx = new AC();
+      master = ctx.createGain();
+      master.gain.value = 0.18; // calm 18% master volume
+      master.connect(ctx.destination);
+    } catch (e) {
+      ctx = null; // no audio available — silently no-op
+    }
+  }
+
+// Pac-Man sound intentionally disabled — the loaders and collab Pac-Man run silently.
+// (sampleCache / loadSample / playSample scaffolding removed)
+
+  function isEnabled() { return enabled; }
+
+  function setEnabled(v) {
+    enabled = !!v;
+    try { localStorage.setItem(KEY, enabled ? '1' : '0'); } catch (e) {}
+    const btn = document.getElementById('audioToggle');
+    const icon = document.getElementById('audioIcon');
+    if (btn) {
+      btn.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+      btn.setAttribute('title', enabled ? 'Sound: On' : 'Sound: Off');
+      if (icon) icon.className = enabled ? 'fa-solid fa-volume-high' : 'fa-solid fa-volume-xmark';
+    }
+    if (enabled) {
+      ensureCtx();
+      if (ctx && ctx.state === 'suspended') ctx.resume().catch(() => {});
+      playBeep(660, 0.06); // confirm click SFX
+    }
+  }
+
+  function load() {
+    try {
+      const stored = localStorage.getItem(KEY);
+      if (stored === null) return false; // off by default
+      return stored === '1';
+    } catch (e) { return false; }
+  }
+
+  function playTone(freq, durationMS, type = 'square', gain = 0.4, when = 0) {
+    ensureCtx();
+    if (!ctx || !enabled) return;
+    const t0 = ctx.currentTime + when;
+    const osc = ctx.createOscillator();
+    const g = ctx.createGain();
+    osc.type = type;
+    osc.frequency.setValueAtTime(freq, t0);
+    g.gain.setValueAtTime(0.0001, t0);
+    g.gain.exponentialRampToValueAtTime(gain, t0 + 0.005);
+    g.gain.exponentialRampToValueAtTime(0.0001, t0 + durationMS / 1000);
+    osc.connect(g).connect(master);
+    osc.start(t0);
+    osc.stop(t0 + durationMS / 1000 + 0.02);
+  }
+
+  function playBeep(freq, durationMS, type = 'square', gain = 0.4) {
+    playTone(freq, durationMS, type, gain);
+  }
+
+  function playSweep(fromHz, toHz, durationMS, type = 'square', gain = 0.4) {
+    ensureCtx();
+    if (!ctx || !enabled) return;
+    const t0 = ctx.currentTime;
+    const osc = ctx.createOscillator();
+    const g = ctx.createGain();
+    osc.type = type;
+    osc.frequency.setValueAtTime(fromHz, t0);
+    osc.frequency.exponentialRampToValueAtTime(Math.max(toHz, 20), t0 + durationMS / 1000);
+    g.gain.setValueAtTime(0.0001, t0);
+    g.gain.exponentialRampToValueAtTime(gain, t0 + 0.005);
+    g.gain.exponentialRampToValueAtTime(0.0001, t0 + durationMS / 1000);
+    osc.connect(g).connect(master);
+    osc.start(t0);
+    osc.stop(t0 + durationMS / 1000 + 0.02);
+  }
+
+  function playNoise(durationMS, gain = 0.25) {
+    ensureCtx();
+    if (!ctx || !enabled) return;
+    const t0 = ctx.currentTime;
+    const len = Math.floor((durationMS / 1000) * ctx.sampleRate);
+    const buffer = ctx.createBuffer(1, len, ctx.sampleRate);
+    const data = buffer.getChannelData(0);
+    for (let i = 0; i < len; i++) data[i] = (Math.random() * 2 - 1) * (1 - i / len);
+    const src = ctx.createBufferSource();
+    const g = ctx.createGain();
+    g.gain.value = gain;
+    src.buffer = buffer;
+    src.connect(g).connect(master);
+    src.start(t0);
+  }
+
+  const sfx = {
+    hover: () => playBeep(440, 30, 'square', 0.15),
+    click: () => { playBeep(660, 50, 'square', 0.4); playBeep(880, 30, 'square', 0.2, 0.05); },
+    // Pac-Man is intentionally silent — no chomp/eatDot/powerDot SFX.
+    chomp:    () => {},
+    eatDot:   () => {},
+    powerDot: () => {},
+    jump: () => playSweep(330, 740, 180, 'square', 0.35),
+    land: () => playBeep(160, 50, 'sawtooth', 0.18),
+    hit:  () => { playNoise(180, 0.2); playSweep(400, 80, 250, 'sawtooth', 0.3); },
+    flip: (unflip) => playSweep(unflip ? 740 : 330, unflip ? 330 : 740, 180, 'square', 0.35),
+    levelUp: () => {
+      const notes = [523, 659, 784, 1047]; // C E G C
+      notes.forEach((f, i) => playBeep(f, 110, 'square', 0.4, i * 0.09));
+    },
+    konami: () => {
+      const mel = [392, 523, 659, 784, 659, 784];
+      mel.forEach((f, i) => playBeep(f, 130, 'square', 0.4, i * 0.11));
+    }
+  };
+
+  // Initialize from storage
+  enabled = load();
+
+  return { isEnabled, setEnabled, sfx };
+})();
+
+// True Pixel-to-Solid Reveal Engine — hoisted to module scope for shared use.
+function pixelReveal(card) {
+  if (card.dataset.pixelRevealed) return;
+  card.dataset.pixelRevealed = "true";
+  if (getComputedStyle(card).position === 'static') {
+    card.style.position = 'relative';
+  }
+  const isDark = card.closest('.experience-section') || card.closest('.testimonials-section');
+  const bgColor = isDark ? '#000000' : '#fff0e6';
+  const overlay = document.createElement('div');
+  overlay.className = 'pixel-reveal-overlay';
+  Object.assign(overlay.style, {
+    position: 'absolute', top: '-5px', left: '-5px', right: '-5px', bottom: '-5px',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(12, 1fr)',
+    gridTemplateRows: 'repeat(10, 1fr)',
+    zIndex: '9999', pointerEvents: 'none'
+  });
+  for (let i = 0; i < 120; i++) {
+    const block = document.createElement('div');
+    block.style.background = bgColor;
+    overlay.appendChild(block);
+  }
+  card.appendChild(overlay);
+  if (typeof gsap !== 'undefined') {
+    gsap.to(overlay.children, {
+      opacity: 0,
+      duration: 0.05,
+      stagger: { amount: 0.6, from: "random" },
+      ease: "steps(1)",
+      onComplete: () => overlay.remove()
+    });
+  } else {
+    overlay.style.transition = 'opacity 0.6s steps(10)';
+    requestAnimationFrame(() => { overlay.style.opacity = '0'; });
+    setTimeout(() => overlay.remove(), 800);
+  }
+}
+
+// Pac-Man sound intentionally disabled — the loaders and collab Pac-Man run silently.
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Initialize GSAP & ScrollTrigger safely if loaded
@@ -30,53 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(update);
   }
 
-  // True Pixel-to-Solid Reveal Engine
-  function pixelReveal(card) {
-    if (card.dataset.pixelRevealed) return;
-    card.dataset.pixelRevealed = "true";
-    
-    // Make sure card can contain absolute overlay
-    if (getComputedStyle(card).position === 'static') {
-      card.style.position = 'relative';
-    }
-    
-    // Figure out the dark mode background vs light mode
-    const isDark = card.closest('.experience-section') || card.closest('.testimonials-section');
-    const bgColor = isDark ? '#000000' : '#fff0e6';
-
-    const overlay = document.createElement('div');
-    overlay.className = 'pixel-reveal-overlay';
-    overlay.style.position = 'absolute';
-    overlay.style.top = '-5px';
-    overlay.style.left = '-5px';
-    overlay.style.right = '-5px';
-    overlay.style.bottom = '-5px';
-    overlay.style.display = 'grid';
-    overlay.style.gridTemplateColumns = 'repeat(12, 1fr)';
-    overlay.style.gridTemplateRows = 'repeat(10, 1fr)';
-    overlay.style.zIndex = '9999';
-    overlay.style.pointerEvents = 'none';
-
-    // Fill grid with solid blocks
-    for (let i = 0; i < 120; i++) {
-      const block = document.createElement('div');
-      block.style.background = bgColor;
-      overlay.appendChild(block);
-    }
-    card.appendChild(overlay);
-
-    // Fade out blocks randomly
-    gsap.to(overlay.children, {
-      opacity: 0,
-      duration: 0.05,
-      stagger: {
-        amount: 0.6,
-        from: "random"
-      },
-      ease: "steps(1)",
-      onComplete: () => overlay.remove()
-    });
-  }
+  // True Pixel-to-Solid Reveal Engine — defined at module scope (top of file).
 
   if (hasGsap) {
     if (typeof ScrollTrigger !== 'undefined') {
@@ -719,6 +860,571 @@ function startPacManChomp(pathId) {
     });
   }
 
+  // =========================================
+  // RETRO SFX ENGINE — defined at module scope (top of file).
+  // AudioFX is shared between both DOMContentLoaded blocks.
+  // =========================================
+  // (duplicate AudioFX declaration removed — see top of script.js)
+
+  // Apply initial UI state without playing the confirm sound
+  (function initAudioUI() {
+    const btn = document.getElementById('audioToggle');
+    const icon = document.getElementById('audioIcon');
+    if (!btn || !icon) return;
+    const enabled = AudioFX.isEnabled();
+    btn.setAttribute('aria-pressed', enabled ? 'true' : 'false');
+    btn.setAttribute('title', enabled ? 'Sound: On' : 'Sound: Off');
+    icon.className = enabled ? 'fa-solid fa-volume-high' : 'fa-solid fa-volume-xmark';
+    btn.addEventListener('click', () => {
+      AudioFX.setEnabled(!AudioFX.isEnabled());
+    });
+  })();
+
+  // =========================================
+  // HOOK SFX INTO EXISTING INTERACTIONS
+  // =========================================
+  // Nav links + nav CTA
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('mouseenter', () => AudioFX.sfx.hover());
+    a.addEventListener('click', () => AudioFX.sfx.click());
+  });
+
+  // Buttons (primary, brutal CTA, social nodes, contact-link)
+  document.querySelectorAll('.btn, .social-node, .contact-link, .overlay-btn, .work-card, .nav-logo').forEach(el => {
+    el.addEventListener('mouseenter', () => AudioFX.sfx.hover());
+  });
+  document.querySelectorAll('.btn, .social-node, .contact-link, .overlay-btn').forEach(el => {
+    el.addEventListener('click', () => AudioFX.sfx.click());
+  });
+
+  // Bento items + service / suite cards = low key hover
+  document.querySelectorAll('.bento-item, .service-card, .tech-item').forEach(el => {
+    el.addEventListener('mouseenter', () => AudioFX.sfx.hover());
+  });
+
+  // Pac-Man loaders: chomp on each dot eaten — only when the track is visible in the viewport.
+  // We observe both the dot container's class mutations AND an IntersectionObserver on the
+  // parent track wrapper so sound only fires while the user can actually see it.
+  (function patchChompSFX() {
+    const observed = document.querySelectorAll('.pm-dots-row, .collab-pm-dots');
+    if (!observed.length) return;
+    // Map each dot container → parent track wrapper (or itself as fallback)
+    function findTrackWrapper(container) {
+      let el = container;
+      while (el && !el.classList.contains('pm-track-wrapper') && !el.classList.contains('collab-pm-wrapper')) {
+        el = el.parentElement;
+      }
+      return el || container;
+    }
+    const visibilityMap = new WeakMap();
+    observed.forEach(container => {
+      const wrapper = findTrackWrapper(container);
+      visibilityMap.set(container, false);
+      if (typeof IntersectionObserver !== 'undefined') {
+        const io = new IntersectionObserver((entries) => {
+          for (const entry of entries) {
+            visibilityMap.set(container, entry.isIntersecting);
+          }
+        }, { rootMargin: '50px', threshold: 0 });
+        io.observe(wrapper);
+      } else {
+        visibilityMap.set(container, true);
+      }
+    });
+
+    observed.forEach(container => {
+      let lastPlay = 0;
+      const obs = new MutationObserver((muts) => {
+        if (!AudioFX.isEnabled()) return;
+        if (!visibilityMap.get(container)) return; // not in view — stay silent
+        const now = performance.now();
+        if (now - lastPlay < 35) return; // throttle to keep it crisp
+        for (const m of muts) {
+          if (m.attributeName === 'class' && m.target.classList.contains('eaten')) {
+            if (m.target.classList.contains('power')) AudioFX.sfx.powerDot();
+            else AudioFX.sfx.eatDot();
+            lastPlay = now;
+            break;
+          }
+        }
+      });
+      obs.observe(container, { subtree: true, attributes: true, attributeFilter: ['class'] });
+    });
+  })();
+
+  // =========================================
+  // INTERACTIVE HERO DINO GAME
+  // Press Space or click the dino strip → jump. Avoid multiple cacti.
+  // Click the strip after death → restart. Space is gated to fire only when
+  // the hero section is actually in the viewport.
+  // =========================================
+  (function dinoGame() {
+    const game   = document.getElementById('dinoGame');
+    const dino   = document.getElementById('dinoCharacter');
+    const hint   = document.getElementById('dinoHint');
+    if (!game || !dino) return;
+
+    const cactusEls = Array.from(game.querySelectorAll('[data-cactus]'));
+    if (!cactusEls.length) return;
+
+    let jumping = false;
+    let dead = false;
+    let started = false;
+    let score = 0;
+    let scoreEl = null;
+    let scoreRaf = null;
+    let slideRaf = null;
+
+    function showScore() {
+      if (!scoreEl) {
+        scoreEl = document.createElement('div');
+        scoreEl.className = 'dino-score';
+        scoreEl.innerHTML = 'HI <span id="dinoHi">0</span> · NOW <span id="dinoNow">0</span>';
+        game.appendChild(scoreEl);
+      }
+      document.getElementById('dinoNow').textContent = String(score).padStart(4, '0');
+      const hi = parseInt(localStorage.getItem('dinoHi') || '0', 10);
+      document.getElementById('dinoHi').textContent = String(Math.max(hi, score)).padStart(4, '0');
+    }
+
+    function startScoreClock() {
+      showScore();
+      if (scoreRaf) return;
+      let last = performance.now();
+      const tick = (now) => {
+        if (dead) { scoreRaf = null; return; }
+        const dt = (now - last) / 1000;
+        last = now;
+        score += Math.floor(dt * 50); // ~50 pts/sec while alive
+        showScore();
+        scoreRaf = requestAnimationFrame(tick);
+      };
+      scoreRaf = requestAnimationFrame(tick);
+    }
+
+    function resetCacti() {
+      // Spread cacti out across off-screen right with random gaps.
+      let x = window.innerWidth + 80;
+      cactusEls.forEach((c, i) => {
+        c.style.animation = 'none';
+        c.style.right = 'auto';
+        c.style.left  = 'auto';
+        c.style.transform = `translateX(${x}px)`;
+        c.dataset.passed = '';
+        // Each cactus gets a slightly larger gap so they're staggered.
+        x += 220 + Math.random() * 280;
+      });
+      // Pause the CSS-only ambient animation; we drive positions via JS.
+      const ground = game.querySelector('.dino-ground');
+      if (ground) ground.classList.add('paused');
+    }
+
+    function takeControl() {
+      if (dino.dataset.controlled) return;
+      dino.dataset.controlled = '1';
+      dino.classList.add('player-controlled');
+      if (hint) hint.classList.remove('hidden');
+    }
+
+    function start() {
+      if (started) return;
+      started = true;
+      takeControl();
+      resetCacti();
+      if (hint) hint.classList.add('hidden');
+      startScoreClock();
+      startSlideLoop();
+    }
+
+    function restart() {
+      dead = false;
+      score = 0;
+      jumping = false;
+      dino.classList.remove('hit');
+      gsap.set(dino, { y: 0 });
+      if (hint) {
+        hint.textContent = 'PRESS SPACE';
+        hint.classList.add('hidden'); // hide hint on restart — already in play
+      }
+      resetCacti();
+      startScoreClock();
+      startSlideLoop();
+    }
+
+    function jump() {
+      if (dead) return;          // click handles restart instead
+      if (!started) start();
+      if (jumping) return;
+      if (hint) hint.classList.add('hidden');
+      jumping = true;
+      AudioFX.sfx.jump();
+      gsap.to(dino, {
+        y: -70,
+        duration: 0.22,
+        ease: 'power2.out',
+        onComplete: () => {
+          gsap.to(dino, {
+            y: 0,
+            duration: 0.18,
+            ease: 'power2.in',
+            onComplete: () => {
+              jumping = false;
+              AudioFX.sfx.land();
+            }
+          });
+        }
+      });
+    }
+
+    function die() {
+      if (dead) return;
+      dead = true;
+      started = false;
+      AudioFX.sfx.hit();
+      dino.classList.add('hit');
+      const hi = parseInt(localStorage.getItem('dinoHi') || '0', 10);
+      if (score > hi) localStorage.setItem('dinoHi', String(score));
+      showScore();
+      if (hint) {
+        hint.textContent = 'CLICK TO RESTART';
+        hint.classList.remove('hidden');
+      }
+      if (scoreRaf) { cancelAnimationFrame(scoreRaf); scoreRaf = null; }
+      if (slideRaf) { cancelAnimationFrame(slideRaf); slideRaf = null; }
+    }
+
+    // One rAF loop drives every cactus + collision detection.
+    function startSlideLoop() {
+      if (slideRaf) return;
+      let last = performance.now();
+      const baseSpeed = 4.5;          // px per frame at 60fps
+      const gap = 520;                // min horizontal gap between spawns
+      function tick(now) {
+        const dt = (now - last) / 16.67;
+        last = now;
+        if (dead) { slideRaf = null; return; }
+        // Speed scales slightly with score for difficulty.
+        const speed = baseSpeed + Math.min(score / 1000, 3.5);
+        const dinoRect = dino.getBoundingClientRect();
+        let furthest = -Infinity;
+        cactusEls.forEach((c) => {
+          const m = c.style.transform.match(/translateX\(([-\d.]+)px\)/);
+          let x = m ? parseFloat(m[1]) : window.innerWidth;
+          x -= speed * dt;
+          c.style.transform = `translateX(${x}px)`;
+          furthest = Math.max(furthest, x);
+          // Score + pass SFX
+          const cRect = c.getBoundingClientRect();
+          if (!c.dataset.passed && cRect.right < dinoRect.left) {
+            c.dataset.passed = '1';
+            score += 100;
+            showScore();
+            if (score % 500 === 0) AudioFX.sfx.levelUp();
+          }
+          // AABB collision — tightened boxes for fairness
+          const hit = !(
+            dinoRect.right - 6 < cRect.left + 4 ||
+            dinoRect.left + 6 > cRect.right - 4 ||
+            dinoRect.bottom - 4 < cRect.top + 4 ||
+            dinoRect.top + 4 > cRect.bottom - 4
+          );
+          if (hit && !jumping) die();
+          // Respawn when fully off-screen left, with a guaranteed minimum gap
+          // from the rightmost cactus to avoid stacked obstacles.
+          if (x < -60) {
+            const spawnX = Math.max(furthest + gap, window.innerWidth + 40);
+            c.style.transform = `translateX(${spawnX}px)`;
+            c.dataset.passed = '';
+            x = spawnX;
+          }
+          furthest = Math.max(furthest, x);
+        });
+        slideRaf = requestAnimationFrame(tick);
+      }
+      slideRaf = requestAnimationFrame(tick);
+    }
+
+    // ---- input handlers ----
+    // Spacebar — only triggers when hero is actually in the viewport, so
+    // page scrolling still works outside the hero.
+    window.addEventListener('keydown', (e) => {
+      if (e.code !== 'Space' && e.key !== ' ') return;
+      const hero = document.querySelector('.hero-section');
+      if (!hero) return;
+      const r = hero.getBoundingClientRect();
+      const inView = r.bottom > 0 && r.top < window.innerHeight;
+      if (!inView) return;
+      e.preventDefault();
+      if (dead) restart();
+      else jump();
+    });
+
+    // Click / tap on the dino strip → jump while alive, restart while dead.
+    game.addEventListener('click', () => { if (dead) restart(); else jump(); });
+    game.addEventListener('keydown', (e) => {
+      if (e.code === 'Space' || e.key === ' ') { e.preventDefault(); if (dead) restart(); else jump(); }
+    });
+  })();
+
+  // =========================================
+  // KONAMI CODE EASTER EGG
+  // ↑ ↑ ↓ ↓ ← → ← → B A — triggers CRT scanline flash + chime (only SFX gated by audio toggle)
+  // =========================================
+  (function konami() {
+    const SEQ = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+    let idx = 0;
+    let flashEl = null;
+    let toastEl = null;
+    let activeUntil = 0;
+
+    function ensureEls() {
+      if (!flashEl) {
+        flashEl = document.createElement('div');
+        flashEl.className = 'konami-flash';
+        document.body.appendChild(flashEl);
+      }
+      if (!toastEl) {
+        toastEl = document.createElement('div');
+        toastEl.className = 'konami-toast';
+        toastEl.textContent = 'CHEAT ACTIVATED · 1UP';
+        document.body.appendChild(toastEl);
+      }
+    }
+
+    function trigger() {
+      const now = Date.now();
+      if (now < activeUntil) return; // debounce
+      activeUntil = now + 2000;
+      ensureEls();
+      // restart animations by toggling class
+      flashEl.classList.remove('active');
+      toastEl.classList.remove('active');
+      // force reflow
+      void flashEl.offsetWidth;
+      void toastEl.offsetWidth;
+      flashEl.classList.add('active');
+      toastEl.classList.add('active');
+      // chime (only audible if audio toggle is on, but always visible)
+      AudioFX.sfx.konami();
+    }
+
+    window.addEventListener('keydown', (e) => {
+      const k = e.key;
+      // Match case-insensitively for b/a
+      const key = k.length === 1 ? k.toLowerCase() : k;
+      if (key === SEQ[idx]) {
+        idx++;
+        if (idx === SEQ.length) {
+          idx = 0;
+          trigger();
+        }
+      } else if (key === SEQ[0]) {
+        idx = 1;
+      } else {
+        idx = 0;
+      }
+    });
+  })();
+
+  // =========================================
+  // HIDDEN ALIENS — FIND-ALL SCAVENGER HUNT
+  //
+  // 6 aliens are scattered across the page (each carries `data-alien`).
+  // Click one to collect it. After the first find:
+  //   • a hunt HUD appears top-right showing "ALIENS  X / 6"
+  //   • progress persists to localStorage 'huntFound'
+  // When all 6 are found:
+  //   • a victory banner + confetti burst
+  //   • a final chime cascade (gated by audio toggle)
+  //   • the save persists so it won't re-fire until cleared
+  // =========================================
+  (function alienHunt() {
+    const aliens = Array.from(document.querySelectorAll('[data-alien]'));
+    if (!aliens.length) return;
+
+    const TOTAL = aliens.length;
+    const KEY = 'huntFound';
+    const bannerShownKey = 'huntBannerSeen';
+    const completedKey = 'huntCompleted';
+    let found = new Set();
+    let bannerEl = null;
+    let progressEl = null;
+    let victoryEl = null;
+    let confettiHost = null;
+
+    // Restore previously found aliens (so reload doesn't reset progress)
+    try {
+      const saved = JSON.parse(localStorage.getItem(KEY) || '[]');
+      if (Array.isArray(saved)) saved.forEach(id => found.add(id));
+    } catch (e) {}
+
+    function persist() {
+      try { localStorage.setItem(KEY, JSON.stringify(Array.from(found))); } catch (e) {}
+    }
+
+    function shake(el) {
+      if (typeof gsap === 'undefined') return;
+      gsap.fromTo(el,
+        { rotation: -8 },
+        { rotation: 8, yoyo: true, repeat: 3, duration: 0.05,
+          onComplete: () => gsap.set(el, { rotation: 0 }) }
+      );
+    }
+
+    function spawnPopup(text, x, y, color, big) {
+      const popup = document.createElement('div');
+      popup.textContent = text;
+      popup.style.position = 'fixed';
+      popup.style.left = (x + 12) + 'px';
+      popup.style.top = (y - 18) + 'px';
+      popup.style.color = color || '#FFD700';
+      popup.style.fontWeight = 'bold';
+      popup.style.fontSize = big ? '1.4rem' : '0.9rem';
+      popup.style.textShadow = '2px 2px 0 #000';
+      popup.style.pointerEvents = 'none';
+      popup.style.zIndex = '99999';
+      popup.style.fontFamily = "'Press Start 2P', monospace";
+      popup.style.letterSpacing = '1px';
+      document.body.appendChild(popup);
+      if (typeof gsap !== 'undefined') {
+        gsap.to(popup, {
+          y: big ? -42 : -30, opacity: 0,
+          duration: big ? 1.2 : 0.8, ease: 'power1.out',
+          onComplete: () => popup.remove()
+        });
+      } else { setTimeout(() => popup.remove(), 1200); }
+    }
+
+    // ---- HUD ----
+    function ensureHUD() {
+      if (bannerEl) return bannerEl;
+      bannerEl = document.createElement('div');
+      bannerEl.className = 'hunt-hud';
+      bannerEl.innerHTML =
+        '<span class="hunt-label">ALIENS</span>' +
+        '<span class="hunt-progress"><span id="huntCount">0</span> / ' + TOTAL + '</span>' +
+        '<div class="hunt-meter"><div class="hunt-meter-fill" id="huntMeterFill"></div></div>' +
+        '<button class="hunt-close" id="huntClose" aria-label="Hide hunt HUD">×</button>';
+      document.body.appendChild(bannerEl);
+      progressEl = bannerEl.querySelector('#huntCount');
+      // Allow user to hide the HUD (it'll come back next time they find one)
+      const closeBtn = bannerEl.querySelector('#huntClose');
+      if (closeBtn) closeBtn.addEventListener('click', () => {
+        bannerEl.classList.remove('visible');
+        try { localStorage.setItem(bannerShownKey, '0'); } catch (e) {}
+      });
+      // slide in
+      requestAnimationFrame(() => bannerEl.classList.add('visible'));
+      updateHUD();
+      return bannerEl;
+    }
+
+    function updateHUD() {
+      if (!bannerEl) return;
+      if (progressEl) progressEl.textContent = String(found.size);
+      const fill = bannerEl.querySelector('#huntMeterFill');
+      if (fill) fill.style.width = ((found.size / TOTAL) * 100) + '%';
+    }
+
+    // ---- Victory banner + confetti ----
+    function spawnConfetti() {
+      confettiHost = document.createElement('div');
+      confettiHost.className = 'confetti-host';
+      document.body.appendChild(confettiHost);
+      const colors = ['#FFD700', '#ffb89e', '#ff4d2d', '#2d241e', '#fffff0'];
+      const N = 60;
+      for (let i = 0; i < N; i++) {
+        const c = document.createElement('div');
+        c.className = 'confetti-piece';
+        c.style.left = Math.random() * 100 + 'vw';
+        c.style.background = colors[i % colors.length];
+        c.style.animationDelay = (Math.random() * 0.6) + 's';
+        c.style.animationDuration = (1.6 + Math.random() * 1.4) + 's';
+        c.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)';
+        confettiHost.appendChild(c);
+      }
+      setTimeout(() => { if (confettiHost) { confettiHost.remove(); confettiHost = null; } }, 4500);
+    }
+
+    function ensureVictory() {
+      if (victoryEl) return victoryEl;
+      victoryEl = document.createElement('div');
+      victoryEl.className = 'hunt-victory';
+      victoryEl.innerHTML =
+        '<span class="hv-icon">🏆</span>' +
+        '<span class="hv-title">ALL ALIENS FOUND</span>' +
+        '<span class="hv-desc">You tracked down all ' + TOTAL + ' hidden invaders. The galaxy is safe.</span>' +
+        '<button class="hv-close" id="hvClose">CONTINUE</button>';
+      document.body.appendChild(victoryEl);
+      const closeBtn = victoryEl.querySelector('#hvClose');
+      if (closeBtn) closeBtn.addEventListener('click', () => victoryEl.classList.remove('active'));
+      return victoryEl;
+    }
+
+    function triggerVictory() {
+      try { localStorage.setItem(completedKey, '1'); } catch (e) {}
+      ensureVictory();
+      victoryEl.classList.remove('active');
+      void victoryEl.offsetWidth;
+      victoryEl.classList.add('active');
+      spawnConfetti();
+      // Victory chime cascade — gated by audio toggle
+      const climb = [523, 659, 784, 1047, 1319];
+      climb.forEach((f, i) => {
+        setTimeout(() => AudioFX.sfx.levelUp(), i * 150);
+      });
+    }
+
+    // ---- Click handler ----
+    function handle(alien, e) {
+      if (e) e.preventDefault();
+      const id = alien.getAttribute('data-alien-id') || ('a' + aliens.indexOf(alien));
+      const x = (e && (e.clientX || 0)) || 0;
+      const y = (e && (e.clientY || 0)) || 0;
+      if (found.has(id)) {
+        // Already collected — just a small feedback
+        spawnPopup('FOUND', x, y, '#999', false);
+        return;
+      }
+      found.add(id);
+      persist();
+      // Mark visually (fades out + adds a "collected" stamp)
+      alien.classList.add('collected');
+      spawnPopup('+' + found.size + '/' + TOTAL, x, y, '#FFD700', false);
+      AudioFX.sfx.levelUp();
+      shake(alien);
+      ensureHUD();
+      updateHUD();
+      if (found.size === TOTAL) {
+        // Hold the popup briefly then trigger the victory
+        setTimeout(triggerVictory, 500);
+      }
+    }
+
+    // Wire up each alien
+    aliens.forEach(alien => {
+      const id = alien.getAttribute('data-alien-id') || ('a' + aliens.indexOf(alien));
+      if (found.has(id)) alien.classList.add('collected');
+      alien.addEventListener('click', (e) => handle(alien, e));
+      alien.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handle(alien, e); }
+      });
+      alien.addEventListener('mouseenter', () => {
+        alien.classList.add('invader-hover');
+        AudioFX.sfx.hover();
+      });
+      alien.addEventListener('mouseleave', () => alien.classList.remove('invader-hover'));
+    });
+
+    // If the user already finished, show the victory overlay (not confetti) on return
+    let alreadyCompleted = false;
+    try { alreadyCompleted = localStorage.getItem(completedKey) === '1'; } catch (e) {}
+    if (alreadyCompleted && found.size === TOTAL) {
+      // Soft reminder — show HUD only
+      ensureHUD();
+    }
+  })();
+
 });
 
 // =========================================
@@ -728,11 +1434,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const flipCards = document.querySelectorAll('.project-card.flip-enabled');
   
   flipCards.forEach(card => {
+    // Hover SFX on flip-enabled cards
+    card.addEventListener('mouseenter', () => AudioFX.sfx.hover());
     card.addEventListener('click', function(e) {
       if (e.target.closest('a')) return;
       
       const isFlipped = this.classList.contains('flipped');
       this.classList.toggle('flipped');
+      // Card flip SFX — rising sweep on flip, falling sweep on unflip
+      AudioFX.sfx.flip(isFlipped);
       
       if (!isFlipped) {
         const cardBack = this.querySelector('.card-back');
@@ -752,6 +1462,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
 
 
 
