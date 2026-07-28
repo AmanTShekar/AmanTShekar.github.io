@@ -1604,10 +1604,6 @@ body::after {
     max-width: 320px;
   }
 
-  .image-frame.borderless-frame {
-    max-width: 320px;
-  }
-
   .bento-stack {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -1702,10 +1698,6 @@ body::after {
   }
 
   .image-frame {
-    max-width: 240px;
-  }
-
-  .image-frame.borderless-frame {
     max-width: 240px;
   }
 
@@ -1850,10 +1842,6 @@ body::after {
   }
 
   .image-frame {
-    max-width: 200px;
-  }
-
-  .image-frame.borderless-frame {
     max-width: 200px;
   }
 
@@ -5300,19 +5288,14 @@ a:focus-visible, button:focus-visible {
 /* 480px — tighten hero dino, card padding, project overflow */
 @media (max-width: 480px) {
   .brutal-hero-section { padding: 70px 0 50px; }
-  .pm-track-wrapper, .collab-pm-wrapper {
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 250px !important;
-  }
-  .brutal-hero-box { padding: 1.5rem; display: flex; flex-direction: column-reverse; gap: 1rem; text-align: center; }
+  .brutal-hero-box { padding: 1.5rem; }
   .brutal-title { font-size: clamp(1.2rem, 5vw, 1.8rem); }
   .brutal-sub-text { font-size: 0.55rem !important; }
-  .brutal-actions { flex-direction: column; gap: 0.8rem; align-items: center; }
+  .brutal-actions { flex-direction: column; gap: 0.8rem; }
   .brutal-actions .btn-brutal-primary,
   .brutal-actions .btn-brutal-secondary { width: 100%; justify-content: center; }
 
-  .real-dino-game { height: 80px; position: relative; margin-top: 2rem; pointer-events: none; opacity: 0.5; }
+  .real-dino-game { height: 100px; }
   .dino-character { left: 5%; }
   .dino-character svg { width: 44px; height: 47px; }
   @keyframes dinoJump {
@@ -5352,7 +5335,7 @@ a:focus-visible, button:focus-visible {
   .brutal-hero-box { padding: 1rem; }
   .brutal-title { font-size: clamp(1rem, 4.5vw, 1.4rem); }
 
-  .real-dino-game { height: 60px; position: relative; margin-top: 1.5rem; pointer-events: none; opacity: 0.3; }
+  .real-dino-game { height: 80px; }
   .dino-character svg { width: 44px; height: 47px; }
   @keyframes dinoJump {
     0%, 75% { transform: translateY(0); }
@@ -5373,9 +5356,8 @@ a:focus-visible, button:focus-visible {
   .btn { padding: 0.7rem 1rem; font-size: 0.8rem; }
   .btn.large { padding: 1rem 1.5rem; font-size: 0.65rem; }
 
-  .image-frame { max-width: 100px; margin: 0 auto; }
+  .image-frame { max-width: 160px; }
 }
-
 
 
 
