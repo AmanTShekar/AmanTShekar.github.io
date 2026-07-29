@@ -148,8 +148,9 @@ const AudioFX = (() => {
       playTone(1047, 300, 'square', 0.2, 0.2); 
     },
     error: () => playSweep(200, 50, 300, 'sawtooth', 0.3),
-    typing: () => playNoise(20, 0.05)
-  };\n\n// Initialize from storage
+  };
+
+// Initialize from storage
   enabled = load();
 
   return { isEnabled, setEnabled, sfx };
