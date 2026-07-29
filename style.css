@@ -3809,7 +3809,7 @@ a:focus-visible, button:focus-visible {
   position: absolute;
   left: 0;
   top: 50%;
-  margin-top: -30px;
+  transform: translateY(-50%);
   z-index: 10;
   will-change: transform;
   line-height: 0;
@@ -3819,7 +3819,7 @@ a:focus-visible, button:focus-visible {
   position: absolute;
   right: 6px;
   top: 50%;
-  margin-top: -31px;
+  transform: translateY(-50%);
   z-index: 5;
   transition: filter 0.3s;
   line-height: 0;
@@ -3830,7 +3830,7 @@ a:focus-visible, button:focus-visible {
   left: 70px;
   right: 70px;
   top: 50%;
-  margin-top: -6px;
+  transform: translateY(-50%);
   display: flex;
   align-items: center;
   justify-content: space-between;
