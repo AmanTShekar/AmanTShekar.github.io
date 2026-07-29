@@ -80,31 +80,76 @@
   </nav>
 
   
-  <main style="padding: 150px 2rem 100px;">
-    <div class="brutal-box" style="max-width: 1000px; margin: 0 auto; background: #fff0e6; border: 4px solid #2d241e; box-shadow: 8px 8px 0px rgba(45, 36, 30, 0.25);">
-      <h1 class="brutal-title" style="text-align: center; border-bottom: 4px solid #2d241e; padding-bottom: 2rem; margin-bottom: 3rem;">DEVLOG_</h1>
-      
-      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; padding: 0 2rem 2rem;">
-        
-        <!-- Blog Card 1 -->
-        <article class="project-card brutal-card blog-card" style="position: relative; background: #ffb89e; border: 4px solid #2d241e; padding: 1.5rem; transition: transform 0.2s;">
-          <div style="font-family: 'Press Start 2P', monospace; font-size: 0.7rem; margin-bottom: 1rem;">2026.07.28</div>
-          <h2 style="font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.8rem; margin-bottom: 1rem; line-height: 1.1; text-transform: uppercase;">Building a Web Audio Arcade Synth</h2>
-          <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; line-height: 1.5; margin-bottom: 2rem;">How I used the native Web Audio API to procedurally generate chomp, jump, and laser sounds without any external MP3 assets.</p>
-          <a href="#" class="btn brutal-btn" style="width: 100%; text-align: center;">READ MORE</a>
-        </article>
+  
+  <main>
+    <section class="blog-post-section" style="padding-top: 150px; padding-bottom: 100px;">
+      <div class="blog-post-grid-bg"></div>
+      <div class="container">
+        <article class="blog-post-shell">
+          <h1 class="blog-post-title" style="text-align: center; font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 3rem;">DEVLOG_</h1>
+          
+          <div class="blog-grid" style="margin-top:1rem;">
+            <!-- Post 1 -->
+            <a href="blog-post.html" class="blog-card" data-category="retro">
+              <div class="blog-card-image">
+                <svg viewBox="0 0 32 32" width="44" height="44" fill="#FFD700">
+                  <path d="M8 6 h2 v-2 h4 v2 h8 v8 h-2 v4 h-2 v6 h-4 v-6 h-2 v-2 h-2 v-8 h-2 z" />
+                </svg>
+                <span class="blog-cat-tag">RETRO WEB</span>
+              </div>
+              <div class="blog-card-body">
+                <div class="blog-card-meta">
+                  <span><i class="fa-regular fa-calendar"></i> Jul 28, 2026</span>
+                  <span><i class="fa-regular fa-clock"></i> 6 min</span>
+                </div>
+                <h3 class="blog-card-title">Building the Hidden Alien Hunt</h3>
+                <p class="blog-card-excerpt">Scattering 6 pixel-art Space Invaders across a portfolio without a backend, and shipping a confetti victory.</p>
+              </div>
+            </a>
 
-        <!-- Blog Card 2 -->
-        <article class="project-card brutal-card blog-card" style="position: relative; background: #89e2c6; border: 4px solid #2d241e; padding: 1.5rem; transition: transform 0.2s;">
-          <div style="font-family: 'Press Start 2P', monospace; font-size: 0.7rem; margin-bottom: 1rem;">2026.07.15</div>
-          <h2 style="font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.8rem; margin-bottom: 1rem; line-height: 1.1; text-transform: uppercase;">The Neobrutalist Mobile Manifesto</h2>
-          <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; line-height: 1.5; margin-bottom: 2rem;">Why 4px borders and hard shadows are exactly what the modern mobile web needs to regain its soul.</p>
-          <a href="#" class="btn brutal-btn" style="width: 100%; text-align: center;">READ MORE</a>
+            <!-- Post 2 -->
+            <a href="#" class="blog-card" data-category="performance">
+              <div class="blog-card-image">
+                <svg viewBox="0 0 32 32" width="48" height="48" fill="#FFD700">
+                  <path d="M4 24 L12 14 L18 20 L28 6" fill="none" stroke="#FFD700" stroke-width="3"/>
+                  <circle cx="28" cy="6" r="2.5"/>
+                </svg>
+                <span class="blog-cat-tag">PERFORMANCE</span>
+              </div>
+              <div class="blog-card-body">
+                <div class="blog-card-meta">
+                  <span><i class="fa-regular fa-calendar"></i> Jun 10, 2026</span>
+                  <span><i class="fa-regular fa-clock"></i> 8 min</span>
+                </div>
+                <h3 class="blog-card-title">Lighthouse 100 Without Losing the Aesthetic</h3>
+                <p class="blog-card-excerpt">Pixel-art loaders, GSAP timelines, and 6 fonts — yet I shipped a perfect Lighthouse score. Here's how.</p>
+              </div>
+            </a>
+            
+            <!-- Post 3 -->
+            <a href="#" class="blog-card" data-category="retro">
+              <div class="blog-card-image">
+                <svg viewBox="0 0 11 8" width="44" height="32" fill="#FFD700">
+                  <path d="M2,0 h1 v1 h-1 v-1  M8,0 h1 v1 h-1 v-1  M3,1 h1 v1 h-1 v-1  M7,1 h1 v1 h-1 v-1  M2,2 h7 v1 h-7 v-1  M1,3 h2 v1 h-2 v-1  M4,3 h3 v1 h-3 v-1  M8,3 h2 v1 h-2 v-1  M0,4 h11 v1 h-11 v-1  M0,5 h1 v1 h-1 v-1  M2,5 h7 v1 h-7 v-1  M10,5 h1 v1 h-1 v-1  M0,6 h1 v1 h-1 v-1  M2,6 h1 v1 h-1 v-1  M8,6 h1 v1 h-1 v-1  M10,6 h1 v1 h-1 v-1  M3,7 h2 v1 h-2 v-1  M6,7 h2 v1 h-2 v-1"/>
+                </svg>
+                <span class="blog-cat-tag">RETRO WEB</span>
+              </div>
+              <div class="blog-card-body">
+                <div class="blog-card-meta">
+                  <span><i class="fa-regular fa-calendar"></i> May 4, 2026</span>
+                  <span><i class="fa-regular fa-clock"></i> 5 min</span>
+                </div>
+                <h3 class="blog-card-title">Why I Put a Konami Code Back Into My Site</h3>
+                <p class="blog-card-excerpt">A defense of joy-on-the-web. Why a 10-line easter egg matters more than another analytics integration.</p>
+              </div>
+            </a>
+            
+          </div>
         </article>
-
       </div>
-    </div>
+    </section>
   </main>
+
 
 
   <!-- Footer -->
