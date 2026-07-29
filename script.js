@@ -1458,6 +1458,7 @@ function startPacManChomp(pathId) {
       persist();
       // Mark visually (fades out + adds a "collected" stamp)
       alien.classList.add('collected');
+      alien.removeAttribute('tabindex');
       spawnPopup('+' + found.size + '/' + TOTAL, x, y, '#FFD700', false);
       AudioFX.sfx.levelUp();
       shake(alien);

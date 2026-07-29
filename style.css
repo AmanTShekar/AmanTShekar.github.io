@@ -3792,8 +3792,9 @@ a:focus-visible, button:focus-visible {
 .collab-pm-wrapper {
   position: relative;
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 2rem auto;
   overflow: hidden;
-  margin-bottom: 2rem;
 }
 
 .collab-pm-track {
