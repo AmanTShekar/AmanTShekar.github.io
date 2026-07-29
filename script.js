@@ -1536,3 +1536,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+
+  // =========================================
+  // RANDOM ARCADE SFX FOR INTERACTIVE ELEMENTS
+  // =========================================
+  (function assignRandomSFX() {
+    // Generate some random synth sounds
+    const playRandomBlip = () => {
+      if (typeof AudioFX === 'undefined' || !AudioFX.isEnabled()) return;
+      const freqs = [330, 440, 523, 659, 784, 880];
+      const types = ['square', 'sawtooth', 'triangle'];
+      const f = freqs[Math.floor(Math.random() * freqs.length)];
+      const t = types[Math.floor(Math.random() * types.length)];
+      // use the playTone signature roughly: (freq, duration, type, gain)
+      // We don't have playTone exported, but we can use AudioFX.sfx.hover() as a fallback,
+      // or we can just emit a new oscillator if we want true randomness.
+      // Since AudioFX doesn't export playTone directly, let's just trigger a random predefined sfx
+      const sfxKeys = ['hover', 'select', 'chomp'];
+      const k = sfxKeys[Math.floor(Math.random() * sfxKeys.length)];
+      if (AudioFX.sfx[k]) AudioFX.sfx[k]();
+    };
+
+    // Grab elements that aren't already wired to specific SFX
+    const elements = document.querySelectorAll('.project-card, .exp-card, .testimonial-card, .btn:not(.nav-cta)');
+    elements.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        if (Math.random() > 0.5) playRandomBlip(); // 50% chance on hover for variety
+      });
+      el.addEventListener('click', () => {
+        playRandomBlip();
+        if (AudioFX && AudioFX.sfx) AudioFX.sfx.click(); // Always play main click
+      });
+    });
+  })();
