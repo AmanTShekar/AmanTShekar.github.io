@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -114,44 +114,18 @@
 <body class="dark-theme">
   <!-- Retro Boot Loading Screen -->
   <div class="retro-loader" id="retroLoader">
-    <div class="loader-center-content">
-      <div class="loader-title" id="loaderTitle">SYSTEM BOOT...</div>
-      <div class="loader-text" id="loaderText">Initializing modules...</div>
-    <!-- Full-width Pac-Man track -->
-    <div class="pm-track-wrapper">
-      <div class="pm-track" id="pmTrack">
-        <!-- Pac-Man character -->
-        <div class="pm-char" id="pmChar">
-          <svg id="pmSvg" viewBox="0 0 40 40" width="50" height="50" style="display:block;overflow:visible;image-rendering:pixelated;filter:drop-shadow(0 0 6px rgba(255,215,0,0.8));">
-              <path id="pmPath" fill="#FFD700" d="M 20,20 L 37.32,10 A 20,20 0 1,0 37.32,30 Z"/>
-            </svg>
-        </div>
-        <!-- Dots will be injected by JS -->
-        <div class="pm-dots-row" id="pmDotsRow"></div>
-        <!-- Ghost at the end -->
-        <div class="pm-ghost" id="pmGhost">
-          <svg viewBox="0 0 14 18" width="46" height="54">
-            <!-- Body -->
-            <rect x="1" y="0" width="12" height="1" fill="#ff4d2d"/>
-            <rect x="0" y="1" width="14" height="9" fill="#ff4d2d"/>
-            <!-- Eyes white -->
-            <rect x="2" y="3" width="4" height="4" fill="#fff"/>
-            <rect x="8" y="3" width="4" height="4" fill="#fff"/>
-            <!-- Pupils -->
-            <rect x="3" y="4" width="2" height="2" fill="#000"/>
-            <rect x="9" y="4" width="2" height="2" fill="#000"/>
-            <!-- Skirt wavy bottom -->
-            <rect x="0" y="10" width="14" height="4" fill="#ff4d2d"/>
-            <rect x="0" y="14" width="2" height="4" fill="#ff4d2d"/>
-            <rect x="4" y="14" width="2" height="4" fill="#ff4d2d"/>
-            <rect x="8" y="14" width="2" height="4" fill="#ff4d2d"/>
-            <rect x="12" y="14" width="2" height="4" fill="#ff4d2d"/>
+    <div class="loader-box">
+      <div class="loader-pm-row" id="loaderPmRow">
+        <div class="loader-pm" id="loaderPm">
+          <svg viewBox="0 0 40 40" width="56" height="56" style="display:block;filter:drop-shadow(0 0 4px rgba(45,36,30,0.3));">
+            <path id="pmPath" fill="#FFD700" d="M 20,20 L 37.32,10 A 20,20 0 1,0 37.32,30 Z"/>
           </svg>
         </div>
+        <div class="loader-dots" id="loaderDots"></div>
       </div>
+      <div class="loader-text" id="loaderText">INITIALIZING...</div>
+      <div class="loader-bar" id="loaderBar">[          ] 0%</div>
     </div>
-    </div> <!-- /loader-center-content -->
-    <div class="loader-bar" id="loaderBar">[          ] 0%</div>
   </div>
 
   <!-- Grainy Overlay for texture -->
@@ -166,9 +140,10 @@
           ATS
         </a>
         <div class="nav-links">
-          <a href="#projects">Portfolio</a>
+          <a href="index.html#projects">Portfolio</a>
           <a href="about.html">About</a>
-          <a href="#experience">Experience</a>
+          <a href="index.html#experience">Experience</a>
+          <a href="blog.html">Blog</a>
           <a href="contact.html" class="nav-cta">Contact</a>
           <button class="audio-toggle" id="audioToggle" type="button" aria-label="Toggle sound effects" aria-pressed="false" title="Sound: Off">
             <i class="fa-solid fa-volume-xmark" id="audioIcon"></i>
@@ -1273,7 +1248,3 @@
 
 
 
-
-
-
-add 

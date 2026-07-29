@@ -126,9 +126,9 @@ const AudioFX = (() => {
     hover: () => playBeep(440, 30, 'square', 0.15),
     click: () => { playBeep(660, 50, 'square', 0.4); playBeep(880, 30, 'square', 0.2, 0.05); },
     // Pac-Man is intentionally silent — no chomp/eatDot/powerDot SFX.
-    chomp:    () => {},
-    eatDot:   () => {},
-    powerDot: () => {},
+    chomp: () => playBeep(330, 40, 'triangle', 0.15),
+    eatDot: () => playTone(880, 20, 'sine', 0.1),
+    powerDot: () => playSweep(440, 880, 100, 'square', 0.2),
     jump: () => playSweep(330, 740, 180, 'square', 0.35),
     land: () => playBeep(160, 50, 'sawtooth', 0.18),
     hit:  () => { playNoise(180, 0.2); playSweep(400, 80, 250, 'sawtooth', 0.3); },
@@ -296,32 +296,29 @@ function startPacManChomp(pathId) {
         // never finishes (e.g. Pac‑Man SVG missing → no percent close).
         setTimeout(() => { document.body.style.overflow = ''; }, 6000);
 
-        // Build dot track
-        const dotsRow = document.getElementById('pmDotsRow');
-        const pmChar  = document.getElementById('pmChar');
-        const pmGhost = document.getElementById('pmGhost');
-        const NUM_DOTS = 20;
+        // Build dot stream — dots appear and flow into Pac-Man's mouth
+        const dotsContainer = document.getElementById('loaderDots');
+        const NUM_DOTS = 16;
         const dots = [];
 
         const stopPmChomp = startPacManChomp('pmPath');
-        if (dotsRow) {
-          dotsRow.innerHTML = ''; // Clear any existing dots
+        if (dotsContainer) {
+          dotsContainer.innerHTML = '';
           for (let i = 0; i < NUM_DOTS; i++) {
             const d = document.createElement('span');
-            d.className = (i === 4 || i === NUM_DOTS - 2) ? 'pm-dot power' : 'pm-dot';
-            dotsRow.appendChild(d);
+            d.className = 'loader-dot';
+            dotsContainer.appendChild(d);
             dots.push(d);
           }
         }
 
         const TOTAL_MS = 1800;
-        let ghostFleeing = false;
         let rafId;
         let finished = false;
         const phases = [
-          { pct: 25,  msg: 'Loading modules...' },
-          { pct: 55,  msg: 'Crunching assets...' },
-          { pct: 80,  msg: 'Connecting systems...' },
+          { pct: 25,  msg: 'LOADING MODULES...' },
+          { pct: 55,  msg: 'CRUNCHING ASSETS...' },
+          { pct: 80,  msg: 'CONNECTING SYSTEMS...' },
           { pct: 100, msg: 'SYSTEM ONLINE.' }
         ];
         let phaseIdx = 0;
@@ -352,38 +349,26 @@ function startPacManChomp(pathId) {
           runHeroReveal();
         };
 
-        // Hard failsafe — always close after 5s no matter what
         const failsafe = setTimeout(closeLoader, 5000);
 
-        // Wait one frame so layout is painted, then measure & start
         requestAnimationFrame(() => {
-          // Use window.innerWidth as the reliable full-screen track width
-          const trackW = 200;
           const t0 = performance.now();
+          let dotPtr = 0;
 
           const tick = (now) => {
             if (finished) return;
             const t = Math.min((now - t0) / TOTAL_MS, 1);
             const pct = t * 100;
 
-            // Move Pac-Man across the full track
-            if (pmChar) pmChar.style.transform = 'translateX(' + Math.round(t * trackW) + 'px)';
-
-            // Eat dots proportionally
-            if (dots.length) {
-              const spacing = trackW / (NUM_DOTS - 1);
-              dots.forEach((d, i) => {
-                if (t * trackW + 25 > i * spacing) {
-                  d.classList.add('eaten');
-                  if ((i === 4 || i === NUM_DOTS - 2) && !ghostFleeing) {
-                    ghostFleeing = true;
-                    if (pmGhost) {
-                      const gs = pmGhost.querySelector('svg');
-                      if (gs) gs.style.filter = 'hue-rotate(195deg) brightness(0.55)';
-                    }
-                  }
-                }
-              });
+            // Show dots progressively as they appear then get eaten
+            const showCount = Math.floor(t * NUM_DOTS);
+            for (let i = 0; i < showCount && i < NUM_DOTS; i++) {
+              if (!dots[i].classList.contains('show')) dots[i].classList.add('show');
+            }
+            // Eat dots that have been visible for a beat
+            const eatCount = Math.max(0, showCount - 2);
+            for (let i = 0; i < eatCount && i < NUM_DOTS; i++) {
+              if (!dots[i].classList.contains('eaten')) dots[i].classList.add('eaten');
             }
 
             updateBar(pct);
@@ -454,6 +439,7 @@ function startPacManChomp(pathId) {
         });
         tl.to(collabChar, {
           x: trackW,
+          yPercent: -50,
           duration: COLLAB_MS / 1000,
           ease: 'none',
           onUpdate: function () {
@@ -481,7 +467,7 @@ function startPacManChomp(pathId) {
       const t0 = performance.now();
       const tick = (now) => {
         const t = Math.min((now - t0) / COLLAB_MS, 1);
-        if (collabChar) collabChar.style.transform = 'translateX(' + Math.round(t * trackW) + 'px)';
+        if (collabChar) collabChar.style.transform = 'translate(' + Math.round(t * trackW) + 'px, -50%)';
         if (cDots.length) {
           const spacing = trackW / (COLLAB_DOTS - 1);
           cDots.forEach((d, i) => {
@@ -934,16 +920,15 @@ function startPacManChomp(pathId) {
     el.addEventListener('mouseenter', () => AudioFX.sfx.hover());
   });
 
-  // Pac-Man loaders: chomp on each dot eaten — only when the track is visible in the viewport.
+// Pac-Man loaders: chomp on each dot eaten — only when the track is visible in the viewport.
   // We observe both the dot container's class mutations AND an IntersectionObserver on the
   // parent track wrapper so sound only fires while the user can actually see it.
   (function patchChompSFX() {
-    const observed = document.querySelectorAll('.pm-dots-row, .collab-pm-dots');
+    const observed = document.querySelectorAll('.collab-pm-dots');
     if (!observed.length) return;
-    // Map each dot container → parent track wrapper (or itself as fallback)
     function findTrackWrapper(container) {
       let el = container;
-      while (el && !el.classList.contains('pm-track-wrapper') && !el.classList.contains('collab-pm-wrapper')) {
+      while (el && !el.classList.contains('collab-pm-wrapper') && !el.classList.contains('loader-box')) {
         el = el.parentElement;
       }
       return el || container;
@@ -968,9 +953,9 @@ function startPacManChomp(pathId) {
       let lastPlay = 0;
       const obs = new MutationObserver((muts) => {
         if (!AudioFX.isEnabled()) return;
-        if (!visibilityMap.get(container)) return; // not in view — stay silent
+        if (!visibilityMap.get(container)) return;
         const now = performance.now();
-        if (now - lastPlay < 35) return; // throttle to keep it crisp
+        if (now - lastPlay < 35) return;
         for (const m of muts) {
           if (m.attributeName === 'class' && m.target.classList.contains('eaten')) {
             if (m.target.classList.contains('power')) AudioFX.sfx.powerDot();

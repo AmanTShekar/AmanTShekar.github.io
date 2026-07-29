@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aman T Shekar — About</title>
+  <title>Aman T Shekar | Devlog</title>
   <meta name="description" content="Learn more about Aman T Shekar, a visionary Full Stack Engineer dedicated to building high-performance digital experiences.">
   <meta name="theme-color" content="#fff0e6">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -67,9 +67,9 @@
         </a>
         <div class="nav-links">
           <a href="index.html#projects">Portfolio</a>
-          <a href="about.html" class="active-link">About</a>
+          <a href="about.html">About</a>
           <a href="index.html#experience">Experience</a>
-          <a href="blog.html">Blog</a>
+          <a href="blog.html" class="active-link">Blog</a>
           <a href="contact.html" class="nav-cta">Contact</a>
         <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
           <span></span>
@@ -79,79 +79,33 @@
     </div>
   </nav>
 
-  <main>
-    <!-- HERO -->
-    <section class="about-page-hero">
-      <div class="container">
+  
+  <main style="padding: 150px 2rem 100px;">
+    <div class="brutal-box" style="max-width: 1000px; margin: 0 auto; background: #fff0e6; border: 4px solid #2d241e; box-shadow: 8px 8px 0px rgba(45, 36, 30, 0.25);">
+      <h1 class="brutal-title" style="text-align: center; border-bottom: 4px solid #2d241e; padding-bottom: 2rem; margin-bottom: 3rem;">DEVLOG_</h1>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; padding: 0 2rem 2rem;">
+        
+        <!-- Blog Card 1 -->
+        <article class="project-card brutal-card blog-card" style="position: relative; background: #ffb89e; border: 4px solid #2d241e; padding: 1.5rem; transition: transform 0.2s;">
+          <div style="font-family: 'Press Start 2P', monospace; font-size: 0.7rem; margin-bottom: 1rem;">2026.07.28</div>
+          <h2 style="font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.8rem; margin-bottom: 1rem; line-height: 1.1; text-transform: uppercase;">Building a Web Audio Arcade Synth</h2>
+          <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; line-height: 1.5; margin-bottom: 2rem;">How I used the native Web Audio API to procedurally generate chomp, jump, and laser sounds without any external MP3 assets.</p>
+          <a href="#" class="btn brutal-btn" style="width: 100%; text-align: center;">READ MORE</a>
+        </article>
 
-        <!-- Page Title Box -->
-        <div class="brutal-hero-box" style="margin-bottom: 3rem; display: inline-block; padding: 2rem 3rem;">
-          <span class="section-label" style="display:block; margin-bottom:1rem;">&gt; SYS.INIT :: ABOUT.EXE</span>
-          <h1 class="about-page-title">ARCHITECTING<br>DIGITAL REALITY</h1>
-        </div>
-
-        <!-- Bio Box -->
-        <div class="about-info-box">
-          <h3>&gt; IDENTITY:</h3>
-          <p>Hello, I am <strong>Aman T Shekar</strong>, a <strong>Full Stack Engineer</strong> based in India. I specialize in architecting high-performance digital ecosystems with technical precision.</p>
-          <p>As a freelancer, I don't just write code — I build solutions. Whether you need a high-performance e-commerce platform, a custom React app, or a sleek brand portfolio, I bring a unique blend of technical precision and artistic vision.</p>
-          <p>My philosophy is simple: <strong>Functionality should eventually become art.</strong> I strive to create web experiences that are not only robust and scalable but also visually immersive and intuitive.</p>
-        </div>
-
-        <!-- Why Hire Box -->
-        <div class="about-info-box">
-          <h3>&gt; WHY_HIRE_ATS.LOG</h3>
-          <p><strong>Full-Stack Precision:</strong> From Next.js frontends to Node.js + Rust backends — I own the entire stack.</p>
-          <p><strong>AI-First Mindset:</strong> Every project gets evaluated for AI automation opportunities — giving you a competitive edge.</p>
-          <p><strong>Pixel-Perfect Design:</strong> Code without craft is incomplete. I build things that look as good as they perform.</p>
-          <p><strong>Freelance Reliability:</strong> No bureaucracy. Direct communication. Fast execution.</p>
-        </div>
-
-        <!-- Stats Cards -->
-        <div class="about-stats-grid">
-          <div class="retro-stat-card">
-            <span class="stat-label">[ORIGIN]</span>
-            <h4>2020</h4>
-            <p>Started Coding</p>
-          </div>
-          <div class="retro-stat-card">
-            <span class="stat-label">[DEPLOYMENTS]</span>
-            <h4>15+</h4>
-            <p>Projects Shipped</p>
-          </div>
-          <div class="retro-stat-card">
-            <span class="stat-label">[RELIABILITY]</span>
-            <h4>100%</h4>
-            <p>Client Satisfaction</p>
-          </div>
-          <div class="retro-stat-card">
-            <span class="stat-label">[LOCATION]</span>
-            <h4>REMOTE</h4>
-            <p>Global Availability</p>
-          </div>
-        </div>
-
-        <!-- Status Box -->
-        <div class="about-info-box" style="background: #000; border-color: #ffb89e;">
-          <h3 style="color: #ffb89e;">&gt; CURRENT_STATUS:</h3>
-          <p style="color: #fff;">Status: <strong style="color: #00ff88;">AVAILABLE FOR HIRE ●</strong></p>
-          <p style="color: #fff;">Accepting new freelance projects — specializing in Next.js, React, AI Integrations, and Rust APIs.</p>
-        </div>
-
-        <!-- Actions -->
-        <div class="about-actions">
-          <a href="contact.html" class="btn btn-brutal-primary" style="font-family: var(--font-retro); font-size: 0.65rem;">
-            INITIALIZE_CONTACT <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i>
-          </a>
-          <a href="aman.pdf" class="btn btn-brutal-download" target="_blank" download>
-            <i class="fa-solid fa-download"></i>
-            <span>RESUME</span>
-          </a>
-        </div>
+        <!-- Blog Card 2 -->
+        <article class="project-card brutal-card blog-card" style="position: relative; background: #89e2c6; border: 4px solid #2d241e; padding: 1.5rem; transition: transform 0.2s;">
+          <div style="font-family: 'Press Start 2P', monospace; font-size: 0.7rem; margin-bottom: 1rem;">2026.07.15</div>
+          <h2 style="font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.8rem; margin-bottom: 1rem; line-height: 1.1; text-transform: uppercase;">The Neobrutalist Mobile Manifesto</h2>
+          <p style="font-family: 'Inter', sans-serif; font-size: 0.95rem; line-height: 1.5; margin-bottom: 2rem;">Why 4px borders and hard shadows are exactly what the modern mobile web needs to regain its soul.</p>
+          <a href="#" class="btn brutal-btn" style="width: 100%; text-align: center;">READ MORE</a>
+        </article>
 
       </div>
-    </section>
+    </div>
   </main>
+
 
   <!-- Footer -->
   <footer class="contact-section" style="padding: 80px 0;">
