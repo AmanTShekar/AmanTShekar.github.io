@@ -137,13 +137,19 @@ const AudioFX = (() => {
       const notes = [523, 659, 784, 1047]; // C E G C
       notes.forEach((f, i) => playBeep(f, 110, 'square', 0.4, i * 0.09));
     },
-    konami: () => {
+        konami: () => {
       const mel = [392, 523, 659, 784, 659, 784];
       mel.forEach((f, i) => playBeep(f, 130, 'square', 0.4, i * 0.11));
-    }
-  };
-
-  // Initialize from storage
+    },
+    select: () => playBeep(784, 40, 'square', 0.2),
+    success: () => { 
+      playTone(523, 100, 'square', 0.2, 0); 
+      playTone(659, 100, 'square', 0.2, 0.1); 
+      playTone(1047, 300, 'square', 0.2, 0.2); 
+    },
+    error: () => playSweep(200, 50, 300, 'sawtooth', 0.3),
+    typing: () => playNoise(20, 0.05)
+  };\n\n// Initialize from storage
   enabled = load();
 
   return { isEnabled, setEnabled, sfx };
@@ -419,7 +425,11 @@ function startPacManChomp(pathId) {
     const resetCollab = () => {
       collabGhostFlee = false;
       cDots.forEach(d => d.classList.remove('eaten'));
-      if (collabChar) collabChar.style.transform = 'translateX(0px)';
+      if (typeof gsap !== 'undefined' && collabChar) {
+        gsap.set(collabChar, { x: 0, yPercent: -50 });
+      } else if (collabChar) {
+        collabChar.style.transform = 'translate(0px, -50%)';
+      }
       if (collabGhost) {
         const gs = collabGhost.querySelector('svg');
         if (gs) gs.style.filter = '';
@@ -771,6 +781,7 @@ function startPacManChomp(pathId) {
         const data = await response.json();
 
         if (data.success) {
+          if (AudioFX && AudioFX.sfx && typeof AudioFX.sfx.success === 'function') AudioFX.sfx.success();
           if (formStatus) {
             formStatus.className = 'form-status-banner status-success';
             formStatus.innerHTML = '<div style="font-weight: 600; font-size: 1.05rem; margin-bottom: 4px;"><i class="fa-solid fa-circle-check" style="margin-right: 8px;"></i> Message Sent Successfully!</div><div style="opacity: 0.9; font-size: 0.9rem;">Thank you for reaching out! Aman has received your message and will reply to you shortly.</div>';
@@ -778,6 +789,7 @@ function startPacManChomp(pathId) {
           contactForm.reset();
         } else {
           // Fallback to mailto if access key is not set or API error occurs
+          if (AudioFX && AudioFX.sfx && typeof AudioFX.sfx.error === 'function') AudioFX.sfx.error();
           throw new Error(data.message || 'API key configuration needed');
         }
       } catch (err) {
@@ -904,7 +916,7 @@ function startPacManChomp(pathId) {
   // Nav links + nav CTA
   document.querySelectorAll('.nav-links a').forEach(a => {
     a.addEventListener('mouseenter', () => AudioFX.sfx.hover());
-    a.addEventListener('click', () => AudioFX.sfx.click());
+    a.addEventListener('click', () => AudioFX.sfx.select());
   });
 
   // Buttons (primary, brutal CTA, social nodes, contact-link, blog cards, filter pills)
